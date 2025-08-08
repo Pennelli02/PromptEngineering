@@ -1,0 +1,753 @@
+{
+    "metrics": {
+        "total_processed": 100,
+        "total_real": 50,
+        "total_fake": 50,
+        "TP": 50,
+        "TN": 0,
+        "FP": 50,
+        "FN": 0,
+        "rejection_real": 0,
+        "rejection_fake": 0,
+        "text_parsing_errors": 0,
+        "text_parsing_error_rate": 0.0,
+        "accuracy": 0.5,
+        "precision": 0.5,
+        "recall": 1.0,
+        "false_negative_rate": 0.0,
+        "false_positive_rate": 1.0,
+        "rejection_real_rate": 0.0,
+        "rejection_fake_rate": 0.0,
+        "rejection_total_rate": 0.0,
+        "system_prompt": "Sei un sistema professionale di classificazione delle immagini che analizza le immagini fornite per determinare se mostrano un volto umano reale o uno generato.\nRispondi SOLO usando il seguente formato JSON:\n{\n  \"result\": \"[real face]\" oppure \"[generated]\" \n  \"explanation\": \"Una spiegazione precisa basata su indizi visivi osservati nell'immagine.\"\n}\nNON includere frasi generiche come 'non ci sono artefatti'. Sii visivo e dettagliato nella tua analisi.Rispondi ESCLUSIVAMENTE con questo JSON, senza commenti o testo extra.",
+        "user_prompt": "Ci sono artefatti intorno alla bocca, alle orecchie o all'attaccatura dei capelli che potrebbero indicare che il volto \u00e8 stato generato dall'IA?",
+        "oneShot": true,
+        "imageBoost": true,
+        "oneShotMessage": [
+            {
+                "role": "user",
+                "content": [
+                    {
+                        "type": "image",
+                        "image": "/kaggle/input/140k-real-and-fake-faces/real_vs_fake/real-vs-fake/test/fake/0A266M95TD.jpg"
+                    },
+                    {
+                        "type": "text",
+                        "text": "Is the provided image showing a real face or a generated one?"
+                    }
+                ]
+            },
+            {
+                "role": "assistant",
+                "content": [
+                    {
+                        "type": "text",
+                        "text": "\n    {\n      \"result\": \"generated\",\n      \"explanation\": \"The image shows distinctive characteristics of artificially generated faces, typical of GAN models (such as StyleGAN). First, there are slight asymmetries in the glasses: the right and left parts are not perfectly aligned, a common detail in synthetic faces. Second, the background appears blurred and lacks realistic depth, with no distinguishable elements, showing an unnatural blending of hair and head contours. Additionally, the lighting on the face is too uniform and lacks consistent shadows; for example, there are no shadows cast by the glasses, as would be expected in a real photo. The teeth are overly regular and symmetrical, and the eyes appear perfectly centered and devoid of complex reflections or imperfections, which are normally found in real human faces. All these subtle signals combined strongly indicate that this is an artificially generated face.\"\n    }\n                "
+                    }
+                ]
+            }
+        ]
+    },
+    "responses": [
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_45.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment areas. These artifacts include irregularities and distortions that are characteristic of AI-generated images. For instance, the edges of the mouth and the hairline show unnatural sharpness and lack of soft transitions, which are typically seen in real photographs. Additionally, the texture and shading around the ears and hair attachment points do not match the natural variations found in real photos, further suggesting that this is a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_4.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment area. These artifacts include irregularities and inconsistencies in the texture and coloration, which are characteristic of AI-generated images. The edges of the hair and the skin around the mouth and ears do not blend seamlessly, suggesting that they were created using machine learning algorithms rather than capturing a real photograph.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_30.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment areas. These artifacts include irregularities and inconsistencies in the texture and coloration, which are characteristic of AI-generated images. The edges of the hair and the skin around the mouth and ears do not blend seamlessly, suggesting that they were created digitally rather than captured from a real photograph. Additionally, the overall smoothness and lack of natural variations in the image further support the conclusion that it is a generated face.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_6.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hairline that suggest the face is generated by AI. The edges of the mouth and the hairline show irregularities and lack of natural texture, which are characteristic of synthetic images. Additionally, the lighting and shading do not match the natural variations seen in real photographs, further indicating artificial generation.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_46.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment areas. These artifacts include irregularities and distortions that are characteristic of AI-generated images. For instance, the edges of the hair and the skin around the mouth show unnatural transitions and lack of natural texture, which are typical signs of AI generation. Additionally, the lighting and shading around the eyes and nose do not exhibit the natural variations seen in real photographs, further suggesting that this is a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_41.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment area. These artifacts include irregularities in the skin texture and coloration, as well as unnatural lighting and shading. The edges of the hair and the skin around the ears appear to be inconsistent and do not match the rest of the image. These features are characteristic of AI-generated images, where the software may struggle to render certain details accurately.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_47.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment areas. These artifacts include irregularities in the texture and coloration, which are characteristic of AI-generated images. The edges of the hair and the skin around the ears show unnatural transitions and inconsistencies, further suggesting that this is a generated face rather than a real one.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_29.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment areas. These artifacts include irregularities in the skin texture, unnatural lighting, and lack of realistic shading and highlights. These features are characteristic of AI-generated images, where the software may struggle to render certain details accurately. Additionally, the overall appearance of the image does not match the natural variations seen in real photographs, further suggesting it is a generated face.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_37.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment areas. These artifacts include irregularities and distortions that are characteristic of AI-generated images. For instance, the edges of the hair and the skin around the mouth show unnatural transitions and lack of natural texture, which are typical signs of AI generation. Additionally, the lighting and shading around the eyes and nose do not exhibit the natural variations seen in real photographs, further suggesting that this is a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_44.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hairline that suggest the face is generated by AI. The edges of the mouth and the hairline show irregularities and lack of natural texture, which are characteristic of synthetic images. Additionally, the skin texture and shading around the eyes and nose do not exhibit the fine details and variations typically found in real photographs. These visual cues collectively point to the possibility that this is an AI-generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_13.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment areas. These artifacts include irregularities and distortions that are characteristic of AI-generated images. For instance, the edges of the hair and the skin around the mouth show unnatural transitions and inconsistencies, which are typically seen in synthetic faces created using techniques like StyleGAN. Additionally, the lighting and shading around the hair and ears do not follow natural patterns, further suggesting that this is an artificial creation rather than a real photograph.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_21.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment area. These artifacts include irregularities and distortions that are characteristic of AI-generated images. For instance, the edges of the hair and the skin around the ears show unnatural blending and lack of natural texture, which is indicative of machine learning algorithms used to create such images. Additionally, the lighting and shading around the face do not exhibit the natural variations seen in real photographs, further supporting the conclusion that this is a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_3.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment areas. These artifacts include irregularities and distortions that are characteristic of AI-generated images. For instance, the edges of the hair and the skin around the ears show unnatural blending and lack of natural texture, which is often seen in AI-generated faces. Additionally, the lighting and shading around the mouth and nose do not match the natural variations typically found in real photographs, further suggesting that this is a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_27.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment areas. These artifacts include irregularities and inconsistencies in the texture and coloration, which are characteristic of AI-generated images. The edges of the hair and the skin around the ears show unnatural blending and lack of natural detail, further suggesting that this is a generated image rather than a real photograph.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_16.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hairline that suggest the face is generated by AI. The edges of the hair and the skin around the ears show irregularities and inconsistencies, which are characteristic of synthetic images created using machine learning techniques like GANs. The smoothness and lack of texture in the hair and the skin also point to a generated image rather than a real photograph.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_25.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment area. These include irregularities in the skin texture, such as unevenness and spots, which are characteristic of AI-generated images. Additionally, the edges of the hair and the skin around the ears show unnatural transitions and lack of natural shading, further suggesting that this is a generated image rather than a real photograph.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_8.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hairline that suggest the face is generated by AI. The edges of the mouth and the hairline show irregularities and lack of natural texture, which are characteristic of synthetic images. Additionally, the lighting and shading do not match the natural variations seen in real photographs, further indicating artificial generation.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_34.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment areas. These artifacts include irregularities and distortions that are characteristic of AI-generated images. For instance, the edges of the hair and the skin around the ears show unnatural blending and lack of natural texture, which is indicative of a synthetic creation rather than a real photograph. Additionally, the lighting and shading around the face do not exhibit the natural variations seen in real photographs, further supporting the conclusion that this is a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_39.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment areas that suggest the face is generated by AI. These include irregularities in the skin texture, unnatural lighting, and lack of realistic shading and depth. The overall appearance is inconsistent with a real photograph, further supporting the conclusion that this is a generated face.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_18.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment areas. These artifacts include irregularities and inconsistencies in the texture and coloration, which are characteristic of AI-generated images. The edges of the hair and the skin around the ears show unnatural blending and lack of natural detail, further suggesting that this is a generated face.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_2.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment areas. These artifacts include irregularities and distortions that are characteristic of AI-generated images. For instance, the edges of the hair and the ear are not smooth and appear jagged, which is a common issue in AI-generated faces. Additionally, the skin texture and lighting around the mouth and ears do not exhibit the natural variations seen in real photographs. These visual inconsistencies suggest that the image might have been created using AI technology.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_49.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment areas. These artifacts include irregularities and distortions that are characteristic of AI-generated images. For instance, the edges of the hair and the skin around the ears show unnatural sharpness and lack of natural texture, which is often seen in AI-generated faces. Additionally, the lighting and shading around the mouth and eyes do not match the natural variations typically found in real photographs, further suggesting that this is a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_43.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment area. These artifacts include irregularities and inconsistencies in the texture and coloration, which are characteristic of AI-generated images. The edges of the hair and the skin around the ears show unnatural blending and lack of natural shading, further suggesting that this is a generated image rather than a real photograph.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_17.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment area. These include irregularities in the skin texture, unnatural lighting, and lack of realistic shading and depth. The edges of the hair and the ear are not smooth, and the overall appearance lacks the natural variations seen in real photographs. These features are characteristic of AI-generated images.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_7.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment area. These include irregularities in the skin texture, unnatural lighting, and lack of realistic shading and depth. The edges of the hair and the ear are not smooth, and the overall appearance does not match what would be expected from a real photograph. These features are characteristic of AI-generated images.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_20.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hairline that suggest the face is generated by AI. The edges of the mouth and the hairline show irregularities and lack of natural texture, which are characteristic of synthetic images. Additionally, the overall smoothness and lack of fine details in the skin texture further support the idea that this is a generated image rather than a real photograph.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_35.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment area. These artifacts include irregularities and distortions that are characteristic of AI-generated images. For instance, the edges of the hair and the skin around the mouth show unnatural sharpness and lack of natural texture, which is often seen in AI-generated faces. Additionally, the lighting and shading around the hair and ears do not follow the natural patterns observed in real photographs, further suggesting that this is a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_38.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hairline that suggest the face is generated by AI. The edges of the mouth and the hairline show irregularities and lack of natural texture, which are common in AI-generated images. Additionally, the skin texture and lighting do not exhibit the natural variations seen in real photographs. These details collectively point to the possibility that the image is a generated face.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_0.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment areas. These artifacts include irregularities in the skin texture, unnatural lighting, and lack of realistic shading and highlights. These features are characteristic of AI-generated images, where the software may struggle to render certain details accurately. Additionally, the overall smoothness and lack of fine details in the hair and skin further suggest that this is a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_42.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment areas. These artifacts include irregularities and inconsistencies in the texture and coloration, which are characteristic of AI-generated images. The edges of the hair and the skin around the ears show unnatural blending and lack of natural skin texture, further suggesting that this is a generated image rather than a real photograph.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_14.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment areas. These artifacts include irregularities and distortions that are characteristic of AI-generated images. For instance, the edges of the hair and the skin around the ears show unnatural blending and lack of natural texture, which is often seen in AI-generated faces. Additionally, the lighting and shading around the mouth and eyes do not match the natural variations typically found in real photographs, further suggesting that this is a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_31.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hairline that suggest the face might be generated by AI. The edges of the mouth and the hairline show irregularities and lack of natural transitions, which are often seen in synthetic images. Additionally, the overall smoothness and lack of texture in the skin and hair further support the idea that this is an artificial creation rather than a real photograph.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_36.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment area. These artifacts include irregularities in the skin texture, unnatural lighting, and lack of realistic shading and depth. The edges of the hair and the skin around the mouth and ears do not have the smoothness and natural transitions typically seen in real photographs. Additionally, the overall composition and lighting do not match the natural appearance of a real person's face. These factors collectively suggest that the image is likely a generated face.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_22.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment area. These artifacts include irregularities and distortions that are characteristic of AI-generated images. For instance, the edges of the hair and the skin around the mouth show unnatural transitions and lack of natural texture, which are typical signs of AI generation. Additionally, the lighting and shading around the face do not exhibit the natural variations seen in real photographs, further suggesting that this is a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_24.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment area. These artifacts include irregularities and inconsistencies in the texture and coloration, which are characteristic of AI-generated images. The edges of the hair and the skin around the mouth and ears do not blend seamlessly, suggesting that they were manually added or edited, rather than naturally occurring in a real photograph. Additionally, the overall smoothness and lack of natural variations in the skin tone and hair color further support the conclusion that this is a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_48.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment areas. These artifacts include irregularities and distortions that are characteristic of AI-generated images. For instance, the edges of the glasses and the hair seem to have been digitally manipulated, lacking the natural flow and texture typically seen in real photographs. Additionally, the lighting and shading around the face do not exhibit the nuanced variations that would be present in a real photograph. These visual cues collectively suggest that the image is likely a product of AI generation.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_11.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hairline that suggest the face is generated by AI. The edges of the mouth and the hairline show irregularities and lack of natural texture, which are characteristic of synthetic images created using machine learning algorithms. Additionally, the overall smoothness and lack of fine details in the skin texture further support the idea that this is a generated image rather than a real photograph.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_28.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment areas. These artifacts include irregularities and inconsistencies in the texture and coloration, which are characteristic of AI-generated images. The edges of the hair and the skin around the ears show unnatural blending and lack of natural detail, further suggesting that this is a generated face.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_19.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment area. These artifacts include irregularities and distortions that are characteristic of AI-generated images. For instance, the edges of the hair and the skin around the ears show unnatural blending and lack of natural texture, which is often seen in AI-generated faces. Additionally, the lighting and shading around the face do not exhibit the natural variations and imperfections typically found in real photographs. These visual cues collectively suggest that the image is likely a generated face.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_33.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment area. These artifacts include irregularities in the texture and coloration, which are characteristic of AI-generated images. The edges of the hair and the skin around the mouth and ears show unnatural transitions and inconsistencies, further suggesting that this is a generated face rather than a real photograph.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_5.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment areas. These artifacts include irregularities and distortions that are characteristic of AI-generated images. For instance, the edges of the sunglasses and the hairline show unnatural transitions and lack of natural skin texture. Additionally, the lighting and shading around the face do not match the natural variations seen in real photographs, further suggesting that this is a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_23.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment areas. These artifacts include irregularities in the skin texture, unnatural lighting, and lack of realistic shading and depth. The edges of the hair and the skin around the ears do not match the rest of the image, suggesting they were added digitally. Additionally, the overall smoothness and lack of natural variations in the image further support the conclusion that it is a generated face.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_15.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment area. These artifacts include irregularities and distortions that are characteristic of AI-generated images. For instance, the edges of the hair and the hat seem to have been digitally manipulated, lacking the natural flow and texture typically seen in real photographs. Additionally, the skin texture and lighting around the face do not exhibit the subtle variations and imperfections that would be present in a real photograph. These visual cues collectively suggest that the image is likely a product of AI generation.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_40.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment area. These artifacts include irregularities in the skin texture, unnatural lighting, and lack of realistic shading and highlights. These features are characteristic of AI-generated images, where the software may struggle to render certain details accurately.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_10.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hairline that suggest the face might be generated by AI. The edges of the mouth and the hairline show irregularities and lack of natural transitions, which are often seen in synthetic images. Additionally, the skin texture and lighting do not exhibit the natural variations and imperfections typically found in real photographs. These visual cues collectively point to the possibility that the image is a generated face.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_12.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hairline that suggest the face is generated by AI. The edges of the glasses and the hairline show irregularities and lack of natural texture, which are typical in AI-generated images. Additionally, the skin texture and lighting do not exhibit the natural variations seen in real photographs. These features collectively point to the possibility that the image is a generated face.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_1.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment areas. These artifacts include irregularities and inconsistencies in the texture and coloration, which are characteristic of AI-generated images. The edges of the hair and the skin around the mouth and ears do not blend seamlessly, suggesting that they were added or edited post-production. Additionally, the lighting and shading in these areas do not match the rest of the image, further indicating that it is a generated face.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_32.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment areas. These artifacts include irregularities and distortions that are characteristic of AI-generated images. For instance, the edges of the hair and the skin around the ears show unnatural blending and lack of natural texture, which is often seen in AI-generated faces. Additionally, the lighting and shading around the mouth and eyes do not match the natural variations found in real photographs, further suggesting that this is a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_9.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hairline that suggest the face is generated by AI. The edges of the mouth and the hairline are not smooth and appear jagged, which is characteristic of AI-generated images. Additionally, the skin texture and lighting do not exhibit the natural variations seen in real photographs. These details collectively point to the possibility that the image was created using AI techniques.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_26.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment area. These artifacts include irregularities and distortions that are characteristic of AI-generated images. For instance, the edges of the mouth and the hairline show unnatural sharpness and lack of soft transitions, which are typically seen in real photographs. Additionally, the texture and shading around the ears and hair attachment points do not match the natural variations found in real human skin and hair. These visual inconsistencies suggest that the image may have been created using AI techniques designed to mimic human facial features.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_94.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment area. These artifacts include irregularities in the skin texture, unnatural lighting, and lack of realistic shading and depth. These features are characteristic of AI-generated images, where the software may struggle to render certain details accurately.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_93.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment area. These artifacts include irregularities and unnatural color transitions, which are characteristic of AI-generated images. The edges of the hair and the skin around the mouth also show signs of being generated, lacking the natural texture and shading that would be present in a real photograph. Additionally, the overall smoothness and lack of fine details in the hair and skin further suggest that this is a synthetic image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_68.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment area. These artifacts include irregularities and distortions that are characteristic of AI-generated images. For instance, the edges of the hair and the hat seem to have been digitally manipulated, lacking the natural flow and texture typically seen in real photographs. Additionally, the skin texture and lighting around the mouth and ears do not exhibit the subtle variations and imperfections that would be present in a real photograph. These visual cues collectively suggest that the image is likely a generated face.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_67.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment areas. These artifacts include irregularities and inconsistencies in the texture and coloration, which are characteristic of AI-generated images. The edges of the hair and the skin around the ears show unnatural blending and lack of natural detail, further suggesting that this is a generated face.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_58.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment areas. These artifacts include irregularities and distortions that are characteristic of AI-generated images. For instance, the edges of the hair and the skin around the ears show unnatural blending and lack of natural texture, which is typical in AI-generated faces. Additionally, the lighting and shading around the mouth and eyes do not match the natural variations seen in real photographs, further suggesting that this is a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_74.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment areas. These artifacts include irregularities and distortions that are characteristic of AI-generated images. For instance, the edges of the hair and the skin around the ears show unnatural blending and lack of natural texture, which is indicative of machine learning algorithms used to create such images. Additionally, the smoothness and lack of fine details in the hair and skin further suggest that this is a synthetic creation rather than a real photograph.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_80.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hairline that suggest the face is generated by AI. The edges of the mouth and the hairline show irregularities and lack of natural transitions, which are characteristic of synthetic images. Additionally, the skin texture and lighting do not exhibit the fine details and variations typically found in real photographs. These visual cues collectively point to the possibility that the image is a generated face.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_65.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment area. These artifacts include irregularities and distortions that are characteristic of AI-generated images. For instance, the edges of the mouth and the hairline show unnatural sharpness and lack of soft transitions, which are typically seen in real photographs. Additionally, the texture and shading around the ears and hair attachment areas do not match the natural variations observed in real-life images. These visual inconsistencies suggest that the image might have been created using AI techniques.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_77.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment area. These artifacts include irregularities and inconsistencies in the texture and coloration, which are characteristic of AI-generated images. The edges of the hair and the skin around the ears show unnatural blending and lack of natural detail, further suggesting that this is a generated face.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_81.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment areas. These artifacts include irregularities in the skin texture, unnatural lighting, and lack of realistic shading and depth. These features are characteristic of AI-generated images, where the software may struggle to render certain details accurately.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_75.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment area. These artifacts include irregularities and distortions that are characteristic of AI-generated images. For instance, the edges of the hair and the skin around the mouth show unnatural transitions and inconsistencies, which are typically seen in synthetic faces created using machine learning algorithms like StyleGAN. Additionally, the lighting and shading around the face do not exhibit the natural variations and imperfections that would be present in a real photograph. These visual cues collectively suggest that the image is a result of AI generation rather than a real photograph.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_85.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment areas. These artifacts include irregularities in the skin texture, unnatural lighting, and lack of realistic shading and highlights. These features are characteristic of AI-generated images, where the software may struggle to render certain details accurately. Additionally, the overall smoothness and lack of fine details in the hair and skin further suggest that this is a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_89.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment areas. These artifacts include irregularities and unnatural color transitions, which are characteristic of AI-generated images. The edges of the hair and the skin around the ears also show signs of being digitally manipulated, lacking the natural texture and shading that would be present in a real photograph. Additionally, the overall smoothness and lack of fine details in the hair and skin further suggest that this is a generated image rather than a real photograph.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_55.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment area. These artifacts include irregularities and distortions that are characteristic of AI-generated images. For instance, the edges of the hair and the skin around the mouth show unnatural transitions and lack of natural texture, which are typical signs of AI generation. Additionally, the lighting and shading around the face do not exhibit the natural variations seen in real photographs, further suggesting that this is a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_87.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment areas. These artifacts include irregularities and inconsistencies in the texture and coloration, which are characteristic of AI-generated images. The edges of the hair and the skin around the mouth also show signs of unnatural blending and lack of natural lighting effects, further suggesting that this is a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_91.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment area. These artifacts include irregularities and inconsistencies in the texture and coloration, which are characteristic of AI-generated images. Additionally, the edges of the hair and the skin around the ears appear unnatural and lack the fine details typically found in real photographs. These visual cues suggest that the image may have been created using AI techniques.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_96.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment area. These artifacts include irregularities and inconsistencies in the texture and coloration, which are characteristic of AI-generated images. The edges of the hair and the skin around the ears show unnatural blending and lack of natural detail, further suggesting that this is a generated image rather than a real photograph.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_73.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment area. These artifacts include irregularities and distortions that are characteristic of AI-generated images. For instance, the edges of the hair and the skin around the ears show unnatural blending and lack of natural texture, which is often seen in AI-generated faces. Additionally, the lighting and shading around the mouth and eyes do not match the natural patterns found in real photographs, further suggesting that this is a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_54.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hairline that suggest the face is generated by AI. The edges of the mouth and the hairline show irregularities and lack of natural texture, which are characteristic of synthetic images. Additionally, the lighting and shadows do not match the natural patterns seen in real photographs, further indicating the artificial nature of the image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_76.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hairline that suggest the face might be generated by AI. The edges of the hair and the skin around the mouth show irregularities and inconsistencies, which are characteristic of synthetic images created using machine learning techniques like GANs. Additionally, the lighting and shading do not match natural human features, further indicating that this is an artificial creation.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_78.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment areas. These artifacts include irregularities and distortions that are characteristic of AI-generated images. For instance, the edges of the hair and the skin around the ears show unnatural blending and lack of natural texture, which is often seen in AI-generated faces. Additionally, the lighting and shading around the eyes and nose do not match the natural patterns found in real photographs, further suggesting that this is a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_59.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment area. These include irregularities in the skin texture, unnatural lighting, and lack of realistic shading and depth. The edges of the hair and the ear are not smooth, and the overall appearance does not match what would be expected from a real photograph. These features are characteristic of AI-generated images.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_88.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment area. These artifacts include irregularities in the skin texture, unnatural lighting, and lack of realistic shading and depth. These features are characteristic of AI-generated images, where the software may struggle to render certain details accurately. The overall appearance of the image suggests it was created using machine learning techniques designed to mimic human facial features but often results in imperfections and inconsistencies.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_71.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment area. These artifacts include irregularities and inconsistencies in the texture and coloration, which are characteristic of AI-generated images. The edges of the hair and the skin around the mouth and ears do not blend seamlessly, suggesting that they were created digitally rather than captured from a real photograph. Additionally, the overall smoothness and lack of natural variations in the image further support the conclusion that it is a generated face.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_60.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment area. These artifacts include irregularities and distortions that are characteristic of AI-generated images. For instance, the edges of the hair and the skin around the ears show unnatural blending and lack of natural texture, which is indicative of a synthetic creation rather than a real photograph. Additionally, the lighting and shading around the mouth and ears do not follow the natural patterns seen in real photographs, further suggesting that this is an AI-generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_79.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment area. These artifacts include irregularities in the skin texture, unnatural lighting, and lack of realistic shading and depth. These features are characteristic of AI-generated images, where the software may struggle to render certain details accurately. The overall appearance of the image suggests it was created using machine learning techniques designed to mimic human facial features but often results in imperfections and inconsistencies.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_82.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment areas. These artifacts include irregularities in the skin texture, unnatural lighting, and lack of realistic shading and depth. These features are characteristic of AI-generated images, where the software may struggle to render certain details accurately.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_57.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment area. These artifacts include irregularities and inconsistencies in the texture and coloration, which are characteristic of AI-generated images. The edges of the hair and the skin around the mouth and ears do not blend seamlessly, suggesting that they were created separately and then pasted together, a common technique used in AI-generated images to create realistic but artificial features.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_99.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment areas. These artifacts include irregularities in the edges and shapes, which are characteristic of AI-generated images. The smoothness and lack of texture in these regions also suggest artificial creation. Additionally, the overall appearance of the image, including the lighting and shadows, does not match what would be expected from a real photograph.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_63.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hairline that suggest the face is generated by AI. The edges of the mouth and the hairline show irregularities and lack of natural texture, which are characteristic of synthetic images. Additionally, the lighting and shading do not match the natural variations seen in real photographs, further indicating artificial generation.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_86.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment area. These artifacts include irregularities in the skin texture, unnatural lighting, and lack of realistic shading and highlights. These features are characteristic of AI-generated images, where the software may struggle to render certain details accurately.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_52.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment area. These artifacts include irregularities and distortions that are characteristic of AI-generated images. For instance, the edges of the mouth and the hairline show unnatural sharpness and lack of soft transitions, which are typically seen in real photographs. Additionally, the lighting and shading around the face do not exhibit the natural variations and imperfections that would be present in a real photograph. These visual cues collectively suggest that the image is likely a generated face.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_90.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment area. These include irregularities in the skin texture, unnatural lighting, and lack of realistic shading and highlights. The edges of the hair and the skin around the ears also show signs of being digitally manipulated, lacking the natural variations seen in real photographs. These features collectively suggest that the image may have been generated using AI techniques.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_98.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hairline that suggest the face might be generated by AI. For instance, the edges of the hair appear jagged and inconsistent, which is often seen in synthetic images. The skin texture also looks unnatural, lacking the fine details and variations typically found in real photographs. Additionally, the lighting and shadows do not match the natural patterns observed in real-life photos, further indicating the artificial nature of the image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_70.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment area. These artifacts include irregularities and distortions that are characteristic of AI-generated images. For instance, the edges of the hair and the skin around the mouth show unnatural transitions and lack of natural texture, which are typical signs of AI generation. Additionally, the lighting and shading around the face do not exhibit the natural variations seen in real photographs, further suggesting that this is a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_84.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment area. These artifacts include irregularities and distortions that are characteristic of AI-generated images. For instance, the edges of the hair and the skin around the ears show unnatural blending and lack of natural texture, which are typical signs of AI generation. Additionally, the lighting and shading around the face do not exhibit the natural variations seen in real photographs, further suggesting that this is a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_69.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment areas. These artifacts include irregularities and distortions that are characteristic of AI-generated images. For instance, the edges of the hair and the skin around the ears show unnatural blending and lack of natural texture, which is typical in AI-generated faces. Additionally, the smoothness and lack of fine details in the hair and skin further suggest that this is a generated image rather than a real photograph.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_53.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment area. These artifacts include irregularities in the skin texture, unnatural lighting, and lack of realistic shading and depth. The edges of the hair and the ear are not smooth, and the overall appearance does not match the natural look of a real person's face. These features are characteristic of AI-generated images.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_66.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hairline that suggest the face is generated by AI. The edges of the mouth and the hairline show irregularities and lack of natural texture, which are characteristic of synthetic images. Additionally, the skin texture appears smooth and lacks the fine details and imperfections typically found in real photographs. These visual cues collectively point to the possibility that this is an AI-generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_64.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment area, which are characteristic of AI-generated images. These artifacts include irregularities and inconsistencies in the texture and coloration, such as the uneven shading and the presence of pixelation near the edges of the features. Additionally, the overall smoothness and lack of natural skin texture further suggest that this is a synthetic image rather than a real photograph.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_56.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment areas. These artifacts include irregularities in the skin texture, unnatural lighting, and lack of realistic shading and highlights. These features are characteristic of AI-generated images, where the software may struggle to render certain details accurately. The overall appearance of the image suggests it was created using machine learning techniques designed to mimic human facial features but often results in imperfections and inconsistencies.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_95.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment areas. These artifacts include irregularities and distortions that are characteristic of AI-generated images. For instance, the edges of the hair and the ear are not smooth and continuous, which is often seen in synthetic images. Additionally, the skin texture and lighting around these areas do not match the natural appearance of a real person's face. These visual cues suggest that the image is likely a generated face rather than a real photograph.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_61.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment area. These artifacts include irregularities and distortions that are characteristic of AI-generated images. For instance, the edges of the hair and the skin around the ears show unnatural blending and lack of natural texture, which is indicative of a synthetic creation rather than a real photograph. Additionally, the lighting and shading around the face do not exhibit the natural variations seen in real photographs, further supporting the conclusion that this is a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_50.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hairline that suggest the face is generated by AI. The edges of the hair and the skin around the mouth show irregularities and inconsistencies, which are characteristic of synthetic images created using machine learning techniques like GANs. Additionally, the lighting and shading do not match natural human features, further indicating that this is an artificial creation.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_83.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment areas. These artifacts include irregularities in the skin texture, unnatural lighting, and lack of realistic shading and depth. The edges of the hair and the background also appear unnatural, lacking the complexity and realism typically found in real photographs. These features collectively suggest that the image is generated by AI.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_92.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment area. These artifacts include irregularities in the skin texture, unnatural lighting, and lack of realistic shading and depth. These features are characteristic of AI-generated images, where the software may struggle to render certain details accurately.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_51.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment area. These artifacts include irregularities and distortions that are characteristic of AI-generated images. For instance, the edges of the hair and the skin around the mouth show unnatural transitions and inconsistencies, which are typically seen in synthetic faces created using machine learning algorithms like StyleGAN. Additionally, the lighting and shading around the hair and ear attachments do not match the natural patterns observed in real photographs, further suggesting that this is a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_62.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment area. These artifacts include irregularities and distortions that are characteristic of AI-generated images. For instance, the edges of the hair and the skin around the mouth show unnatural blending and lack of natural texture, which is indicative of a synthetic creation rather than a real photograph. Additionally, the lighting and shadows do not match the natural patterns seen in real photographs, further suggesting that this is a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_97.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment area. These artifacts include irregularities and distortions that are characteristic of AI-generated images. For instance, the edges of the hair and the skin around the ears show unnatural blending and lack of natural texture, which is indicative of a synthetic creation rather than a real photograph. Additionally, the lighting and shading around the face do not exhibit the natural variations seen in real photographs, further supporting the conclusion that this is a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_72.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "There are noticeable artifacts around the mouth, ears, and hair attachment area. These artifacts include irregularities in the skin texture, unnatural lighting, and lack of realistic shading and depth. These features are characteristic of AI-generated images, where the software may struggle to render certain details accurately.",
+            "error": null
+        }
+    ]
+}

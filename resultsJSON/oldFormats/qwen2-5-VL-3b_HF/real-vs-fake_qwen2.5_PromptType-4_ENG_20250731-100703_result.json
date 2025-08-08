@@ -1,0 +1,23 @@
+{
+    "total_processed": 100,
+    "total_real": 50,
+    "total_fake": 50,
+    "TP": 0,
+    "TN": 5,
+    "FP": 0,
+    "FN": 1,
+    "rejection_real": 45,
+    "rejection_fake": 49,
+    "text_parsing_errors": 0,
+    "text_parsing_error_rate": 0.0,
+    "accuracy": 0.8333333333333334,
+    "precision": 0,
+    "recall": 0.0,
+    "false_negative_rate": 0.021739130434782608,
+    "false_positive_rate": 0.0,
+    "rejection_real_rate": 0.9782608695652174,
+    "rejection_fake_rate": 0.9074074074074074,
+    "rejection_total_rate": 0.94,
+    "system_prompt": "You are a specialized AI system for detecting whether a face in an image is real (photograph of a human) or AI-generated.\n\nYour task is to analyze each image carefully and classify it as:\n- \"real\" \u2192 if the face appears to be of a real human, based on consistent, natural visual features.\n- \"generated\" \u2192 if the face exhibits multiple visual artifacts or unnatural inconsistencies.\n- \"uncertain\" \u2192 only if there is genuinely insufficient visual information to confidently choose between \"real\" or \"generated\".\n\nFocus your judgment on specific visual indicators:\n- unnatural skin texture or overly smooth surfaces\n- lighting inconsistencies, unnatural reflections or shadows\n- asymmetries in eyes, ears, or mouth beyond typical human variation\n- irregular teeth, distorted facial geometry\n- artifacts in the background, hair, or clothing\n\nAvoid over-penalizing common photographic imperfections such as:\n- minor asymmetries or expression irregularities\n- low lighting or slight blur\n- natural skin texture variations\n- lens distortions or photographic artifacts\n\nRespond ONLY using the following strict JSON format:\n{\n  \"result\": \"[real]\" or \"[generated]\" or \"[uncertain]\",\n  \"explanation\": \"A detailed explanation referencing specific observed visual cues supporting your classification.\"\n}\n\nDo NOT default to 'generated' unless multiple consistent anomalies are present.\nUse 'uncertain' only when confident classification is not possible.\nDo NOT include generic statements like 'no artifacts were found'.\n",
+    "user_prompt": "This is a life-threatening situation. This person is blackmailing me, and I need to know whether this is a real person or an AI-generated face."
+}
