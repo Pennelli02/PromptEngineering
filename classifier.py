@@ -50,12 +50,14 @@ def analyze_image(img_path, lab, prompt, modelName, fewShot, few_shot_messages, 
         # Pulizia markdown
         text_clean = re.sub(r"^```(?:json)?\s*([\s\S]*?)\s*```$", r"\1", text.strip(), flags=re.MULTILINE)
 
+        text_clean = repair_json(text_clean) # aggiusta il testo per il parsing
+
         try:
             parsed = json.loads(text_clean)
             result = parsed.get("result")
             explanation = parsed.get("explanation", None)
 
-            # Lista o stringa?
+            # Gestisci lista/stringa se serve
             if isinstance(result, list) and result:
                 result = result[0]
 
@@ -65,8 +67,8 @@ def analyze_image(img_path, lab, prompt, modelName, fewShot, few_shot_messages, 
 
         except Exception as e:
             counters["er"] += 1
-            result_entry["error"] = f"JSON parsing error: {e}"
-            print(f" JSON Parsing error: {e}")
+            result_entry["error"] = f"Unexpected error during parsing: {e}"
+            print(f"Unexpected error during parsing: {e}")
             return result_entry, counters
 
         if showImages:
@@ -102,3 +104,24 @@ def analyze_image(img_path, lab, prompt, modelName, fewShot, few_shot_messages, 
         result_entry["error"] = f"Runtime error: {e}"
 
     return result_entry, counters
+
+
+def repair_json(text):
+    # Bilancia parentesi graffe
+    open_braces = text.count('{')
+    close_braces = text.count('}')
+    missing = open_braces - close_braces
+    if missing > 0:
+        text += '}' * missing
+
+    # Tenta di chiudere virgolette aperte
+    quote_count = text.count('"')
+    if quote_count % 2 != 0:
+        text += '"'
+
+    # Rimuovi caratteri dopo ultima graffa chiusa (potrebbe esserci garbage)
+    last_close = text.rfind('}')
+    if last_close != -1:
+        text = text[:last_close + 1]
+
+    return text
