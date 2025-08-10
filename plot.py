@@ -7,6 +7,7 @@
 import json
 import glob
 import os
+import re
 import sys
 
 import matplotlib.pyplot as plt
@@ -184,6 +185,72 @@ def graphItaEng(dirName):
 
 # inserire una funzione che in base al tipo di prompt analizza tutti i dati e faccia una media di tutti i tipi
 # scegliere se fare diviso per modelli o unico
+def plotStatsAboutPrompt(promptType, isEng):
+    cartella = "resultsJSON/newFormats"
+    namePrompt = " "
+    lengTag = " "
+    if isEng:
+        lengTag = "ENG"
+    else:
+        lengTag = "ITA"
+    namePrompt = f'PromptType-{promptType}_{lengTag}'
+    pattern = re.compile(rf'PromptType-{promptType}_{lengTag}')
+
+    file_trovati = []
+
+    for dirpath, dirnames, filenames in os.walk(cartella):
+        for filename in filenames:
+            if filename.endswith('.json') and pattern.search(filename):
+                file_trovati.append(os.path.join(dirpath, filename))
+    accuracyVals = []
+    recallVals = []
+    precisionVals = []
+    rejectionRate = []
+    fakePositive = []
+    fakeNegative = []
+
+    for trovati in file_trovati:
+        with open(trovati, "r", encoding="utf-8") as f:
+            data = json.load(f)
+            metrics = data["metrics"]
+            try:
+                accuracyVals.append(float(metrics.get("accuracy", np.nan)))
+                recallVals.append(float(metrics.get("recall", np.nan)))
+                precisionVals.append(float(metrics.get("precision", np.nan)))
+                rejectionRate.append(float(metrics.get("rejection_total_rate", np.nan)))
+                fakePositive.append(float(metrics.get("fake_positive_rate", np.nan)))
+                fakeNegative.append(float(metrics.get("false_negative_rate", np.nan)))
+            except (TypeError, ValueError):
+                print(f"Attenzione: dati metriche non validi in {trovati}")
+    # Calcolo le medie ignorando eventuali NaN
+    accuracyMean = np.nanmean(accuracyVals)
+    recallMean = np.nanmean(recallVals)
+    precisionMean = np.nanmean(precisionVals)
+    rejectionRateMean = np.nanmean(rejectionRate)
+    fakePositiveMean = np.nanmean(fakePositive)
+    fakeNegativeMean = np.nanmean(fakeNegative)
+
+    metriche = ["Accuracy", "Precision", "Recall", "Fake Positive", "Fake Negative", "Rejection Rate"]
+    valori = [accuracyMean, precisionMean, recallMean, fakePositiveMean, fakeNegativeMean, rejectionRateMean]
+
+    fig, ax = plt.subplots(figsize=(10, 6))
+    bars = ax.bar(metriche, valori, color=['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b'])
+    ax.set_ylim(0, 1)
+    ax.set_ylabel("Media")
+    ax.set_title(f"Metriche medie PromptType-{promptType}_{lengTag}")
+
+    autolabel(bars, ax, fontsize=10, decimal=True)
+
+    cartella_grafici = "plots/singlePromptSTAT/"
+    os.makedirs(cartella_grafici, exist_ok=True)  # crea la cartella se non esiste
+
+    nome_file = f"statistics-{namePrompt}.png"
+    # Percorso completo file immagine
+    path_grafico = os.path.join(cartella_grafici, nome_file)
+
+    # Salva il grafico
+    plt.savefig(path_grafico, dpi=300, bbox_inches='tight')  # dpi=300 per alta qualità
+
 
 # funzione che raccoglie tutte le spiegazioni di un modello in base al tipo al momento solo uncertain, fp, fn
 def captureOneTypeResponse(dirName, Type):
@@ -237,6 +304,8 @@ def captureOneTypeResponse(dirName, Type):
 
     return risultati
 
+
+# da inserire la parte inerente all'identificazione da parte del modello
 
 if __name__ == "__main__":
     plotStatsPrompt("resultsJSON/newFormats/llava")
