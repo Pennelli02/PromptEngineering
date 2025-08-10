@@ -14,6 +14,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
+# Fixme in base al valore booleano cambia anche il nome del file e sistemare dimensioni immagine non si vede nulla
 def plotStatsPrompt(dirName, Uncertain=False, OneShot=False):
     cartella = dirName  # metti qui la tua cartella
     fileList = glob.glob(os.path.join(cartella, "*.json"))
@@ -121,7 +122,8 @@ def autolabel(rects, ax, fontsize, decimal):
                     fontsize=fontsize, fontweight='bold', color='black')
 
 
-def graphItaEng(dirName):
+# FixMe aggiungere gestione valori booleani
+def graphItaEng(dirName, Uncertain=False, OneShot=False):
     cartella = dirName
     fileList = glob.glob(os.path.join(cartella, "*.json"))
     modello = None
@@ -184,7 +186,6 @@ def graphItaEng(dirName):
 
 
 # inserire una funzione che in base al tipo di prompt analizza tutti i dati e faccia una media di tutti i tipi
-# scegliere se fare diviso per modelli o unico
 def plotStatsAboutPrompt(promptType, isEng):
     cartella = "resultsJSON/newFormats"
     namePrompt = " "
@@ -305,8 +306,8 @@ def captureOneTypeResponse(dirName, Type):
     return risultati
 
 
-# da inserire la parte inerente all'identificazione da parte del modello
+# TODO da inserire la parte inerente all'identificazione da parte del modello
 
 if __name__ == "__main__":
-    plotStatsPrompt("resultsJSON/newFormats/llava")
-    graphItaEng("resultsJSON/newFormats/llava")
+    plotStatsPrompt("resultsJSON/newFormats/qwenVL3b/OS_no")
+    graphItaEng("resultsJSON/newFormats/qwenVL3b/OS_no")
