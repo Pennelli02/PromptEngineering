@@ -1,0 +1,728 @@
+{
+    "metrics": {
+        "total_processed": 100,
+        "total_real": 50,
+        "total_fake": 50,
+        "TP": 9,
+        "TN": 36,
+        "FP": 14,
+        "FN": 41,
+        "rejection_real": 0,
+        "rejection_fake": 0,
+        "text_parsing_errors": 0,
+        "text_parsing_error_rate": 0.0,
+        "accuracy": 0.45,
+        "precision": 0.391304347826087,
+        "recall": 0.18,
+        "false_negative_rate": 0.82,
+        "false_positive_rate": 0.28,
+        "rejection_real_rate": 0.0,
+        "rejection_fake_rate": 0.0,
+        "rejection_total_rate": 0.0,
+        "system_prompt": "You are a professional image classification system that analyzes provided images to determine if they show a real human face or a generated one.\nRespond ONLY with the following JSON format:\n{\n  \"result\": \"[No]\" or \"[Yes]\",\n  \"explanation\": \"A precise explanation based on observed visual clues from the image.\",\n}\nDo NOT include generic phrases like 'there are no artifacts'. Be visual and detailed in your analysis.Reply ONLY with this JSON, no extra text.",
+        "user_prompt": "Are there any artifacts around the mouth, ears, or hairline that might indicate the face is AI-generated?",
+        "oneShot": false
+    },
+    "responses": [
+        {
+            "image_path": "test_1\\real\\real_0.jpg",
+            "ground_truth": "real",
+            "prediction": "no",
+            "explanation": "The image shows a realistic human face with natural-looking skin texture, slight imperfections around the mouth and teeth, and a plausible hairline with light reflections. The eyes show a defined iris with visible details, and the overall expression is consistent with a genuine human smile. There are no obvious, unnatural distortions or blending artifacts around the mouth, ears, or hairline.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_1.jpg",
+            "ground_truth": "real",
+            "prediction": "[yes]",
+            "explanation": "The image exhibits a slight blurring and smoothing around the edges of the mouth and the hairline. There\u2019s a noticeable lack of fine detail in the skin texture, particularly near the lips and around the ears, which is characteristic of generated images. The overall effect suggests a degree of artificial refinement not typically present in real photographs.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_10.jpg",
+            "ground_truth": "real",
+            "prediction": "[yes]",
+            "explanation": "The cheek is noticeably smooth and lacks the subtle variations in color and texture expected in a naturally flushed human face. The lips are overly symmetrical with a perfectly smooth transition, and the ears appear slightly flattened and lacking the typical subtle imperfections. Additionally, the hairline is quite sharp and uniform, without the natural irregularities found in real hair.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_11.jpg",
+            "ground_truth": "real",
+            "prediction": "[no]",
+            "explanation": "The face exhibits realistic skin texture and detail, with subtle variations in color and shading around the nose and cheeks. The hairline appears natural and blended with the hair. The mouth has a reasonable shape and texture, and the ear is rendered with believable anatomical features. There are no immediately obvious blurring, distortions, or unusual patterns suggesting an AI-generated face.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_12.jpg",
+            "ground_truth": "real",
+            "prediction": "[no]",
+            "explanation": "The image exhibits a realistic portrayal of an elderly man with visible wrinkles, skin texture, and a generally natural appearance. The mouth has subtle details, the ears appear proportionally correct with some visible skin folds, and the hairline is irregular, consistent with a genuine human face. There are no noticeable seams, blurring, or distortions around the features that would typically indicate an AI-generated image. The lighting and shading also appear natural.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_13.jpg",
+            "ground_truth": "real",
+            "prediction": "no",
+            "explanation": "The image displays a relatively natural-looking human face. The hair around the face is slightly messy, but lacks the uniform, over-smoothed quality frequently seen in AI-generated faces. The lips appear soft and natural in shape and texture. The ears are well-defined and blend seamlessly with the surrounding hair, and the hairline is natural, with no sharp or unnatural edges. The skin tone appears consistent and lacks the subtle variations in color and texture that often characterize synthetic faces.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_14.jpg",
+            "ground_truth": "real",
+            "prediction": "[no]",
+            "explanation": "The image shows a realistic human face with natural-looking skin texture and subtle imperfections like pores and fine wrinkles around the eyes. The hairline is well-defined, and the ears blend seamlessly with the surrounding hair. The lips appear natural in shape and color, without any obvious unnatural distortions. The overall impression is of a genuine human subject, not a generated one.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_15.jpg",
+            "ground_truth": "real",
+            "prediction": "[no]",
+            "explanation": "The image presents a natural human face with discernible features. The skin texture appears realistic with subtle variations in tone and light. The lips have a natural curvature and color. The ears are clearly defined with a reasonable ear canal shape. The hairline is well-defined, blending seamlessly with the hair. There are no visible seams, distortions, or unusual artifacts around the mouth, ears, or hairline suggesting an AI-generated face.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_16.jpg",
+            "ground_truth": "real",
+            "prediction": "[yes]",
+            "explanation": "The image exhibits several characteristics indicative of a generated face. The jawline appears slightly too sharp and lacks the subtle variations and soft edges typical of a real human jaw. There is a noticeable blurring and lack of detail around the ears, with a smooth, unnatural transition between the hair and the ear. The hairline is also somewhat blurred and lacks the slight irregularities and texture found in human hair. The overall appearance suggests a generated image with smoothed edges and a lack of realistic imperfections.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_17.jpg",
+            "ground_truth": "real",
+            "prediction": "[no]",
+            "explanation": "The face exhibits natural skin texture and detail around the mouth, nose, and ears. There is no obvious blurring, warping, or unnatural smoothing of the skin. The hairline appears well-defined and consistent with a real head of hair. The eyes have a natural depth and reflection, which are typical of a photograph of a human subject.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_18.jpg",
+            "ground_truth": "real",
+            "prediction": "no",
+            "explanation": "The image shows a realistic human face with natural skin texture, subtle shadows, and a plausible lip shape. The ears appear proportionally correct and do not exhibit any common artifacts associated with AI-generated faces. The hairline is well-defined and merges seamlessly with the hair, indicating a natural, photographed depiction of a person.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_19.jpg",
+            "ground_truth": "real",
+            "prediction": "no",
+            "explanation": "The image shows a realistic human face with discernible details. The skin texture appears natural, and the lighting and shading are consistent with a real subject. There are no obvious inconsistencies, distortions, or blurring around the mouth, ears, or hairline that would typically be associated with AI-generated images. The expression is also typical of a genuine smile.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_2.jpg",
+            "ground_truth": "real",
+            "prediction": "[no]",
+            "explanation": "The image presents a relatively natural-looking human face. The skin texture exhibits subtle variations, and the lighting appears consistent. The hairline is soft and blended, with no obvious sharp edges or geometric distortions around the eyes or mouth. The ears appear proportionally sized and detailed, and the overall facial features, including the teeth and lips, appear realistically formed with soft shadows and highlights. There's no evidence of unnatural blending or seams or inconsistencies that would typically be associated with AI-generated faces.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_20.jpg",
+            "ground_truth": "real",
+            "prediction": "[no]",
+            "explanation": "The image displays a realistic depiction of a human face. The skin texture appears natural, with detailed wrinkles around the eyes and mouth. The hairline has a natural, slightly messy appearance consistent with a real person. The ears are well-defined and integrated seamlessly with the surrounding skin, without any noticeable seams or unnatural distortions. The lighting and shadows are consistent and contribute to the overall realism of the image.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_21.jpg",
+            "ground_truth": "real",
+            "prediction": "no",
+            "explanation": "The image presents a realistic human face with natural skin texture, subtle wrinkles around the eyes and mouth, and a believable hair style. The ear and hairline details are well-defined and consistent with a natural appearance. There are no obvious distortions, smooth transitions, or unusual patterns that would strongly indicate an AI-generated face.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_22.jpg",
+            "ground_truth": "real",
+            "prediction": "[no]",
+            "explanation": "The image displays a natural-looking facial structure. The lips have a soft, natural curve, and the skin texture appears consistent and without any obvious unnatural artifacts. The hairline and ears are presented in a standard anatomical way, with no visible seams or distortions around these areas. The eye details and skin tone also appear realistic.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_23.jpg",
+            "ground_truth": "real",
+            "prediction": "no",
+            "explanation": "The image presents a realistic depiction of a young boy. The hairline is natural and softly blended with the surrounding hair. The mouth appears to have a genuine, subtle smile, and the ear is proportionally accurate with natural skin texture. There is no evidence of unnatural distortions, smoothness, or unusual detail clusters around the edges of the face, which are common characteristics of AI-generated faces.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_24.jpg",
+            "ground_truth": "real",
+            "prediction": "yes",
+            "explanation": "The left ear is noticeably smooth and lacks the subtle variations and imperfections expected in a real human ear, with a distinct lack of external cartilage and slight blurring around the earlobe. The hairline has an unnaturally sharp and abrupt transition with the scalp, and the skin tone around the mouth appears slightly flat and lacks the complex subsurface scattering commonly found in photographs of human skin. The overall appearance suggests a generated face, rather than a naturally occurring one.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_25.jpg",
+            "ground_truth": "real",
+            "prediction": "no",
+            "explanation": "The subject's facial features, including the mouth, ears, and hairline, appear relatively natural. The skin texture shows subtle variations and imperfections typical of a real human face, particularly around the mouth and chin. There's a slight blurring effect around the hairline, but it doesn't suggest a synthetic or generated image. The teeth also appear somewhat naturally shaped and not overly uniform.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_26.jpg",
+            "ground_truth": "real",
+            "prediction": "[yes]",
+            "explanation": "The image exhibits subtle inconsistencies suggesting a generated face. The jawline is slightly too sharp and uniform compared to typical human anatomy. The area around the ears and hairline appears to lack fine detail and texture, showing a smooth, almost plastic-like quality. There's a slight blurring effect around the edges of the face, particularly in the transition between the hair and skin, which is common in AI-generated images.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_27.jpg",
+            "ground_truth": "real",
+            "prediction": "[no]",
+            "explanation": "The image depicts a young boy wearing a baseball cap. The details of the face, including the mouth and ears, appear relatively natural with fine details of skin texture and subtle shadows. The hairline is well-defined, and there's no noticeable blurring or distortion around these areas, which would typically indicate an AI-generated image. The overall impression is of a realistically captured human face.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_28.jpg",
+            "ground_truth": "real",
+            "prediction": "[yes]",
+            "explanation": "The left side of the face exhibits a distinct lack of detail and texture, particularly around the mouth and ear. The skin appears unnaturally smooth with a slight halo effect visible around the teeth, suggesting a generated, rather than a photographically captured, image. The hair around the hairline is also slightly too perfect, lacking the subtle variations in color and direction seen in real human hair.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_29.jpg",
+            "ground_truth": "real",
+            "prediction": "[no]",
+            "explanation": "The image presents a realistic human face with detailed features, including distinct lips, visible teeth, and a well-defined jawline. The hair appears natural in texture and color. The skin tones are consistent and without any noticeable distortions or blurring around the edges. There's no evidence of the typical artifacts often found in AI-generated faces, such as disfigured ears, a poorly defined hairline, or inconsistencies in the mouth shape. The overall image quality is high, and the face appears genuinely human.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_3.jpg",
+            "ground_truth": "real",
+            "prediction": "[no]",
+            "explanation": "The image presents a human face with relatively natural-looking skin texture and lighting. The eyebrows and eyelashes appear realistic. The ear is slightly blurred, which is common in photographs, but doesn\u2019t strongly indicate artificial generation. The hairline has a natural dark color and appears to blend with the scalp, exhibiting consistent hair details. The facial features, including the eyes and mouth, have a degree of realism that is consistent with a photograph of a real person.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_30.jpg",
+            "ground_truth": "real",
+            "prediction": "no",
+            "explanation": "The image depicts a young child with a realistic facial structure. The skin texture appears natural with subtle variations in color and detail. The mouth has a soft, natural-looking shape, and the ears are proportionally sized and positioned correctly relative to the face. The hairline appears consistent and does not show any unnatural smoothing or distortions. The overall impression is of a genuine human subject, and there are no immediately discernible artifacts indicative of AI generation.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_31.jpg",
+            "ground_truth": "real",
+            "prediction": "no",
+            "explanation": "The image presents a relatively natural-looking human face. The hairline appears slightly uneven, with a subtle blur around the edges, but this can be attributed to typical photographic artifacts rather than signs of AI generation. The teeth are present and appear consistent with a natural smile. The skin texture and lighting are reasonably realistic. There is no significant blurring or disjunction around the mouth or ears, which would be more indicative of a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_32.jpg",
+            "ground_truth": "real",
+            "prediction": "yes",
+            "explanation": "The image exhibits several visual cues suggesting an AI-generated face. The most prominent artifact is a slightly blurred and undefined area around the mouth, specifically the lower lip, appearing almost 'flat' compared to the natural contours of a human mouth. Additionally, the hairline appears to have an unnatural smoothness and a slight lack of detail, particularly around the temples. The overall skin texture lacks subtle imperfections and variations that are common in real human faces. The details of the ear are also lacking detail and appear slightly smoothed.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_33.jpg",
+            "ground_truth": "real",
+            "prediction": "[no]",
+            "explanation": "The subject's facial features, including the mouth, ears, and hairline, appear consistent with a real human face. The skin texture, hair, and shadows are natural and don't exhibit the typical unnatural blending or distortions often found in AI-generated faces. The lighting and shading are realistic, and there are no visible artifacts or inconsistencies around the edges of the face.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_34.jpg",
+            "ground_truth": "real",
+            "prediction": "no",
+            "explanation": "The image displays a natural-looking human face with realistic skin texture, lighting, and proportions. The hair is messy but consistent with a real person's hairstyle. The teeth are correctly aligned and the eyes show natural reflections. There are no unusual distortions, seams, or blurring present around the mouth, ears, or hairline, which are common visual cues in synthetic images.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_35.jpg",
+            "ground_truth": "real",
+            "prediction": "[no]",
+            "explanation": "The image shows a realistic human face with natural features and textures. The skin appears smooth with subtle variations in tone, and the eyes are closed with a natural blink. The hairline is well-defined, and the ears are proportionally sized. There are no visible artifacts or inconsistencies typical of AI-generated faces.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_36.jpg",
+            "ground_truth": "real",
+            "prediction": "[yes]",
+            "explanation": "The image exhibits several inconsistencies that suggest a generated face. The lower jawline appears overly smooth and lacks the subtle variations in cartilage typically observed in human faces. The lower lip appears slightly unnaturally formed and lacks the subtle wrinkles around the mouth that are common in real human faces. Furthermore, the hair around the hairline appears unusually uniform and lacks the natural texture and volume variations present in genuine hair. The overall rendering feels somewhat sterile and lacks the organic imperfections associated with photographs of real people.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_37.jpg",
+            "ground_truth": "real",
+            "prediction": "no",
+            "explanation": "The image depicts a child's face with relatively natural proportions and shading. The skin texture appears soft and slightly uneven, typical of a real photograph. The features\u2014eyes, nose, and mouth\u2014are in a reasonably consistent arrangement, and there are no obvious distortions or unnatural-looking artifacts around the mouth, ears, or hairline. The lighting is consistent, and there's no overly smooth or uniform appearance in the skin, suggesting a real photograph rather than an AI-generated image.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_38.jpg",
+            "ground_truth": "real",
+            "prediction": "[no]",
+            "explanation": "The image displays a reasonably detailed human face with natural-looking skin textures, subtle variations in shading around the cheekbones and jawline, and a believable expression. The teeth appear to be realistically rendered with individual variations in shade and translucency. The hair around the hairline has a natural strand-like appearance, and the ear is a standard human anatomical shape. There's no evidence of the common artifacts found in synthetic faces, like the overly smooth skin, inconsistent lighting, or blurry edges associated with AI-generated images.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_39.jpg",
+            "ground_truth": "real",
+            "prediction": "no",
+            "explanation": "The image exhibits a realistic depiction of a human face. The skin texture appears natural with subtle variations in tone and light, and there are no noticeable inconsistencies such as blurred edges around the mouth, ears, or hairline. The eyes show a clear reflection, which is common in real photographs, and the overall details are consistent with a genuine human face.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_4.jpg",
+            "ground_truth": "real",
+            "prediction": "[yes]",
+            "explanation": "The hairline exhibits a subtle, almost perfectly smooth transition with the skin, lacking the natural variations and slight irregularities often found in real human hair. Similarly, the skin around the mouth appears excessively smooth and uniform, with no visible pores or textural details. The teeth also appear overly symmetrical and lack subtle imperfections that are common in photographs of natural teeth. These visual characteristics suggest the face was generated rather than photographed.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_40.jpg",
+            "ground_truth": "real",
+            "prediction": "no",
+            "explanation": "The image exhibits a natural skin texture with subtle variations in tone and light, suggesting a realistic portrayal of skin. The hairline is smoothly integrated with the hair, without any abrupt transitions or visible seams. The ears are well-defined, with soft gradations in color and shadow, consistent with the appearance of a real human ear. The mouth appears natural with smooth curves and shadows, lacking the common artifacts sometimes seen in synthetic faces.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_41.jpg",
+            "ground_truth": "real",
+            "prediction": "no",
+            "explanation": "The image exhibits relatively natural facial features. The lips appear smooth and without any unusual distortions or blurring. The hairline is well-defined and integrated into the hair strands, and there are no obvious artifacts or seams around the ears or the edges of the face. The skin texture seems consistent throughout, with no sharp transitions or unnatural patterns present. The lighting and shadows are also consistent and contribute to a realistic appearance, indicating this image is likely a real human face.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_42.jpg",
+            "ground_truth": "real",
+            "prediction": "[yes]",
+            "explanation": "The image exhibits a noticeable discontinuity around the hairline, with a sharp edge and a distinct lack of soft shadows that would typically be present in a natural hairstyle. The eyeshadow application appears overly uniform and lacks subtle variations in color and intensity. The skin tone around the mouth and chin is also notably smooth, with a lack of the fine wrinkles and textural imperfections associated with genuine human skin. These inconsistencies suggest that the image might have been artificially generated, particularly focusing on the unnatural sharpness of the hairline and the lack of realistic skin texture.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_43.jpg",
+            "ground_truth": "real",
+            "prediction": "[no]",
+            "explanation": "The image exhibits a realistic depiction of a human face. The mouth shows subtle wrinkles and variations in pigmentation consistent with a natural smile. The hairline is soft and natural, with no sharp edges or unusual smoothing. The ear area displays slight imperfections and variations in shading, suggesting it is a real human ear. The overall rendering appears consistent with a photograph of a real person.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_44.jpg",
+            "ground_truth": "real",
+            "prediction": "no",
+            "explanation": "The image presents a natural-looking human face with consistent skin texture, detailed hair strands, and a realistically rendered smile. There are no noticeable blurring, distortions, or unnatural artifacts around the mouth, ears, or hairline. The lighting and shadows appear consistent, further supporting a genuine human representation.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_45.jpg",
+            "ground_truth": "real",
+            "prediction": "no",
+            "explanation": "The image exhibits a natural, detailed rendering of a human face. The teeth are perfectly aligned and white, which is less common in generated images. The hairline is smooth and blended with the surrounding hair, and the ear is similarly well-defined with visible details such as the helix and antihelix. The skin texture appears realistic, with subtle variations in tone and detail that are indicative of a genuine photograph. There are no noticeable distortions, seams, or inconsistencies around the edges of the face that would suggest the image was artificially generated.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_46.jpg",
+            "ground_truth": "real",
+            "prediction": "[no]",
+            "explanation": "The image presents a relatively detailed human face with natural-looking skin textures, including subtle variations in tone and shadow around the nose and cheeks. The hair appears realistically wavy and integrates smoothly with the face. There are no obvious distortions, blurring, or unnatural edges present around the mouth, ears, or hairline. The lighting and shadows are consistent, suggesting a real-world capture rather than a synthetic rendering.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_47.jpg",
+            "ground_truth": "real",
+            "prediction": "no",
+            "explanation": "The image presents a relatively natural depiction of a human face. The hairline is soft and consistent with real hair, and the skin texture appears smooth with subtle variations in tone. The mouth appears to be properly formed, with realistic lip definition. The ear is clearly defined with typical ear structures, and there is no visible distortion or unusual patterning around these features. The overall impression is of a genuine human subject.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_48.jpg",
+            "ground_truth": "real",
+            "prediction": "[yes]",
+            "explanation": "The image exhibits subtle inconsistencies suggesting a generated face. The mouth appears slightly unnaturally smooth, with an absence of fine wrinkles or blemishes consistent with a real human mouth. The hairline around the forehead has an unnatural smoothness, lacking the slight irregularities often found in human hair. Furthermore, there's a slight lack of detail and softness in the skin around the jawline, which is atypical of real human faces.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_49.jpg",
+            "ground_truth": "real",
+            "prediction": "[yes]",
+            "explanation": "The face exhibits a slightly unnatural smoothness around the mouth and jawline, with a subtle lack of fine detail in the skin texture. The hairline appears too perfectly defined and sharply delineated against the decorative headpiece. The transition between the skin and the headpiece shows a slight color shift, indicative of potential image manipulation.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_5.jpg",
+            "ground_truth": "real",
+            "prediction": "[no]",
+            "explanation": "The image displays a realistic human face with natural shading and details around the mouth, ears, and hairline. The skin texture appears smooth but not overly-perfect, and the shadows are consistent with a natural outdoor lighting scenario. There are no noticeable seams, distortions, or unusual patterns present that are commonly associated with AI-generated faces.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_6.jpg",
+            "ground_truth": "real",
+            "prediction": "[no]",
+            "explanation": "The image depicts a realistic human face with natural skin texture and subtle imperfections, including wrinkles around the eyes and mouth. The hair has a natural, slightly disheveled appearance, and the ear is realistically defined with visible cartilage and texture. The lighting and shadows are consistent with a natural photograph, and there are no noticeable distortions or unnatural features indicating it is an AI-generated face.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_7.jpg",
+            "ground_truth": "real",
+            "prediction": "[yes]",
+            "explanation": "The image exhibits several visual cues suggesting a generated face. The lower jawline appears unnaturally smooth and lacks the subtle imperfections and slight asymmetry typically found in human faces. The ear is oddly shaped with a small, almost perfectly rounded lobe, which is uncommon in real human ears. Additionally, the hairline around the forehead appears slightly too sharp and lacks the natural variations in density and texture associated with hair follicles. The overall impression is of a digitally constructed face with a lack of subtle details that would be present in a genuine photograph.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_8.jpg",
+            "ground_truth": "real",
+            "prediction": "[no]",
+            "explanation": "The face exhibits realistic skin texture with subtle variations in tone and light, consistent with a natural human subject. The mouth shows a natural smile with realistic teeth and shadows, and the ear is well-defined with a reasonable amount of detail. The hairline appears smooth and natural, without any unnatural seams or artifacts. The overall lighting and shading are consistent and do not show the tell-tale irregularities often found in synthetic images.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_9.jpg",
+            "ground_truth": "real",
+            "prediction": "[yes]",
+            "explanation": "The jawline appears slightly too sharp and defined, with a subtle lack of natural soft tissue around the chin. The lips are smooth and uniform, lacking the subtle variations and imperfections typically found in human mouths. The ears are relatively small and lack detailed creases or folds, which is a common issue with AI-generated faces. The hairline is too perfectly straight and defined, with an absence of the subtle irregularities and transitions that are characteristic of human hair growth.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_50.jpg",
+            "ground_truth": "fake",
+            "prediction": "[no]",
+            "explanation": "The image presents a relatively detailed and natural-looking human face. The lips appear smooth with a defined color gradient, consistent with a realistic depiction. The ears are visible and have a natural shape without noticeable seams or distortions. The hairline blends smoothly into the hair, and there are no abrupt transitions or unnatural blending of textures around the face. The overall impression is consistent with a genuine photograph of a human face.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_51.jpg",
+            "ground_truth": "fake",
+            "prediction": "[no]",
+            "explanation": "The image presents a relatively natural human face. The hairline is soft and blends smoothly with the surrounding hair, exhibiting a common textural quality of human hair. The mouth appears naturally formed with a gentle smile and the teeth are consistent in appearance. The ears are realistically positioned and lack any unnatural sharp edges or distortions. The skin tone and texture also appear consistent with a natural human appearance, with subtle variations in shading and small blemishes. Overall, the face does not exhibit the typical unnatural artifacts often found in AI-generated images.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_52.jpg",
+            "ground_truth": "fake",
+            "prediction": "[no]",
+            "explanation": "The face exhibits natural skin texture and detail around the mouth and chin. The hair is rendered with realistic strands and volume. The ears are clearly defined with visible cartilage and skin folds, and the hairline blends seamlessly with the surrounding hair. The overall rendering appears consistent with a photograph of a real person, lacking the typical artificial inconsistencies often found in AI-generated faces.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_53.jpg",
+            "ground_truth": "fake",
+            "prediction": "[yes]",
+            "explanation": "The left side of the mouth exhibits a distinct and unnatural blurring effect, creating a soft, undefined edge. The ear also shows a similar blurring, particularly around the cartilage. The hairline around the forehead seems slightly smoothed and lacks the subtle irregularities and texture often found in real human hair, suggesting possible digital manipulation.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_54.jpg",
+            "ground_truth": "fake",
+            "prediction": "no",
+            "explanation": "The image depicts a realistic human face with natural lighting and skin texture. The edges of the mouth appear smooth and well-defined, with a slight shadow that realistically suggests a mouth shape. The ears are proportionally correct and have a subtle, fleshy appearance. The hairline is naturally shadowed and blends seamlessly with the scalp. There are no unnatural distortions, overly smooth gradients, or lack of detail that would typically be associated with AI-generated faces.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_55.jpg",
+            "ground_truth": "fake",
+            "prediction": "[no]",
+            "explanation": "The image presents a relatively natural-looking human face. The hair is rendered with sufficient strands and variation, and the skin texture appears smooth but plausible. There are no obvious distortions, seams, or unnatural blurring around the mouth, ears, or hairline. The details of the teeth and eye reflections are consistent with a realistic portrayal, suggesting this is a genuine human face.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_56.jpg",
+            "ground_truth": "fake",
+            "prediction": "no",
+            "explanation": "The image exhibits realistic details. The teeth appear smooth and natural, with subtle shading and variations in color. The ears are well-defined with visible cartilage and skin texture. The hairline is natural and blended with the surrounding hair. There are no visible distortions, blurring, or unusual edges around the features, suggesting a genuine human face.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_57.jpg",
+            "ground_truth": "fake",
+            "prediction": "[no]",
+            "explanation": "The image shows a fairly natural-looking human face. The facial features, including the mouth, nose, and ears, exhibit believable proportions and shading. The hairline appears consistent with a natural growth pattern, and there are no obvious distortions or abrupt transitions around the edges of the face. The skin texture has a reasonable level of detail, and the lighting appears consistent and well-integrated. While subtle, the eyes have a realistic look with noticeable reflections, which supports a genuine human depiction.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_58.jpg",
+            "ground_truth": "fake",
+            "prediction": "[no]",
+            "explanation": "The image displays a realistic human face with natural skin texture and subtle imperfections around the mouth and chin. The hairline appears smooth and consistent, without any abrupt transitions or noticeable artifacts. The eyes show natural reflections, and there are no unnatural distortions or blurring observed in the surrounding areas. The overall impression is of a genuine photograph of a human subject.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_59.jpg",
+            "ground_truth": "fake",
+            "prediction": "[no]",
+            "explanation": "The image shows a natural-looking human face with a realistically textured mouth, ears, and hairline. The skin texture appears smooth but consistent with a real human, and there are no obvious distortions, blurring, or unnatural color variations that typically indicate AI-generated faces. The lighting and shadows are consistent with a photograph of a person.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_60.jpg",
+            "ground_truth": "fake",
+            "prediction": "[no]",
+            "explanation": "The image presents a naturally rendered human face. The skin texture appears smooth and consistent, with no visible seams or distortions around the mouth, ears, or hairline. The lighting and shading are realistic, and there are no obvious artifacts consistent with AI-generated imagery, such as blurring around edges or unnatural color variations.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_61.jpg",
+            "ground_truth": "fake",
+            "prediction": "[yes]",
+            "explanation": "The hairline appears slightly too sharp and defined, lacking the subtle irregularities and texture typically found in human hair. The skin around the mouth has a slight blurring effect, and the ear is noticeably smooth with no visible folds or cartilage detail. These inconsistencies suggest the image was likely generated rather than captured from a real human face.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_62.jpg",
+            "ground_truth": "fake",
+            "prediction": "[no]",
+            "explanation": "The image shows a natural-looking human face with relatively smooth skin and realistic lighting. The edges of the mouth and ears are well-defined, and the hairline appears consistent with a genuine head of hair. There are no noticeable blurring, distortions, or unusual textures around the facial features that typically indicate AI-generated imagery.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_63.jpg",
+            "ground_truth": "fake",
+            "prediction": "[no]",
+            "explanation": "The image shows a realistic human face. The skin texture appears natural, with subtle variations in tone and shading around the mouth and cheeks. The ears are well-defined and consistent with a human ear structure, and the hairline is smooth and naturally positioned. The teeth are also realistically rendered. There is no visible blurring or strange texture that would typically be indicative of an AI-generated image.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_64.jpg",
+            "ground_truth": "fake",
+            "prediction": "no",
+            "explanation": "The image exhibits a natural-looking human face. The skin texture around the mouth shows subtle wrinkles and variations in tone, consistent with a real human. The ear is realistically shaped with visible details of the helix and antihelix. The hairline is well-defined and blends seamlessly with the surrounding hair, lacking the smooth, uniform appearance often associated with AI-generated images. The lighting and shadows are also realistic, adding to the impression of a genuine photograph.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_65.jpg",
+            "ground_truth": "fake",
+            "prediction": "no",
+            "explanation": "The image exhibits a natural-looking human face. The skin texture around the mouth appears realistic with subtle variations in color and detail. The ear is well-defined with visible cartilage and external ear details, which is typical of a real human ear. The hairline is softly blurred, consistent with natural hair edges. There are no unnatural, sharp edges, or distorted features indicating an AI-generated face.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_66.jpg",
+            "ground_truth": "fake",
+            "prediction": "no",
+            "explanation": "The image exhibits realistic details. The mouth shows natural variations in the lips, and the ears have a reasonable form with distinct lobes. The hairline appears natural with subtle shadows and texture, consistent with a real human subject. The skin tone transitions smoothly, and there are no visible seams or distortions that would typically be present in an AI-generated face.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_67.jpg",
+            "ground_truth": "fake",
+            "prediction": "[no]",
+            "explanation": "The image displays a realistic human face with subtle details in the skin texture, pores, and slight imperfections around the mouth. The teeth appear natural, and the ear is well-defined with reasonable detail. The hairline is also rendered convincingly, without the blurred or unnatural edges often associated with AI-generated faces. The lighting and shadows are consistent and contribute to a believable rendering.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_68.jpg",
+            "ground_truth": "fake",
+            "prediction": "[yes]",
+            "explanation": "The face exhibits a slight blurring effect around the edges, specifically noticeable in the area where the hairline meets the hat and the mouth. The teeth appear unnaturally smooth and uniformly white, lacking the subtle variations in shade and texture typically found in real human teeth. The blending of the hat and the skin around the face is not seamless, further suggesting the image is potentially AI-generated.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_69.jpg",
+            "ground_truth": "fake",
+            "prediction": "no",
+            "explanation": "The image shows a relatively natural-looking human face. The mouth has a soft, slightly blurred contour, consistent with a real human smile. The ears appear to have a typical shape and are not overly smooth or uniform, which is common in AI-generated faces. The hairline has a natural-looking shadow beneath it, indicating a light source, and it blends seamlessly with the surrounding hair. Overall, the texture and details of the face are consistent with a photographic image of a real person.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_70.jpg",
+            "ground_truth": "fake",
+            "prediction": "no",
+            "explanation": "The image exhibits a realistic rendering of a human face. The skin texture appears natural with subtle variations in color and shading. The teeth are clearly defined and appear consistent with a real human smile. The hairline is smoothly blended into the scalp, and there are no noticeable distortions or unusual features around the ears or mouth. The overall detail and lighting are consistent with a photograph of a person.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_71.jpg",
+            "ground_truth": "fake",
+            "prediction": "yes",
+            "explanation": "The hairline around the forehead appears slightly blurred and uneven, with a noticeable lack of detail and subtle color shifts. The mouth has a slightly unnatural, smooth appearance, and the skin texture lacks the typical fine wrinkles and pores associated with a real infant's face. The overall color blending within the hair and skin is too smooth, lacking the subtle variations present in natural human imagery.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_72.jpg",
+            "ground_truth": "fake",
+            "prediction": "[no]",
+            "explanation": "The image exhibits a natural skin texture and subtle variations in color around the mouth and chin. The hairline appears well-defined with realistic strands of hair. The ear area demonstrates a slight fold and natural shadow, indicating a believable human anatomy. The overall rendering quality is consistent with a photograph of a human subject.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_73.jpg",
+            "ground_truth": "fake",
+            "prediction": "no",
+            "explanation": "The image shows a human face with natural skin texture and subtle imperfections around the mouth and chin. The hairline is clearly defined and merges seamlessly with the headwear, indicating a realistic rendering. The eyes and skin tone appear consistent, lacking the often-present, smoothed-out quality frequently observed in AI-generated faces.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_74.jpg",
+            "ground_truth": "fake",
+            "prediction": "no",
+            "explanation": "The image depicts a child's face with a natural-looking smile and expression. The hairline is softly blended into the hair, and the ears are detailed with visible cartilage and skin texture. The mouth appears smoothly rendered, with realistic details in the lips. There are no obvious unnatural artifacts or distortions surrounding the mouth, ears, or hairline indicative of a synthetic face.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_75.jpg",
+            "ground_truth": "fake",
+            "prediction": "no",
+            "explanation": "The image exhibits a natural-looking smile with subtle details in the teeth and skin texture. The hairline blends seamlessly into the forehead, with no abrupt transitions or distortions. The ears are proportionally sized and have a natural shape, and there is no obvious digital blurring or unnatural smoothing around the edges of the face or the hairline. The overall lighting and shadow are consistent, further supporting a realistic portrayal of a human face.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_76.jpg",
+            "ground_truth": "fake",
+            "prediction": "[yes]",
+            "explanation": "The image exhibits several visual cues suggestive of a generated face. The jawline is overly smooth and lacks the subtle irregularities typically found in human faces. The lips appear slightly too perfectly formed and symmetrical. The hairline has a slightly unnatural, overly-defined appearance, with an almost plastic-like smoothness. There's also a slight blurring effect around the edges of the face, particularly noticeable in the area around the ears, which is a common artifact in synthetic images. Overall, the image presents a level of perfection and smoothness that is rarely observed in genuine human faces.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_77.jpg",
+            "ground_truth": "fake",
+            "prediction": "[no]",
+            "explanation": "The image displays a realistic human face with natural skin textures and shading around the mouth and chin. The ears are detailed and have a realistic shape and definition. The hairline is soft and blended with the hair, exhibiting a natural transition. There are no abrupt changes in color, edges, or textural inconsistencies that are typical of AI-generated faces.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_78.jpg",
+            "ground_truth": "fake",
+            "prediction": "no",
+            "explanation": "The image shows a realistic depiction of a young boy with a naturally textured hairline and a clearly defined mouth. The skin tone is consistent, and the lighting appears natural. There are no visible artifacts, such as blurring, distortions, or unusual seams around the facial features, suggesting this is a genuine human face.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_79.jpg",
+            "ground_truth": "fake",
+            "prediction": "no",
+            "explanation": "The image shows a realistic child's face with natural skin texture, soft shadows around the eyes and mouth, and believable hair strands around the hairline. The teeth are slightly imperfect, consistent with a child's dentition. There are no obvious distortions, smoothing, or unnatural edges around the mouth or ears, suggesting this is a genuine human face.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_80.jpg",
+            "ground_truth": "fake",
+            "prediction": "[no]",
+            "explanation": "The image presents a relatively detailed and realistic human face. There's a slight blurring around the edges of the mouth and the hairline, but it doesn't appear to be the result of significant artificial generation. The skin texture and lighting are consistent with a natural portrait. The ears are clearly defined, and the overall composition lacks the common inconsistencies found in AI-generated faces, such as smooth transitions or unnatural reflections.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_81.jpg",
+            "ground_truth": "fake",
+            "prediction": "[no]",
+            "explanation": "The image depicts a realistic human face. The skin texture appears natural with subtle wrinkles and pores visible around the eyes and mouth. The lighting is consistent and shadows are well-defined, typical of a photograph. The shape of the jawline and the placement of the ears are consistent with a natural human anatomy. There are no discernible seams, unusual reflections, or distortions present that would suggest the image is AI-generated.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_82.jpg",
+            "ground_truth": "fake",
+            "prediction": "[yes]",
+            "explanation": "The image exhibits a subtle blurring and softness around the mouth and the edges of the face, particularly noticeable at the hairline. The skin texture appears unusually smooth and lacks the fine details and imperfections typically found in real human skin. The eyebrows have a slight unnatural consistency, with a small unnatural halo effect around them. The ears are slightly softened and lack the usual vascular details and natural variation in color that is commonly seen in real human ears.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_83.jpg",
+            "ground_truth": "fake",
+            "prediction": "[no]",
+            "explanation": "The image presents a realistic human face with natural skin texture, subtle imperfections in the teeth, and realistic eye reflections. The hair and makeup appear consistent with a natural look. The details around the hairline and ears are well-defined, and there are no visible artifacts or inconsistencies typical of AI-generated images.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_84.jpg",
+            "ground_truth": "fake",
+            "prediction": "[yes]",
+            "explanation": "The generated face exhibits a subtle, almost imperceptible softness around the mouth and chin, which is not typical of real human skin. The hairline appears slightly too smooth and perfectly aligned with the forehead, lacking the subtle variations and imperfections commonly observed in human hair. Furthermore, the overall rendering of the face, particularly the subtle shadows and highlights, appears somewhat artificial, lacking the natural texture and detail expected of a real child's face.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_85.jpg",
+            "ground_truth": "fake",
+            "prediction": "no",
+            "explanation": "The image displays a realistic human face with detailed features. The skin texture appears natural with subtle imperfections, and the lighting is consistent across the face. The lips have a natural color and shape, and the ears are realistically rendered with visible cartilage and blood vessels. The hairline is well-defined, and there are no noticeable distortions or unnatural elements around the mouth, ears, or hairline that are commonly associated with AI-generated faces.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_86.jpg",
+            "ground_truth": "fake",
+            "prediction": "no",
+            "explanation": "The image shows a relatively natural-looking human face. The hairline appears soft and blended seamlessly with the hair, with no abrupt transitions or unnatural edges. The mouth appears natural and proportionate to the face, and the ears are well-defined with a normal ear shape and a realistic amount of detail. The skin texture seems consistent throughout the face, without any noticeable smoothing or artificial blurring.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_87.jpg",
+            "ground_truth": "fake",
+            "prediction": "[no]",
+            "explanation": "The image exhibits relatively smooth transitions in skin tone around the mouth and chin, which is characteristic of AI-generated faces. However, the details of the teeth, lips, and the hairline are consistent with a realistic human image. The lighting and skin texture appear natural, and there are no visible pixelation or distortions at the edges of the face.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_88.jpg",
+            "ground_truth": "fake",
+            "prediction": "no",
+            "explanation": "The image presents a relatively natural-looking human face. The teeth are slightly uneven, as expected in a real human smile. The hairline and ear details appear soft and consistent, without any visible seams or unusual distortions. The skin texture is also plausible, with subtle variations in tone and shadow that are typical of human skin.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_89.jpg",
+            "ground_truth": "fake",
+            "prediction": "[no]",
+            "explanation": "The image exhibits a natural-looking smile with subtle details in the lips and teeth. The ear is defined with discernible cartilage and realistic skin texture. The hairline is sharply defined, but consistent with natural hair and skin tones. There is no visible blurring, stitching, or unusual color variations around the edges of the face, suggesting it is not a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_90.jpg",
+            "ground_truth": "fake",
+            "prediction": "[no]",
+            "explanation": "The image exhibits a natural-looking human face with consistent skin texture and lighting. The teeth appear realistically shaped and the hairline is smoothly integrated with the surrounding hair. There are no noticeable distortions, blurring, or smooth transitions around the mouth, ears, or hairline, which are common artifacts found in AI-generated faces.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_91.jpg",
+            "ground_truth": "fake",
+            "prediction": "[yes]",
+            "explanation": "The hairline appears overly smooth and sharply defined, lacking the subtle variations and imperfections typically found in human hair. The skin around the mouth and ears shows a slight artificial smoothness, with a subtle lack of texture and detail, suggesting the image was generated rather than photographed. The overall rendering of the facial features feels slightly 'flat' and lacks the complex shading and lighting effects characteristic of a realistic human face.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_92.jpg",
+            "ground_truth": "fake",
+            "prediction": "no",
+            "explanation": "The image depicts a natural human face with realistic details. The mouth and teeth appear to be rendered accurately, without any visible, smooth, or unnatural transitions. The ears are proportionally sized and feature subtle details like cartilage and the texture of skin. The hairline is defined and does not exhibit any smooth, unnaturally sharp edges or a lack of detail typically found in synthetic images. The overall lighting and skin texture contribute to a believable representation of a real person.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_93.jpg",
+            "ground_truth": "fake",
+            "prediction": "no",
+            "explanation": "The image displays a relatively natural rendering of a young boy's face. The skin texture appears smooth, but not unnaturally so. The mouth has a plausible shape and subtle details, and the ears are integrated realistically within the hair. The hairline is well-defined and consistent with a child's hair texture. There are no obvious seams, distortions, or unusual patterns that are characteristic of AI-generated faces.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_94.jpg",
+            "ground_truth": "fake",
+            "prediction": "no",
+            "explanation": "The image presents a typical human face with a relatively natural-looking expression and skin texture. The eyebrows and hairline are smoothly defined, and the mouth appears consistent with a realistic human mouth shape. There are no noticeable distortions or irregularities around the ears or hairline, which are often indicative of generated images. The lighting is somewhat uneven, which contributes to the natural, albeit slightly shadowed, appearance of the face.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_95.jpg",
+            "ground_truth": "fake",
+            "prediction": "[no]",
+            "explanation": "The image shows a realistic human face. The skin texture appears natural, with subtle imperfections and variations in shading around the mouth and chin. The ears are well-defined, and the hairline is smoothly integrated into the hair, without any visible seams or unnatural transitions. The lighting and shadows are consistent, indicating a realistic rendering of a human subject.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_96.jpg",
+            "ground_truth": "fake",
+            "prediction": "[no]",
+            "explanation": "The image shows a realistic human face with natural skin textures, detailed eye reflections, and subtle variations in shading around the cheekbones and hairline. The teeth appear to be realistically rendered, and there's no visible blurring or edge distortion around the mouth or ears. The skin has a granular quality consistent with a photograph of a human subject.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_97.jpg",
+            "ground_truth": "fake",
+            "prediction": "no",
+            "explanation": "The image exhibits typical human facial features, including realistic skin texture, subtle specular highlights on the teeth and lips, and a natural-looking hairline. There is no evidence of smooth, uniform textures, inconsistent lighting, or blurring around the edges of the face, which are common artifacts associated with AI-generated images. The details of the lips and teeth appear consistent with a real human mouth.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_98.jpg",
+            "ground_truth": "fake",
+            "prediction": "[yes]",
+            "explanation": "The image exhibits several visual cues suggesting a generated face. The teeth appear overly smooth and symmetrical, lacking the slight irregularities and textures found in natural human teeth. The edges of the lips are unnaturally sharp and perfectly defined, with a lack of the subtle blurring and soft edges characteristic of human skin. The hair around the hairline appears somewhat flat and uniform, lacking the natural variations and imperfections associated with real hair. There's a slight lack of realistic shadow and highlights around the hairline and forehead, contributing to the artificial appearance.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_99.jpg",
+            "ground_truth": "fake",
+            "prediction": "no",
+            "explanation": "The image exhibits a realistic rendering of a young girl's face. The skin texture appears natural, and the hairline is smoothly integrated without any noticeable seams or blurring. The teeth are distinct and properly aligned, and the ear is also depicted with sufficient detail. There is no visible warping or blurring around the mouth or ear, which are common artifacts in artificially generated faces.",
+            "error": null
+        }
+    ]
+}

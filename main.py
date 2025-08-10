@@ -14,7 +14,7 @@ SHUFFLE = False
 # ======================================
 
 # VALORI PER IL PROMPT
-INDEX_PROMPT = 0  # (0-6)
+INDEX_PROMPT = 4  # (0-6)
 IS_ITALIAN = False
 SHOW_IMAGES = False
 ONESHOT = False
@@ -54,6 +54,6 @@ for img_path, label in tqdm(images_with_labels, desc=" Analyzing images"):
     result, counters = classifier.analyze_image(img_path, label, userPrompt, MODEL_NAME, ONESHOT, oneShotMessage,
                                                 systemPrompt, counters, SHOW_IMAGES)
     results.append(result)
-jsonINFO = metrics.analizeMetrics(counters, images_with_labels, userPrompt, systemPrompt, ONESHOT, oneShotMessage,
+jsonINFO = metrics.analyzeMetrics(counters, images_with_labels, userPrompt, systemPrompt, ONESHOT, oneShotMessage,
                                   reals, fakes)
 metrics.saveAllJson(jsonINFO, results, IS_ITALIAN, MODEL_NAME, INDEX_PROMPT)

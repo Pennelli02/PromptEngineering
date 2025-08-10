@@ -11,7 +11,7 @@ def initMetrics():
     return counters
 
 
-def analizeMetrics(counters, images_with_labels, prompt, systemPrompt, oneShot, oneShotMessage, real_images,
+def analyzeMetrics(counters, images_with_labels, prompt, systemPrompt, oneShot, oneShotMessage, real_images,
                    fake_images):
     total_classified = counters["tp"] + counters["tn"] + counters["fp"] + counters["fn"]
     accuracy = (counters["tp"] + counters["tn"]) / total_classified if total_classified else 0

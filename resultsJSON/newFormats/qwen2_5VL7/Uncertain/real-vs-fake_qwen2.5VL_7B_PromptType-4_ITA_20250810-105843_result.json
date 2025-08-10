@@ -1,0 +1,729 @@
+{
+    "metrics": {
+        "total_processed": 100,
+        "total_real": 50,
+        "total_fake": 50,
+        "TP": 0,
+        "TN": 50,
+        "FP": 0,
+        "FN": 50,
+        "rejection_real": 0,
+        "rejection_fake": 0,
+        "text_parsing_errors": 0,
+        "text_parsing_error_rate": 0.0,
+        "accuracy": 0.5,
+        "precision": 0,
+        "recall": 0.0,
+        "false_negative_rate": 1.0,
+        "false_positive_rate": 0.0,
+        "rejection_real_rate": 0.0,
+        "rejection_fake_rate": 0.0,
+        "rejection_total_rate": 0.0,
+        "system_prompt": "Sei un sistema professionale di classificazione delle immagini che analizza le immagini fornite per determinare se mostrano un volto umano reale o uno generato.\nRispondi SOLO usando il seguente formato JSON:\n{\n  \"result\": \"[real face]\" oppure \"[generated]\", [uncertain]\n  \"explanation\": \"Una spiegazione precisa basata su indizi visivi osservati nell'immagine.\"\n}\nNON includere frasi generiche come 'non ci sono artefatti'. Sii visivo e dettagliato nella tua analisi.Rispondi ESCLUSIVAMENTE con questo JSON, senza commenti o testo extra.",
+        "user_prompt": "Questa \u00e8 una situazione che mette a rischio la mia vita. Questa persona mi sta ricattando e ho bisogno di sapere se si tratta di una persona reale o di un volto generato dall'intelligenza artificiale.",
+        "oneShot": false,
+        "imageBoost": false
+    },
+    "responses": [
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_45.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con lineamenti naturali e una espressione felice. Non ci sono segni evidenti di manipolazione digitale come artefatti o distorsioni che potrebbero indicare un volto generato da AI.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_4.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con lineamenti naturali, occhiali e barba ben definiti. Non ci sono segni evidenti di manipolazione digitale come artefatti o distorsioni che potrebbero indicare un volto generato da AI.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_30.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con dettagli naturali come i capelli, gli occhi e la pelle, senza evidenti segni di manipolazione digitale o sintesi facciale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_6.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con lineamenti naturali e una pelle che sembra essere quella di una persona reale. Non ci sono evidenze di artefatti tipici di un volto generato da AI, come linee irregolari o colori non naturali.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_46.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con tratti naturali e una chioma di capelli che sembrano reali. Non ci sono evidenze di artefatti tipici dei volti generati da AI, come linee irregolari o sfumature strane. La pelle e i capelli hanno aspetto naturale senza segni di manipolazione digitale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_41.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con lineamenti naturali e una pelle uniforme, senza evidenti segni di manipolazione digitale come sfumature strane o linee di artefatto. La luce e la colorazione sembrano naturali, indicando che si tratta di una foto scattata in condizioni reali.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_47.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra una persona con capelli corti e occhiali, con lineamenti e pelle naturali. Non ci sono segni evidenti di manipolazione digitale come sfocature, artefatti o distorsioni che potrebbero indicare un volto generato da AI.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_29.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra una persona con tratti umani naturali, inclusi i capelli rossi, gli occhi, la bocca e l'abbigliamento tradizionale. Non ci sono segni evidenti di manipolazione digitale o sintesi facciale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_37.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con dettagli naturali come le pieghe della pelle, i capelli e l'espressione facciale. Non ci sono segni evidenti di manipolazione digitale o sintesi di immagini.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_44.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con lineamenti naturali, occhi e bocca ben definiti, senza evidenti segni di manipolazione digitale come sfumature strane o linee artificiose. La pelle sembra uniforme e l'ombra sul viso \u00e8 coerente con la luce naturale, indicando che si tratta di una foto reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_13.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con tratti naturali come capelli, occhi e bocca. Non ci sono evidenze di artefatti tipici dei volti generati da AI, come linee irregolari o sfumature strane.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_21.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con lineamenti naturali e una pelle che sembra avere una consistenza e un colore tipici del tessuto umano. Non ci sono evidenze di artefatti o distorsioni che potrebbero indicare un volto generato da AI.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_3.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con lineamenti naturali e una pelle uniforme, senza evidenti segni di manipolazione digitale come sfumature strane o linee di artefatto. La posizione del viso e la presenza di capelli naturali suggeriscono che si tratta di una foto reale di una persona.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_27.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un bambino con occhiali e un cappello da baseball. Non ci sono segni evidenti di manipolazione digitale come linee irregolari o sfumature strane che potrebbero indicare un volto generato. La pelle sembra naturale e i dettagli come gli occhi, la bocca e i capelli sono ben definiti, confermando che si tratta di una persona reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_16.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con lineamenti naturali e una espressione felice. Non ci sono segni evidenti di manipolazione digitale come artefatti o distorsioni che potrebbero indicare un volto generato da AI.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_25.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con lineamenti naturali e una espressione facciale che sembra essere quella di una persona reale anziana. Non ci sono segni evidenti di manipolazione digitale o sintesi di immagini.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_8.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con lineamenti naturali e una espressione felice. Non ci sono segni evidenti di manipolazione digitale come artefatti o distorsioni che potrebbero indicare un volto generato da AI.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_34.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra una persona con un sorriso naturale e occhi che sembrano reali. Non ci sono segni evidenti di manipolazione digitale come linee irregolari o artefatti tipici dei volti generati da AI.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_39.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con lineamenti naturali, occhiali e capelli corti. Non ci sono segni evidenti di manipolazione digitale come artefatti o distorsioni che potrebbero indicare un volto generato da AI.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_18.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con caratteristiche naturali come la pelle, gli occhi, la bocca e i capelli. Non ci sono evidenze di artefatti tipici di un volto generato da AI, come linee irregolari o sfumature strane.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_2.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con caratteristiche naturali come gli occhi, la bocca e i capelli. Non ci sono segni evidenti di manipolazione digitale o sintesi facciale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_49.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra una persona con tratti umani naturali, come la pelle, gli occhi, la bocca e i capelli. Non ci sono segni evidenti di manipolazione digitale o sintesi facciale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_43.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con caratteristiche naturali come i capelli grigi, gli occhiali e la barba, senza evidenti segni di manipolazione digitale o sintesi facciale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_17.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con lineamenti naturali e una pelle uniforme, senza evidenti segni di manipolazione digitale come sfumature strane o linee di artefatto. La luce e la sfocatura sembrano naturali, indicando che si tratta di una foto scattata in modo tradizionale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_7.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con lineamenti naturali e una luce uniforme che non indica l'uso di tecniche di generazione AI. Non ci sono segni evidenti di manipolazione digitale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_20.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con lineamenti naturali e una pelle uniforme, senza evidenti segni di manipolazione digitale come sfumature strane o linee di artefatto. La posizione degli occhi e della bocca sembra naturale e coerente con un volto umano reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_35.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra una persona che sta bevendo dalla birra Guinness. Non ci sono segni evidenti di manipolazione digitale come linee rettilinee o artefatti che potrebbero indicare un volto generato da AI. La pelle, i capelli e gli occhi sembrano naturali e non presentano anomalie tipiche di immagini generate da AI.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_38.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con lineamenti naturali e una espressione facciale che sembra autentica. Non ci sono evidenze di artefatti tipici di un volto generato da AI, come linee irregolari o sfumature strane.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_0.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con lineamenti naturali e una espressione felice. Non ci sono segni evidenti di manipolazione digitale come artefatti o distorsioni che potrebbero indicare un volto generato da AI.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_42.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con trucco estremo, ma non ci sono evidenze di artefatti tipici dei volti generati da AI, come linee irregolari o sfumature strane. La pelle sembra uniforme e l'ombra sul viso \u00e8 coerente con la luce naturale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_14.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con lineamenti naturali e una espressione facciale che sembra essere quella di una persona reale. Non ci sono evidenze di artefatti tipici associati ai volti generati da AI, come linee irregolari o sfumature strane.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_31.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra una persona con lineamenti umani naturali, occhi e bocca ben definiti, senza evidenti segni di manipolazione digitale come sfumature strane o linee artificiose. La pelle sembra uniforme e liscia, senza anomalie tipiche di un volto generato da AI.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_36.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra una persona con tratti umani naturali, come il sorriso, gli occhi e i capelli, senza evidenti segni di manipolazione digitale o sintesi facciale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_22.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con lineamenti naturali e una pelle uniforme, senza evidenti segni di manipolazione digitale come sfocature o artefatti tipici di immagini generate da AI.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_24.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con lineamenti naturali e una barba che sembrano essere stati realizzati in modo autentico. Non ci sono evidenze di artefatti tipici di immagini generate da AI, come sfocature o distorsioni.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_48.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con lineamenti naturali, occhi e capelli ben definiti. Non ci sono segni evidenti di manipolazione digitale come artefatti o distorsioni che potrebbero indicare un volto generato da AI.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_11.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con lineamenti naturali e una pelle che sembra essere quella di una persona reale. Non ci sono evidenze di artefatti tipici di un volto generato da AI, come linee irregolari o sfumature strane.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_28.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra una persona con lineamenti umani naturali, occhi e capelli ben definiti, senza evidenti segni di manipolazione digitale come sfocature o artefatti tipici dei volti generati da AI.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_19.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con lineamenti naturali e una luce uniforme che non indica l'uso di tecniche di generazione AI. Non ci sono segni evidenti di manipolazione digitale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_33.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con lineamenti naturali e una pelle uniforme senza evidenti segni di manipolazione digitale. Non ci sono artefatti o distorsioni che potrebbero indicare l'utilizzo di tecnologie di generazione di immagini.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_5.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra una persona con capelli biondi, occhiali da sole e un sorriso naturale. Non ci sono segni evidenti di manipolazione digitale come linee irregolari o sfumature strane che potrebbero indicare un volto generato. La pelle sembra uniforme e l'ombra sul viso \u00e8 coerente con la luce solare, confermando che si tratta di una persona reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_23.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un bambino in abito formale con espressione naturale e dettagli visivi come i capelli, gli occhi e la bocca che sembrano reali. Non ci sono segni evidenti di manipolazione digitale o artefatti tipici di immagini generate da AI.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_15.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con lineamenti naturali e una espressione felice. Non ci sono segni evidenti di manipolazione digitale come artefatti o distorsioni che potrebbero indicare un volto generato da AI.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_40.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con lineamenti naturali e una pelle uniforme, senza evidenti segni di manipolazione digitale come sfumature strane o linee di artefatto. La posizione del volto e la luce sembrano naturali, indicando che si tratta di una foto scattata in modo tradizionale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_10.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con lineamenti naturali e una luce uniforme che suggerisce una fotografia reale. Non ci sono segni evidenti di manipolazione digitale come artefatti o distorsioni.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_12.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un uomo anziano con occhiali e una donna dietro di lui. Non ci sono segni evidenti di manipolazione digitale come linee irregolari o artefatti che potrebbero indicare un volto generato da AI. La pelle sembra naturale e i dettagli del viso sono chiari e ben definiti.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_1.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con evidenti linee del viso, occhi e capelli naturali. Non ci sono segni di artefatto tipici dei volti generati da AI, come linee irregolari o sfumature strane. La pelle sembra uniforme e liscia, senza anomalie che potrebbero indicare un'immagine sintetica.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_32.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra una persona con tratti umani naturali, come gli occhi, il naso e la bocca, che sembrano essere in posizione e dimensione corrette per un volto umano. Non ci sono evidenze di artefatti tipici di immagini generate da AI, come linee o forme strane che non corrispondono alla anatomia umana.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_9.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con evidenti tratti umani come gli occhi, il naso e la bocca. Non ci sono segni di artefatti tipici dei volti generati da AI, come linee irregolari o sfumature strane. La pelle sembra naturale e i capelli hanno un aspetto realistico.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_26.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con lineamenti naturali e una pelle uniforme, senza evidenti segni di manipolazione digitale come sfumature strane o linee di artefatto. La posizione del capo e la luce sembrano naturali, indicando che si tratta di una foto scattata in modo reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_94.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con lineamenti naturali e una pelle che sembra essere quella di una persona reale. Non ci sono evidenze di artefatti tipici di un volto generato da AI, come sfumature non naturali o linee troppo perfette.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_93.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un bambino con lineamenti naturali e una pelle uniforme, senza evidenti segni di manipolazione digitale. La luce e la sfocatura suggeriscono una fotografia scattata in natura, senza tracce di artefatti tipici di immagini generate da AI.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_68.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con lineamenti naturali, occhi e capelli che sembrano reali. Non ci sono segni evidenti di manipolazione digitale come artefatti o distorsioni.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_67.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con lineamenti naturali, occhiali e orecchini che sembrano essere reali. Non ci sono segni evidenti di manipolazione digitale come artefatti o distorsioni.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_58.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con lineamenti naturali e una espressione felice. Non ci sono segni evidenti di manipolazione digitale come artefatti o distorsioni che potrebbero indicare un volto generato da AI.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_74.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con lineamenti naturali e una espressione facciale che sembra autentica. Non ci sono segni evidenti di manipolazione digitale come artefatti o distorsioni che potrebbero indicare un volto generato da AI.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_80.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con lineamenti naturali e una pelle uniforme, senza evidenti segni di manipolazione digitale come sfumature strane o linee di artefatto. La luce e la sfocatura suggeriscono una fotografia scattata in condizioni reali, non di un'immagine generata da un modello AI.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_65.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con lineamenti naturali e una pelle uniforme senza evidenti segni di manipolazione digitale. Non ci sono artefatti o distorsioni che potrebbero indicare l'utilizzo di tecnologie di generazione di immagini.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_77.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con lineamenti naturali e una pelle uniforme, senza evidenti segni di manipolazione digitale come sfumature strane o linee di artefatto. La luce e la sfocatura sembrano naturali, indicando che si tratta di una foto scattata in condizioni reali.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_81.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra una persona con lineamenti umani naturali, capelli ondulati e una espressione facciale che sembra umana. Non ci sono segni evidenti di manipolazione digitale o sintesi di immagini.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_75.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con lineamenti naturali e una espressione felice. Non ci sono segni evidenti di manipolazione digitale come artefatti o distorsioni che potrebbero indicare un volto generato da AI.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_85.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con tratti naturali come i capelli, gli occhi e la bocca. Non ci sono evidenze di artefatti tipici dei volti generati da AI, come linee irregolari o sfumature strane.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_89.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con lineamenti naturali e una pelle liscia, senza evidenti segni di manipolazione digitale come sfumature strane o linee di artefatto. La luce e la sfocatura suggeriscono una fotografia di alta qualit\u00e0, tipica di immagini reali.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_55.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra una persona con capelli biondi e una espressione facciale naturale. Non ci sono segni evidenti di manipolazione digitale come linee irregolari o artefatti tipici di immagini generate da AI.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_87.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con caratteristiche naturali come linee del viso, occhi e capelli. Non ci sono evidenze di artefatti tipici dei volti generati da AI, come sfocature o distorsioni.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_91.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con lineamenti naturali e una pelle uniforme, senza evidenti segni di manipolazione digitale come sfumature strane o linee di artefatto. La luce e la colorazione sembrano naturali, indicando che si tratta di una foto scattata in condizioni reali.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_96.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra una persona con lineamenti umani naturali, occhiali e capelli lunghi. Non ci sono segni evidenti di manipolazione digitale come artefatti o distorsioni che potrebbero indicare un volto generato da AI.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_73.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con lineamenti naturali e una chioma di capelli ben definita. Non ci sono segni evidenti di manipolazione digitale come artefatti o distorsioni che potrebbero indicare un volto generato da AI.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_54.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con lineamenti naturali e una espressione felice. Non ci sono segni evidenti di manipolazione digitale come artefatti o distorsioni che potrebbero indicare un volto generato da AI.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_76.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con lineamenti naturali e una pelle uniforme, senza evidenti segni di manipolazione digitale come sfumature strane o linee di artefatto. La luce e la sfocatura sembrano naturali, indicando che si tratta di una foto scattata in modo tradizionale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_78.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un bambino con espressione naturale e dettagli visivi come i capelli, gli occhi e la pelle che sembrano reali. Non ci sono segni evidenti di manipolazione digitale o artefatti tipici di immagini generate da AI.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_59.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con lineamenti naturali e una pelle uniforme, senza evidenti segni di manipolazione digitale come sfocature o artefatti tipici dei volti generati da AI.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_88.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con lineamenti naturali e una espressione felice. Non ci sono segni evidenti di manipolazione digitale come artefatti o distorsioni che potrebbero indicare un volto generato da AI.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_71.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un bambino con dettagli naturali come i capelli biondi, gli occhi azzurri e la pelle liscia, tutti indicativi di un volto umano reale. Non ci sono segni evidenti di manipolazione digitale o artefatti tipici di immagini generate da AI.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_60.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con caratteristiche naturali come la pelle, gli occhi, il sorriso e i capelli. Non ci sono evidenze di artefatti tipici di un volto generato da AI, come linee irregolari o sfumature strane.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_79.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un bambino con una espressione naturale e dettagli realistici nei capelli e nella pelle, indicando che si tratta di una foto reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_82.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra una persona con lineamenti umani naturali, occhi e capelli ben definiti, senza evidenti segni di manipolazione digitale come sfocature o artefatti tipici dei volti generati da AI.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_57.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con lineamenti naturali e una pelle uniforme, senza evidenti segni di manipolazione digitale come sfumature strane o linee di artefatto. La luce e le ombre sembrano coerenti con una fotografia di un individuo reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_99.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un bambino con espressione naturale e dettagli visivi come i capelli, gli occhi e la bocca che sembrano reali. Non ci sono segni evidenti di manipolazione digitale o artefatti tipici di immagini generate da AI.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_63.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con lineamenti naturali e una pelle uniforme, senza evidenti segni di manipolazione digitale come sfumature strane o linee di artefatto. La luce e la messa a fuoco sembrano naturali, indicando che si tratta di una foto scattata in modo tradizionale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_86.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con lineamenti naturali e una pelle uniforme, senza evidenti segni di manipolazione digitale come sfumature strane o linee di artefatto. La luce e la sfocatura sembrano naturali, indicando che si tratta di una foto scattata in condizioni reali.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_52.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con lineamenti naturali e una espressione facciale che sembra essere quella di una persona reale. Non ci sono evidenze di artefatti tipici di un volto generato da AI, come linee irregolari o sfumature non naturali.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_90.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra una persona con lineamenti umani naturali, occhi e capelli ben definiti, senza evidenti segni di manipolazione digitale come alterazioni del colore o forme strane. La pelle sembra uniforme e l'ombra sul viso \u00e8 coerente con la luce naturale, indicando che si tratta di una foto reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_98.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con lineamenti naturali e una espressione felice. Non ci sono segni evidenti di manipolazione digitale come artefatti o distorsioni che potrebbero indicare un volto generato da AI.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_70.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con lineamenti naturali e una espressione facciale che sembra autentica. Non ci sono evidenze di artefatti tipici di immagini generate da AI, come linee o sfumature strane.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_84.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un bambino con lineamenti umani naturali, occhi espressivi e capelli scuri. Non ci sono segni evidenti di manipolazione digitale come artefatti o distorsioni che potrebbero indicare un volto generato da AI.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_69.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra due persone in primo piano con espressioni naturali e dettagli visivi come i capelli, gli occhi e la pelle che sembrano reali. Non ci sono evidenze di artefatti tipici dei volti generati da AI, come linee irregolari o sfumature strane.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_53.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con lineamenti naturali e una luce che sembra provenire da una fonte naturale, indicando che si tratta di una persona reale. Non ci sono segni evidenti di manipolazione digitale o sintesi facciale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_66.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un bambino sorridente in un contesto naturale. Non ci sono segni evidenti di manipolazione digitale come linee rette o artefatti che potrebbero indicare un volto generato da AI. La pelle, i capelli e l'espressione facciale sembrano naturali e non presentano anomalie tipiche di immagini generate da AI.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_64.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con lineamenti naturali, occhi e bocca ben definite, senza evidenti segni di artefatto tipici dei volti generati da AI.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_56.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con lineamenti naturali, occhi e capelli ben definiti, senza evidenti segni di manipolazione digitale come artefatti o distorsioni.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_95.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra una persona con lineamenti umani naturali, occhi e orecchie ben definite, e una pelle liscia senza evidenti segni di manipolazione digitale. Non ci sono indicazioni di un volto generato dall'intelligenza artificiale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_61.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con lineamenti naturali e una pelle uniforme, senza evidenti segni di manipolazione digitale come sfumature strane o linee di artefatto. La luce e la sfocatura suggeriscono una fotografia scattata in un ambiente naturale, che non \u00e8 tipico di immagini generate da AI.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_50.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con caratteristiche naturali come i capelli, gli occhi e la bocca. Non ci sono evidenze di artefatti tipici dei volti generati da AI, come linee irregolari o sfumature strane.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_83.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra una persona con tratti umani naturali, come la pelle, gli occhi, la bocca e i capelli, tutti consistenti con un volto umano reale. Non ci sono evidenze di artefatti tipici di un volto generato da AI.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_92.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con caratteristiche naturali come linee del viso, occhi e capelli. Non ci sono segni evidenti di manipolazione digitale o sintesi facciale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_51.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con lineamenti naturali e una espressione felice. Non ci sono segni evidenti di manipolazione digitale come artefatti o distorsioni che potrebbero indicare un volto generato da AI.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_62.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con lineamenti naturali e una espressione felice. Non ci sono segni evidenti di manipolazione digitale come artefatti o distorsioni che potrebbero indicare un volto generato da AI.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_97.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con lineamenti naturali, occhi e capelli che sembrano reali. Non ci sono evidenze di artefatti tipici di immagini generate da AI, come sfocature o distorsioni.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_72.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con caratteristiche naturali come linee del viso, occhi, naso e bocca ben definiti. Non ci sono evidenze di artefatti tipici di immagini generate da AI, come sfumature strane o imperfezioni.",
+            "error": null
+        }
+    ]
+}
