@@ -8,10 +8,14 @@ import json
 import glob
 import os
 import re
-import sys
-
+import classifier
+import nltk
+from nltk.corpus import stopwords
+from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 import numpy as np
+
+nltk.download('stopwords')
 
 
 def plotStatsPrompt(dirName, Uncertain=False, OneShot=False):
@@ -266,6 +270,7 @@ def plotStatsAboutPrompt(promptType, isEng):
     plt.savefig(path_grafico, dpi=300, bbox_inches='tight')  # dpi=300 per alta qualità
 
 
+# FIXME vautare se tenere in considerazione per tipo di prompt
 # funzione che raccoglie tutte le spiegazioni di un modello in base al tipo al momento solo uncertain, fp, fn
 def captureOneTypeResponse(dirName, Type):
     cartella = dirName
@@ -297,6 +302,7 @@ def captureOneTypeResponse(dirName, Type):
                         "explanation": response.get("explanation"),
                         "type": Type_lower
                     })
+                print(response.get("explanation"))
 
             elif Type_lower == "fp":
                 if (prediction in ("generated", "yes")) and ground_truth == "real":
@@ -319,8 +325,60 @@ def captureOneTypeResponse(dirName, Type):
     return risultati
 
 
-# TODO da inserire la parte inerente all'identificazione da parte del modello
+def saveSummaryToFile(globalSummary, modelName, type, base_folder="plots/infoText"):
+    os.makedirs(base_folder, exist_ok=True)
+    filename = f"plots/infoText/summary-{type}-{modelName}.txt"
+
+    with open(filename, "w", encoding="utf-8") as f:
+        f.write(globalSummary)
+    print(f"Riassunto salvato in {filename}")
+
+
+def plotWordcloudFromExplanations(explanations, modelName, Type):
+    text = " ".join(explanations).lower()
+
+    # Unisci stopwords inglesi e italiane
+    stop_words = set(stopwords.words('english')).union(set(stopwords.words('italian')))
+
+    wordcloud = WordCloud(
+        width=800,
+        height=400,
+        background_color='white',
+        stopwords=stop_words,
+        collocations=False
+    ).generate(text)
+
+    plt.figure(figsize=(10, 5))
+    plt.imshow(wordcloud, interpolation='bilinear')
+    plt.axis("off")
+    plt.title(f"WordCloud delle spiegazioni-{Type} ({modelName})")
+    cartella_grafici = "plots/wordCloud/"
+    nome_file = f"worldCloud-{modelName}-{Type}.png"
+    os.makedirs(cartella_grafici, exist_ok=True)  # crea la cartella se non esiste
+    # Percorso completo file immagine
+    path_grafico = os.path.join(cartella_grafici, nome_file)
+
+    # Salva il grafico
+    plt.savefig(path_grafico, dpi=300, bbox_inches='tight')
+
+
+def analyzeSummarizeAndVisualize(dirName, Type, modelName):
+    results = captureOneTypeResponse(dirName, Type)
+    df = classifier.repair_dates(results)
+    explanations = df['explanation'].tolist()
+
+    # Riassunto globale
+    #global_summary = classifier.summarizeALL(explanations)
+    global_summary = classifier.hierarchical_summarize_with_prompt(explanations)
+    print("\nRiassunto globale finale:")
+    print(global_summary)
+
+    # Salva su file
+    saveSummaryToFile(global_summary, modelName, Type)
+
+    # WordCloud
+    plotWordcloudFromExplanations(explanations, modelName, Type)
+
 
 if __name__ == "__main__":
-    plotStatsPrompt("resultsJSON/newFormats/llava")
-    graphItaEng("resultsJSON/newFormats/llava")
+    analyzeSummarizeAndVisualize("resultsJSON/newFormats/qwenVL3b/Uncertain", "uncertain", "qwenVL-3b")

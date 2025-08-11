@@ -1,7 +1,15 @@
 import json
 import re
+
+import nltk
+# pip install sentence-transformers hdbscan transformers
+import pandas as pd
 from ollama import Client
 from PIL import Image
+from sentence_transformers import SentenceTransformer
+import hdbscan
+from collections import Counter
+from transformers import pipeline
 
 client = Client()
 
@@ -50,7 +58,7 @@ def analyze_image(img_path, lab, prompt, modelName, fewShot, few_shot_messages, 
         # Pulizia markdown
         text_clean = re.sub(r"^```(?:json)?\s*([\s\S]*?)\s*```$", r"\1", text.strip(), flags=re.MULTILINE)
 
-        text_clean = repair_json(text_clean) # aggiusta il testo per il parsing
+        text_clean = repair_json(text_clean)  # aggiusta il testo per il parsing
 
         try:
             parsed = json.loads(text_clean)
@@ -125,3 +133,74 @@ def repair_json(text):
         text = text[:last_close + 1]
 
     return text
+
+
+# TODO informarsi attentamente per la tesi scritta
+def repair_dates(results):
+    df = pd.DataFrame(results)
+    df['explanation'] = df['explanation'].fillna('').str.strip()
+
+    if df.empty:
+        print("Nessun dato trovato per il tipo selezionato.")
+        exit()
+    return df
+
+
+# --- Funzione di chunking testo ---
+nltk.download('punkt')
+nltk.download('punkt_tab')
+
+
+def chunk_text_by_sentence(text, max_len=1000):
+    sentences = nltk.sent_tokenize(text)
+    chunks, current_chunk = [], ""
+    for sentence in sentences:
+        if len(current_chunk) + len(sentence) <= max_len:
+            current_chunk += " " + sentence
+        else:
+            chunks.append(current_chunk.strip())
+            current_chunk = sentence
+    if current_chunk:
+        chunks.append(current_chunk.strip())
+    return chunks
+
+
+def hierarchical_summarize_with_prompt(explanations, max_chunk_len=1000):
+    summarizer = pipeline("summarization", model="google/flan-t5-small")
+
+    # Primo livello
+    full_text = " ".join(explanations)
+    chunks = chunk_text_by_sentence(full_text, max_chunk_len)
+    summaries = []
+    for i, chunk in enumerate(chunks):
+        print(f"Riassumendo chunk {i + 1}/{len(chunks)}...")
+        prompt = (
+                "Analizza i seguenti casi e individua le cause principali dell'incertezza del modello, "
+                "descrivendo i problemi visivi o ambiguità ricorrenti:\n" + chunk
+        )
+        summary = summarizer(prompt, max_new_tokens=150, min_length=30, do_sample=False)[0]['summary_text']
+        summaries.append(summary)
+
+    # Secondo livello (finché resta più di un riassunto)
+    while len(summaries) > 1:
+        combined_text = " ".join(summaries)
+        chunks = chunk_text_by_sentence(combined_text, max_chunk_len)
+        summaries = []
+        for i, chunk in enumerate(chunks):
+            print(f"Riassumendo livello superiore, chunk {i + 1}/{len(chunks)}...")
+            prompt = (
+                    "Sulla base di questi riassunti, fornisci una sintesi unica dei pattern e cause più frequenti "
+                    "che portano il modello a classificare come 'incerto':\n" + chunk
+            )
+            summary = summarizer(prompt, max_new_tokens=200, min_length=40, do_sample=False)[0]['summary_text']
+            summaries.append(summary)
+
+    return summaries[0]
+
+# def summarizeALL(explanations):
+#     summarizer = pipeline("summarization", model="google/flan-t5-small")
+#     full_text = " ".join(explanations)
+#     prompt = (f"Elenca e descrivi i motivi più frequenti per cui il modello ha classificato l'immagine come "
+#               "'incerto', focalizzandoti su pattern comuni o problemi visivi presenti: " + full_text)
+#     summary = summarizer(prompt, max_new_tokens=150, min_length=20, do_sample=False)[0]['summary_text']
+#     return summary

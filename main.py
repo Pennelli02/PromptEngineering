@@ -14,7 +14,7 @@ SHUFFLE = False
 # ======================================
 
 # VALORI PER IL PROMPT
-INDEX_PROMPT = 5  # (0-6)
+INDEX_PROMPT = 6 # (0-6)
 IS_ITALIAN = False
 SHOW_IMAGES = False
 ONESHOT = False
