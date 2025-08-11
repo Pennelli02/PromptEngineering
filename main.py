@@ -14,8 +14,8 @@ SHUFFLE = False
 # ======================================
 
 # VALORI PER IL PROMPT
-INDEX_PROMPT = 4  # (0-6)
-IS_ITALIAN = True
+INDEX_PROMPT = 5  # (0-6)
+IS_ITALIAN = False
 SHOW_IMAGES = False
 ONESHOT = False
 UNCERTAIN_EN = False  # abilitare l'opzione al modello di rispondere incerto

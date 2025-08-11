@@ -14,7 +14,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-# Fixme in base al valore booleano cambia anche il nome del file e sistemare dimensioni immagine non si vede nulla
 def plotStatsPrompt(dirName, Uncertain=False, OneShot=False):
     cartella = dirName  # metti qui la tua cartella
     fileList = glob.glob(os.path.join(cartella, "*.json"))
@@ -67,27 +66,31 @@ def plotStatsPrompt(dirName, Uncertain=False, OneShot=False):
     x = np.arange(len(etichette)) * 2  # posizioni sull'asse x
     width = 0.5  # larghezza barre
 
-    fig, ax = plt.subplots(figsize=(14, 8))
+    fig, ax = plt.subplots(figsize=(12, 4))
     rects1 = ax.bar(x - 1.5 * width, accuracy, width, label='Accuracy')
     rects2 = ax.bar(x - 0.5 * width, precision, width, label='Precision')
     rects3 = ax.bar(x + 0.5 * width, recall, width, label='Recall')
 
-    autolabel(rects1, ax, 6, False)
-    autolabel(rects2, ax, 6, False)
-    autolabel(rects3, ax, 6, False)
+    autolabel(rects1, ax, 5, False)
+    autolabel(rects2, ax, 5, False)
+    autolabel(rects3, ax, 5, False)
 
     modelli_presenti = list(set(r["modello"] for r in risultati))
     titolo_modello = ", ".join(modelli_presenti)
     if Uncertain:
         if OneShot:
             ax.set_title(f"Confronto Metriche per modello {titolo_modello} - Incertezza e OneShot")
+            nome_file = f"{titolo_modello}-Uncertain-Oneshot.png"
         else:
             ax.set_title(f"Confronto Metriche per modello {titolo_modello} - Incertezza")
+            nome_file = f"{titolo_modello}-Uncertain.png"
     else:
         if OneShot:
             ax.set_title(f"Confronto Metriche per modello {titolo_modello} - OneShot")
+            nome_file = f"{titolo_modello}-Oneshot.png"
         else:
             ax.set_title(f"Confronto Metriche per modello {titolo_modello}")
+            nome_file = f"{titolo_modello}.png"
 
     ax.set_ylabel("Valore %")
     ax.set_xticks(x)
@@ -99,7 +102,6 @@ def plotStatsPrompt(dirName, Uncertain=False, OneShot=False):
     cartella_grafici = "plots/promptBar/"
     os.makedirs(cartella_grafici, exist_ok=True)  # crea la cartella se non esiste
 
-    nome_file = f"{titolo_modello}.png"
     # Percorso completo file immagine
     path_grafico = os.path.join(cartella_grafici, nome_file)
 
@@ -122,7 +124,6 @@ def autolabel(rects, ax, fontsize, decimal):
                     fontsize=fontsize, fontweight='bold', color='black')
 
 
-# FixMe aggiungere gestione valori booleani
 def graphItaEng(dirName, Uncertain=False, OneShot=False):
     cartella = dirName
     fileList = glob.glob(os.path.join(cartella, "*.json"))
@@ -167,7 +168,20 @@ def graphItaEng(dirName, Uncertain=False, OneShot=False):
     ax.set_xticklabels(lingue)
     ax.set_ylim(0, 1)
     ax.set_ylabel("Valore medio")
-    ax.set_title(f"Confronto metriche medie ENG vs ITA ({modello})")
+    if Uncertain:
+        if OneShot:
+            ax.set_title(f"Confronto metriche medie ENG vs ITA ({modello}) - Incertezza e OneShot")
+            nome_file = f"{modello}-Uncertain-Oneshot.png"
+        else:
+            ax.set_title(f"Confronto metriche medie ENG vs ITA ({modello}) - Incertezza")
+            nome_file = f"{modello}-Uncertain.png"
+    else:
+        if OneShot:
+            ax.set_title(f"Confronto metriche medie ENG vs ITA ({modello}) - OneShot")
+            nome_file = f"{modello}-Oneshot.png"
+        else:
+            ax.set_title(f"Confronto metriche medie ENG vs ITA ({modello})")
+            nome_file = f"{modello}.png"
     ax.legend()
 
     autolabel(rects1, ax, 10, True)
@@ -177,7 +191,6 @@ def graphItaEng(dirName, Uncertain=False, OneShot=False):
     cartella_grafici = "plots/graphITAvsENG/"
     os.makedirs(cartella_grafici, exist_ok=True)  # crea la cartella se non esiste
 
-    nome_file = f"{modello}.png"
     # Percorso completo file immagine
     path_grafico = os.path.join(cartella_grafici, nome_file)
 
@@ -309,5 +322,5 @@ def captureOneTypeResponse(dirName, Type):
 # TODO da inserire la parte inerente all'identificazione da parte del modello
 
 if __name__ == "__main__":
-    plotStatsPrompt("resultsJSON/newFormats/qwenVL3b/OS_no")
-    graphItaEng("resultsJSON/newFormats/qwenVL3b/OS_no")
+    plotStatsPrompt("resultsJSON/newFormats/llava")
+    graphItaEng("resultsJSON/newFormats/llava")

@@ -1,6 +1,10 @@
+import os
+from collections import defaultdict
 from datetime import datetime
 import json
 from pathlib import Path
+import glob
+import numpy as np
 
 
 def initMetrics():
@@ -94,3 +98,49 @@ def saveAllJson(metrics, responses, PromptITA, modelName, i):
         json.dump(outputData, f, indent=4)
 
     print(f"Results saved to {filename}.")
+
+
+# funzione che prende i valori di una cartella e ne fa la media
+def createJSONMeanStats(dirList):
+    # Dati aggregati: {prompt_type: {"accuracy": [], "precision": [], "recall": []}}
+    stats = defaultdict(lambda: {"accuracy": [], "precision": [], "recall": []})
+    for dir in dirList:
+        fileList = glob.glob(os.path.join(dir, "*.json"))
+        for file in fileList:
+            with open(file, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            metrics = data["metrics"]
+
+            baseName = os.path.splitext(os.path.basename(file))[0]
+            parts = baseName.split("_")
+
+            if len(parts) > 2:
+                modello = f"{parts[1]}-{parts[2]}"
+            elif len(parts) > 1:
+                modello = parts[1]
+            else:
+                modello = "ModelloSconosciuto"
+
+            promptType = f"{parts[3]}-{parts[4]}"
+
+            stats[promptType]["accuracy"].append(metrics["accuracy"])
+            stats[promptType]["precision"].append(metrics["precision"])
+            stats[promptType]["recall"].append(metrics["recall"])
+
+    # Calcola le medie
+    results = []
+    for promptType, values in stats.items():
+        results.append({
+            "prompt": promptType,
+            "accuracy_mean": sum(values["accuracy"]) / len(values["accuracy"]) if values["accuracy"] else 0,
+            "precision_mean": sum(values["precision"]) / len(values["precision"]) if values["precision"] else 0,
+            "recall_mean": sum(values["recall"]) / len(values["recall"]) if values["recall"] else 0,
+        })
+
+    output_filename = f"resultsJSON/mean_stats_{modello}_{len(dirList)}.json"
+
+    # Salva su file
+    with open(output_filename, "w", encoding="utf-8") as f:
+        json.dump(results, f, indent=4, ensure_ascii=False)
+
+    print(f"file salvato in: {output_filename}")
