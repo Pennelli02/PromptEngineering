@@ -148,7 +148,6 @@ def repair_dates(results):
 
 # --- Funzione di chunking testo ---
 nltk.download('punkt')
-nltk.download('punkt_tab')
 
 
 def chunk_text_by_sentence(text, max_len=1000):

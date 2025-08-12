@@ -333,7 +333,7 @@ def saveSummaryToFile(globalSummary, modelName, type, base_folder="plots/infoTex
         f.write(globalSummary)
     print(f"Riassunto salvato in {filename}")
 
-
+# FixMe forse non ha senso considerare l'intero modello ma visualizzare in base al prompt e modello
 def plotWordcloudFromExplanations(explanations, modelName, Type):
     text = " ".join(explanations).lower()
 
@@ -368,7 +368,7 @@ def analyzeSummarizeAndVisualize(dirName, Type, modelName):
     explanations = df['explanation'].tolist()
 
     # Riassunto globale
-    #global_summary = classifier.summarizeALL(explanations)
+    # global_summary = classifier.summarizeALL(explanations)
     global_summary = classifier.hierarchical_summarize_with_prompt(explanations)
     print("\nRiassunto globale finale:")
     print(global_summary)
@@ -377,8 +377,9 @@ def analyzeSummarizeAndVisualize(dirName, Type, modelName):
     saveSummaryToFile(global_summary, modelName, Type)
 
     # WordCloud
+    # FixMe o si cambia modo di rappresentare le informazioni o al momento non sta fornendo nulla di sensato
     plotWordcloudFromExplanations(explanations, modelName, Type)
 
-
+# TODO altre funzioni di plotting (dipende da cosa mi serve nella relazione)
 if __name__ == "__main__":
     analyzeSummarizeAndVisualize("resultsJSON/newFormats/qwenVL3b/Uncertain", "uncertain", "qwenVL-3b")

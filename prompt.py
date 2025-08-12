@@ -111,3 +111,7 @@ def usingOneShot():
         }
     ]
     return oneShotMessages
+
+# TODO gestione multipla ONESHOT
+
+# TODO vogliamo provare un nuovo prompt? (simulare un game)
