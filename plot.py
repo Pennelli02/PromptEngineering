@@ -270,6 +270,67 @@ def plotStatsAboutPrompt(promptType, isEng):
     plt.savefig(path_grafico, dpi=300, bbox_inches='tight')  # dpi=300 per alta qualità
 
 
+def plotStatsPromptDividedByModel(dirName):
+    baseDir = "promptSection/"
+    cartella = f"{baseDir}{dirName}"
+    fileList = glob.glob(os.path.join(cartella, "*.json"))
+    results = []
+    for fileName in fileList:
+        with open(fileName, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        metrics = data["metrics"]
+        baseName = os.path.splitext(os.path.basename(fileName))[0]
+        parts = baseName.split("_")
+
+        # Prendi il modello come seconda parte (indice 1)
+        if len(parts) > 2:
+            modello = f"{parts[1]}-{parts[2]}"
+        elif len(parts) > 1:
+            modello = parts[1]
+        else:
+            modello = "ModelloSconosciuto"
+
+        results.append({
+            "modello": modello,
+            "accuracy": metrics["accuracy"],
+            "precision": metrics["precision"],
+            "recall": metrics["recall"]
+        })
+
+    etichette = [r["modello"] for r in results]
+    accuracy = [r["accuracy"] for r in results]
+    precision = [r["precision"] for r in results]
+    recall = [r["recall"] for r in results]
+
+    x = np.arange(len(etichette))
+    width = 0.25
+
+    fig, ax = plt.subplots(figsize=(12, 6))  # più alto per leggibilità
+
+    rects1 = ax.bar(x - width, accuracy, width, label='Accuracy')
+    rects2 = ax.bar(x, precision, width, label='Precision')
+    rects3 = ax.bar(x + width, recall, width, label='Recall')
+
+    autolabel(rects1, ax, 10, True)
+    autolabel(rects2, ax, 10, True)
+    autolabel(rects3, ax, 10, True)
+
+    ax.set_ylabel("Valore (%)")
+    ax.set_title(f"Prestazioni per modello - {dirName}")
+    ax.set_xticks(x)
+    ax.set_xticklabels(etichette, rotation=45, ha="right")
+    ax.set_ylim(0, 1)
+    ax.legend()
+
+    plt.tight_layout()
+
+    cartella_grafici = "plots/modelsBar/"
+    os.makedirs(cartella_grafici, exist_ok=True)
+
+    path_grafico = os.path.join(cartella_grafici, f"{dirName}.png")
+    plt.savefig(path_grafico, dpi=300, bbox_inches='tight')
+
+
 # FIXME vautare se tenere in considerazione per tipo di prompt
 # funzione che raccoglie tutte le spiegazioni di un modello in base al tipo al momento solo uncertain, fp, fn
 def captureOneTypeResponse(dirName, Type):
@@ -333,6 +394,7 @@ def saveSummaryToFile(globalSummary, modelName, type, base_folder="plots/infoTex
         f.write(globalSummary)
     print(f"Riassunto salvato in {filename}")
 
+
 # FixMe forse non ha senso considerare l'intero modello ma visualizzare in base al prompt e modello
 def plotWordcloudFromExplanations(explanations, modelName, Type):
     text = " ".join(explanations).lower()
@@ -380,6 +442,13 @@ def analyzeSummarizeAndVisualize(dirName, Type, modelName):
     # FixMe o si cambia modo di rappresentare le informazioni o al momento non sta fornendo nulla di sensato
     plotWordcloudFromExplanations(explanations, modelName, Type)
 
+
 # TODO altre funzioni di plotting (dipende da cosa mi serve nella relazione)
 if __name__ == "__main__":
-    analyzeSummarizeAndVisualize("resultsJSON/newFormats/qwenVL3b/Uncertain", "uncertain", "qwenVL-3b")
+    # analyzeSummarizeAndVisualize("resultsJSON/newFormats/qwenVL3b/Uncertain", "uncertain", "qwenVL-3b")
+    promptList=["Prompt-0-Eng", "Prompt-0-Ita", "Prompt-1-Eng", "Prompt-1-Ita", "Prompt-2-Eng", "Prompt-2-Ita",
+                "Prompt-3-Eng", "Prompt-3-Ita", "Prompt-4-Eng", "Prompt-4-Ita", "Prompt-5-Eng", "Prompt-5-Ita",
+                "Prompt-6-Eng", "Prompt-6-Ita"]
+    for prompt in promptList:
+        plotStatsPromptDividedByModel(prompt)
+

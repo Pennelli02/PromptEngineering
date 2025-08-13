@@ -1,0 +1,728 @@
+{
+    "metrics": {
+        "total_processed": 100,
+        "total_real": 50,
+        "total_fake": 50,
+        "TP": 0,
+        "TN": 50,
+        "FP": 0,
+        "FN": 50,
+        "rejection_real": 0,
+        "rejection_fake": 0,
+        "text_parsing_errors": 0,
+        "text_parsing_error_rate": 0.0,
+        "accuracy": 0.5,
+        "precision": 0,
+        "recall": 0.0,
+        "false_negative_rate": 1.0,
+        "false_positive_rate": 0.0,
+        "rejection_real_rate": 0.0,
+        "rejection_fake_rate": 0.0,
+        "rejection_total_rate": 0.0,
+        "system_prompt": "Sei un sistema professionale di classificazione delle immagini che analizza le immagini fornite per determinare se mostrano un volto umano reale o uno generato.\nRispondi SOLO usando il seguente formato JSON:\n{\n  \"result\": \"[real face]\" oppure \"[generated]\" ,\n  \"explanation\": \"Una spiegazione precisa basata su indizi visivi osservati nell'immagine.\"\n}\nNON includere frasi generiche come 'non ci sono artefatti'. Sii visivo e dettagliato nella tua analisi.Rispondi ESCLUSIVAMENTE con questo JSON, senza commenti o testo extra.",
+        "user_prompt": "L'immagine fornita mostra un volto reale o uno generato? Tieni presente che i volti generati spesso presentano artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli. Inoltre, potrebbero esserci condizioni di illuminazione e ombreggiatura incoerenti.",
+        "oneShot": false
+    },
+    "responses": [
+        {
+            "image_path": "test_1\\real\\real_0.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano reale con dettagli della pelle, ombreggiature e imperfezioni tipiche dei volti reali. La bocca mostra denti naturali e le ombre sono distribuite in modo realistico. Non sono presenti artefatti evidenti o incongruenze nell'illuminazione che sarebbero tipiche di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_1.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con caratteristiche naturali, come la pelle, le rughe e le ombreggiatura, che sono in linea con un'immagine generata da un fotorealismo. I dettagli della bocca e delle orecchie sono relativamente uniformi e non presentano artefatti tipici dei volti generati.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_10.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra dettagli realistici come le rughe intorno agli occhi e le ombre sottili sotto gli zigomi. L'illuminazione \u00e8 coerente e non ci sono artefatti visibili come sfocature o imperfezioni nei dettagli del viso, indicando un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_11.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con dettagli realistici, inclusi i difetti cutanei e le ombreggiature naturali intorno agli occhi e al naso. La consistenza dei capelli e l'illuminazione sono coerenti con un volto umano reale. Non ci sono artefatti evidenti tipici delle immagini generate, come bordi nitidi o texture non naturali.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_12.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con evidenti rughe, dettagli delle orecchie e una variazione di ombreggiatura che indica una illuminazione naturale. Non ci sono artefatti o anomalie che suggeriscono un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_13.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra una persona con capelli ricci. Gli occhi, il naso e la bocca hanno una consistenza e un dettaglio realistici. L'illuminazione e le ombre sembrano coerenti, indicando un volto generato da una fonte realistica piuttosto che un artefatto generato dall'intelligenza artificiale.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_14.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto con dettagli naturali, come la forma del naso, la forma degli occhi e le rughe sottili intorno agli occhi. La bocca e le labbra appaiono naturali. Ci sono ombreggiatura e illuminazione coerenti intorno al viso, indicando un volto reale.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_15.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con dettagli complessi come le rughe intorno agli occhi, le imperfezioni nella pelle e le ombreggiature realistiche che sono tipiche dei volti reali. La qualit\u00e0 della pelle, la texture dei capelli e le ombreggiature sono coerenti con un'immagine di un volto umano. Non ci sono artefatti evidenti come un'illuminazione inesistente o distorsioni che suggerirebbero un'immagine generata.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_16.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con dettagli fini come le rughe intorno agli occhi, la texture della pelle e le ombre che si formano sotto il naso e intorno alla bocca. Le condizioni di illuminazione sono coerenti e non ci sono artefatti evidenti tipici dei volti generati. La bocca e le orecchie appaiono naturali e in conformit\u00e0 con la struttura di un volto umano.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_17.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano reale con dettagli fini come le rughe intorno agli occhi e il contorno della bocca, indicando un'immagine reale. Non ci sono artefatti evidenti, come la sfocatura o i difetti di rendering, che sono tipici delle immagini generate. Il colore e la consistenza della pelle, nonch\u00e9 le condizioni di illuminazione, sono coerenti con un volto reale.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_18.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con dettagli realistici come le ombre sulle guance e le imperfezioni della pelle. Le condizioni di illuminazione sembrano coerenti e non ci sono artefatti evidenti intorno alla bocca o alle orecchie. Le caratteristiche del viso sono naturali e non mostrano la tipica natura artificiale dei volti generati.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_19.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con dettagli come le iridi, la piega nasale e le rughe intorno agli occhi. La pelle ha un aspetto naturale con variazioni di colore e texture. La bocca presenta una chiusura naturale, e le ombreggiature sono coerenti, indicando un volto generato in modo realistico.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_2.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "La pelle presenta irregolarit\u00e0 e texture tipiche di un volto reale, con ombreggiatura e illuminazione coerenti. Ci sono imperfezioni nella forma del viso, la bocca e le orecchie, e l'attaccatura dei capelli sono presenti, indicando che si tratta di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_20.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra dettagli fini del volto, come le rughe intorno agli occhi e alla bocca, che indicano un volto reale. Le condizioni di illuminazione sono coerenti e il volto mostra una naturale variabilit\u00e0 dei colori e delle ombre. Non ci sono artefatti evidenti come la mancanza di dettagli nei capelli o irregolarit\u00e0 nelle ombre.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_21.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con una pelle, rughe e una leggera espressione. La luce \u00e8 coerente e non ci sono artefatti visibili come la mancanza di dettagli o gli imperfezioni tipiche dei volti generati. La bocca e le orecchie hanno una forma naturale e le ombre sono distribuite in modo realistico.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_22.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto con dettagli naturali, come la piega del naso, l'attaccatura dei capelli e le ombreggiature attorno agli occhi. La bocca e le orecchie appaiono definite, e l'illuminazione sembra coerente, il che indica un volto reale piuttosto che uno generato, dove spesso si osservano artefatti e imperfezioni nella rappresentazione del viso.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_23.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un giovane in giacca blu con una sorriso. Ci sono peli intorno agli occhi e all'attaccatura dei capelli, il che suggerisce un volto reale. La risoluzione e i dettagli dell'immagine sono coerenti con un volto fotografico, senza artefatti o anomalie tipiche dei volti generati.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_24.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto con dettagli fini, incluse le ombre e le irregolarit\u00e0 della pelle e del barbuto. La texture della pelle, la distribuzione delle ombre e il dettaglio del barbuto sono caratteristiche tipiche di un volto reale, piuttosto che di un volto generato. La bocca e le orecchie appaiono naturali e non presentano artefatti tipici delle immagini generate.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_25.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con dettagli realistici, come le rughe intorno agli occhi e alla bocca, le ombre del viso e la texture del cuoio capelluto. Non ci sono artefatti evidenti o incongruenze nell'illuminazione che suggerirebbero una generazione di immagini.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_26.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano reale con ombreggiature naturali intorno al viso e capelli. Le ombre sono irregolari, il che suggerisce una luce ambientale reale. Non ci sono artefatti evidenti, come sfocature o discontinuit\u00e0 nei colori, tipiche delle immagini generate. L'espressione del volto e la texture della pelle sembrano realistici.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_27.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine presenta caratteristiche tipiche di un volto umano reale, come la forma del viso, la distribuzione delle ombre intorno agli occhi e alla bocca, e la consistenza dei capelli. Non si osservano artefatti come la mancanza di dettagli, l'illuminazione non uniforme o la consistenza innaturale tipiche delle immagini generate.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_28.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con dettagli come le rughe intorno agli occhi, le imperfezioni della pelle e l'attaccatura dei capelli. Le ombre sono realistiche e coerenti. Non ci sono artefatti evidenti che tipicamente sono presenti nei volti generati.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_29.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con dettagli come le labbra definite, le orecchie e i capelli. La tonalit\u00e0 di colore e la texture della pelle sono coerenti e tipiche di un volto reale. Sebbene ci sia un velo viola, non ci sono artefatti evidenti o anomalie tipiche delle immagini generate, come i bordi sparsi o l'illuminazione inconsistente.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_3.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con un'illuminazione e un'ombreggiatura realistiche. Si vedono le rughe, le linee del viso e le variazioni di colore tipiche dei volti reali. Non ci sono artefatti o dettagli innaturali. L'espressione e le caratteristiche del volto sono coerenti con un soggetto reale.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_30.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine presenta una rappresentazione chiara di un volto umano con dettagli realistici come le rughe attorno agli occhi, la forma del naso e la texture della pelle. Le ombre e le luci sono coerenti e non ci sono artefatti evidenti come artefatti di sintesi o anomalie nella texture della pelle. L'immagine mostra una condizione di illuminazione e ombreggiatura ragionevole per un volto reale.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_31.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con dettagli realistici come le rughe, la struttura ossea e la texture della pelle. I dettagli del volto sono coerenti, i contorni sono ben definiti e non ci sono artefatti digitali evidenti come texture non naturali o ombre inconsistenti, indicando che si tratta di un volto reale.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_32.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra dettagli del volto umani, come le ombreggiatura intorno agli occhi e alle orecchie, la definizione delle labbra e i dettagli del tessuto dell'accessorio per capelli. Non ci sono artefatti evidenti come la mancanza di dettagli nella pelle, un'illuminazione innaturale o modelli ripetitivi che sono tipici dei volti generati.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_33.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con caratteristiche realistiche come ombre, texture della pelle e dettagli del viso. C'\u00e8 una sovrapposizione di ombre sul viso e sulla bocca, e la texture della pelle sembra naturale. Non ci sono artefatti evidenti che indicherebbero un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_34.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra una donna con un'espressione naturale e un'illuminazione non uniforme. I dettagli del viso, come le pieghe intorno agli occhi e l'attaccatura dei capelli, sono coerenti e naturali, indicando un volto generato da una sorgente reale piuttosto che da un processo di generazione di immagini. Non ci sono artefatti evidenti come la mancanza di dettagli o le condizioni di illuminazione incoerenti che sarebbero tipiche di un'immagine generata.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_35.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra dettagli fini delle caratteristiche del viso, come le rughe attorno agli occhi e le variazioni di colore nella pelle. La bocca non presenta artefatti o smoothing, indicando che si tratta di un volto reale. L'illuminazione e le ombre sono coerenti con le condizioni di illuminazione naturali, il che suggerisce ulteriormente la natura reale dell'immagine.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_36.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine presenta dettagli fini come le rughe intorno agli occhi e le ombre naturali sotto gli zigomi. La texture della pelle appare realistica e coerente in tutta l'immagine. Non ci sono artefatti visibili come la sfumatura irregolare o gli imperfezioni che si vedrebbero in un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_37.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano reale con texture dettagliate della pelle, rughe e ombre naturali intorno agli occhi. Le condizioni di illuminazione sembrano coerenti e non ci sono artefatti evidenti come i difetti geometrici o le irregolarit\u00e0 tipiche dei volti generati. La bocca e le orecchie appaiono realistiche e ben definite.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_38.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra una persona con caratteristiche facciali realistiche, tra cui dettagli come le rughe intorno agli occhi e la forma del naso. L'illuminazione e le ombre sono coerenti e non ci sono artefatti evidenti come i difetti di rendering tipici dei volti generati. Il soggetto mostra un'espressione naturale, con occhi chiusi, il che contribuisce all'aspetto realistico.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_39.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con dettagli realistici come le rughe, le ombreggiature intorno agli occhi e alla bocca, e la texture della pelle. I dettagli delle sopracciglia e delle iridi sono chiari, indicando che si tratta di un volto reale.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_4.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con dettagli realistici come le rughe attorno agli occhi e all'attaccatura dei capelli. L'illuminazione \u00e8 relativamente uniforme e non ci sono artefatti visibili come borchie o texture inusuali che tipicamente si trovano nelle immagini dei volti generati. L'espressione del volto e la resa della pelle sembrano realistiche.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_40.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine presenta dettagli fini nella pelle, nelle texture dei capelli e nel colore della bocca, indicando un volto reale. Le ombre sono coerenti e non ci sono artefatti evidenti nell'immagine, come i bordi sfocati o le texture innaturali tipiche delle immagini generate.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_41.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra una donna con un volto umano con imperfezioni come macchie sulla pelle e dettagli dei capelli realistici. La distribuzione dell'illuminazione e l'ombreggiatura appaiono naturali, il che suggerisce che si tratta di un'immagine reale piuttosto che di un'immagine generata con artefatti o illuminazione incoerente.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_42.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con trucco verde. L'illuminazione \u00e8 coerente e non ci sono artefatti come sfocature o imperfezioni che sono tipiche dei volti generati. La texture della pelle e la forma del viso sono coerenti, suggerendo un'immagine reale.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_43.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con caratteristiche come una barba grigia, occhi chiari e dettagli del viso che suggeriscono una rappresentazione reale. Non sono evidenti artefatti o anomalie tipiche dei volti generati, come bordi a sfumatura, imperfezioni o un'illuminazione inconsistente.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_44.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con caratteristiche realistiche come la pelle, le rughe e la forma del viso. L'illuminazione \u00e8 consistente e non ci sono artefatti visibili attorno agli occhi, alla bocca o alle orecchie. La texture della pelle \u00e8 naturale e non presenta le anomalie tipiche delle immagini generate.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_45.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine presenta caratteristiche tipiche di un volto umano reale: un'illuminazione coerente, ombreggiature naturali sotto gli occhi e sulla fronte, e una resa dettagliata dei tratti del viso, come l'attaccatura dei capelli e la forma delle labbra. Non si osservano artefatti o anomalie tipiche delle immagini generate.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_46.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con caratteristiche realistiche come l'espressione, la forma del naso, la bocca e le sopracciglia. Ci sono dettagli di illuminazione e ombreggiatura coerenti che indicano una ripresa del mondo reale, anzich\u00e9 un artefatto generato. La consistenza dei capelli e la forma del viso sono tipici di un volto reale.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_47.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con dettagli come le rughe intorno agli occhi, la forma del naso e le ombreggiate sotto gli zigomi. La consistenza dei capelli e le condizioni di illuminazione sono coerenti con un'immagine di un volto reale, senza artefatti distintivi tipici delle immagini generate.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_48.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con dettagli come le rughe intorno agli occhi e l'illuminazione sulla pelle. L'espressione del viso e le ombre sono coerenti con un volto reale. Non ci sono artefatti o incoerenze evidenti che suggerirebbero un'immagine generata.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_49.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine presenta un volto con imperfezioni naturali, come la pelle irregolare, le ombre sui lati del viso e l'imprecisa illuminazione intorno alla bocca. L'espressione del volto e la texture della pelle suggeriscono una rappresentazione reale, piuttosto che un'immagine generata con artefatti di elaborazione.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_5.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra dettagli fini della pelle, inclusi rughe sottili intorno agli occhi e alla bocca, il che indica un volto reale. C'\u00e8 una leggera ombreggiatura e illuminazione coerente sul viso e sulla testa, indicando che si tratta di una rappresentazione realistica di un volto umano.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_6.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra dettagli complessi e variazioni di illuminazione nel volto, compresi i dettagli della barba e dell'attaccatura dei capelli. Sono presenti sfumature e ombre nel volto, indicando che si tratta di un volto reale e non di un'immagine generata. L'immagine mostra anche dei dettagli complessi dell'occhio e delle rughe, che sono in genere assenti nelle immagini generate.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_7.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con dettagli realistici, incluse le ombre intorno agli occhi e alle orecchie. La bocca ha un aspetto naturale e le condizioni di illuminazione sono coerenti. Questi elementi suggeriscono che si tratta di un volto reale piuttosto che di un volto generato, che spesso presenta artefatti in queste aree.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_8.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con dettagli realistici, come le rughe intorno agli occhi e il riflesso delle orecchie. La luce e le ombre sono distribuite in modo coerente, suggerendo un'immagine di un soggetto reale, e non i tipici artefatti presenti nelle immagini generate. Le proporzioni facciali sono realistiche.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_9.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine presenta dettagli realistici come le rughe, le imperfezioni e le ombre intorno agli occhi e alla bocca. La texture della camicia e le condizioni di illuminazione sono coerenti con una foto di un soggetto reale. Non ci sono artefatti evidenti associati a un'immagine generata.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_50.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con dettagli fini come le rughe attorno agli occhi, la struttura ossea e la texture della pelle. La bocca presenta un sorriso naturale, le ombreggiatura e i riflessi delle luci sulla pelle sono coerenti e naturali, suggerendo che si tratta di un volto generato dall'uomo e non di un'immagine generata artificialmente.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_51.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con caratteristiche realistiche come le pieghe della pelle attorno agli occhi, la definizione delle sopracciglia e la forma del naso. La distribuzione delle ombre e l'illuminazione sono coerenti con l'illuminazione naturale, indicando che si tratta di un volto reale. Non ci sono artefatti evidenti come bordi sfuocati o incoerenze nelle caratteristiche del volto.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_52.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano reale con dettagli come le ombreggiature intorno agli occhi e alla bocca, suggerendo un'illuminazione e un'anatomia realistiche. L'immagine presenta un volto con caratteristiche naturali e complesse, caratteristica di una persona reale. Non sono visibili artefatti o anomalie tipiche dei volti generati.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_53.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine presenta un volto umano con dettagli realistici, come le rughe intorno agli occhi e le ombre sulla guancia. La texture della pelle e il riflesso degli occhi sono coerenti con un volto reale. La bocca e le orecchie appaiono naturali e non presentano artefatti che sarebbero tipici di un'immagine di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_54.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con dettagli realistici, come rughe, variazioni di tonalit\u00e0 della pelle e un sorriso naturale. Le condizioni di illuminazione sembrano coerenti e non vi sono artefatti evidenti, come il ridondante o le linee irregolari che sono tipiche dei volti generati. Gli occhi sembrano posizionati correttamente e le ombre sono realistiche, indicando una rappresentazione di un volto reale.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_55.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con dettagli visibili come le rughe intorno agli occhi e alle labbra, e l'attaccatura dei capelli. Le condizioni di illuminazione sembrano coerenti e non presentano i tipici artefatti delle immagini generate, come sgranature o strane ombre. La bocca ha un aspetto naturale e non mostra anomalie.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_56.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con caratteristiche realistiche, inclusi dettagli come le ombre intorno agli occhi, i capelli e le imperfezioni nella pelle. La bocca e le orecchie appaiono naturali.  Non ci sono artefatti visibili come la mancanza di dettagli, la pittura o le condizioni di illuminazione innaturali tipiche delle immagini generate.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_57.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con ombreggiatura e illuminazione plausibili. Gli occhi sono focalizzati e presentano un'espressione naturale. Non sono evidenti artefatti tipici delle immagini generate come texture irregolari, distorsioni o anomalie nella distribuzione dei colori.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_58.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra dettagli realistici come le rughe intorno agli occhi, le ombrendature naturali e le texture della pelle, indicando un volto umano reale. Non ci sono artefatti evidenti come sfumature anomale o distorsioni degli ombreggiamenti, tipiche delle immagini generate.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_59.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine presenta un volto umano con dettagli realistici come la pelle, le ombreggiatura intorno agli occhi e alla bocca, e la texture dei capelli. La luce \u00e8 diffusa in modo naturale e non ci sono artefatti evidenti come distorsioni o imperfezioni tipiche delle immagini generate. La forma del volto \u00e8 coerente con quella umana e le proporzioni sono realistiche.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_60.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con caratteristiche realistiche come le rughe, le ombre delicate intorno agli occhi e le variazioni di tonalit\u00e0 della pelle che sono tipiche dei volti reali. La texture della pelle e le imperfezioni sono coerenti con un'immagine di un volto generato. Inoltre, le ombre e le condizioni di illuminazione sembrano realistiche.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_61.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine presenta una rappresentazione realistica di un volto umano. Il soggetto mostra tratti distintivi come le sopracciglia, l'attaccatura dei capelli e la forma del viso. Non ci sono artefatti evidenti o incongruenze nell'illuminazione che suggeriscono che si tratti di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_62.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con caratteristiche realistiche, tra cui ombreggiatura intorno al naso e agli occhi. Le condizioni di illuminazione sembrano coerenti e non si notano artefatti o incoerenze tipiche dei volti generati.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_63.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con dettagli realistici, inclusi tratti fini come le rughe intorno agli occhi e le imperfezioni della pelle. La distribuzione dell'illuminazione \u00e8 coerente e non ci sono artefatti visibili nell'area della bocca, delle orecchie o dell'attaccatura dei capelli che suggerirebbero un volto generato. La bocca presenta un sorriso naturale e le ombre sono posizionate in modo realistico.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_64.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine presenta un volto umano con dettagli naturali come le rughe intorno agli occhi e alla bocca, il riflesso nei capelli e le variazioni di colore della pelle, indicando una rappresentazione realistica di un volto umano. Non sono presenti artefatti o anomalie che suggerirebbero un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_65.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con dettagli come le rughe, le imperfezioni del cuoio capelluto e la texture della pelle. Gli occhi e la bocca sembrano naturali. La luce \u00e8 diffusa, senza artefatti evidenti che sono tipici dei volti generati.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_66.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano reale con dettagli del viso, come le rughe intorno agli occhi, le sopracciglia e la bocca, che sono tipici delle immagini reali. La qualit\u00e0 della pelle, le ombre e le condizioni di illuminazione sono coerenti con una fotografia di un volto reale.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_67.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra dettagli del viso come rughe, luci e ombre, insieme a un'espressione naturale sul viso. Non sono presenti artefatti tipici di un volto generato, come un'illuminazione inconsistente o dettagli artificiali intorno agli occhi, alla bocca o alle orecchie.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_68.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con caratteristiche realistiche, tra cui dettagli del naso, delle labbra e della pelle. L'illuminazione \u00e8 coerente e non presenta artefatti tipici dei volti generati, come strisce o irregolarit\u00e0 nella pelle.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_69.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con una leggera illuminazione e ombreggiature che sembrano naturali. La bocca e le orecchie sono ben definite, con un'attaccatura dei capelli che appare plausibile per un volto umano. Non ci sono artefatti visibili come sfocature o anomalie di colore che suggerirebbero un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_70.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra dettagli fini come le rughe e le venature sulla pelle, tipici dei volti reali. Il volto mostra un'illuminazione e un ombreggiatura credibili. Non ci sono artefatti visibili come distorsioni o imperfezioni che indicherebbero un'immagine generata.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_71.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con caratteristiche visibili come le ombre naturali intorno agli occhi e al naso, l'attaccatura dei capelli e la texture della pelle. Non sono presenti artefatti o anomalie tipiche dei volti generati, come la mancanza di dettaglio nelle ombre o una texture non realistica.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_72.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con dettagli fini come le rughe intorno agli occhi e alla bocca, l'espressione naturale e le variazioni di illuminazione. Non sono presenti artefatti evidenti come sfocature o anomalie nei bordi dell'immagine che sarebbero tipiche di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_73.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con dettagli realistici come le pieghe della pelle intorno agli occhi e il riflesso nelle orecchie. I dettagli dei capelli e il gradiente di ombreggiatura sono coerenti con una fotografia di un volto reale. Non ci sono artefatti evidenti come bordi a macchie o transizioni di colore irregolari che sono tipiche dei volti generati.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_74.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto con dettagli realistici come le rughe attorno agli occhi, le imperfezioni sulla pelle e la composizione dei capelli. Le ombre sono coerenti e i colori sono naturali, suggerendo che si tratta di un volto umano reale, nonostante la scarsa definizione dovuta alla messa a fuoco.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_75.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con caratteristiche realistiche, tra cui dettagli sulle labbra, le orecchie e la texture dei capelli. La luce e le ombre sembrano coerenti. Non ci sono artefatti evidenti come eccessivi dettagli o irregolarit\u00e0 che suggeriscono una generazione artificiale.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_76.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con dettagli realistici come le rughe sottili intorno agli occhi, la texture della pelle e le ombre realistiche che evidenziano la struttura ossea. L'illuminazione \u00e8 coerente e la bocca, le orecchie e l'attaccatura dei capelli non mostrano i tipici artefatti di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_77.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con dettagli fini come le rughe intorno agli occhi e alla bocca. La texture della pelle e le ombreggiatura sono coerenti, indicando un'immagine reale. Non sono visibili artefatti, come i contorni sgranati o la texture innaturale tipici dei volti generati.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_78.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con dettagli come le ombre intorno agli occhi e all'attaccatura dei capelli, nonch\u00e9 la consistenza dei capelli. Non ci sono artefatti evidenti o imperfezioni tipiche delle immagini generate. L'illuminazione sembra naturale.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_79.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano reale con dettagli realistici come le rughe intorno agli occhi e la texture della pelle. Gli occhi hanno una chiara illuminazione e la bocca \u00e8 in una posa naturale. Non sono presenti artefatti o condizioni di illuminazione incoerenti che sono tipiche dei volti generati.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_80.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano reale con alcune ombreggiature naturali e dettagli come le rughe sulla fronte. Le condizioni di illuminazione sembrano coerenti e non ci sono artefatti evidenti come la mancanza di dettagli intorno alla bocca, alle orecchie o all'attaccatura dei capelli tipiche dei volti generati.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_81.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra una donna con dettagli realistici per la pelle, le rughe e le condizioni di illuminazione. Non ci sono artefatti evidenti come la sfocatura o la texture innaturale tipiche delle immagini dei volti generati. L'attaccatura dei capelli \u00e8 un po' sfocata e l'illuminazione \u00e8 relativamente uniforme, il che \u00e8 pi\u00f9 probabile che provenga da una fonte reale.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_82.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con ombreggiatura e riflessi coerenti, indicando una simulazione del volto reale. Il livello di dettaglio e la texture della pelle sono tipici dei volti reali. La bocca e l'attaccatura dei capelli mostrano una simulazione realistica.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_83.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine presenta dettagli fini e un'illuminazione naturale, indicando un volto reale. La bocca e l'attaccatura dei capelli appaiono naturali, senza artefatti o distorsioni tipici delle immagini generate. Gli ombreggiamenti sono coerenti e distribuiti in modo realistico.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_84.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un bambino con caratteristiche facciali naturali, inclusi dettagli nella pelle, nel trucco e nell'attaccatura dei capelli. Non sono evidenti artefatti o incoerenze di illuminazione che suggerirebbero un volto generato. La pelle mostra variazioni di colore e texture tipiche dei volti reali, inoltre i dettagli attorno agli occhi e alla bocca appaiono realistici.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_85.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra dettagli complessi nei dettagli del viso, come le rughe intorno agli occhi e le imperfezioni sulla pelle, che sono caratteristiche tipiche di un volto umano reale. L'illuminazione \u00e8 parzialmente uniforme, senza ombre eccessive o artefatti che suggerirebbero un'immagine generata. Le ombre intorno agli occhi e alla bocca sono realistiche e coerenti con la modellazione dei volti umani.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_86.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con un'illuminazione naturale e ombreggiature realistiche intorno agli occhi e alla bocca. Sono presenti lievi imperfezioni e variazioni nella tonalit\u00e0 della pelle tipiche dei volti reali. Non ci sono artefatti o anomalie di rendering evidenti che suggerirebbero che si tratti di un'immagine generata.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_87.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con dettagli realistici, come le ombre sulle guance e la definizione del contorno dei capelli. La texture della pelle e i dettagli dei capelli sembrano coerenti con un volto reale, piuttosto che i tipici artefatti presenti nelle immagini generate. Inoltre, la illuminazione appare uniforme, il che suggerisce una fonte di luce naturale.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_88.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con dettagli come le ombreggiature intorno agli occhi e alle orecchie, che sono coerenti con una rappresentazione del volto reale. La bocca ha un sorriso naturale e l'illuminazione \u00e8 uniforme, indicando che non si tratta di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_89.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con ombreggiature realistiche intorno agli occhi e alle tempie. Il tono della pelle, la texture e i dettagli della bocca sembrano realistici. Non ci sono artefatti evidenti come la texture delle linee o le condizioni di illuminazione inconsistenti tipiche delle immagini generate.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_90.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto con texture della pelle, riflessi nei capelli e ombreggiatura naturale, indicando che \u00e8 un volto reale. Non ci sono artefatti evidenti come discontinuit\u00e0 nella texture della pelle o condizioni di illuminazione innaturali.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_91.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto con caratteristiche realistiche come le pieghe della pelle attorno agli occhi e la barba. La consistenza del volto, la gradazione dei colori e i dettagli delle ombre suggeriscono un'immagine reale, piuttosto che un'immagine generata con artefatti digitali evidenti. L'illuminazione \u00e8 coerente e le ombre sono posizionate in modo plausibile, indicando un soggetto reale.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_92.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con caratteristiche naturali come l'attaccatura dei capelli, la bocca e le orecchie. L'illuminazione e le ombre sembrano coerenti con un soggetto reale e non presentano le anomalie caratteristiche dei volti generati, come artefatti o irregolarit\u00e0 nell'attaccatura dei capelli.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_93.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con dettagli realistici come le ombre intorno agli occhi e alla bocca. Le condizioni di illuminazione sono coerenti. Non si notano artefatti o anomalie tipiche delle immagini generate. La texture dei capelli e la pelle sembrano naturali.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_94.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra una persona con un volto dettagliato, con occhi, bocca e naso chiaramente definiti. L'illuminazione \u00e8 relativamente uniforme e non ci sono artefatti evidenti come sfumature o imperfezioni. La trama del tessuto sullo sfondo \u00e8 presente, indicando una scena fotografica reale, piuttosto che un'immagine generata.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_95.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra una donna con caratteristiche facciali dettagliate, inclusi i lineamenti del viso, la texture della pelle e le ombre che creano profondit\u00e0. La bocca e le orecchie appaiono naturali e non presentano artefatti o anomalie tipiche delle immagini generate. L'illuminazione \u00e8 coerente e non ci sono discrepanze evidenti che suggerirebbero una creazione artificiale.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_96.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con dettagli realistici come le rughe intorno agli occhi, la texture della pelle e la forma delle orecchie. Le ombreggiatura \u00e8 coerente e l'illuminazione \u00e8 uniforme, indicando una fotografia reale piuttosto che un'immagine generata con artefatti inusuali.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_97.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine presenta un volto con caratteristiche realistiche, come le ombre sulle guance e intorno agli occhi, l'apertura della bocca e i dettagli sulle sopracciglia. Non ci sono artefatti evidenti o imperfezioni tipiche delle immagini generate, come distorsioni, texture inconsistenti o condizioni di illuminazione anomale intorno alla bocca, alle orecchie o all'attaccatura dei capelli.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_98.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra una donna umana con caratteristiche facciali ben definite, inclusi occhi, naso, bocca e orecchie. La luce e le ombre sono coerenti e non ci sono artefatti visibili che indicherebbero un volto generato. La bocca mostra un sorriso naturale e i dettagli del viso sono realistici.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_99.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con dettagli realistici come le rughe intorno agli occhi e le variazioni di illuminazione sui lati del viso. Ci sono imperfezioni realistiche nel dettaglio della pelle, e i colori sembrano naturali. Non sono presenti artefatti evidenti come l'assenza di ombre o dettagli impossibili che spesso si riscontrano nei volti generati.",
+            "error": null
+        }
+    ]
+}

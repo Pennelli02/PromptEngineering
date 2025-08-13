@@ -1,0 +1,728 @@
+{
+    "metrics": {
+        "total_processed": 100,
+        "total_real": 50,
+        "total_fake": 50,
+        "TP": 45,
+        "TN": 3,
+        "FP": 46,
+        "FN": 5,
+        "rejection_real": 0,
+        "rejection_fake": 0,
+        "text_parsing_errors": 1,
+        "text_parsing_error_rate": 0.01,
+        "accuracy": 0.48484848484848486,
+        "precision": 0.4945054945054945,
+        "recall": 0.9,
+        "false_negative_rate": 0.1,
+        "false_positive_rate": 0.9387755102040817,
+        "rejection_real_rate": 0.0,
+        "rejection_fake_rate": 0.0,
+        "rejection_total_rate": 0.0,
+        "system_prompt": "You are a professional image classification system that analyzes provided images to determine if they show a real human face or a generated one.\nRespond ONLY with the following JSON format:\n{\n  \"result\": \"[real face]\" or \"[generated]\",\n  \"explanation\": \"A precise explanation based on observed visual clues from the image.\",\n}\nDo NOT include generic phrases like 'there are no artifacts'. Be visual and detailed in your analysis.Reply ONLY with this JSON, no extra text.",
+        "user_prompt": "Are there any artifacts around the mouth, ears, or hairline that might indicate the face is AI-generated?",
+        "oneShot": false
+    },
+    "responses": [
+        {
+            "image_path": "test_1\\real\\real_0.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "The face exhibits an unnaturally smooth transition around the mouth and jawline, with a lack of subtle variations in skin texture typically found in real human faces. The teeth appear slightly too regular and symmetrical. The hair around the hairline seems to abruptly transition, lacking the natural blending and texture of human hair. These features combined strongly suggest the image is artificially generated.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_1.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "The face exhibits a slight blurring and inconsistent color around the mouth and the hairline. The shading beneath the lips is too smooth and uniform, lacking the subtle variations expected in a real human face. The color transition between the skin and the background is abrupt and lacks natural blending, common in generated images. The overall appearance has an uncanny valley effect.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_10.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "The subject\u2019s mouth area exhibits a subtle, unnatural blush-like rendering, specifically a smooth, even pink tone that is not typical of human skin coloration. The texture around the mouth is overly soft and lacks the fine details like pores and variations in skin tone present in genuine photographs. The hairline is also slightly unnaturally smooth and lacks the subtle shadow and variations in color one would expect from a naturally occurring hairline. Furthermore, the overall rendering of the face seems overly refined, with an absence of the subtle imperfections that characterize real human faces.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_11.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "The face exhibits several characteristics strongly suggestive of an AI-generated image. The mouth area appears unnaturally smooth and lacks fine details like wrinkles or variations in skin tone, a common issue in synthetic faces. The hairline is overly sharp and lacks the soft, diffused edges one would expect in a real human hairline. Furthermore, the overall sharpness and lack of subtle imperfections in the skin texture contribute to the impression that this is a digitally created face.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_12.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "The image exhibits several visual cues strongly suggesting a generated face. The mouth appears unnaturally smooth with a slight distortion of the lips and teeth. The ear is significantly flattened and lacks realistic folds and imperfections typically found in human ears, including a noticeable lack of detail in the inner ear region. The hairline appears too perfectly defined and sharp, with a lack of the subtle variations and irregularities that characterize a real human head. The overall skin texture is also somewhat uniform and lacks the subtle blemishes and variations that are common in photographs of human skin.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_13.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "The hairline around the forehead appears slightly too sharp and lacks the subtle variations of light and shadow expected in a real human hairline. The lips are overly smooth with no subtle imperfections such as slight asymmetry or variations in color. The ears are also slightly too large and lack the detailed texture of skin creases and folds typically found in human ears. The overall rendering of the face, particularly the hair and skin, lacks the natural noise and imperfections characteristic of photographs of real people.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_14.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "The image exhibits several visual characteristics indicative of a generated face. The mouth appears overly smooth and symmetrical, lacking the subtle imperfections and variations of muscle movement typical of a real human mouth. The hairline is unnaturally sharp and uniform, with a lack of the softer, more diffuse transition observed in genuine hair against skin. Additionally, the skin tone is excessively even and lacks the subtle color gradients and pores present in real skin. The overall impression is a hyper-realistic but ultimately artificial depiction of a face.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_15.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "The generated classification is based on the unnaturally smooth skin texture around the mouth and the subtly misplaced reflection in the eyes. The features of the face, particularly the shape of the nose and the ear, appear slightly off and lack the subtle imperfections found in human faces. There is an unnatural smoothness to the skin and the reflection in the eyes is not consistently positioned and looks artificial.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_16.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "The jawline and mouth display an unnatural smoothness with no visible wrinkles or imperfections typical of a real human face. The hairline has a slightly too-perfect, consistent line, lacking the subtle variations and shadowing that would be expected in a genuine scalp. The ears appear disproportionately large in relation to the head, and the skin texture lacks the micro-details and slight irregularities characteristic of a naturally occurring human skin surface. The overall appearance is overly polished and lacks the subtle visual noise present in real photographs.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_17.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "The face exhibits several characteristics indicative of AI generation. The lips are unnaturally smooth with no visible texture or minor imperfections. The jawline appears overly sharp and defined, lacking the subtle variations present in a real human face. Additionally, the hairline around the forehead is overly smooth and lacks the scattered hair follicles typically found in human hair. The overall appearance lacks the slight asymmetries and subtle details associated with a photograph of a real person.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_18.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "The image exhibits several visual cues strongly indicative of a generated face. The mouth has a slightly unnatural smoothness and lacks the subtle imperfections and fine wrinkles typical of a real human mouth. The ear is flattened and lacks realistic details in the folds of skin. The hair around the hairline has an overly smooth texture without visible strands or individual hair variations. These elements combined suggest a synthesized image rather than a photograph of a human face.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_19.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "The generated classification is based on several visual indicators. The teeth are overly smooth and perfectly aligned, a common characteristic of AI-generated faces. The lips have an unnatural, slightly flattened appearance, lacking the subtle imperfections and variations found in real human lips. The ear is notably smooth and lacks the typical folds and wrinkles observed in human ears. The hairline is too uniformly dark and lacks the subtle gradations of color found in real hair. The overall sharpness and lack of natural texture contribute to this determination.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_2.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image shows a natural-looking human face with realistic skin texture and subtle imperfections such as fine lines around the eyes and mouth. The hair appears soft and slightly disheveled, consistent with a real human subject. There are no noticeable artifacts or unnatural smoothing present around the ears, mouth, or hairline, indicating this is likely a genuine photograph of a child.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_20.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "The hairline exhibits a very sharp, unnatural transition with a slight blurring effect and a lack of subtle variations in hair texture commonly seen in real photographs. The skin around the mouth shows a very smooth, almost waxy texture, with a noticeable absence of fine wrinkles and pores, typical of realistic human skin. The ear is also unusually smooth and lacks the subtle shadows and variations expected in a photograph of a human ear. These characteristics suggest the image was likely generated by an AI.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_21.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "The skin texture around the mouth appears overly smooth and lacks the subtle imperfections and wrinkles typically found in real human skin. The hairline is very sharp and well-defined, without any natural blending or variation. There\u2019s a slight lack of micro-detail in the shadows around the eye and nose, indicative of a digitally rendered image rather than a photograph of a real person.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_22.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "The image exhibits a high degree of artificial smoothness around the mouth and chin, which is typical of generated faces. The skin texture is overly uniform with no visible pores or fine wrinkles. The hairline is unnaturally defined and sharp, lacking the subtle variations common in human hair. The overall impression is a flawlessly rendered, almost sterile, human face, indicative of synthetic generation.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_23.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "The face exhibits a slightly unnatural smoothness, particularly around the mouth and jawline, which is a common characteristic of AI-generated faces. The skin texture lacks the subtle variations and imperfections expected in a real human face. The slight over-definition of the lips and the lack of fine wrinkles around the eyes and mouth are indicative of synthetic generation. The hairline appears slightly too perfectly shaped and lacks natural asymmetry.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_24.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "The image exhibits several visual characteristics strongly indicative of a generated face. The skin texture is overly smooth and lacks the subtle imperfections and variations typically found in human skin. The teeth are uniformly white and perfectly aligned, a common artifact in AI-generated faces. The lips have a slightly unnatural smoothness and lack the subtle folds and variations in color and texture that characterize a real mouth. Additionally, the hairline is too sharply defined and lacks the natural fuzziness and irregularities often seen in human hair.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_25.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "The image exhibits several visual indicators suggestive of a generated face. The hairline around the forehead appears overly smooth and uniform, lacking the subtle variations and textures typically found in human hair. The skin texture is notably flat and devoid of pores or wrinkles, presenting a sterile, artificial appearance. Furthermore, the mouth area demonstrates a lack of subtle shading and a slightly unnatural smoothness, and the ears lack the slight imperfections and irregular shapes that characterize real human ears.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_26.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "The face exhibits several anomalies consistent with AI-generated imagery. The skin texture appears overly smooth and uniform, lacking the subtle imperfections and variations typically found in human skin. There's a noticeable lack of detail around the mouth and ears, with an absence of wrinkles and subtle shadows. The hairline has a slightly unnatural, overly sharp transition compared to the soft blending of human hair. The overall image lacks the nuanced imperfections that would naturally occur in a real photograph of a human face.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_27.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "The image exhibits several visual cues indicative of an AI-generated face. The teeth appear overly smooth and perfectly aligned, lacking the subtle imperfections and irregularities characteristic of real human teeth. The skin texture around the mouth and jawline is notably uniform and lacks the variations in color and detail expected in a natural human face. The hairline appears slightly too sharp and precise, lacking the soft, blurred edges commonly observed in human hair. Additionally, the overall rendering of the face has a slightly sterile and overly polished quality, with minor inconsistencies in shading and color. These observations collectively suggest that this image is likely a synthetic creation.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_28.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "The face exhibits an overly smooth skin texture with no visible pores or fine details, a characteristic often found in generated images. The teeth are unnaturally symmetrical and perfectly aligned. The hairline is too sharply defined and lacks the subtle blending and variations typical of a real human hairline. The overall proportions, particularly the distance between the eyes and nose, appear slightly off, suggesting a generated face rather than a photograph of a naturally occurring human face.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_29.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "The face exhibits a smooth, overly-perfect skin texture with no visible pores or fine lines, which is characteristic of generated images. The hair color transition around the hairline is abrupt and lacks natural blending, and the eye details lack the subtle variations and imperfections typically found in real human eyes. The overall impression is overly refined and lacks the subtle asymmetries and nuances of a natural human face.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_3.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "The face exhibits a strange, unnatural smoothness, particularly around the jawline and mouth. The skin texture appears uniformly smooth without any realistic wrinkles or pores. The hairline is overly sharp and lacks the soft blending often seen in photographs of human hair. The ear is noticeably too large and has an unnatural, slightly off-color gradient. These irregularities point to a generated image rather than a photograph of a human.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_30.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "The hairline around the forehead and temples appears unnaturally smooth and uniform, lacking the subtle variations and irregularities expected in a real human hairline. The mouth has a slightly flattened and overly symmetrical appearance, with a lack of fine wrinkles and micro-details around the lips. The skin texture around the cheeks appears somewhat soft and lacking the natural imperfections and variations in tone that are common in real photographs. The overall impression is one of an image that has been overly smoothed and processed, suggesting it was likely generated by an AI.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_31.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "The face exhibits several visual cues suggesting it is AI-generated. The lips are excessively smooth and lack the subtle variations in color and texture typically found in human skin. The jawline is overly symmetrical and lacks the subtle irregularities of a real face. The ear is unnaturally smooth and lacking the typical folds and shadowing associated with real ears. The hairline is sharp and lacks the natural softness often seen in human hair. These features point to an image produced by an algorithm rather than a photograph of a real person.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_32.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "The face exhibits an unnaturally smooth skin texture with minimal pores or wrinkles, common in generated images. The eye details, particularly the reflection in the eyes, appear slightly over-processed and lack the subtle irregularities found in real human eyes. The blending of the lips and the smooth transition of the skin around the mouth are also characteristic of AI-generated faces, where these areas often lack the subtle variations and shadows of a genuine human subject. Furthermore, the overall lighting and shading seem uniform and without natural variation, typical of synthetic imagery.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_33.jpg",
+            "ground_truth": "real",
+            "prediction": null,
+            "explanation": null,
+            "error": "Unexpected error during parsing: Invalid control character at: line 3 column 606 (char 632)"
+        },
+        {
+            "image_path": "test_1\\real\\real_34.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "The image exhibits a blurring effect around the mouth and ears, specifically a noticeable softness in the transition between the cheek and the mouth. The hairline also displays a slight, unnatural softness. Furthermore, the overall skin texture appears overly smooth with a lack of fine detail and subtle variations typical of a real human face. These features suggest the image has been digitally generated rather than captured from a real person.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_35.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "The face exhibits natural skin texture and subtle imperfections, including slight redness and variation in color around the nose and cheeks. The hair appears realistic with individual strands and natural curl patterns. The ear shape is consistent with a human ear, and the hairline is well-defined. There is no evidence of blurry edges, overly smooth skin, or other visual anomalies typically associated with AI-generated faces.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_36.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "The mouth appears overly smooth and lacks the subtle imperfections and wrinkles typically found in human smiles. The jawline is too perfectly defined and lacks the slight asymmetry and natural contours of a real face. There's a noticeable absence of realistic shading and texture around the ears and hairline, contributing to an unnatural and slightly plastic-looking appearance. The eyebrows are also excessively smooth and lack the natural variations in thickness and shape often observed in real human eyebrows.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_37.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "The image exhibits several characteristics commonly associated with AI-generated faces. The mouth appears unusually tight and smooth, lacking the subtle wrinkles and variations in texture expected in a real human mouth. The hairline is unnaturally straight and sharply defined, lacking the soft, slightly irregular edges typically found in a natural hairline. The overall facial proportions\u2014particularly the eye spacing and the shape of the nose\u2014display a degree of anatomical inaccuracy that is suggestive of a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_38.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "The generated label is indicated by the unnatural smoothness of the skin around the mouth and chin. The skin lacks the subtle variations and imperfections typical of human skin, particularly the absence of fine wrinkles or pores. The teeth appear overly perfect and symmetrically aligned, a common characteristic of AI-generated faces. Additionally, the hairline is sharply defined with no natural blurring or softness. The overall impression is a technically perfect but ultimately unrealistic depiction of a human face.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_39.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "The face exhibits several characteristics typical of AI-generated images. The lips appear unnaturally smooth and lack the subtle variations in texture and color expected in a real human mouth. There's a slight blurring around the edges of the mouth and jawline, and the earlobes are disproportionately small compared to the head, which is a common anomaly. Additionally, the skin texture lacks fine details and appears uniform, with an almost plastic-like quality. The hairline has a slightly unnatural sharpness.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_4.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "The generated status is indicated by the unnatural smoothness of the skin around the mouth and chin. The skin lacks the subtle texture and irregularities present in real human skin. The hairline is overly smooth and has a slight halo effect around it. The edges of the beard appear too sharply defined with no soft blending or variations in color, which is typical of generated images.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_40.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "The image exhibits a smooth, unnatural transition between the hair and the skin around the hairline. The skin texture is overly uniform and lacks the subtle variations of pores and wrinkles commonly found in real human skin. The ears are disproportionately large and lack the subtle folds and shadows that would be present in a realistically rendered human ear. The mouth appears subtly too smooth, lacking the fine details of the lips' contours and the way light reflects from the surface.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_41.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "The image exhibits several characteristics indicative of a generated face. The skin texture appears overly smooth and lacks the subtle imperfections and variations of light and shadow found in real human skin. The lips are unnaturally smooth with no visible texture or creases. The hair around the hairline appears to be consistently rendered, lacking the natural variations and slight chaos often seen in real hair. The overall composition and lack of minor imperfections strengthen the suspicion that this is a generated face.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_42.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "The image exhibits several visual inconsistencies strongly indicative of a generated face. The makeup around the eyes and eyebrows is overly smooth and lacks the natural variations in color and texture found in real human makeup. The eyebrows are abnormally sharp and uniformly colored. The edges of the face and hairline appear unnaturally smooth and lack the subtle blurring expected of a real photograph. There\u2019s a noticeable lack of fine detail and imperfections, such as skin pores or slight variations in skin tone, which are common in human faces. The lighting is also slightly off, creating an unnatural look.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_43.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "The image presents a realistic depiction of an elderly man with visible wrinkles and fine details in his skin, notably around the mouth and eye area. The skin texture appears natural, exhibiting variations in tone and subtle shadows that are typical of a real human face. The hairline and beard are well-defined, and the ear appears as a natural anatomical feature with recognizable folds and textures. The overall impression is of a genuine photograph of a person, exhibiting the expected imperfections and nuances of a human face. There are no noticeable distortions, blurring, or other artifacts that would strongly suggest a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_44.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "The image exhibits several indicators of a generated face. The smile appears slightly too perfect and symmetrical, lacking the subtle irregularities often found in human smiles. The jawline is overly smooth and lacks the soft shadows and imperfections associated with real skin. The ears appear unusually large and have a slight blurring around the edges, which is a common artifact of AI image generation. The hair line is slightly too sharp and doesn't blend seamlessly with the scalp, a typical issue in synthetic faces.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_45.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "The generated nature of the image is indicated by the unnatural smoothness of the skin around the mouth, particularly the absence of subtle creases and wrinkles that would be present in a real human face. The cheek area is also unusually flat and lacks the subtle shadows and variations expected in a real face. The sharpness of the teeth and the lack of any visible pores or imperfections further suggest the image has been digitally constructed rather than captured from a real subject.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_46.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "The image exhibits several indicators of a generated face. The skin texture is notably smooth and lacks the subtle imperfections and micro-details characteristic of human skin. The edges around the mouth and ears are slightly blurred and lack sharp definition, a common artifact in AI-generated faces. The hairline appears too perfectly defined and uniform, and the overall lighting is slightly off, contributing to the unnatural appearance.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_47.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "The image exhibits several visual characteristics indicative of a generated face. The jawline is unnaturally smooth and lacks the subtle irregularities and variations found in human faces. The shape of the ears is disproportionately large and lacks the natural folds and texture associated with human ears. Furthermore, the hairline is overly smooth and appears to abruptly transition, common in generated faces. The overall skin texture lacks the imperfections, such as tiny pores and variations in pigmentation, that are typical of real skin.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_48.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "The image exhibits several characteristics indicative of a generated face. The mouth has a slightly unnatural, overly smooth and perfectly symmetrical appearance, with a subtle blurring effect around the edges. The ears are also unusually smooth and lack any realistic anatomical detail, such as visible cartilage or folds of skin. Furthermore, the hairline is slightly too sharp and uniform, and there is a subtle, almost imperceptible distortion around the edges of the face, suggesting a lack of proper textural detail and consistent lighting that is typical of a real human face.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_49.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "The face exhibits an unnatural smoothness and lack of fine details, particularly around the jawline and the hairline. The skin texture is consistently uniform and lacks the subtle variations characteristic of real skin. Furthermore, there appears to be a slight misalignment of the hair in relation to the face, a common artifact in generated faces, and an overly-perfect symmetry to the features. The overall composition and lighting seem overly staged, contributing to the impression that this is a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_5.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "The teeth are overly symmetrical and perfectly aligned, lacking the subtle variations and imperfections commonly found in human smiles. The lips have a slightly artificial sheen and lack fine wrinkles around the mouth. The hairline appears slightly too smooth and sharp, with a lack of the natural shadowing and texture expected in a real human face. The overall rendering of the skin around the ears seems overly uniform and lacks the granular detail associated with genuine skin texture.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_6.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "The image exhibits several characteristics indicative of a generated face. The jawline is overly smooth with no visible natural texture or slight variations in shadow. The hairline is unnaturally sharp and straight, with a noticeable, smooth transition to the scalp. The ear is excessively detailed with a raised, almost artificial-looking cartilage structure. The skin tone possesses an unsettling smoothness lacking the subtle imperfections of natural skin, especially around the mouth. The overall composition feels overly polished and lacks the organic randomness often present in real human faces.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_7.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "The mouth displays an unnatural, overly smooth and symmetrical smile with unnaturally defined lip contours. The ears are noticeably smooth and lack the subtle irregularities and imperfections typical of human ears. Additionally, the hairline is sharply defined with a very smooth transition to the hair, which is uncommon in natural human faces. These characteristics strongly suggest the face was artificially generated.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_8.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "The facial features, particularly around the mouth and the hairline, exhibit a smooth, overly-perfected quality. The lips have an unnatural, almost plastic appearance with very subtle and uniform shading. The hairline is excessively smooth and lacks the slight irregularities or texture typically found in human hair. The skin tone transition around the ears is abrupt and lacks the natural variations expected in a real human face, suggesting potential manipulation or generative AI artifacts.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_9.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "The subject's mouth appears unnaturally smooth and symmetrical, with a lack of fine wrinkles or imperfections typically found in human skin. The hairline is overly sharp and distinct, with a lack of subtle gradations and variations in color. The texture of the skin seems overly uniform, with a slight sheen, lacking the natural irregularities and small details associated with a real human face. Additionally, the overall composition and lighting appear slightly off, presenting a somewhat sterile and artificial aesthetic.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_50.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "The mouth appears unnaturally smooth with no visible fine details of lip texture. The ears are strangely small and lack the typical soft shadows and folds expected in realistic human ears. The hairline has a slightly abrupt transition and a lack of subtle gradations in color, indicating a digital rendering rather than a natural hair boundary. The overall smoothness and lack of imperfections in the skin around the mouth and jawline are also indicative of a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_51.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "The hairline exhibits an unnatural, overly smooth transition with the hair, lacking the subtle variations and texture typically found in real hair. The skin around the mouth appears slightly blurred and lacks the fine details of pores and wrinkles that would be present in a genuine human face. The overall smoothness and lack of irregularities in the skin texture suggest a digitally generated image rather than a photograph of a real person.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_52.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "The face exhibits slight blurring around the mouth and ears, with a lack of fine details in the hair. The hairline appears slightly too sharp and precise compared to natural hair textures, which is a common characteristic of AI-generated faces. The skin texture also appears somewhat smoothed, lacking the subtle imperfections typically found in human skin.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_53.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "The jawline is excessively smooth and lacks the subtle irregularities and shadowing typical of a real human face. The skin around the mouth appears unnaturally smooth with no visible pores or texture. The ear is slightly too large and lacks the typical folds and variations in shape found in human ears. The hairline is very sharp and lacks the soft, diffused edges expected in a natural setting. The overall impression is of a meticulously crafted image lacking the imperfections of a real human face.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_54.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "The image exhibits several features indicative of a generated face. The teeth are perfectly aligned and lack the slight irregularity or variation in spacing typically found in human teeth. The lips are smooth and lack the subtle creases and folds around the corners that are characteristic of human smiles. The ear is too perfectly formed and lacks the slight imperfections such as cartilage variations and the subtle shadowing that would be present in a real human ear. The hairline is uniform and lacks the natural blending and subtle variations in color and texture that are commonly seen in real human hair. The overall smoothness and lack of subtle imperfections throughout the face suggest an AI-generated image.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_55.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "The teeth are unnaturally symmetrical and overly bright, lacking the slight imperfections and variations present in real human teeth. The hairline is overly smooth with no visible scalp or skin texture. The skin around the mouth and chin appears subtly blended and lacks the natural variations in color and texture commonly found in photographs of real people. The lighting appears somewhat uniform and lacks the subtle shadows and highlights that define a realistic human face. The overall impression is a meticulously crafted image lacking the subtle details associated with a genuine human face.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_56.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "The jawline is slightly too sharp and lacks the subtle blurring and soft edges typically found in a real human face. The hair around the hairline appears overly smooth and lacks the natural variation in texture and color that is common in photographs. There's a slight lack of detail and subtle imperfections around the ears and the teeth are perfectly aligned, which are rare characteristics in real faces.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_57.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "The jawline and the hairline exhibit a smooth, almost unnaturally perfect transition with the surrounding skin. The texture of the skin around the mouth is also excessively uniform and lacks the subtle variations and pores typically found in real human faces. The overall sharpness of the facial features, particularly the nose and lips, combined with the lack of minor imperfections, is a strong indicator of a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_58.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "The facial features, particularly around the mouth and ears, exhibit a subtle, almost perfectly smooth blending of skin tones without the usual imperfections of natural human skin. The hairline also appears overly smooth and lacks the subtle variations in texture and color found in real hair. There is a slight halo effect around the edges of the face, suggesting a lack of fine detail and potentially, the presence of generative artifacting.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_59.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "The image exhibits a natural-looking expression and skin texture. The details around the mouth are soft and consistent with a realistic human lip shape. The ear is well-defined with visible cartilage and a natural-looking fold of skin. The hairline appears to blend smoothly with the hair, lacking the often-noticeable artificial edges or smoothing present in generated faces. There are no distinct artifacts or inconsistencies suggesting the face was artificially created.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_60.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "The generated classification is based on the image's subtle, unnatural artifacts around the mouth and ears. The smile appears slightly too perfect and symmetrical, with a lack of the fine wrinkles or imperfections typically found in human smiles. The skin texture around the mouth lacks natural variation and appears slightly smoothed. The ears exhibit a lack of subtle details, and the hairline appears unnaturally sharp and defined, with a distinct, almost artificial outline. The overall impression suggests a generated image rather than a realistic human face.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_61.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "The generated label is indicated by the unnatural smoothness of the skin around the mouth and chin. The lips appear overly symmetrical with a lack of subtle imperfections commonly found in human faces. The jawline is slightly too defined, and the transition between the hair and skin is abrupt, lacking the natural variations and soft shadows present in a real human face. The eye area also appears somewhat smooth and lacks the slight asymmetry and variations in texture observed in photographs of real people.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_62.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "The generated nature of the face is indicated by the overly smooth skin texture, particularly around the mouth, which appears almost plastic-like and lacking the subtle imperfections of real skin. The jawline is also unnaturally defined and lacks the slight asymmetry typically found in human faces. The ear is smooth and lacks the visible cartilage and blood vessels, and the hairline is unnaturally sharp and precisely defined, with no stray hairs or natural variation in tone. These details point toward an artificially created image rather than a photograph of a real person.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_63.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "The generated classification is based on several visual cues. The teeth appear unnaturally uniform and perfectly aligned, a common artifact in generated faces. The skin texture around the mouth seems overly smooth and lacks the subtle imperfections of real skin, such as fine wrinkles or variations in pigmentation. The hairline is slightly too sharp and defined, without the natural softness of a real hairline. Additionally, the overall shape of the face, particularly the jawline, appears somewhat generic and lacks the subtle irregularities present in human faces.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_64.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "The image exhibits several visual cues suggesting a generated face. The hairline appears unnaturally smooth and uniform, lacking the subtle variations and irregularities commonly seen in real human hair. The skin texture around the mouth and chin is overly soft and lacks pores or blemishes, typical of synthetic textures. Furthermore, the shape of the ears is slightly distorted and lacks the complex folds and cartilage details frequently found in human ears. The overall impression is one of a digitally rendered image with an artificial and flawless appearance, inconsistent with a naturally occurring human face.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_65.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The subject's facial features, including the shape of the lips, the definition of the nose, and the contours of the cheeks, appear consistent with a real human face. The skin texture displays subtle variations and imperfections, such as slight redness around the nose and subtle shadows beneath the cheekbones, which are characteristic of real skin. The hairline is well-defined and blended naturally with the hair, and there are no noticeable seams or artifacts around the mouth or ears that would indicate a synthetic generation.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_66.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image shows a child with a naturally smiling expression, exhibiting realistic skin texture, pores, and subtle variations in color across the face. The hair appears to be realistically rendered with strands visible, and the lighting is consistent with a natural outdoor scene. There are no noticeable distortions, blurring, or inconsistencies around the mouth, ears, or hairline, indicating this is a genuine human face.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_67.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image displays a realistic human face with a natural-looking smile and skin texture. The teeth are uniformly shaped and spaced, which is a common artifact seen in generated images. The wrinkles around the eyes and mouth appear soft and subtle, consistent with a real human face. The ears are correctly positioned and do not show any unusual distortions or blurring, which would be typical of a generated image. The hairline is smooth and blended seamlessly with the hair, without any jagged edges or unnatural transitions.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_68.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "The face exhibits a slightly unnatural smoothness, particularly around the mouth and chin. The teeth appear excessively symmetrical and uniformly white, which is uncommon in real human teeth. The hairline is overly sharp and distinct, lacking the subtle variations in color and texture expected in a photograph of a human. The background is also slightly blurred and lacks realistic depth, suggesting a composite image rather than a naturally captured scene.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_69.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "The face exhibits a subtle blurring and lack of fine detail around the mouth and ears, typical of AI-generated images. The hairline has an unnatural, slightly smoothed appearance, lacking the subtle variations and textures found in a real human hairline. There is a slight halo effect around the edges of the face, particularly noticeable in the hair, which is another common artifact of AI generation.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_70.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "The image exhibits several visual cues indicative of a generated face. The skin texture is unusually smooth with a lack of pores or fine wrinkles, common in synthetic images. The teeth are perfectly aligned and have a slight overbite that is unrealistic for a natural human smile. The hairline is sharply defined and overly smooth, lacking the natural variation and softness observed in real hair. The overall proportions, specifically the distance between the eyes and nose, appear slightly off, and the lighting is consistent and lacks the subtle shadows that characterize real-world photographs.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_71.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "The image exhibits several visual inconsistencies strongly suggesting it's a generated face. The mouth appears unnaturally smooth and lacks subtle variations in color or texture expected in a real human mouth. The hairline is overly sharp and perfectly defined, with no soft edges or blurring typical of a real hair boundary. The skin tone transitions abruptly and lacks the subtle gradients of light and shadow present on a genuine human face. The overall smoothness and lack of imperfections further contribute to this assessment.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_72.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "The subject\u2019s lips and surrounding skin exhibit a subtle, unnatural smoothness, lacking the typical subtle textural variations found in real human skin. The hairline around the forehead appears overly sharp and distinct, with a lack of the soft gradients often observed in photographs of natural hair. The overall rendering of the face, particularly around the mouth, suggests a level of detail and smoothness not typically produced by natural human skin, hinting towards a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_73.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "The image exhibits several visual cues indicative of a generated face. Firstly, there\u2019s a noticeable, unnatural halo effect around the man's head, particularly concentrated around his ears and hairline. This halo is a common artifact in AI-generated images, representing a lack of fine-grained detail and blurred edges. Additionally, the skin tone around the mouth appears unusually smooth and lacks the subtle variations and imperfections one would expect in a real human face. The overall impression is of a digitally constructed image rather than a photograph of a real person.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_74.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "The image exhibits several characteristics indicative of a generated face. The hairline is unnaturally smooth and lacks the subtle variations and shadows typical of real hair. The mouth appears slightly too wide and lacks the natural imperfections and slight asymmetry observed in real human mouths. The overall skin texture appears overly smooth and lacks the fine details and subtle blemishes associated with human skin. The ears also appear slightly too large and lack the typical folds and curves observed in real human ears.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_75.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "The generated label is based on the unnatural smoothness of the skin around the mouth, the almost perfectly symmetrical teeth, and the lack of subtle irregularities or imperfections typical of human skin. The hairline appears slightly too sharp and defined, and there\u2019s an absence of stray hairs or natural variations in the hair around her face. The overall impression is overly polished and lacks the subtle textures and imperfections expected in a genuine human face.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_76.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "The image exhibits several visual characteristics indicative of an AI-generated face. The lips appear unnaturally smooth and uniformly shaped, lacking the subtle imperfections and variations typically found in human mouths. The jawline is overly defined and symmetrical, with a slight lack of subtle shadows and contours that would naturally occur. The hairline is unusually sharp and evenly colored, without the natural variations in pigmentation and texture present in real hair. Furthermore, the overall skin texture appears slightly too uniform, lacking the small-scale irregularities of pores and skin imperfections common in human skin.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_77.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "The image exhibits several visual indicators suggesting a generated face. The most prominent issue is the overly smooth and almost plastic texture of the skin around the mouth and chin, lacking the subtle imperfections and variations found in real human skin. The jawline appears excessively sharp and uniformly defined. Furthermore, the hairline is unnaturally smooth and lacks the slight fuzziness or irregularities characteristic of real hair. The lighting is also somewhat inconsistent, particularly around the cheekbones, which contributes to the artificial appearance.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_78.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "The generated classification is based on several visual cues. The skin texture appears overly smooth and lacks fine wrinkles or pores typical of a real child's skin. The hairline is slightly too sharp and lacks the subtle variations in color and tone observed in real hair. The overall facial proportions, specifically the distance between the eyes and nose, appear slightly off, contributing to an unnatural appearance. The lighting is also slightly inconsistent, with the shadows not blending smoothly into the skin.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_79.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "The hair around the hairline appears unnaturally smooth and uniform, lacking the subtle variations and textures typically found in human hair. The skin around the mouth and the area around the ears show a lack of detail and soft edges, consistent with AI-generated images. The teeth also appear slightly too perfect and overly white.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_80.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "The hairline around the forehead appears unnaturally smooth and sharp, lacking the subtle texture and variations expected in a real human hairline. The skin around the mouth also appears slightly too smooth, with a lack of the fine wrinkles and imperfections typically present in human skin. The overall rendering of the face, particularly the transitions between the forehead, nose, and mouth, exhibits a slightly artificial and overly precise quality, suggesting it was generated rather than captured from a real human subject.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_81.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "The generated label is determined by the slightly smooth and overly-perfect skin texture around the mouth and chin. The teeth appear unnaturally smooth and symmetrical. The hairline is also slightly too sharp, lacking the subtle variations and imperfections typically found in human skin and hair.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_82.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "The face exhibits a smooth, overly-perfect skin texture with no visible pores or imperfections, a common characteristic of AI-generated faces. The contours around the mouth and jawline appear unnaturally sharp and defined, lacking the subtle softness and variations present in real human faces. The ear is symmetrical and lacks the slight irregularities or folds typically found in a real human ear. The hairline is perfectly straight and lacks the natural curve or subtle variations of a real human hairline, contributing to the overall artificial appearance.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_83.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "The face exhibits a smooth, almost unnaturally flawless texture, particularly around the mouth and chin. The lips appear slightly too symmetrical, and the skin lacks the subtle imperfections and variations in tone typically found in real human skin. The hairline is perfectly smooth and uniform, lacking the slight fuzziness or irregularities often present in photographs of human hair. The ears are also devoid of realistic textures and imperfections, contributing to the overall artificial appearance.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_84.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "The image exhibits several characteristics indicative of an AI-generated face. The hairline is unnaturally smooth and uniform, lacking the subtle variations and imperfections typically found in human hair. The skin texture appears overly smooth and lacks the fine wrinkles and pores associated with a real child's skin. The ear is also slightly blurry and lacks detailed folds, a common artifact in generated faces. The overall appearance lacks the nuanced realism expected of a genuine photograph.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_85.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "The mouth exhibits an unnaturally smooth and perfectly shaped curve, lacking the subtle imperfections and slight variations in lip texture common in real human faces. The ear is overly defined with a smooth, almost porcelain-like texture, lacking the natural folds and irregularities of skin. The hairline has a slightly too-perfect, straight line, and there's an absence of the typical subtle variations in hair density and shadowing around the hairline, suggesting a digitally generated element. The overall smoothness and lack of typical imperfections contribute to this assessment.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_86.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "The hairline around the forehead appears overly smooth and lacks the subtle variations and textures characteristic of human hair. The mouth has a slightly unnatural sharpness and the teeth are rendered with an excessive level of detail, including a very regular spacing and glossy surface, indicative of digital generation. The overall skin texture lacks the subtle imperfections, such as pores and fine wrinkles, that are typical of human skin, and the lighting is too perfectly even.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_87.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "The face exhibits a slight blurring around the lower jawline and the ears, with an inconsistency in the hair texture blending into the skin. The teeth are overly smooth and lack natural variations. The skin tone transitions abruptly at the hairline, and the overall rendering lacks the subtle imperfections and noise patterns commonly found in real human faces.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_88.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "The jawline appears slightly too sharp and overly symmetrical, lacking the subtle irregularities and softness typically found in human faces. The teeth appear unusually perfectly aligned with no visible gum line or slight imperfections. The hairline is too smooth and lacks natural variation in thickness. The shadows around the eyes and mouth are somewhat uniform and lack the typical complex interplay of light and shadow associated with realistic human skin.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_89.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "The hairline is unnaturally sharp and lacks soft blending with the hair, appearing as a distinct line rather than a natural transition. The skin texture around the mouth appears overly smooth and lacks the subtle variations typically found in human skin, contributing to a slightly artificial look. There's a distinct lack of fine details and soft shadows, further suggesting the face was generated rather than captured from a real person. The area of the ear is also slightly blurred and lacks natural detail.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_90.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "The image exhibits several inconsistencies suggesting it is a generated face. The skin texture around the mouth appears overly smooth and lacks the subtle imperfections and variations typically found in real human skin. The teeth are unnaturally perfect in shape and alignment. The hairline is slightly blurred and lacks the natural shadows and transitions expected in a photograph. Additionally, the overall image quality lacks the subtle noise and imperfections that characterize photographs of real people.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_91.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "The hairline around the forehead appears unnaturally smooth with no visible scalp texture or subtle variations in hair density. The shape of the mouth is slightly too perfect and lacks the subtle asymmetries typically found in human faces. The ears are also unusually uniform in shape and lack the slight irregularities and variations in cartilage and skin that are characteristic of real ears. There is a slight blurring around the edges of the face, further suggesting a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_92.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The subject displays a natural smile with slight wrinkles around the mouth, and realistic skin texture with visible pores and fine lines. The hairline and ear shape appear consistent with a genuine human subject, exhibiting the subtle variations in color and tone present in natural skin. There are no obvious distortions or unusual textures that would indicate an AI-generated image.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_93.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "The left ear exhibits a distinct, almost perfectly circular, blurred region, indicating a possible artifact introduced during the image generation process. The hair around the hairline also appears slightly smoothed and lacks the subtle imperfections typically found in human hair, and the skin has an unnatural smoothness. The overall rendering quality suggests a generated image rather than a photograph of a real human face.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_94.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "The face exhibits a slightly flattened appearance, particularly around the cheeks and jawline. The skin texture appears overly smooth and lacks the natural wrinkles and imperfections commonly found in real human faces. The eyebrows and hairline have a slightly unnatural sharpness, and there's a subtle blurring effect around the edges of the face, suggesting a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_95.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "The generated classification is based on the subtle artifacts present around the mouth and ears. The teeth have a slightly unnatural, overly smooth appearance, with a lack of subtle imperfections and slight variations in shading that are typical of real teeth. The ear is overly symmetrical and lacks the subtle irregularities and variations in skin texture found in human ears. The hairline has a slightly diffused, almost digitally painted appearance around the edges, and there is a slight blurring effect around the jawline, which is a common artifact in AI-generated faces.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_96.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "The image exhibits several visual indicators suggesting a generated face. The skin texture around the mouth appears unnaturally smooth and lacks the subtle imperfections typically found in real human skin. The edges of the lips are precisely defined and lack the soft blur often present in photographs. Furthermore, the hairline is excessively sharp and perfectly straight, lacking the slight variations and irregularities of natural hair. The overall lack of subtle imperfections and the overly-perfected details point towards an AI-generated image.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_97.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "The image exhibits several visual cues strongly suggesting it is a generated face. The skin texture appears unnaturally smooth and lacks the subtle irregularities and pores commonly found in real human skin. The jawline is too perfectly defined, and there's an absence of fine details around the mouth, specifically a blurring effect and a lack of realistic shadows and highlights. The ear is notably blurred and lacks the typical folds and imperfections of a real ear. The hairline is subtly flattened and lacks the irregular texture often observed in human hair.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_98.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "The image exhibits several visual characteristics strongly indicative of a generated face. The teeth appear unnaturally smooth and symmetrical, lacking the slight imperfections and variations commonly found in human teeth. The skin around the mouth has a slight blurring effect and a subtly flat appearance, with a lack of detailed skin texture like wrinkles or pores. The hair has a uniform, slightly glossy appearance with no visible strands or variation in color. The overall composition seems too perfect, lacking the subtle asymmetries and irregularities that are typical of real human faces.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_99.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "The generated classification is based on the noticeable, soft blurring and lack of fine detail around the mouth and the ears. The hair around the hairline appears unusually smooth and lacks the natural texture and variations typically observed in real human hair. The overall softness of the image and the subtle lack of imperfections strongly suggest the image has been artificially generated, rather than captured from a real human face.",
+            "error": null
+        }
+    ]
+}

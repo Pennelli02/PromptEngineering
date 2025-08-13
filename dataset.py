@@ -60,3 +60,10 @@ def loadExistingDataset(folder_name):
 
     dataset = real_images + fake_images
     return dataset, len(fake_images), len(real_images)
+
+
+if __name__ == "__main__":
+    MAX_IMAGES = 200
+    NAME = "test_2"
+    images_with_labels, fakes, reals = loadDataset(MAX_IMAGES)
+    saveDataset(images_with_labels, NAME)

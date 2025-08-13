@@ -1,0 +1,729 @@
+{
+    "metrics": {
+        "total_processed": 100,
+        "total_real": 50,
+        "total_fake": 50,
+        "TP": 19,
+        "TN": 0,
+        "FP": 19,
+        "FN": 0,
+        "rejection_real": 25,
+        "rejection_fake": 23,
+        "text_parsing_errors": 14,
+        "text_parsing_error_rate": 0.14,
+        "accuracy": 0.5,
+        "precision": 0.5,
+        "recall": 1.0,
+        "false_negative_rate": 0.0,
+        "false_positive_rate": 0.4523809523809524,
+        "rejection_real_rate": 0.5681818181818182,
+        "rejection_fake_rate": 0.5476190476190477,
+        "rejection_total_rate": 0.5581395348837209,
+        "system_prompt": "Sei un sistema professionale di classificazione delle immagini che analizza le immagini fornite per determinare se mostrano un volto umano reale o uno generato.\nRispondi SOLO usando il seguente formato JSON:\n{\n  \"result\": \"[real face]\" oppure \"[generated]\"or [uncertain], \n  \"explanation\": \"Una spiegazione precisa basata su indizi visivi osservati nell'immagine.\"\n}\nNON includere frasi generiche come 'non ci sono artefatti'. Sii visivo e dettagliato nella tua analisi.Rispondi ESCLUSIVAMENTE con questo JSON, senza commenti o testo extra.",
+        "user_prompt": "Ci sono artefatti intorno alla bocca, alle orecchie o all'attaccatura dei capelli che potrebbero indicare che il volto \u00e8 stato generato dall'IA?",
+        "oneShot": false,
+        "imageBoost": false
+    },
+    "responses": [
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_45.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "Il volto presenta una precisione e una coerenza nella forma delle orecchie, nella struttura del naso e nella posizione dei capelli che non sono comuni in una persona reale. Inoltre, la pelle sembra essere perfetta e priva di imperfezioni naturali come rughe o macchie, che potrebbero essere indicatori di un volto generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_4.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "Il volto presenta una somiglianza con i volti generati dall'IA, in particolare nella forma del naso e nella pelle. Inoltre, la barba \u00e8 ben definita e uniforme, che \u00e8 un tratto comune nei volti generati.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_30.jpg",
+            "ground_truth": "real",
+            "prediction": "uncertain",
+            "explanation": "Non sono possibili indizi visivi che permettano di affermare con certezza se il volto \u00e8 reale o generato. La qualit\u00e0 dell'immagine e la posizione del soggetto non forniscono informazioni sufficienti per effettuare una valutazione precisa.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_6.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "Il volto presenta una somiglianza con i volti generati dall'IA, in particolare nella forma del naso, nella pelle e nella struttura del viso. Inoltre, ci sono artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli che potrebbero indicare che il volto \u00e8 stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_46.jpg",
+            "ground_truth": "real",
+            "prediction": "uncertain",
+            "explanation": "Non sono possibili indizi visivi che permettano di affermare con certezza se il volto \u00e8 reale o generato. La qualit\u00e0 dell'immagine e la posizione della persona non forniscono informazioni sufficienti per effettuare una valutazione precisa.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_41.jpg",
+            "ground_truth": "real",
+            "prediction": "uncertain",
+            "explanation": "Non sono possibili indizi visivi che permettano di affermare con certezza se il volto \u00e8 reale o generato. La qualit\u00e0 dell'immagine e la posizione della testa rispetto ai balloons e alla guitarra potrebbero influire sulla precisione dell'analisi.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_47.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "Il volto presenta una precisione e una coerenza nella forma delle orecchie, nella struttura del naso e nella posizione dei capelli che potrebbero indicare che il volto \u00e8 stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_29.jpg",
+            "ground_truth": "real",
+            "prediction": "uncertain",
+            "explanation": "Non sono possibili indizi visivi che permettano di affermare con certezza se il volto \u00e8 reale o generato. La donna indossa un'elegante maschera con decorazioni e piume, che potrebbero mascherare eventuali artefatti. Inoltre, la maschera copre completamente il volto, rendendo difficile l'analisi dettagliata delle caratteristiche facciali.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_37.jpg",
+            "ground_truth": "real",
+            "prediction": "uncertain",
+            "explanation": "Non sono possibili indizi visivi che permettano di affermare con certezza se il volto \u00e8 reale o generato. La qualit\u00e0 dell'immagine e la posizione della testa del bambino rendono difficile l'analisi dettagliata.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_44.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "Il volto presenta una somiglianza con i volti generati dall'IA, come la precisione delle linee del viso e la uniformit\u00e0 dei tratti facciali. Tuttavia, ci sono anche alcune differenze, come la mancanza di una pelle perfettamente uniforme e la presenza di una leggera somiglianza con il volto umano reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_13.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "Il volto presenta una precisione e una coerenza dei tratti facciali che non sono naturali per un volto umano reale. Ad esempio, la linea del naso \u00e8 molto regolare e la forma del mento \u00e8 molto simmetrica, che sono caratteristiche comuni nei volti generati dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_21.jpg",
+            "ground_truth": "real",
+            "prediction": "uncertain",
+            "explanation": "Non sono possibili indizi visivi che permettano di affermare con certezza se il volto \u00e8 reale o generato. La donna indossa occhiali e ha una espressione neutra, ma questi fattori non sono sufficienti per determinare con certezza la natura del volto.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_3.jpg",
+            "ground_truth": "real",
+            "prediction": "uncertain",
+            "explanation": "Non sono possibili indizi visivi che permettano di affermare con certezza se il volto \u00e8 reale o generato. La qualit\u00e0 dell'immagine e la posizione del soggetto non forniscono informazioni sufficienti per effettuare una valutazione precisa.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_27.jpg",
+            "ground_truth": "real",
+            "prediction": "uncertain",
+            "explanation": "Non sono possibili indizi visivi che permettano di affermare con certezza se il volto \u00e8 reale o generato. La qualit\u00e0 dell'immagine e la posizione del soggetto non forniscono informazioni sufficienti per effettuare una valutazione precisa.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_16.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "Il volto presenta una precisione e una coerenza nella forma delle orecchie, nella struttura del naso e nella posizione dei capelli che potrebbero indicare che il volto \u00e8 stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_25.jpg",
+            "ground_truth": "real",
+            "prediction": "uncertain",
+            "explanation": "Non sono possibili indizi visivi che permettano di affermare con certezza se il volto \u00e8 reale o generato. La qualit\u00e0 dell'immagine e la posizione del soggetto non forniscono informazioni sufficienti per effettuare una valutazione precisa.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_8.jpg",
+            "ground_truth": "real",
+            "prediction": null,
+            "explanation": null,
+            "error": "JSON parsing error: Unterminated string starting at: line 3 column 18 (char 44)"
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_34.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "Il volto presenta una certa somiglianza con i volti generati dall'IA, come la precisione delle linee e la regolarit\u00e0 delle forme. Tuttavia, ci sono anche alcune differenze, come la mancanza di una certa naturalezza e la presenza di alcuni artefatti, come la mancanza di una certa somiglianza con i volti umani reali.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_39.jpg",
+            "ground_truth": "real",
+            "prediction": "uncertain",
+            "explanation": "Non sono possibili indizi visivi che permettano di affermare con certezza se il volto \u00e8 reale o generato. La qualit\u00e0 dell'immagine e la posizione della persona non forniscono informazioni sufficienti per effettuare una valutazione precisa.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_18.jpg",
+            "ground_truth": "real",
+            "prediction": "uncertain",
+            "explanation": "Non sono possibili indizi visivi che permettano di affermare con certezza se il volto \u00e8 reale o generato. La qualit\u00e0 dell'immagine e la posizione della persona non forniscono informazioni sufficienti per effettuare una valutazione precisa.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_2.jpg",
+            "ground_truth": "real",
+            "prediction": "uncertain",
+            "explanation": "Non sono possibili indizi visivi che permettano di determinare con certezza se il volto \u00e8 reale o generato. La qualit\u00e0 dell'immagine e la posizione della testa rispetto alla foto potrebbero influire sulla precisione dell'analisi.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_49.jpg",
+            "ground_truth": "real",
+            "prediction": "uncertain",
+            "explanation": "Non sono possibili indizi visivi che permettano di determinare con certezza se il volto \u00e8 reale o generato. La presenza di una maschera o di un accessorio che copre il volto non permette di analizzare le caratteristiche del volto stesso.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_43.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "Il volto presenta una precisione e una coerenza dei tratti facciali che non sono naturali per un volto umano reale. La pelle sembra uniforme e priva di imperfezioni, le orecchie sono simmetriche e perfette, il naso \u00e8 perfetto e la barba \u00e8 ben curata. Questi indizi suggeriscono che il volto \u00e8 stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_17.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "Il volto presenta una precisione e una coerenza dei tratti facciali che non sono naturali per un volto umano reale. La pelle \u00e8 uniforme e priva di imperfezioni, le orecchie sono simmetriche e perfette, il naso \u00e8 perfetto e la barba \u00e8 ben definita. Questi indizi suggeriscono che il volto \u00e8 stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_7.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "Il volto presenta una somiglianza con i volti generati dall'IA, come la precisione delle linee, la uniformit\u00e0 della pelle e la mancanza di imperfezioni naturali come rughe, pore e imperfezioni cutanee. Inoltre, la pelle sembra essere uniforme e priva di imperfezioni, come macchie o scarselle, che sono comuni in volti reali.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_20.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "Il volto presenta una precisione e una coerenza nella forma delle orecchie, nella struttura del naso e nella posizione dei capelli che potrebbero indicare che il volto \u00e8 stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_35.jpg",
+            "ground_truth": "real",
+            "prediction": "uncertain",
+            "explanation": "Non sono possibili indizi visivi che permettano di affermare con certezza se il volto \u00e8 reale o generato. La donna ha una barba che potrebbe essere un artefatto generato, ma non ci sono altre anomalie visive che potrebbero indicare un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_38.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "Il volto mostra una somiglianza con i volti generati dall'IA, come la precisione delle linee, la uniformit\u00e0 della pelle e la mancanza di imperfezioni naturali come rughe, pore e imperfezioni cutanee. Inoltre, la somiglianza con i volti generati dall'IA \u00e8 evidente nella forma delle orecchie, nella posizione del naso e nella forma del mento.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_0.jpg",
+            "ground_truth": "real",
+            "prediction": "uncertain",
+            "explanation": "Non sono possibili indizi visivi che permettano di affermare con certezza se il volto \u00e8 reale o generato. La donna ha una espressione felice e sembra avere una pelle naturale, ma non ci sono artefatti visibili che potrebbero indicare la presenza di un volto generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_42.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "Il volto presenta una precisione e una coerenza nella colorazione e nella forma delle orecchie che non sono naturali per un volto umano. Inoltre, la pelle sembra essere uniforme e priva di imperfezioni naturali come macchie o imperfezioni cutanee. Questi indizi suggeriscono che il volto \u00e8 stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_14.jpg",
+            "ground_truth": "real",
+            "prediction": "uncertain",
+            "explanation": "Non sono stati osservati artefatti visibili intorno alla bocca, alle orecchie o all'attaccatura dei capelli che potrebbero indicare che il volto \u00e8 stato generato dall'IA. La presenza di artefatti \u00e8 un indicatore comune per identificare immagini generati dall'IA, ma non sono stati osservati in questa immagine.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_31.jpg",
+            "ground_truth": "real",
+            "prediction": "uncertain",
+            "explanation": "Non sono possibili indizi visivi che permettano di affermare con certezza se il volto \u00e8 reale o generato. La donna ha una espressione neutra e non ci sono artefatti visibili che potrebbero indicare la presenza di un volto generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_36.jpg",
+            "ground_truth": "real",
+            "prediction": null,
+            "explanation": null,
+            "error": "JSON parsing error: Unterminated string starting at: line 3 column 18 (char 44)"
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_22.jpg",
+            "ground_truth": "real",
+            "prediction": "uncertain",
+            "explanation": "Non sono possibili indizi visivi che permettano di affermare con certezza se il volto \u00e8 reale o generato. La qualit\u00e0 dell'immagine non \u00e8 sufficiente per identificare eventuali artefatti o caratteristiche che potrebbero indicare la presenza di un volto generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_24.jpg",
+            "ground_truth": "real",
+            "prediction": "uncertain",
+            "explanation": "Non sono possibili indizi visivi che permettano di determinare con certezza se il volto \u00e8 reale o generato. La qualit\u00e0 dell'immagine e la posizione del soggetto non forniscono informazioni sufficienti per effettuare una valutazione precisa.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_48.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "Il volto presenta una precisione e una coerenza dei tratti facciali che non sono naturali per un volto umano reale. Ad esempio, la linea del naso \u00e8 molto regolare e la forma del mento \u00e8 molto simmetrica, che sono caratteristiche comuni nei volti generati dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_11.jpg",
+            "ground_truth": "real",
+            "prediction": "uncertain",
+            "explanation": "Non sono possibili indizi visivi che permettano di affermare con certezza se il volto \u00e8 reale o generato. La qualit\u00e0 dell'immagine e la posizione del soggetto non forniscono informazioni sufficienti per effettuare una valutazione precisa.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_28.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "Il volto presenta una certa somiglianza con i volti generati dall'IA, come la precisione delle linee e la uniformit\u00e0 della pelle. Tuttavia, ci sono anche alcune differenze, come la presenza di una leggera ombra sotto il mento e la mancanza di una certa profondit\u00e0 nella pelle, che potrebbero indicare che il volto \u00e8 stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_19.jpg",
+            "ground_truth": "real",
+            "prediction": "uncertain",
+            "explanation": "Non sono possibili indizi visivi che permettano di affermare con certezza se il volto \u00e8 reale o generato. La qualit\u00e0 dell'immagine e la posizione del soggetto non forniscono informazioni sufficienti per effettuare una valutazione precisa.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_33.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "Il volto presenta una somiglianza con i volti generati dall'IA, in particolare nella forma del naso e nella pelle. Inoltre, la pelle sembra essere perfetta e priva di imperfezioni naturali, come pore o rughe, che sono comuni in volti reali. Queste caratteristiche suggeriscono che il volto \u00e8 stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_5.jpg",
+            "ground_truth": "real",
+            "prediction": null,
+            "explanation": null,
+            "error": "JSON parsing error: Unterminated string starting at: line 3 column 18 (char 44)"
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_23.jpg",
+            "ground_truth": "real",
+            "prediction": "uncertain",
+            "explanation": "Non sono possibili indizi visivi che permettano di affermare con certezza se il volto \u00e8 reale o generato. La qualit\u00e0 dell'immagine e la posizione del soggetto non forniscono informazioni sufficienti per effettuare una valutazione precisa.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_15.jpg",
+            "ground_truth": "real",
+            "prediction": null,
+            "explanation": null,
+            "error": "JSON parsing error: Unterminated string starting at: line 3 column 18 (char 44)"
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_40.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "Il volto presenta una precisione e una coerenza nella forma delle orecchie, nella struttura del naso e nella posizione dei capelli che potrebbero indicare che il volto \u00e8 stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_10.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "Il volto presenta una precisione e una coerenza dei tratti facciali che non sono naturali per un volto umano reale. La pelle \u00e8 perfetta e liscia, le orecchie sono perfettamente arrotondate e la barba \u00e8 ben definita e uniforme. Inoltre, la luce che illumina il volto \u00e8 perfetta e non ci sono ombreggi o artefatti che potrebbero indicare una fotografia reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_12.jpg",
+            "ground_truth": "real",
+            "prediction": "uncertain",
+            "explanation": "Non sono possibili indizi visivi che permettano di affermare con certezza se il volto \u00e8 reale o generato. La qualit\u00e0 dell'immagine e la posizione del soggetto non forniscono informazioni sufficienti per effettuare una valutazione precisa.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_1.jpg",
+            "ground_truth": "real",
+            "prediction": null,
+            "explanation": null,
+            "error": "JSON parsing error: Unterminated string starting at: line 3 column 18 (char 44)"
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_32.jpg",
+            "ground_truth": "real",
+            "prediction": "uncertain",
+            "explanation": "Non sono possibili indizi visivi che permettano di affermare con certezza se il volto \u00e8 reale o generato. La donna indossa un accessorio di fiori sulla testa e ha una maschera di vernice sulla bocca, che potrebbero essere artefatti, ma non sono sufficienti per affermare la natura del volto.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_9.jpg",
+            "ground_truth": "real",
+            "prediction": null,
+            "explanation": null,
+            "error": "JSON parsing error: Unterminated string starting at: line 3 column 18 (char 44)"
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_26.jpg",
+            "ground_truth": "real",
+            "prediction": "uncertain",
+            "explanation": "Non sono possibili indizi visivi che permettano di affermare con certezza se il volto \u00e8 reale o generato. La qualit\u00e0 dell'immagine e la posizione della persona non forniscono informazioni sufficienti per effettuare una valutazione precisa.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_94.jpg",
+            "ground_truth": "fake",
+            "prediction": null,
+            "explanation": null,
+            "error": "JSON parsing error: Unterminated string starting at: line 3 column 18 (char 44)"
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_93.jpg",
+            "ground_truth": "fake",
+            "prediction": "uncertain",
+            "explanation": "Non sono possibili indizi visivi che permettano di affermare con certezza se il volto \u00e8 reale o generato. La qualit\u00e0 dell'immagine e la posizione del soggetto non forniscono informazioni sufficienti per effettuare una valutazione precisa.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_68.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "Il volto presenta una precisione e una coerenza nella forma delle orecchie, nella struttura del naso e nella posizione dei capelli che non sono comuni in una persona reale. Inoltre, la pelle sembra essere perfetta e priva di imperfezioni naturali come rughe o macchie, che potrebbero essere indicatori di un volto generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_67.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "Il volto presenta una certa somiglianza con i volti generati dall'IA, come la precisione delle linee e la uniformit\u00e0 dei toni. Tuttavia, ci sono anche alcune differenze, come la presenza di una leggera sombra sotto il mento e la mancanza di una certa profondit\u00e0 nella pelle, che potrebbero indicare che il volto \u00e8 stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_58.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "Il volto presenta una precisione e una coerenza dei tratti facciali che non sono naturali per un volto umano reale. Ad esempio, la pelle sembra uniforme e priva di imperfezioni, le orecchie hanno una forma e una posizione simmetrica e perfetta, e la barba \u00e8 assente. Inoltre, la pelle sembra priva di bocche, rughe e imperfezioni naturali. Questi indizi suggeriscono che il volto \u00e8 stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_74.jpg",
+            "ground_truth": "fake",
+            "prediction": "uncertain",
+            "explanation": "Non sono possibili indizi visivi che permettano di affermare con certezza se il volto \u00e8 reale o generato. La qualit\u00e0 dell'immagine e la posizione del soggetto non forniscono informazioni sufficienti per effettuare una valutazione precisa.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_80.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "Il volto presenta una precisione e una coerenza dei tratti facciali che non sono naturali per un volto umano reale. La pelle appare uniforme e priva di imperfezioni, le orecchie sono simmetriche e perfette, il naso \u00e8 lungo e perfetto, e la barba \u00e8 ben definita e uniforme. Questi indizi suggeriscono che il volto \u00e8 stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_65.jpg",
+            "ground_truth": "fake",
+            "prediction": "uncertain",
+            "explanation": "Non sono possibili indizi visivi che permettano di affermare con certezza se il volto \u00e8 reale o generato. La qualit\u00e0 dell'immagine e la posizione del soggetto non forniscono informazioni sufficienti per effettuare una valutazione precisa.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_77.jpg",
+            "ground_truth": "fake",
+            "prediction": "uncertain",
+            "explanation": "Non sono possibili indizi visivi che permettano di affermare con certezza se il volto \u00e8 reale o generato. La qualit\u00e0 dell'immagine e la posizione della persona non forniscono informazioni sufficienti per effettuare una valutazione precisa.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_81.jpg",
+            "ground_truth": "fake",
+            "prediction": null,
+            "explanation": null,
+            "error": "JSON parsing error: Unterminated string starting at: line 3 column 18 (char 44)"
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_75.jpg",
+            "ground_truth": "fake",
+            "prediction": null,
+            "explanation": null,
+            "error": "JSON parsing error: Unterminated string starting at: line 3 column 18 (char 44)"
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_85.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "Il volto presenta una precisione e una coerenza nella somiglianza dei tratti facciali che non sono naturali per un volto umano reale. Inoltre, ci sono artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli che potrebbero indicare che il volto \u00e8 stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_89.jpg",
+            "ground_truth": "fake",
+            "prediction": "uncertain",
+            "explanation": "Non sono possibili indizi visivi che permettano di affermare con certezza se il volto \u00e8 reale o generato. La qualit\u00e0 dell'immagine e la posizione della persona non forniscono informazioni sufficienti per effettuare una valutazione precisa.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_55.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "Il volto presenta una precisione e una coerenza nella forma delle orecchie e nella struttura del capo che suggerisce un'immagine generata dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_87.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "Il volto presenta una precisione e una coerenza nella forma delle orecchie e nella struttura del viso che suggerisce che il volto \u00e8 stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_91.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "Il volto presenta una certa somiglianza con i volti generati dall'IA, ma ci sono anche alcuni dettagli che lo rendono meno perfetto, come la pelle che non ha la stessa tonalit\u00e0 uniforme e la somiglianza con il resto del corpo, che potrebbe essere un artefatto o un'immagine modificata.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_96.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "Il volto presenta una precisione e una coerenza dei tratti facciali che non sono naturali per un volto umano reale. Ad esempio, la linea del naso \u00e8 molto netta e regolare, la pelle \u00e8 perfettamente liscia e priva di imperfezioni, e la barba \u00e8 assente. Inoltre, la capigliatura \u00e8 perfettamente stilizzata e non presenta alcuna irregolarit\u00e0 o imperfezione. Questi indizi suggeriscono che il volto \u00e8 stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_73.jpg",
+            "ground_truth": "fake",
+            "prediction": null,
+            "explanation": null,
+            "error": "JSON parsing error: Unterminated string starting at: line 3 column 18 (char 44)"
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_54.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "Il volto presenta una precisione e una coerenza dei tratti facciali che non sono naturali per un volto umano reale. Ad esempio, la linea del naso \u00e8 molto netta e regolare, la pelle \u00e8 perfettamente liscia e priva di imperfezioni, e la barba \u00e8 uniforme e ben curata. Inoltre, la posa della testa e la espressione del volto sono molto regolate e non mostrano le irregolarit\u00e0 naturali che si riscontrano in un volto umano reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_76.jpg",
+            "ground_truth": "fake",
+            "prediction": null,
+            "explanation": null,
+            "error": "JSON parsing error: Unterminated string starting at: line 3 column 18 (char 44)"
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_78.jpg",
+            "ground_truth": "fake",
+            "prediction": "uncertain",
+            "explanation": "Non sono possibili indizi visivi che permettano di affermare con certezza se il volto \u00e8 reale o generato. La qualit\u00e0 dell'immagine e la posizione del soggetto non forniscono informazioni sufficienti per effettuare una valutazione precisa.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_59.jpg",
+            "ground_truth": "fake",
+            "prediction": "uncertain",
+            "explanation": "Non sono possibili indizi visivi che permettano di affermare con certezza se il volto \u00e8 reale o generato. La qualit\u00e0 dell'immagine e la posizione della persona non forniscono informazioni sufficienti per effettuare una valutazione precisa.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_88.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "Il volto presenta una somiglianza con i volti generati dall'IA, come ad esempio la precisione delle linee, la uniformit\u00e0 della pelle e la mancanza di imperfezioni naturali come rughe, pore e imperfezioni cutanee. Inoltre, la somiglianza con i volti generati dall'IA pu\u00f2 essere notata nella forma delle orecchie e nella struttura del naso.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_71.jpg",
+            "ground_truth": "fake",
+            "prediction": "uncertain",
+            "explanation": "Non sono possibili indizi visivi che permettano di affermare con certezza se il volto \u00e8 reale o generato. La qualit\u00e0 dell'immagine e la posizione del bambino non forniscono informazioni sufficienti per effettuare una valutazione precisa.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_60.jpg",
+            "ground_truth": "fake",
+            "prediction": "uncertain",
+            "explanation": "Non sono possibili indizi visivi che permettano di affermare con certezza se il volto \u00e8 reale o generato. La qualit\u00e0 dell'immagine e la posizione della persona non forniscono informazioni sufficienti per effettuare una valutazione precisa.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_79.jpg",
+            "ground_truth": "fake",
+            "prediction": "uncertain",
+            "explanation": "Non sono possibili indizi visivi che permettano di affermare con certezza se il volto \u00e8 reale o generato. La qualit\u00e0 dell'immagine e la posizione del soggetto non forniscono informazioni sufficienti per effettuare una valutazione precisa.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_82.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "Il volto presenta una precisione e una coerenza nella forma delle orecchie e nella struttura del capo che suggerisce un'immagine generata dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_57.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "Il volto presenta una somiglianza con i volti generati dall'IA, in particolare nella forma del naso e nella pelle. Inoltre, la pelle sembra essere priva di imperfezioni come pore o blemishes, che sono comuni in volti reali. Questi indizi, insieme alla somiglianza con i volti generati dall'IA, suggeriscono che il volto \u00e8 stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_99.jpg",
+            "ground_truth": "fake",
+            "prediction": "uncertain",
+            "explanation": "Non sono possibili indizi visivi che permettano di affermare con certezza se il volto \u00e8 reale o generato. La qualit\u00e0 dell'immagine e la posizione della testa potrebbero influire sulla percezione del volto. Inoltre, la presenza di artefatti come ombre, riflessi o distorsioni potrebbe essere indicativa di un volto generato, ma non sono presenti in questa immagine.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_63.jpg",
+            "ground_truth": "fake",
+            "prediction": "uncertain",
+            "explanation": "Non sono possibili indizi visivi che permettano di affermare con certezza se il volto \u00e8 reale o generato. La qualit\u00e0 dell'immagine e la posizione del soggetto non forniscono informazioni sufficienti per effettuare una valutazione precisa.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_86.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "Il volto presenta una precisione e una coerenza nella forma delle orecchie, nella struttura del naso e nella posizione dei capelli che non sono comuni in una persona reale. Inoltre, la pelle sembra essere uniforme e priva di imperfezioni naturali come macchie o rughe, che potrebbero essere indicatori di un volto generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_52.jpg",
+            "ground_truth": "fake",
+            "prediction": "uncertain",
+            "explanation": "Non sono possibili indizi visivi che permettano di affermare con certezza se il volto \u00e8 reale o generato. La qualit\u00e0 dell'immagine e la posizione della persona non forniscono informazioni sufficienti per effettuare una valutazione precisa.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_90.jpg",
+            "ground_truth": "fake",
+            "prediction": null,
+            "explanation": null,
+            "error": "JSON parsing error: Unterminated string starting at: line 3 column 18 (char 44)"
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_98.jpg",
+            "ground_truth": "fake",
+            "prediction": "uncertain",
+            "explanation": "Non sono possibili indizi visivi che permettano di affermare con certezza se il volto \u00e8 reale o generato. La qualit\u00e0 dell'immagine e la posizione della persona non forniscono informazioni sufficienti per effettuare una valutazione precisa.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_70.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "Il volto presenta una precisione e una coerenza dei tratti facciali che non sono naturali per un volto umano reale. Ad esempio, la linea del naso \u00e8 molto regolare e la forma del mento \u00e8 molto simmetrica, che sono caratteristiche comuni nei volti generati dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_84.jpg",
+            "ground_truth": "fake",
+            "prediction": "uncertain",
+            "explanation": "Non sono possibili indizi visivi che permettano di affermare con certezza se il volto \u00e8 reale o generato. La qualit\u00e0 dell'immagine e la posizione del soggetto non forniscono informazioni sufficienti per effettuare una valutazione precisa.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_69.jpg",
+            "ground_truth": "fake",
+            "prediction": "uncertain",
+            "explanation": "Non sono possibili indizi visivi che permettano di affermare con certezza se il volto \u00e8 reale o generato. La qualit\u00e0 dell'immagine e la posizione del soggetto non forniscono informazioni sufficienti per effettuare una valutazione precisa.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_53.jpg",
+            "ground_truth": "fake",
+            "prediction": "uncertain",
+            "explanation": "Non sono possibili indizi visivi che permettano di affermare con certezza se il volto \u00e8 reale o generato. La presenza di artefatti intorno alla bocca, alle orecchie o all'attaccatura dei capelli non \u00e8 possibile determinare con certezza se siano artefatti o semplicemente caratteristiche naturali del volto.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_66.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "Il volto dell'immagine presenta una somiglianza con i volti generati dall'IA, in particolare nella forma del naso e nella struttura del viso. Inoltre, la pelle sembra essere perfetta e priva di imperfezioni naturali, come pore o rughe, che sono comuni in volti umani reali. Queste caratteristiche suggeriscono che il volto \u00e8 stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_64.jpg",
+            "ground_truth": "fake",
+            "prediction": null,
+            "explanation": null,
+            "error": "JSON parsing error: Unterminated string starting at: line 3 column 18 (char 44)"
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_56.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "Il volto presenta una precisione e una coerenza nella forma delle orecchie e nella struttura del viso che suggerisce che il volto \u00e8 stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_95.jpg",
+            "ground_truth": "fake",
+            "prediction": "uncertain",
+            "explanation": "Non sono possibili indizi visivi che permettano di affermare con certezza se il volto \u00e8 reale o generato. La qualit\u00e0 dell'immagine e la posizione della testa potrebbero influire sulla percezione del volto. Inoltre, la presenza di artefatti come ombre, riflessi o distorsioni potrebbero essere presenti anche in immagini di volti reali.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_61.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "Il volto presenta una precisione e una coerenza dei tratti facciali che non sono naturali per un volto umano reale. Ad esempio, la linea del naso \u00e8 molto regolare e la pelle ha una uniformit\u00e0 e una luce che non sono comuni in una persona reale. Inoltre, la barba \u00e8 molto ben definita e ha una uniformit\u00e0 che non \u00e8 naturale. Questi indizi suggeriscono che il volto \u00e8 stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_50.jpg",
+            "ground_truth": "fake",
+            "prediction": "uncertain",
+            "explanation": "Non sono possibili indizi visivi che permettano di affermare con certezza se il volto \u00e8 reale o generato. La qualit\u00e0 dell'immagine e la posizione della testa potrebbero influire sulla percezione del volto. Inoltre, la presenza di artefatti come ombre, riflessi o distorsioni potrebbero essere presenti anche in immagini di volti reali.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_83.jpg",
+            "ground_truth": "fake",
+            "prediction": "uncertain",
+            "explanation": "Non sono possibili indizi visivi che permettano di affermare con certezza se il volto \u00e8 reale o generato. La qualit\u00e0 dell'immagine e la posizione della persona non forniscono informazioni sufficienti per effettuare una valutazione precisa.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_92.jpg",
+            "ground_truth": "fake",
+            "prediction": "uncertain",
+            "explanation": "Non sono possibili indizi visivi che permettano di affermare con certezza se il volto \u00e8 reale o generato. La qualit\u00e0 dell'immagine e la posizione della persona non forniscono informazioni sufficienti per effettuare una valutazione precisa.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_51.jpg",
+            "ground_truth": "fake",
+            "prediction": null,
+            "explanation": null,
+            "error": "JSON parsing error: Unterminated string starting at: line 3 column 18 (char 44)"
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_62.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "Il volto presenta una certa somiglianza con i volti generati dall'IA, come la precisione delle linee e la regolarit\u00e0 delle forme. Tuttavia, ci sono anche alcune differenze, come la mancanza di una certa naturalezza e spontaneit\u00e0 che si riscontra in un volto reale. Inoltre, ci sono alcune irregolarit\u00e0 nella pelle e nella struttura dei capelli che potrebbero indicare un'immagine generata dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_97.jpg",
+            "ground_truth": "fake",
+            "prediction": "uncertain",
+            "explanation": "Non sono possibili indizi visivi che permettano di affermare con certezza se il volto \u00e8 reale o generato. La qualit\u00e0 dell'immagine e la posizione della testa potrebbero influire sulla percezione del volto. Inoltre, la presenza di artefatti come ombre, riflessi o distorsioni potrebbero essere presenti anche in immagini di volti reali.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_72.jpg",
+            "ground_truth": "fake",
+            "prediction": "uncertain",
+            "explanation": "Non sono possibili indizi visivi che permettano di affermare con certezza se il volto \u00e8 reale o generato. La qualit\u00e0 dell'immagine e la posizione della persona non forniscono informazioni sufficienti per effettuare una valutazione precisa.",
+            "error": null
+        }
+    ]
+}
