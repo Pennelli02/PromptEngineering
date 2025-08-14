@@ -6,9 +6,9 @@ import nltk
 import pandas as pd
 from ollama import Client
 from PIL import Image
-from sentence_transformers import SentenceTransformer
-import hdbscan
-from collections import Counter
+# from sentence_transformers import SentenceTransformer
+# import hdbscan
+# from collections import Counter
 from transformers import pipeline
 
 client = Client()
@@ -36,8 +36,13 @@ def analyze_image(img_path, lab, prompt, modelName, fewShot, few_shot_messages, 
 
         # Aggiungi few-shot messages se richiesto
         if fewShot and few_shot_messages:
-            messages.extend(few_shot_messages)
+            messages.extend(few_shot_messages) # applicabile al momento su ollama
 
+        # ONESHOT applicabile su  hugging face
+        # if oneshot:
+        #     messages=prompt.createOneShot(exampleImage, isFake, imagePath ,prompt, isItalian) # paramentri che prendiamo in ingresso
+        # else:
+        #     #  continuare il normale procedimento
         # Aggiungi messaggio dell'utente con immagine e prompt
         messages.append({
             "role": "user",

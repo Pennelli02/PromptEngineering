@@ -22,7 +22,7 @@ UNCERTAIN_EN = True  # abilitare l'opzione al modello di rispondere incerto
 # ===================================
 # VALORI PER IL MODELLO
 
-MODEL_NAME = "gemma3:4b"
+MODEL_NAME = "llava:7b"
 # ===================================
 # MODALITA' AUTOMATICA
 AUTO_ON = True

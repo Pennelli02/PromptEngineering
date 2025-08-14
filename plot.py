@@ -270,7 +270,7 @@ def plotStatsAboutPrompt(promptType, isEng):
     plt.savefig(path_grafico, dpi=300, bbox_inches='tight')  # dpi=300 per alta qualità
 
 
-def plotStatsPromptDividedByModel(dirName):
+def getInfoPromptByModel(dirName):
     baseDir = "promptSection/"
     cartella = f"{baseDir}{dirName}"
     fileList = glob.glob(os.path.join(cartella, "*.json"))
@@ -294,41 +294,54 @@ def plotStatsPromptDividedByModel(dirName):
             "modello": modello,
             "accuracy": metrics["accuracy"],
             "precision": metrics["precision"],
-            "recall": metrics["recall"]
+            "recall": metrics["recall"],
+            "false_negative_rate": metrics["false_negative_rate"],
+            "false_positive_rate": metrics["false_positive_rate"]
         })
 
+    return results
+
+
+def createBarPlot(results, dirName, metrics, positive):
     etichette = [r["modello"] for r in results]
-    accuracy = [r["accuracy"] for r in results]
-    precision = [r["precision"] for r in results]
-    recall = [r["recall"] for r in results]
+    values_list = [[r[m] for r in results] for m in metrics]
 
     x = np.arange(len(etichette))
-    width = 0.25
+    width = 0.8 / len(metrics)  # spazio per ogni barra
 
-    fig, ax = plt.subplots(figsize=(12, 6))  # più alto per leggibilità
+    fig, ax = plt.subplots(figsize=(12, 6))
 
-    rects1 = ax.bar(x - width, accuracy, width, label='Accuracy')
-    rects2 = ax.bar(x, precision, width, label='Precision')
-    rects3 = ax.bar(x + width, recall, width, label='Recall')
+    for i, (metric, values) in enumerate(zip(metrics, values_list)):
+        rects = ax.bar(x + (i - len(metrics) / 2) * width, values, width, label=metric)
+        autolabel(rects, ax, 10, True)
+    if positive:
+        flagTitle = "positive_values"
+    else:
+        flagTitle = "negative_values"
 
-    autolabel(rects1, ax, 10, True)
-    autolabel(rects2, ax, 10, True)
-    autolabel(rects3, ax, 10, True)
-
-    ax.set_ylabel("Valore (%)")
-    ax.set_title(f"Prestazioni per modello - {dirName}")
+    ax.set_ylabel("Valore")
+    ax.set_title(f" Prestazioni per modello-{dirName}-{flagTitle}")
     ax.set_xticks(x)
     ax.set_xticklabels(etichette, rotation=45, ha="right")
-    ax.set_ylim(0, 1)
+    ax.set_ylim(0, 1.1)
     ax.legend()
 
     plt.tight_layout()
-
     cartella_grafici = "plots/modelsBar/"
     os.makedirs(cartella_grafici, exist_ok=True)
-
-    path_grafico = os.path.join(cartella_grafici, f"{dirName}.png")
+    path_grafico = os.path.join(cartella_grafici, f"{dirName}_{flagTitle}.png")
     plt.savefig(path_grafico, dpi=300, bbox_inches='tight')
+    plt.close(fig)
+
+
+def plotStatsPromptDividedByModel(dirName, positive=True):
+    results=getInfoPromptByModel(dirName)
+    if positive:
+        createBarPlot(results, dirName, metrics=["accuracy", "precision", "recall"], positive=positive
+                      )
+    else:
+        createBarPlot(results, dirName, metrics=["false_positive_rate", "false_negative_rate"], positive=positive
+                      )
 
 
 # FIXME vautare se tenere in considerazione per tipo di prompt
@@ -440,15 +453,16 @@ def analyzeSummarizeAndVisualize(dirName, Type, modelName):
 
     # WordCloud
     # FixMe o si cambia modo di rappresentare le informazioni o al momento non sta fornendo nulla di sensato
-    plotWordcloudFromExplanations(explanations, modelName, Type)
+    # plotWordcloudFromExplanations(explanations, modelName, Type)
 
 
 # TODO altre funzioni di plotting (dipende da cosa mi serve nella relazione)
 if __name__ == "__main__":
     # analyzeSummarizeAndVisualize("resultsJSON/newFormats/qwenVL3b/Uncertain", "uncertain", "qwenVL-3b")
-    promptList=["Prompt-0-Eng", "Prompt-0-Ita", "Prompt-1-Eng", "Prompt-1-Ita", "Prompt-2-Eng", "Prompt-2-Ita",
-                "Prompt-3-Eng", "Prompt-3-Ita", "Prompt-4-Eng", "Prompt-4-Ita", "Prompt-5-Eng", "Prompt-5-Ita",
-                "Prompt-6-Eng", "Prompt-6-Ita"]
+    promptList = ["Prompt-0-Eng", "Prompt-0-Ita", "Prompt-1-Eng", "Prompt-1-Ita", "Prompt-2-Eng", "Prompt-2-Ita",
+                  "Prompt-3-Eng", "Prompt-3-Ita", "Prompt-4-Eng", "Prompt-4-Ita", "Prompt-5-Eng", "Prompt-5-Ita",
+                  "Prompt-6-Eng", "Prompt-6-Ita"]
     for prompt in promptList:
-        plotStatsPromptDividedByModel(prompt)
-
+        plotStatsPromptDividedByModel(prompt, True)
+    for prompt in promptList:
+        plotStatsPromptDividedByModel(prompt, False)

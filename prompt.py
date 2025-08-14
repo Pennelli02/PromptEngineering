@@ -112,6 +112,37 @@ def usingOneShot():
     ]
     return oneShotMessages
 
-# TODO gestione multipla ONESHOT
+
+# TODO gestione multipla ONESHOT (più fattibile su Hugging Face)
+
+def createOneShot(exampleImage, isFake, imagePath ,prompt, isItalian):
+    if isItalian:
+        note = (
+            "Nota: la prima immagine è falsa (generata artificialmente). Sapendo questo analizza la seconda "
+            "immagine e rispondi alla domanda: "
+        ) if isFake else (
+            "Nota: la prima immagine è reale. Sapendo questo analizza la seconda "
+            "immagine e rispondi alla domanda: "
+        )
+        prompt_text = prompt
+    else:
+        note = (
+            "Note: the first image is fake (AI-generated). Knowing this, analyze the second "
+            "image and answer the question: "
+        ) if isFake else (
+            "Note: the first image is real. Knowing this, analyze the second "
+            "image and answer the question: "
+        )
+        prompt_text = prompt
+
+    final_text = f"{note}\n{prompt_text}"
+    # Creiamo il contenuto del messaggio
+    content = [
+        {"type": "image", "image": str(exampleImage)},
+        {"type": "image", "image": str(imagePath)},
+        {"type": "text", "text": final_text}
+    ]
+
+    return [{"role": "user", "content": content}]
 
 # TODO vogliamo provare un nuovo prompt? (simulare un game)
