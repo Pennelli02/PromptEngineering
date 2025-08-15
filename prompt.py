@@ -113,9 +113,8 @@ def usingOneShot():
     return oneShotMessages
 
 
-# TODO gestione multipla ONESHOT (più fattibile su Hugging Face)
-
-def createOneShot(exampleImage, isFake, imagePath ,prompt, isItalian):
+# FixMe gestione gemma3
+def createOneShot(exampleImage, isFake, imagePath, prompt, isItalian):
     if isItalian:
         note = (
             "Nota: la prima immagine è falsa (generata artificialmente). Sapendo questo analizza la seconda "

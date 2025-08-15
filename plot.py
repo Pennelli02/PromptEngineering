@@ -270,8 +270,12 @@ def plotStatsAboutPrompt(promptType, isEng):
     plt.savefig(path_grafico, dpi=300, bbox_inches='tight')  # dpi=300 per alta qualità
 
 
-def getInfoPromptByModel(dirName):
-    baseDir = "promptSection/"
+def getInfoPromptByModel(dirName, uncertain=False, oneshot=False):
+    baseDir = "promptSection/sure/"
+    if uncertain:
+        baseDir = "promptSection/uncertain/"
+    elif oneshot:
+        baseDir = "promptSection/oneshot/"
     cartella = f"{baseDir}{dirName}"
     fileList = glob.glob(os.path.join(cartella, "*.json"))
     results = []
@@ -296,13 +300,15 @@ def getInfoPromptByModel(dirName):
             "precision": metrics["precision"],
             "recall": metrics["recall"],
             "false_negative_rate": metrics["false_negative_rate"],
-            "false_positive_rate": metrics["false_positive_rate"]
+            "false_positive_rate": metrics["false_positive_rate"],
+            "rejection_real_rate": metrics["rejection_real_rate"],
+            "rejection_fake_rate": metrics["rejection_fake_rate"]
         })
 
     return results
 
 
-def createBarPlot(results, dirName, metrics, positive):
+def createBarPlot(results, dirName, metrics, positive, uncertain, oneshot):
     etichette = [r["modello"] for r in results]
     values_list = [[r[m] for r in results] for m in metrics]
 
@@ -315,42 +321,63 @@ def createBarPlot(results, dirName, metrics, positive):
         rects = ax.bar(x + (i - len(metrics) / 2) * width, values, width, label=metric)
         autolabel(rects, ax, 10, True)
     if positive:
-        flagTitle = "positive_values"
+        flagTitle = "Positive_values"
+        cartella_grafici = "plots/modelsBar/positiveStats/"
     else:
-        flagTitle = "negative_values"
-
+        flagTitle = "Negative_values"
+        cartella_grafici = "plots/modelsBar/negativeStats/"
     ax.set_ylabel("Valore")
     ax.set_title(f" Prestazioni per modello-{dirName}-{flagTitle}")
+    cartella = f"{cartella_grafici}sure/"
+    if uncertain:
+        ax.set_title(f" Prestazioni per modello-{dirName}-{flagTitle} (uncertain)")
+        cartella = f"{cartella_grafici}uncertain/"
+    elif oneshot:
+        ax.set_title(f" Prestazioni per modello-{dirName}-{flagTitle} (oneshot)")
+        cartella = f"{cartella_grafici}oneshot/"
     ax.set_xticks(x)
     ax.set_xticklabels(etichette, rotation=45, ha="right")
     ax.set_ylim(0, 1.1)
     ax.legend()
-
     plt.tight_layout()
-    cartella_grafici = "plots/modelsBar/"
-    os.makedirs(cartella_grafici, exist_ok=True)
-    path_grafico = os.path.join(cartella_grafici, f"{dirName}_{flagTitle}.png")
+    os.makedirs(cartella, exist_ok=True)
+    path_grafico = os.path.join(cartella, f"{dirName}.png")
     plt.savefig(path_grafico, dpi=300, bbox_inches='tight')
     plt.close(fig)
 
 
-def plotStatsPromptDividedByModel(dirName, positive=True):
-    results=getInfoPromptByModel(dirName)
+def plotStatsPromptDividedByModel(dirName, positive=True, uncertain=False, oneshot=False):
+    results = getInfoPromptByModel(dirName, uncertain, oneshot)
     if positive:
-        createBarPlot(results, dirName, metrics=["accuracy", "precision", "recall"], positive=positive
-                      )
+        createBarPlot(results, dirName, metrics=["accuracy", "precision", "recall"], positive=positive,
+                      uncertain=uncertain, oneshot=oneshot)
     else:
-        createBarPlot(results, dirName, metrics=["false_positive_rate", "false_negative_rate"], positive=positive
-                      )
+        if uncertain:
+            createBarPlot(results, dirName,
+                          metrics=["false_positive_rate", "false_negative_rate", "rejection_real_rate",
+                                   "rejection_fake_rate"], positive=positive,
+                          uncertain=uncertain, oneshot=oneshot)
+        else:
+            createBarPlot(results, dirName,
+                          metrics=["false_positive_rate", "false_negative_rate"], positive=positive,
+                          uncertain=uncertain, oneshot=oneshot)
 
 
-# FIXME vautare se tenere in considerazione per tipo di prompt
-# funzione che raccoglie tutte le spiegazioni di un modello in base al tipo al momento solo uncertain, fp, fn
-def captureOneTypeResponse(dirName, Type):
-    cartella = dirName
-    fileList = glob.glob(os.path.join(cartella, "*.json"))
+# FIXME vautare se tenere in considerazione per tipo di prompt (è da fare)
+# funzione che raccoglie tutte le spiegazioni di un modello in base al tipo al momento solo uncertain, Uncertain real, uncertain fake
+def captureOneTypeResponse(path, Type):
     Type_lower = Type.lower()
     risultati = []
+
+    # Se il percorso è un file singolo
+    if os.path.isfile(path) and path.endswith(".json"):
+        fileList = [path]
+    # Se è una cartella
+    elif os.path.isdir(path):
+        fileList = glob.glob(os.path.join(path, "*.json"))
+    else:
+        print(f"Percorso non valido: {path}")
+        return risultati
 
     for file_path in fileList:
         with open(file_path, "r", encoding="utf-8") as f:
@@ -368,33 +395,13 @@ def captureOneTypeResponse(dirName, Type):
             prediction = str(response.get("prediction", "")).lower().replace("[", "").replace("]", "").strip()
             ground_truth = str(response.get("ground_truth", "")).lower()
 
-            if Type_lower == "uncertain":
-                if "uncertain" in prediction:
-                    risultati.append({
-                        "image_path": response.get("image_path"),
-                        "ground_truth": ground_truth,
-                        "explanation": response.get("explanation"),
-                        "type": Type_lower
-                    })
-                print(response.get("explanation"))
-
-            elif Type_lower == "fp":
-                if (prediction in ("generated", "yes")) and ground_truth == "real":
-                    risultati.append({
-                        "image_path": response.get("image_path"),
-                        "ground_truth": ground_truth,
-                        "explanation": response.get("explanation"),
-                        "type": Type_lower
-                    })
-
-            elif Type_lower == "fn":
-                if (prediction in ("real face", "no")) and ground_truth == "fake":
-                    risultati.append({
-                        "image_path": response.get("image_path"),
-                        "ground_truth": ground_truth,
-                        "explanation": response.get("explanation"),
-                        "type": Type_lower
-                    })
+            if Type_lower == "uncertain" and "uncertain" in prediction:
+                risultati.append({
+                    "image_path": response.get("image_path"),
+                    "ground_truth": ground_truth,
+                    "explanation": response.get("explanation"),
+                    "type": Type_lower
+                })
 
     return risultati
 
@@ -462,6 +469,10 @@ if __name__ == "__main__":
     promptList = ["Prompt-0-Eng", "Prompt-0-Ita", "Prompt-1-Eng", "Prompt-1-Ita", "Prompt-2-Eng", "Prompt-2-Ita",
                   "Prompt-3-Eng", "Prompt-3-Ita", "Prompt-4-Eng", "Prompt-4-Ita", "Prompt-5-Eng", "Prompt-5-Ita",
                   "Prompt-6-Eng", "Prompt-6-Ita"]
+    results = captureOneTypeResponse(
+        "resultsJSON/newFormats/gemma3/uncertain/real-vs-fake_gemma3_4b_PromptType-1_ENG_20250812-182524_result.json",
+        "uncertain")
+    print(results)
     for prompt in promptList:
         plotStatsPromptDividedByModel(prompt, True)
     for prompt in promptList:

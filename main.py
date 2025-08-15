@@ -14,8 +14,8 @@ SHUFFLE = False
 # ======================================
 
 # VALORI PER IL PROMPT
-INDEX_PROMPT = 0  # (0-6)
-IS_ITALIAN = False
+INDEX_PROMPT = 6  # (0-6)
+IS_ITALIAN = True
 SHOW_IMAGES = False
 ONESHOT = False
 UNCERTAIN_EN = True  # abilitare l'opzione al modello di rispondere incerto
@@ -25,7 +25,7 @@ UNCERTAIN_EN = True  # abilitare l'opzione al modello di rispondere incerto
 MODEL_NAME = "llava:7b"
 # ===================================
 # MODALITA' AUTOMATICA
-AUTO_ON = True
+AUTO_ON = False
 # dataset section
 if startMiniDt:
     images_with_labels, fakes, reals = dataset.loadDataset(MAX_IMAGES)

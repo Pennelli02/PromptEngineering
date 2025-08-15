@@ -36,11 +36,12 @@ def analyze_image(img_path, lab, prompt, modelName, fewShot, few_shot_messages, 
 
         # Aggiungi few-shot messages se richiesto
         if fewShot and few_shot_messages:
-            messages.extend(few_shot_messages) # applicabile al momento su ollama
+            messages.extend(few_shot_messages)  # applicabile al momento su ollama
 
         # ONESHOT applicabile su  hugging face
         # if oneshot:
-        #     messages=prompt.createOneShot(exampleImage, isFake, imagePath ,prompt, isItalian) # paramentri che prendiamo in ingresso
+        #     msg=prompt.createOneShot(exampleImage, isFake, imagePath ,prompt, isItalian) # paramentri che prendiamo in ingresso
+        #     messages.extend(msg)
         # else:
         #     #  continuare il normale procedimento
         # Aggiungi messaggio dell'utente con immagine e prompt
@@ -208,3 +209,5 @@ def hierarchical_summarize_with_prompt(explanations, max_chunk_len=1000):
 #               "'incerto', focalizzandoti su pattern comuni o problemi visivi presenti: " + full_text)
 #     summary = summarizer(prompt, max_new_tokens=150, min_length=20, do_sample=False)[0]['summary_text']
 #     return summary
+
+# FixMe si può usare per il summerize and explaination gemma3:1b

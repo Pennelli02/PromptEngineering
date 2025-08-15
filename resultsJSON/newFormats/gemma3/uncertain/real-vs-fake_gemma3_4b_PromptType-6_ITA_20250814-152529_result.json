@@ -1,0 +1,728 @@
+{
+    "metrics": {
+        "total_processed": 100,
+        "total_real": 50,
+        "total_fake": 50,
+        "TP": 50,
+        "TN": 0,
+        "FP": 50,
+        "FN": 0,
+        "rejection_real": 0,
+        "rejection_fake": 0,
+        "text_parsing_errors": 0,
+        "text_parsing_error_rate": 0.0,
+        "accuracy": 0.5,
+        "precision": 0.5,
+        "recall": 1.0,
+        "false_negative_rate": 0.0,
+        "false_positive_rate": 1.0,
+        "rejection_real_rate": 0.0,
+        "rejection_fake_rate": 0.0,
+        "rejection_total_rate": 0.0,
+        "system_prompt": "Sei un sistema professionale di classificazione delle immagini che analizza le immagini fornite per determinare se mostrano un volto umano reale o uno generato.\nRispondi SOLO usando il seguente formato JSON:\n{\n  \"result\": \"[real face]\" oppure \"[generated]\" o [uncertain], \n  \"explanation\": \"Una spiegazione precisa basata su indizi visivi osservati nell'immagine.\"\n}\nNON includere frasi generiche come 'non ci sono artefatti'. Sii visivo e dettagliato nella tua analisi.Rispondi ESCLUSIVAMENTE con questo JSON, senza commenti o testo extra.",
+        "user_prompt": "Credo che questa persona non esista. In base all'immagine, ti sembra un volto reale o uno generato?",
+        "oneShot": false
+    },
+    "responses": [
+        {
+            "image_path": "test_1\\real\\real_0.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "L'immagine mostra un volto con un'illuminazione e una resa dei dettagli che sembrano innaturali. In particolare, la forma della bocca e la resa della pelle presentano un aspetto innaturale, con un'eccessiva uniformit\u00e0 e mancanza di rughe o imperfezioni tipiche del volto umano reale. Anche la composizione dell'immagine e l'assenza di elementi contestuali realistici supportano l'ipotesi di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_1.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "L'immagine mostra un volto con un'illuminazione e un colore della pelle in modo innaturale. Le linee del viso sono troppo perfette e non presentano imperfezioni tipiche dei volti umani reali. Inoltre, il capello ha una decorazione inesistente che non \u00e8 presente in modo coerente con i capelli naturali. L'immagine presenta dettagli eccessivi e un'illuminazione non realistica, suggerendo che si tratti di una generazione artificiale.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_10.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "L'immagine presenta un volto con un'illuminazione e una resa del viso leggermente innaturali. La forma della bocca e le dimensioni degli occhi sono eterogenee, e la distribuzione della luce sulla pelle appare innaturale, con ombre eccessive che suggeriscono un'elaborazione digitale. In particolare, le guance rosse sono un artefatto non tipico per i volti reali, e la consistenza della pelle sembra troppo uniforme e priva di imperfezioni tipiche.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_11.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "L'immagine presenta un volto con un'illuminazione e un'angolazione insolite, con un'enorme quantit\u00e0 di aree di ombre senza una transizione naturale. La pelle appare eccessivamente liscia e priva di rughe o imperfezioni tipiche, e ci sono artefatti di sfocatura attorno al volto, suggerendo che sia stato creato artificialmente.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_12.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "Il soggetto presenta un'esagerata nitidezza dei dettagli, in particolare attorno agli occhi e alla bocca, e una mancanza di imperfezioni della pelle tipiche dei volti umani reali. Inoltre, il modello del viso sembra troppo perfetto e uniforme, suggerendo che si tratta di un'immagine generata piuttosto che di una fotografia di un volto reale.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_13.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "L'immagine presenta una resa eccessivamente uniforme della pelle con una mancanza di micro-variazioni che si vedono tipicamente nei volti reali. Il sorriso \u00e8 leggermente innaturale. Inoltre, la forma della testa e le proporzioni del viso presentano un aspetto troppo perfetto e inusuale, suggerendo un'immagine generata da un algoritmo.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_14.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "L'immagine presenta un volto con una resa eccessivamente morbida e non naturale. La pelle ha un aspetto innaturale, con una mancanza di dettagli del tessuto e di imperfezioni. Lo sguardo sembra innaturale e l'immagine manca di dettagli di texture e micro-imperfezioni che sono tipici dei volti reali.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_15.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "L'immagine presenta alcuni artefatti visivi che suggeriscono una generazione artificiale. Gli occhi hanno un aspetto innaturale e poco definito, con un'illuminazione inconsistente che non corrisponde alle riflessioni tipiche di un volto reale. Inoltre, la pelle appare troppo liscia e priva di imperfezioni, il che \u00e8 raro per le immagini di volti umani reali.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_16.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "La pelle dell'immagine appare eccessivamente liscia e uniforme, priva di microvariazioni tipiche delle texture della pelle umana. L'espressione \u00e8 un po' innaturale e i dettagli dei capelli sono troppo perfetti, suggerendo che si tratti di un volto generato da un algoritmo.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_17.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "L'immagine presenta un volto con un'illuminazione e una resa dei dettagli che sono eccessivamente perfette e uniformi. Gli occhi sembrano leggermente troppo grandi e piatti, e il volto manca di microvariazioni tipiche dei volti umani, come rughe o imperfezioni. La resa dell'immagine \u00e8 troppo liscia e priva di texture naturale, suggerendo una generazione artificiale.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_18.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "Il soggetto presenta un'illuminazione e un'angolazione del volto eccessivamente perfette, con una pelle che appare troppo uniforme e priva di imperfezioni tipiche di un volto reale. L'espressione facciale, sebbene rilassata, manca di naturalezza e i dettagli dell'occhio sono leggermente indefiniti, suggerendo una creazione digitale.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_19.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "L'immagine presenta una chiara mancanza di dettagli e realismo che suggerisce una generazione di immagini. La pelle appare eccessivamente liscia e uniforme, con ombre poco definite e un'illuminazione innaturale. Gli occhi sembrano avere un'espressione strana e i dettagli del viso sono privi di coerenza. La presenza di questi artefatti, insieme alla nitidezza generale dell'immagine, suggerisce fortemente che si tratti di un volto generato e non di una foto di un volto reale.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_2.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "L'immagine mostra una peculiarit\u00e0 nella forma del viso, in particolare un'armatura troppo perfetta e il sorriso sembra innaturale. Inoltre, la qualit\u00e0 dell'immagine \u00e8 leggermente spettrale, suggerendo che potrebbe essere un'immagine generata.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_20.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "L'immagine presenta un volto con un'illuminazione e un'angolazione anomale. I dettagli della pelle appaiono innaturalmente uniformi e privi di imperfezioni tipiche, indicando un'immagine generata dall'IA. Inoltre, l'espressione del viso \u00e8 leggermente rigida e l'illuminazione non \u00e8 coerente su tutta la faccia.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_21.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "L'immagine mostra un volto con un'illuminazione e un'angolazione innaturali. La pelle appare troppo liscia e uniforme, priva di imperfezioni comuni a un volto reale. Il sorriso \u00e8 leggermente innaturale. Inoltre, l'occlusione dell'occhio e la profondit\u00e0 di campo sono inconsistenti, suggerendo che l'immagine sia stata generata artificialmente.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_22.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "L'immagine presenta artefatti di rendering come una pelle eccessivamente uniforme e priva di imperfezioni, linee di ombre troppo nette e un'illuminazione che sembra innaturale per una fotografia del genere. La bocca e le labbra appaiono leggermente fuori proporzione e gli occhi sembrano presentare una nitidezza eccessiva, suggerendo una generazione artificiale piuttosto che una vera immagine del volto di una persona.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_23.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "L'immagine presenta una nitidezza e un dettaglio eccessivi, in particolare intorno ai capelli e all'incarnato. L'espressione del viso \u00e8 leggermente innaturale e ci sono piccole imperfezioni nell'illuminazione che suggeriscono una composizione artificiale.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_24.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "La pelle appare eccessivamente liscia e priva di rughe realistiche che ci si aspetterebbe da un volto umano di questa et\u00e0. La forma del naso e delle labbra \u00e8 leggermente innaturale, e ci sono alcune imperfezioni che mancano. L'illuminazione e l'ombreggiatura sono troppo perfette e uniformi, suggerendo che l'immagine \u00e8 stata generata da un algoritmo piuttosto che da una vera fotografia.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_25.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "Il soggetto presenta un'eccessiva perfezione della pelle, con una mancanza di pori o imperfezioni che \u00e8 tipica delle immagini generate. Inoltre, l'espressione del viso appare leggermente innaturale e rigida, suggerendo una composizione artificiale. La luminosit\u00e0 uniforme e l'assenza di ombre realistiche contribuiscono all'impressione di un'immagine creata artificialmente.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_26.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "L'immagine presenta una stranezza nell'illuminazione e nelle proporzioni del viso. Le caratteristiche del viso sembrano eccessivamente perfette e uniformi, il che \u00e8 inusuale per i volti reali. Le ombre sono irregolari e il soggetto sembra avere un'espressione un po' strana, suggerendo che potrebbe essere un'immagine generata.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_27.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "L'immagine presenta diversi artefatti tipici delle immagini generate da AI. In particolare, l'espressione del viso dell'individuo appare innaturale, con un sorriso ampio e rigido e una leggera sovrapposizione dei lineamenti. Inoltre, il rendering delle dimensioni e della forma del viso \u00e8 irregolare, con un'elevata sfumatura e il dettaglio delle rughe \u00e8 poco definito. L'aspetto generale della figura \u00e8 troppo perfetto e non riflette le imperfezioni che si trovano nei volti umani reali.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_28.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "L'immagine mostra una resa del viso troppo perfetta, con un sorriso estremamente simmetrico e una resa eccessivamente uniforme della pelle, indicando la presenza di artefatti tipici delle immagini generate artificialmente. La luminosit\u00e0 e le ombre sulla pelle sono anche poco naturali e asimmetriche.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_29.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "L'immagine mostra un volto con caratteristiche eccessivamente accentuate, in particolare una fronte molto alta e una sorta di 'sporgenza' sopra gli occhi, indicativo di un'estetica non naturale. La resa dei dettagli della pelle \u00e8 inoltre poco realistica, con un aspetto troppo liscio e privo di rughe fini. L'insieme suggerisce un'immagine generata dall'IA piuttosto che una fotografia di un volto umano reale.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_3.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "L'immagine presenta un volto con una sfumatura di colore in modo innaturale, in particolare intorno alle tempie e al naso. Il dettaglio dei capelli \u00e8 insufficiente e l'espressione del viso appare statica e poco naturale, suggerendo una potenziale manipolazione o generazione artificiale.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_30.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "L'immagine presenta un volto con una resa poco realistica. La pelle appare troppo liscia e priva di rughe o imperfezioni tipiche di un volto umano, soprattutto di un bambino. La forma della bocca e degli occhi sembra innaturale e non coerente. L'illuminazione \u00e8 anche innaturale e contribuisce al senso di non realt\u00e0.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_31.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "L'immagine presenta una resa della pelle troppo uniforme e priva di dettagli, con un'illuminazione non naturale e un'espressione che appare artificiale. I dettagli del viso, come le sopracciglia e le palpebre, sono poco definiti e non realistici, suggerendo una generazione artificiale dell'immagine.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_32.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "L'immagine presenta una combinazione di caratteristiche che suggeriscono una potenziale manipolazione. La pelle appare innaturalmente liscia e priva di rughe, il che \u00e8 raro per l'et\u00e0 apparente. La luminosit\u00e0 e la definizione dei tratti facciali sono eccessive e non corrispondono ai tipi di pelle reali. L'espressione e la posa sembrano troppo perfette e artificiali.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_33.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "Il soggetto mostra un sorriso leggermente innaturale e le ombre sulla fronte sono troppo nette e uniformi, suggerendo una manipolazione digitale. La pelle appare troppo liscia e priva di imperfezioni per un volto reale. Il contrasto tra il soggetto e lo sfondo sembra troppo marcato, indicando una composizione artificiale.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_34.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "L'immagine presenta un'eccessiva perfezione del volto con dettagli troppo uniformi e una leggera illuminazione non naturale che \u00e8 inusuale per i volti reali. La pelle appare eccessivamente liscia e priva delle variazioni di colore tipiche della pelle umana. Inoltre, la presenza di un maschera di supereroe attorno alla testa suggerisce che l'immagine \u00e8 stata creata tramite intelligenza artificiale. ",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_35.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "La pelle appare eccessivamente liscia e uniforme, senza la tipica variazione di tonalit\u00e0 e le imperfezioni che caratterizzano i volti reali. Le ombre sono poco definite e la composizione generale sembra artificiosa, suggerendo un'immagine generata o manipolata.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_36.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "L'immagine presenta un'eccessiva perfezione e un aspetto innaturale. La pelle \u00e8 troppo liscia e uniforme, senza la tipica microtexture umana. Gli occhi mostrano un riflesso eccessivamente brillante e uniforme, e il sorriso sembra forzato. La mancanza di imperfezioni come le rughe fini o le irregolarit\u00e0 nella pelle suggerisce fortemente una generazione artificiale.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_37.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "Il volto mostra una pelle innaturalmente liscia e priva di porosit\u00e0, con un'espressione troppo marcata e rigida. Le ombre e l'illuminazione sono inconsistenti e non realistiche per un volto reale. La proporzione del viso \u00e8 anomala, con un naso piccolo e un'espressione che sembra forzata.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_38.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "L'immagine presenta una serie di incongruenze che suggeriscono una creazione artificiale. Gli occhi sono leggermente chiusi, e il sorriso appare innaturale e piatto. Il contrasto tra le ombre e le luci \u00e8 troppo uniforme, con una mancanza di gradazioni che \u00e8 comune nelle immagini generate artificialmente. La pelle ha una resa eccessivamente liscia e priva di imperfezioni che sarebbero presenti in un volto umano reale. Inoltre, le caratteristiche del viso, in particolare la forma del naso e delle labbra, appaiono leggermente fuori scala e poco realistiche.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_39.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "L'immagine presenta una sfumatura di colore anomala attorno al viso e alle orecchie, tipica delle immagini generate da intelligenza artificiale. La struttura ossea del viso sembra eccessivamente uniforme e l'espressione del viso sembra forzata. Inoltre, le ombre e l'illuminazione non sono realistiche.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_4.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "L'immagine presenta un volto con una proporzione del viso insolitamente perfetta. Le caratteristiche del volto, in particolare la forma del naso e la posizione degli occhi, sembrano eccessivamente simmetriche e senza imperfezioni, che sono comuni nei volti reali. Inoltre, c'\u00e8 una mancanza di sfumature e dettagli nelle ombre, il che \u00e8 caratteristico delle immagini generate. Il sorriso \u00e8 leggermente troppo ampio per un'espressione naturale, suggerendo un'artificialit\u00e0.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_40.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "Il volto mostra una resa eccessivamente perfetta, con una pelle liscia e senza imperfezioni. Inoltre, la forma del viso e l'espressione sembrano innaturali, come spesso si vede nei volti generati da AI. La luce sulla pelle \u00e8 diffusa ma non sembra realisticamente interagire con la forma del viso.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_41.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "L'immagine mostra alcuni artefatti che non sono tipici delle fotografie reali. In particolare, la pelle appare troppo liscia e uniforme, priva delle irregolarit\u00e0 tipiche della pelle umana. Inoltre, gli occhi sembrano leggermente fuori posto e non mostrano i riflessi naturali che si trovano tipicamente nelle foto reali. La resa generale della luce \u00e8 poco realistica, il che contribuisce alla sensazione di un'immagine generata artificialmente.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_42.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "L'immagine presenta un'estrema artefatto di trucco che altera in modo marcato la forma del viso e gli occhi. La texture della pelle appare innaturale, con un aspetto eccessivamente liscio e uniforme. La forma degli occhi e delle sopracciglia sembra innaturale e irrealistica per un volto umano. La mancanza di imperfezioni tipiche del viso umano (come le rughe o i pori) e l'eccessiva artificialit\u00e0 della trucco suggeriscono fortemente che si tratti di un'immagine generata.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_43.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "L'immagine presenta artefatti evidenti come una consistenza strana nella pelle, una sovraesposizione della bocca e un'illuminazione artificiale che non corrisponde alla luce naturale. La forma della bocca \u00e8 irrealistica e le ombre sono troppo nette, indicando probabilmente un'immagine generata tramite AI.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_44.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "L'immagine presenta artefatti che suggeriscono la generazione di immagini AI. La pelle appare eccessivamente uniforme e priva di imperfezioni tipiche di una pelle umana reale. Inoltre, la forma del viso e le proporzioni non sono realistiche, con un sorriso eccessivamente perfetto e una mancanza di rughe nei pressi degli occhi e della bocca. La luce e le ombre sembrano fatte, con un alone artificiale attorno al viso.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_45.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "L'immagine presenta un'illuminazione e un'espressione eccessivamente perfette per un volto reale. C'\u00e8 un'eccessiva uniformit\u00e0 nella pelle e un'illuminazione che sembra artificiale. La geometria del viso sembra leggermente innaturale, con un'angolazione delle guance leggermente fuori luogo. La sensazione generale \u00e8 di una foto generata da IA piuttosto che di un'immagine di un volto umano reale.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_46.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "Il soggetto presenta una pelle eccessivamente liscia e uniforme, priva di imperfezioni o microvariazioni naturali tipiche del viso umano. Inoltre, l'illuminazione sembra eccessivamente piatta e non naturale, con ombre definite in modo troppo preciso. La forma del naso e delle labbra presenta una precisione inusuale. La posizione dello sguardo e la piccola bocca sono indicatori di una simulazione piuttosto che di una reale rappresentazione di un volto.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_47.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "L'immagine presenta un'eccessiva perfezione e i dettagli sono troppo uniformi. La pelle appare priva di imperfezioni naturali, le caratteristiche del viso sono troppo simmetriche e l'espressione \u00e8 leggermente innaturale. Il contrasto tra la pelle e lo sfondo \u00e8 insolitamente elevato, suggerendo un'elaborazione artificiale. Queste caratteristiche sono comuni nelle immagini generate da intelligenza artificiale.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_48.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "L'immagine presenta un volto con proporzioni eccessivamente perfette e un'illuminazione uniforme che sembra innaturale. Lo sguardo \u00e8 fissamente concentrato, ma manca della complessit\u00e0 e dell'imperfezione tipiche dei volti umani reali. Inoltre, i dettagli della pelle sono eccessivamente lisci e privi di micro-variazioni che caratterizzano la texture della pelle umana. Questi elementi indicano una potenziale manipolazione o la creazione di un volto sintetico.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_49.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "L'immagine presenta un'illuminazione e un'angolazione di fronte alla persona che sono innaturali e sbilanciati. I dettagli del volto, in particolare la forma dei capelli e la posizione degli occhi, mostrano un'artificialit\u00e0. L'uniforme in cui la persona \u00e8 vestita e l'intricato ornamento della testa sembrano eccessivamente dettagliati e non realistici, suggerendo un'immagine generata.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_5.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "La forma della bocca \u00e8 eccessivamente perfetta e l'espressione \u00e8 innaturale. Le ombre e il contrasto sono inconsistenti, suggerendo una generazione artificiale. La forma degli occhi \u00e8 leggermente irregolare e la pelle ha un aspetto troppo liscio e uniforme, caratteristiche tipiche delle immagini generate da AI.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_6.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "L'immagine presenta una resa del viso eccessivamente uniforme e priva di imperfezioni tipiche di un volto umano reale. La pelle appare troppo liscia e priva di rughe o texture naturali. Inoltre, l'illuminazione e le ombre sono inconsistenti, suggerendo una composizione artificiale piuttosto che un'immagine fotografica reale.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_7.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "La luce sul viso \u00e8 molto innaturale e diffusa, e la pelle ha un aspetto eccessivamente uniforme e privo di rughe sottili o imperfezioni tipiche dei volti reali. L'espressione sembra leggermente forzata e non naturale. La sovraesposizione e la mancanza di dettagli nella zona intorno agli occhi e al naso suggeriscono una manipolazione digitale.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_8.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "L'immagine mostra un volto con un'illuminazione molto uniforme e priva di variazioni di ombreggiature naturali. La pelle sembra eccessivamente liscia e priva di micro-imperfezioni, tipiche dei volti umani reali. Inoltre, l'espressione facciale appare leggermente innaturale e i dettagli del viso sono troppo perfetti. L'assenza di imperfezioni comuni e l'uniformit\u00e0 dell'illuminazione indicano fortemente una generazione artificiale.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\real\\real_9.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "L'immagine mostra un volto con caratteristiche leggermente innaturali. Lo sfondo sfocato \u00e8 insolito per una fotografia di un'attivit\u00e0 quotidiana come tagliare i capelli. In particolare, i lineamenti del viso, in particolare gli occhi, appaiono leggermente innaturali e gli occhi sono uniformi, il che suggerisce che potrebbe essere un'immagine generata da un algoritmo.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_50.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "L'immagine presenta una somiglianza eccessiva con modelli di deepfake. La pelle ha un aspetto innaturale, con un'illuminazione uniforme e priva di imperfezioni realistiche. La bocca ha un aspetto leggermente innaturale. L'espressione \u00e8 troppo posata e l'immagine manca di i dettagli e della texture tipici dei volti reali. La sintesi di alcune caratteristiche del viso suggerisce una natura artificiale.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_51.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "L'immagine presenta una certa mancanza di realismo nelle caratteristiche facciali. La pelle ha un aspetto eccessivamente liscio e uniforme, senza la texture e le imperfezioni tipiche di un volto umano reale. Le linee degli occhi e della bocca appaiono leggermente stucchettate, e la luce sembra distribuita in modo innaturale. La forma del viso, pur essendo generalmente umana, manca di sottigliezze che si osserverebbero in un volto reale.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_52.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "L'immagine presenta artefatti evidenti che indicano una generazione artificiale. In particolare, l'illuminazione \u00e8 troppo uniforme e l'incarnato sembra innaturale. Inoltre, l'espressione del viso e l'angolazione della testa sembrano innaturali e poco dinamiche, suggerendo un'immagine generata da un algoritmo.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_53.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "L'immagine presenta una resa dell'incarnato eccessivamente uniforme, con pochissima variazione di ombre e luci che indicherebbero un volto reale. La bocca sembra eccessivamente liscio e non naturale, insieme alle proporzioni dell'incarnato e alla posa generale, suggeriscono che l'immagine sia generata.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_54.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "L'immagine presenta un volto con una nitidezza eccessiva e un'illuminazione non naturale. Lo sguardo \u00e8 apparentemente troppo perfetto e gli angoli del viso sono estremamente definiti, suggerendo una composizione artificiale tipica delle immagini generate tramite intelligenza artificiale. Il contrasto tra la pelle e il colletto del gilet \u00e8 eccessivamente alto, indicando una manipolazione digitale.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_55.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "L'immagine presenta un volto con un aspetto eccessivamente liscio e uniforme, tipico delle immagini generate da intelligenza artificiale. Le ombre attorno agli occhi e alla bocca sono poco definite e non naturali. Inoltre, l'espressione del viso, pur sorridente, risulta leggermente innaturale e forzata. La qualit\u00e0 generale dell'immagine, pur essendo di buona risoluzione, presenta imperfezioni come leggere ombre spettrali e una resa delle texture della pelle che sembra troppo uniforme e priva di imperfezioni realistiche, elementi che raramente si trovano nelle fotografie di volti reali.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_56.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "L'immagine presenta un'eccessiva perfezione nei tratti del volto, in particolare nelle ruga e nelle texture della pelle, che non sono tipiche di un volto umano reale. Inoltre, lo sfondo appare artificiale e i colori sono un po' troppo saturi, suggerendo che l'immagine \u00e8 stata generata piuttosto che scattata in un ambiente reale.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_57.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "La pelle ha una texture innaturale e uniforme con poca variazione di colore, il che \u00e8 un segno di generazione. La forma del naso \u00e8 leggermente irregolare e le caratteristiche del viso sembrano eccessivamente perfette, suggerendo che l'immagine \u00e8 stata creata da un algoritmo piuttosto che catturare un volto reale.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_58.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "L'immagine presenta una luminosit\u00e0 e una nitidezza eccessive, cos\u00ec come una proporzione di caratteristiche facciali che sembrano innaturali. Lo sguardo \u00e8 molto intenso e privo della complessit\u00e0 delle espressioni umane reali. Il contrasto tra le ombre e la luce \u00e8 troppo uniforme, e manca la sfumatura e il dettaglio che si trovano tipicamente nei volti catturati da una fotocamera. Inoltre, l'assenza di imperfezioni sulla pelle e la perfezione delle caratteristiche facciali sono indicative di un'immagine generata piuttosto che di un volto reale.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_59.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "L'immagine mostra una grana e una nitidezza inusuali per un volto reale catturato in un ambiente esterno. La pelle ha un aspetto eccessivamente uniforme e privo di imperfezioni tipiche della pelle umana. L'espressione \u00e8 un po' innaturale e il volto manca di dettagli fini come le rughe e le pieghe cutanee che si troverebbero in un volto umano reale.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_60.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "L'immagine mostra un volto con proporzioni apparentemente innaturali, in particolare il rapporto tra gli occhi e il naso. La pelle ha un aspetto eccessivamente liscio e uniforme, privo delle variazioni di colore tipiche delle foto reali. Inoltre, l'espressione e l'illuminazione sembrano artificiali e poco realistici, suggerendo una composizione generata da un algoritmo.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_61.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "L'immagine presenta una resa della pelle eccessivamente uniforme e priva di imperfezioni realistiche che si troverebbero comunemente in un volto umano. Inoltre, la chiarezza e l'uniformit\u00e0 del volto, insieme a una leggera sovraesposizione, sono indicativi di un'immagine generata. La mancanza di difetti minori tipici dei volti reali, come piccole rughe attorno agli occhi o irregolarit\u00e0 nella texture della pelle, rafforza questa valutazione.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_62.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "L'immagine presenta una nitidezza e una coerenza innaturali nell'illuminazione e nella resa della pelle. La geometria del viso, in particolare l'angolo delle labbra e la forma del naso, sembra leggermente fuori posto e irrealistico. C'\u00e8 una mancanza di imperfezioni e dettagli tipici di un volto umano reale. Il sorriso appare leggermente forzato e non naturale.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_63.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "L'immagine mostra un volto con un'eccessiva perfezione e un'illuminazione artificiale. Le ombre sono troppo uniformi e non naturali, e la pelle ha un aspetto innaturale, troppo liscio e uniforme. Inoltre, la forma della testa e gli occhi sembrano leggermente distorti, tipici delle immagini generate da IA.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_64.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "L'immagine presenta una qualit\u00e0 di pelle eccessivamente uniforme e priva di imperfezioni, che \u00e8 un artefatto comune delle immagini generate da intelligenza artificiale. La luminosit\u00e0 e i colori sono eccezionalmente uniformi, cos\u00ec come la forma del viso. La mancanza di imperfezioni naturali e l'effetto generale dell'immagine suggeriscono che sia una rappresentazione sintetica piuttosto che una foto di un volto reale.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_65.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "La pelle dell'uomo appare troppo uniforme e priva di imperfezioni realistiche, un tratto comune nelle immagini generate dall'IA. Le proporzioni del viso sembrano leggermente alterate, con un occhio leggermente pi\u00f9 grande dell'altro, un artefatto comune nelle immagini generate dall'IA. La nitidezza e il dettaglio generale dell'immagine sono eccessivamente perfetti.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_66.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "L'immagine presenta una resa della pelle eccessivamente uniforme e priva di imperfezioni, un tratto comune nelle immagini generate da intelligenza artificiale. La resa del sorriso \u00e8 anche leggermente innaturale, con un'espressione che sembra troppo perfetta e senza i micro-movimenti tipici delle espressioni umane reali. L'illuminazione \u00e8 anche una causa di sospetto, essendo molto uniforme e senza ombre realistiche.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_67.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "Il volto presenta un'eccessiva perfezione e una resa iperrealistica dei denti e della pelle. L'illuminazione \u00e8 uniforme e priva di ombre naturali, un'indicazione comune di immagini generate. In particolare, la forma dei denti e la loro definizione sono innaturali, suggerendo che il volto \u00e8 stato creato sinteticamente piuttosto che rappresentare un volto umano reale.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_68.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "L'immagine presenta una nitidezza e un dettaglio eccessivo del volto, in particolare del sorriso e dei denti, che \u00e8 insolito per una fotografia reale. L'illuminazione \u00e8 uniforme, priva di ombre realistiche, e la composizione dell'immagine \u00e8 troppo perfetta. La forma del viso e la posizione degli occhi sembrano innaturali, suggerendo una possibile generazione artificiale.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_69.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "L'immagine presenta un volto di un bambino con un'espressione leggermente innaturale. La pelle appare eccessivamente liscia e uniforme, priva di texture o imperfezioni tipiche dei volti umani reali. Gli occhi sembrano leggermente sbilenati, e la linea degli occhi e delle labbra \u00e8 eccessivamente definita e uniforme, indicando una manipolazione digitale.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_70.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "L'immagine presenta un volto con una resa eccessivamente uniforme e priva di imperfezioni realistiche. La pelle ha un aspetto troppo liscio e omogeneo, senza micro-variazioni di colore o texture tipiche di un volto umano reale. Inoltre, l'espressione \u00e8 un po' innaturale, con un sorriso leggermente rigido. Questi elementi suggeriscono che l'immagine potrebbe essere un'immagine generata.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_71.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "L'immagine presenta un volto con un'illuminazione e un'atmosfera eccessivamente uniformi, suggerendo una creazione digitale. Lo sfondo \u00e8 troppo liscio e senza artefatti, e la pelle del viso appare stranamente priva di imperfezioni e variazioni di colore, come le micro-variazioni tipiche delle vene e della luce sulla pelle umana. Inoltre, l'espressione del viso sembra un po' innaturale e rigida.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_72.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "L'immagine presenta un'eccessiva uniformit\u00e0 e mancanza di imperfezioni tipiche dei volti umani reali. La pelle appare troppo liscia e priva di rughe o porosit\u00e0. Le caratteristiche del viso, in particolare gli occhi, mostrano una mancanza di dettaglio e profondit\u00e0, come spesso si riscontra nei volti generati da algoritmi di intelligenza artificiale.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_73.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "L'immagine presenta una resa della faccia troppo perfetta e uniforme, con un'illuminazione non naturale e una mancanza di imperfezioni tipiche delle immagini di volti umani reali. La pelle appare eccessivamente liscia e priva di rughe o variazioni di colore. Inoltre, la composizione dell'immagine e l'effetto di sfocatura in background suggeriscono un'immagine generata piuttosto che una fotografia di un soggetto reale.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_74.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "L'immagine presenta una pelle eccessivamente liscia e uniforme, con una sfumatura quasi innaturale. La bocca \u00e8 leggermente formata, ma la sua definizione \u00e8 troppo perfetta per un volto umano reale. Inoltre, l'espressione del viso \u00e8 artificialmente piacevole e priva di imperfezioni tipiche dei volti umani reali.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_75.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "L'immagine mostra un volto con una leggera sfocatura e un'illuminazione non naturale. La simulazione delle rughe intorno agli occhi e alla bocca \u00e8 innaturale e l'espressione del viso sembra eccessivamente rigida e forzata. L'immagine mostra una composizione e un'illuminazione non realistiche, tipiche delle immagini generate artificialmente.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_76.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "L'immagine mostra un volto con una qualit\u00e0 eccessivamente uniforme, con una luminosit\u00e0 e un contrasto che sembrano innaturali. La texture della pelle appare eccessivamente liscia e priva di dettagli realistici, che sono indicatori di un'immagine generata da un modello di intelligenza artificiale. Inoltre, l'espressione del volto, sebbene di apparenza umana, ha una qualit\u00e0 innaturale, pi\u00f9 simile a una simulazione che a un'espressione genuina.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_77.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "Il volto mostra una texture della pelle innaturale, una resa troppo perfetta degli occhi e un'espressione che appare artificiale. La luce e le ombre sono uniformi e non riflettono gli effetti realistici che si osservano nei volti reali. L'aspetto generale del volto suggerisce che sia stato generato tramite un algoritmo, piuttosto che rappresentare un volto umano reale.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_78.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "L'immagine presenta un volto con proporzioni insolite e un'eccessiva perfezione, che sono comuni nei volti generati da IA. Gli occhi sembrano troppo grandi e le labbra sono uniformi e prive di imperfezioni. Inoltre, l'illuminazione \u00e8 eccessivamente uniforme e non mostra i riflessi tipici della luce naturale su una pelle reale.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_79.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "Il volto presenta una resa eccessivamente liscia e uniforme, senza imperfezioni tipiche di un volto umano reale, come linee di espressione sottili, pori o variazioni di colore. La pelle appare troppo uniforme e priva di texture. Inoltre, la forma del viso e la posizione degli occhi appaiono leggermente innaturali, suggerendo che l'immagine sia stata generata da un algoritmo.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_80.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "La pelle presenta un aspetto troppo uniforme e privo di imperfezioni tipiche dei volti reali. La distribuzione della luce e dell'ombra \u00e8 innaturale e poco realistica, in particolare attorno agli occhi e al naso. Le caratteristiche facciali, come la forma del naso e della bocca, appaiono leggermente anomale e non seguono le proporzioni reali.  L'assenza di dettagli fini come le rughe o i pori contribuisce alla sensazione di un'immagine generata.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_81.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "La pelle mostra un aspetto eccessivamente liscio e privo di porosit\u00e0, comune in immagini generate. La luce \u00e8 distribuita in modo innaturale ed uniforme sul viso, con un effetto troppo perfetto. Inoltre, l'espressione sul viso appare un po' rigida e non espressiva, il che \u00e8 un segno tipico delle immagini generate. La posizione degli occhi, in particolare, sembra leggermente disallineata, suggerendo una manipolazione.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_82.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "Il volto presenta una luminosit\u00e0 e un'uniformit\u00e0 dell'illuminazione eccessivamente perfette per un volto umano reale. La pelle appare troppo liscia, priva di linee sottili o imperfezioni tipiche della pelle umana. Inoltre, la forma del viso, in particolare la forma degli occhi e la posizione delle sopracciglia, suggeriscono un'eccessiva perfezione, che \u00e8 spesso un segno di una generazione artificiale di immagini.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_83.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "La pelle dell'immagine presenta un'eccessiva uniformit\u00e0 e mancanza di dettagli microspici tipiche della pelle umana. I dettagli del viso, in particolare le labbra e gli occhi, sembrano troppo perfetti e poco realistici. Inoltre, la luce e l'ombreggiatura sono inconsistenti, indicando una creazione digitale anzich\u00e9 una fotografia di un volto reale.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_84.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "L'immagine mostra un volto con una resa eccessivamente morbida e priva di dettagli come le rughe e le imperfezioni che si trovano comunemente nei volti umani reali, in particolare nei bambini. La pelle appare troppo uniforme, il che \u00e8 inusuale nei volti reali. La composizione del viso \u00e8 leggermente innaturale e il soggetto ha un'espressione priva di emozione che aggiunge alla sensazione di non essere reale.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_85.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "L'immagine presenta un'illuminazione e un'ombreggiatura insolitamente uniformi, indicando una manipolazione o una generazione artificiale. La forma del viso, in particolare la forma delle sopracciglia e la forma delle labbra, sembrano eccessivamente perfette e poco naturali. La posizione della luce sembra fuori posto rispetto al tipo di illuminazione che si osserverebbe in un'immagine di un volto umano reale.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_86.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "La pelle appare eccessivamente uniforme e priva di imperfezioni tipiche dei volti umani reali. I dettagli degli occhi e delle labbra sono troppo perfetti e presentano un aspetto innaturale. Inoltre, l'illuminazione e l'ombreggiatura sono molto uniformi, suggerendo una generazione artificiale. L'immagine manca di variazioni naturali che si trovano tipicamente nei volti reali.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_87.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "Il soggetto presenta un'eccessiva perfezione della pelle con un'illuminazione non naturale e una resa eccessivamente uniforme. Gli occhi mostrano una nitidezza innaturale e l'espressione \u00e8 leggermente innaturale. C'\u00e8 una mancanza di imperfezioni tipiche di un volto umano reale, come rughe fini o variazioni di colore della pelle, il che suggerisce che l'immagine sia generata.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_88.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "L'immagine presenta un'eccessiva perfezione del volto, con un'illuminazione e un'espressione che sembrano artificiali e innaturali. La pelle appare troppo liscia e priva di imperfezioni, come pori o rughe, che sono comuni nei volti umani reali. Inoltre, la composizione del volto e l'espressione sono leggermente innaturali e troppo 'perfette'. La forma degli occhi e del naso appare leggermente irrealistica, rafforzando l'impressione che si tratti di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_89.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "L'immagine presenta artefatti evidenti, in particolare una linea bianca che attraversa il viso, suggerendo una manipolazione digitale. Inoltre, la pelle appare eccessivamente uniforme e priva di imperfezioni naturali, tipiche di un'immagine generata da intelligenza artificiale.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_90.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "L'immagine presenta una qualit\u00e0 di rendering innaturale, in particolare nella texture della pelle. La pelle appare eccessivamente liscia e uniforme, con una mancanza di micro-variazioni e dettagli che si riscontrano nei volti reali. Il sorriso sembra troppo simmetrico e l'illuminazione \u00e8 uniforme, suggerendo un'immagine generata piuttosto che una fotografia reale. La forma del naso e delle labbra sono leggermente troppo perfette.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_91.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "Il soggetto mostra una luminosit\u00e0 eccessiva in alcune aree del viso, in particolare attorno agli occhi e al naso, che \u00e8 un artefatto comune nelle immagini generate. Inoltre, l'incarnato appare innaturale e uniforme, senza le variazioni di colore e le irregolarit\u00e0 tipiche dei volti umani reali. La forma del viso, sebbene somigli a un volto umano, \u00e8 un po' troppo perfetta e simmetrica, suggerendo una generazione artificiale.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_92.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "L'immagine presenta una composizione del volto con una resa troppo perfetta e un'illuminazione innaturale. La pelle appare liscia e priva di rughe, e i dettagli dell'occhio e delle labbra sono troppo definiti e uniformi, tipici delle immagini generate artificialmente.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_93.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "L'immagine presenta un volto con una strana, innaturale perfezione. Il contrasto tra luci e ombre \u00e8 eccessivo e non uniforme, suggerendo una manipolazione digitale. Il sorriso appare rigido e artificiale. Le proporzioni del viso, in particolare la forma del naso e la distanza tra gli occhi, sembrano leggermente alterate, indicando una generazione digitale.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_94.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "L'immagine presenta una qualit\u00e0 di rendering anomala. La pelle appare troppo uniforme e priva di rughe o imperfezioni tipiche dei volti reali. Lo sguardo \u00e8 leggermente innaturale e lo sfondo \u00e8 troppo uniforme. Questi dettagli suggeriscono fortemente che si tratti di un'immagine generata, piuttosto che di una foto di un volto umano reale.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_95.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "La bocca appare eccessivamente simmetrica e uniforme, con denti perfettamente allineati. Anche l'illuminazione \u00e8 poco naturale, con ombre lunghe e uniformi che sembrano troppo uniformi per un volto reale. La pelle sembra troppo liscia e priva di imperfezioni, e le sopracciglia sono estremamente regolari, cosa che \u00e8 rara in una persona reale.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_96.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "L'immagine presenta alcune anomalie che suggeriscono che potrebbe essere un volto generato. In particolare, le caratteristiche del viso sembrano eccessivamente perfette e uniformi, con una resa della pelle che appare innaturale e priva di rughe o imperfezioni tipiche di un volto reale. Inoltre, l'illuminazione \u00e8 eccessivamente uniforme, il che contribuisce a questo effetto innaturale.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_97.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "La pelle appare troppo uniforme e priva di imperfezioni, un tratto comune nelle immagini generate. Le caratteristiche del viso, in particolare l'espressione e la forma degli occhi, sembrano innaturalmente perfette e prive di laquezza tipiche delle immagini generate. La resa della luce \u00e8 inoltre poco realistica, con ombre e riflessi non coerenti.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_98.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "La composizione del viso presenta artefatti come una leggera sfocatura della pelle e una sottile irregolarit\u00e0 nell'espressione. Le caratteristiche del viso, in particolare l'espressione, appaiono innaturali e non realistiche per un volto umano reale. L'illuminazione \u00e8 anche un fattore chiave, con un'eccessiva luminosit\u00e0 che contribuisce alla sensazione di non autenticit\u00e0.",
+            "error": null
+        },
+        {
+            "image_path": "test_1\\fake\\fake_99.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "L'immagine presenta un volto con proporzioni innaturali, in particolare la distanza tra gli occhi e il naso sembra eccessivamente ampia, un artefatto comune nei volti generati da AI. Le caratteristiche del viso sono troppo perfette e l'espressione risulta leggermente innaturale. Inoltre, il colore della pelle appare eccessivamente uniforme e privo di variazioni tipiche delle immagini reali.",
+            "error": null
+        }
+    ]
+}
