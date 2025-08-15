@@ -8,24 +8,24 @@ import prompt
 # VALORI PER CARICARE IL DATASET
 installDataset = False  # serve nel caso si perdesse tutto
 startMiniDt = False
-NAME = "test_1"
+NAME = "test_2"
 MAX_IMAGES = 100
 SHUFFLE = False
 # ======================================
 
 # VALORI PER IL PROMPT
-INDEX_PROMPT = 6  # (0-6)
-IS_ITALIAN = True
+INDEX_PROMPT = 0  # (0-6)
+IS_ITALIAN = False
 SHOW_IMAGES = False
 ONESHOT = False
-UNCERTAIN_EN = True  # abilitare l'opzione al modello di rispondere incerto
+UNCERTAIN_EN = False  # abilitare l'opzione al modello di rispondere incerto
 # ===================================
 # VALORI PER IL MODELLO
 
 MODEL_NAME = "llava:7b"
 # ===================================
 # MODALITA' AUTOMATICA
-AUTO_ON = False
+AUTO_ON = True
 # dataset section
 if startMiniDt:
     images_with_labels, fakes, reals = dataset.loadDataset(MAX_IMAGES)
