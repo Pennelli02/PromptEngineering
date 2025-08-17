@@ -14,6 +14,30 @@ from transformers import pipeline
 client = Client()
 
 
+def extract_prediction_from_text(text):
+    """
+    Cerca di estrarre prediction anche da testo non JSON usando regex.
+    Restituisce 'real', 'generated', o None se non trova nulla.
+    """
+    text_lower = text.lower()
+
+    # Liste di parole chiave
+    real_keywords = ["real", "real face", "no generated", "not see any artifacts", "no artifacts"]
+    fake_keywords = ["generated", "fake", "generated face", "no real face"]
+
+    # Prova a matchare real
+    for kw in real_keywords:
+        if re.search(rf"\b{re.escape(kw)}\b", text_lower):
+            return "real face"
+
+    # Prova a matchare fake
+    for kw in fake_keywords:
+        if re.search(rf"\b{re.escape(kw)}\b", text_lower):
+            return "generated"
+
+    return None
+
+
 def analyze_image(img_path, lab, prompt, modelName, fewShot, few_shot_messages, systemPrompt, counters, showImages):
     result_entry = {
         "image_path": str(img_path),
@@ -80,10 +104,12 @@ def analyze_image(img_path, lab, prompt, modelName, fewShot, few_shot_messages, 
             result_entry["explanation"] = explanation
 
         except Exception as e:
-            counters["er"] += 1
-            result_entry["error"] = f"Unexpected error during parsing: {e}"
-            print(f"Unexpected error during parsing: {e}")
-            return result_entry, counters
+            prediction = extract_prediction_from_text(text)
+            result_entry["prediction"] = prediction
+            result_entry["explanation"] = text  # Salva la raw response qui
+            result_entry["error"] = f"Parsing failed, fallback prediction: {prediction}"
+            print(f"Parsing failed, fallback prediction: {prediction}")
+
 
         if showImages:
             Image.open(img_path).show()
