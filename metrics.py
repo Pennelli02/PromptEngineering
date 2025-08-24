@@ -1,4 +1,6 @@
 import os
+import re
+import shutil
 from collections import defaultdict
 from datetime import datetime
 import json
@@ -101,46 +103,84 @@ def saveAllJson(metrics, responses, PromptITA, modelName, i):
 
 
 # funzione che prende i valori di una cartella e ne fa la media
-def createJSONMeanStats(dirList):
-    # Dati aggregati: {prompt_type: {"accuracy": [], "precision": [], "recall": []}}
-    stats = defaultdict(lambda: {"accuracy": [], "precision": [], "recall": []})
-    for dir in dirList:
-        fileList = glob.glob(os.path.join(dir, "*.json"))
-        for file in fileList:
-            with open(file, "r", encoding="utf-8") as f:
-                data = json.load(f)
-            metrics = data["metrics"]
+def createJSONMeanStats(folder_path, oneshot=False):
+    # Inizializza accumulatore
+    aggregated = {
+        "accuracy": [],
+        "precision": [],
+        "recall": [],
+        "false_negative_rate": [],
+        "false_positive_rate": [],
+        "rejection_real_rate": [],
+        "rejection_fake_rate": []
+    }
 
-            baseName = os.path.splitext(os.path.basename(file))[0]
-            parts = baseName.split("_")
+    # Prendi tutti i file json nella cartella
+    fileList = glob.glob(os.path.join(folder_path, "*.json"))
 
-            if len(parts) > 2:
-                modello = f"{parts[1]}-{parts[2]}"
-            elif len(parts) > 1:
-                modello = parts[1]
-            else:
-                modello = "ModelloSconosciuto"
+    if not fileList:
+        print("⚠️ Nessun file JSON trovato nella cartella indicata.")
+        return
 
-            promptType = f"{parts[3]}-{parts[4]}"
+    # Prendo il primo file per ricavare nome base
+    first_file = os.path.basename(fileList[0])
 
-            stats[promptType]["accuracy"].append(metrics["accuracy"])
-            stats[promptType]["precision"].append(metrics["precision"])
-            stats[promptType]["recall"].append(metrics["recall"])
+    # Rimpiazza la parte "_YYYYMMDD-HHMMSS_result.json" con "_mean-result.json"
+    output_filename = re.sub(r"_\d{8}-\d{6}_result\.json$", "_mean-result.json", first_file)
 
-    # Calcola le medie
-    results = []
-    for promptType, values in stats.items():
-        results.append({
-            "prompt": promptType,
-            "accuracy_mean": sum(values["accuracy"]) / len(values["accuracy"]) if values["accuracy"] else 0,
-            "precision_mean": sum(values["precision"]) / len(values["precision"]) if values["precision"] else 0,
-            "recall_mean": sum(values["recall"]) / len(values["recall"]) if values["recall"] else 0,
-        })
+    for file in fileList:
+        with open(file, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        metrics = data["metrics"]
 
-    output_filename = f"resultsJSON/mean_stats_{modello}_{len(dirList)}.json"
+        # Accumula i valori
+        for key in aggregated.keys():
+            if key in metrics:
+                aggregated[key].append(metrics[key])
+
+    # Calcola la media
+    mean_results = {
+        "num_files": len(fileList)
+    }
+    for key, values in aggregated.items():
+        mean_results[f"{key}_mean"] = sum(values) / len(values) if values else 0
+
+    # Path completo di output
+    output_path = os.path.join(folder_path, output_filename)
 
     # Salva su file
-    with open(output_filename, "w", encoding="utf-8") as f:
-        json.dump(results, f, indent=4, ensure_ascii=False)
+    with open(output_path, "w", encoding="utf-8") as f:
+        json.dump(mean_results, f, indent=4, ensure_ascii=False)
 
-    print(f"file salvato in: {output_filename}")
+    print(f" File salvato in: {output_path}")
+
+    if not oneshot:
+        # --------------------------
+        # Copia nella cartella "promptSection"
+        # --------------------------
+        norm_path = os.path.normpath(folder_path)  # normalizza separatori
+        parts = norm_path.split(os.sep)
+        # Esempio: JsonMeanStats/Sure/gemma3/prompt-0-Eng
+        # -> sure_type = Sure, model = gemma3, prompt_folder = prompt-0-Eng
+        sure_type = parts[1]       # Sure / Uncertain
+        model = parts[2]           # gemma3
+        prompt_folder = parts[-1]  # prompt-0-Eng
+
+        dest_dir = os.path.join("promptSection", sure_type.lower(), prompt_folder.replace("prompt", "Prompt"))
+        os.makedirs(dest_dir, exist_ok=True)
+
+        dest_path = os.path.join(dest_dir, output_filename)
+        shutil.copy(output_path, dest_path)
+
+        print(f" Copiato anche in: {dest_path}")
+
+
+if __name__ == "__main__":
+    base_path = "JsonMeanStats/Sure/llava"
+
+    for i in range(7):  # indici da 0 a 6
+        for lang in ["Eng", "Ita"]:
+            folder = os.path.join(base_path, f"prompt-{i}-{lang}")
+            print(f"➡️ Elaboro: {folder}")
+            createJSONMeanStats(folder)
+

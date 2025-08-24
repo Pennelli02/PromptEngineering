@@ -17,20 +17,33 @@ client = Client()
 def extract_prediction_from_text(text):
     """
     Cerca di estrarre prediction anche da testo non JSON usando regex.
-    Restituisce 'real', 'generated', o None se non trova nulla.
+    Riconosce sia inglese che italiano.
+    Restituisce 'real face', 'generated', o None se non trova nulla.
     """
     text_lower = text.lower()
 
-    # Liste di parole chiave
-    real_keywords = ["real", "real face", "no generated", "not see any artifacts", "no artifacts"]
-    fake_keywords = ["generated", "fake", "generated face", "no real face"]
+    # Liste di parole chiave in inglese e italiano
+    real_keywords = [
+        # inglese
+        "real", "real face", "no generated", "not see any artifacts", "no artifacts",
+        # italiano
+        "reale", "volto reale", "non generato", "non vedo artefatti", "nessun artefatto", "non ci sono artefatti",
+        "non indica la presenza di artefatti"
+    ]
 
-    # Prova a matchare real
+    fake_keywords = [
+        # inglese
+        "generated", "fake", "generated face", "no real face", "there are some artifacts"
+        # italiano
+        "generato", "falso", "volto generato", "nessun volto reale", "ci sono artefatti"
+    ]
+
+    # Prova a matchare "real"
     for kw in real_keywords:
         if re.search(rf"\b{re.escape(kw)}\b", text_lower):
             return "real face"
 
-    # Prova a matchare fake
+    # Prova a matchare "fake"
     for kw in fake_keywords:
         if re.search(rf"\b{re.escape(kw)}\b", text_lower):
             return "generated"
