@@ -1,0 +1,730 @@
+{
+    "metrics": {
+        "total_processed": 100,
+        "total_real": 50,
+        "total_fake": 50,
+        "TP": 1,
+        "TN": 50,
+        "FP": 0,
+        "FN": 49,
+        "rejection_real": 0,
+        "rejection_fake": 0,
+        "text_parsing_errors": 0,
+        "text_parsing_error_rate": 0.0,
+        "accuracy": 0.51,
+        "precision": 1.0,
+        "recall": 0.02,
+        "false_negative_rate": 0.98,
+        "false_positive_rate": 0.0,
+        "rejection_real_rate": 0.0,
+        "rejection_fake_rate": 0.0,
+        "rejection_total_rate": 0.0,
+        "one_class_accuracy_real": 0.02,
+        "one_class_accuracy_fake": 1.0,
+        "system_prompt": "Sei un sistema professionale di classificazione delle immagini che analizza le immagini fornite per determinare se mostrano un volto umano reale o uno generato.\nRispondi SOLO usando il seguente formato JSON:\n{\n  \"result\": \"[real face]\" oppure \"[generated]\", [uncertain]\n  \"explanation\": \"Una spiegazione precisa basata su indizi visivi osservati nell'immagine.\"\n}\nNON includere frasi generiche come 'non ci sono artefatti'. Sii visivo e dettagliato nella tua analisi.Rispondi ESCLUSIVAMENTE con questo JSON, senza commenti o testo extra.",
+        "user_prompt": "L'immagine fornita mostra un volto reale o uno generato? Tieni presente che i volti generati spesso presentano artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli. Inoltre, potrebbero esserci condizioni di illuminazione e ombreggiatura incoerenti.",
+        "one_shot": false
+    },
+    "responses": [
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_111.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle naturale e una bocca che sembra realistica. Non ci sono evidenze di artefatti o incoerenze nell'illuminazione e nell'ombreggiatura. Le orecchie e l'attaccatura dei capelli sembrano naturali e non presentano segni di artefatto.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_106.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle naturale, capelli scuri e una bocca aperta che sembra essere in movimento. Non ci sono evidenze di artefatti o incoerenze nell'illuminazione e nell'ombreggiatura. Le linee del volto e la texture della pelle sembrano naturali e coerenti con un volto reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_144.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano reale con una chiara ombreggiatura naturale sulla pelle e sulle ombre attorno agli occhi e alla bocca. Non ci sono evidenze di artefatti o incoerenze nell'illuminazione, indicando che l'immagine potrebbe essere stata scattata in condizioni naturali. Le linee del volto sono chiare e naturali, senza segni di manipolazione digitale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_119.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una chiara definizione degli occhi, della bocca e dell'orecchio. Non ci sono evidenze di artefatti o incoerenze nell'illuminazione e nell'ombreggiatura. Le linee del volto sembrano naturali e non presentano segni di manipolazione digitale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_110.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una chiara definizione degli occhi, della bocca e dell'orecchio. Non ci sono evidenze di artefatti o incoerenze nell'illuminazione e nell'ombreggiatura. Le linee del volto sembrano naturali e non presentano segni di manipolazione digitale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_124.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una buona risoluzione e senza artefatti evidenti. Le orecchie e l'attaccatura dei capelli sembrano naturali, non presentano artefatti particolari. L'illuminazione \u00e8 uniforme e coerente, senza ombreggiature incoerenti.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_100.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una chiara ombreggiatura naturale, senza artefatti evidenti attorno alla bocca, alle orecchie o all'attaccatura dei capelli. L'illuminazione \u00e8 coerente e non presenta segni di incoerenza. Non vi sono segni di manipolazione digitale che potrebbero suggerire la presenza di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_136.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una chiara ombreggiatura naturale e una posizione del viso che sembra naturale. Non ci sono evidenze di artefatti comuni associati ai volti generati, come artefatti attorno alla bocca o alle orecchie. L'illuminazione appare coerente con la posizione del viso.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_133.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano reale con una chiara ombreggiatura naturale sulla fronte e sul collo. Non ci sono evidenze di artefatti o incoerenze nell'illuminazione, indicando che l'immagine potrebbe essere stata scattata in un contesto naturale. La presenza di un microfono attaccato al cranio non \u00e8 un artefatto comune e potrebbe essere un elemento aggiuntivo per la comunicazione del personaggio.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_108.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una chiara definizione e una buona qualit\u00e0 di immagine. Non ci sono evidenze di artefatti o incoerenze nell'illuminazione e nell'ombreggiatura. Le linee del volto sono nette e coerenti con la realt\u00e0.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_148.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una chiara ombreggiatura naturale e una posizione degli occhi e della bocca che sembrano naturali. Non ci sono evidenti artefatti o incoerenze nell'illuminazione e nell'ombreggiatura, indicando che l'immagine potrebbe essere stata scattata in condizioni di luce naturale. Le linee degli occhi e la forma della bocca sembrano ben definite e coerenti con un volto reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_102.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una chiara ombreggiatura naturale, senza artefatti evidenti attorno alla bocca, alle orecchie o all'attaccatura dei capelli. L'illuminazione \u00e8 uniforme e coerente, indicando che l'immagine potrebbe essere stata scattata in un ambiente con una luce naturale o con un dispositivo di illuminazione adeguato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_105.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano reale con una pelle naturale, una bocca che sembra realistica e un aspetto normale. Non ci sono evidenze di artefatti o incoerenze nell'illuminazione e nell'ombreggiatura che potrebbero suggerire la presenza di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_125.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano reale, con una chiara definizione degli occhi, della bocca e dell'orecchio. Non ci sono evidenze di artefatti o incoerenze nell'illuminazione e nell'ombreggiatura, indicando che l'immagine \u00e8 verosimilmente una foto reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_142.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una buona risoluzione e senza artefatti evidenti. La luminosit\u00e0 e l'ombreggiatura sembrano coerenti, non presentando condizioni incoerenti come quelle tipiche di immagini generative. Non vi sono segni di manipolazione o artefatti che indicano la presenza di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_143.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano reale con una chiara ombreggiatura naturale sulla faccia. Non ci sono evidenze di artefatti o incoerenze nell'illuminazione. Le linee del volto sono nette e la pelle appare naturale, indicando che l'immagine \u00e8 verosimilmente una foto reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_134.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle chiara, capelli rossi ricci e una bocca aperta con denti visibili. Non ci sono evidenze di artefatti o incoerenze nell'illuminazione e nell'ombreggiatura. Le linee del volto sembrano naturali e coerenti con la luce ambiente.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_140.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una buona risoluzione e senza artefatti evidenti. La luce \u00e8 uniforme e non ci sono ombreggiature incoerenti. Non ci sono segni di manipolazione digitale o artefatti tipici di immagini generative come artefatti attorno alla bocca o alle orecchie.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_137.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una buona risoluzione e senza artefatti evidenti. La luce \u00e8 uniforme e non ci sono ombreggiature incoerenti. Le linee del volto sono chiare e ben definite, indicando un volto reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_115.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una chiara definizione degli occhi, della bocca e dell'orecchio. Non ci sono evidenze di artefatti o incoerenze nell'illuminazione e nell'ombreggiatura. Le linee del volto sembrano naturali e non presentano segni di manipolazione digitale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_130.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle naturale, occhi aperti, labbra sorridenti e capelli ben disposti. Non ci sono evidenze di artefatti o incoerenze nell'illuminazione e nell'ombreggiatura. Le linee del volto sembrano naturali e non presentano segni di manipolazione digitale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_101.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano reale con una pelle chiara, occhi marroni, labbra rosse e capelli lunghi e ondulati. Non ci sono evidenze di artefatti o incoerenze nell'illuminazione e nell'ombreggiatura. L'aspetto del volto appare naturale e non presenta segni di manipolazione digitale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_123.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle naturale, occhi aperti e una bocca aperta che sembra sorridere. Non ci sono evidenze di artefatti o incoerenze nell'illuminazione e nell'ombreggiatura. Le linee del volto e la struttura degli occhi sembrano naturali e coerenti con un volto reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_122.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano reale con una chiara ombreggiatura naturale sul viso. Non ci sono evidenze di artefatti o incoerenze nell'illuminazione e nello schiarimento, indicando che l'immagine potrebbe essere stata scattata in condizioni naturali. Le linee del contorno del viso e la texture della pelle sembrano naturali e non mostrano segni di manipolazione digitale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_138.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle naturale e una luce uniforme che riflette la luce naturale. Non ci sono evidenze di artefatti o incoerenze nell'illuminazione e nell'ombreggiatura. Le linee del volto sembrano naturali e non presentano segni di manipolazione digitale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_129.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano reale con una buona risoluzione e nessuna evidenza di artefatti o incoerenze nell'illuminazione. Le linee del volto sono chiare e naturali, indicando che l'immagine \u00e8 stata scattata con una buona qualit\u00e0 di immagine.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_149.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle naturale, occhi aperti, labbra chiuse e capelli raccolti. Non ci sono evidenze di artefatti o incoerenze nell'illuminazione e nell'ombreggiatura. Le linee del volto sembrano naturali e non presentano segni di manipolazione digitale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_116.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano reale con una pelle liscia e naturale. Non ci sono evidenze di artefatti o incoerenze nell'illuminazione e nell'ombreggiatura. Le linee del volto sembrano naturali e non presentano segni di manipolazione digitale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_128.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una chiara ombreggiatura naturale e una posa espressiva. Non ci sono evidenze di artefatti comuni associati ai volti generati, come artefatti attorno alla bocca o alle orecchie. L'illuminazione sembra coerente con la posizione del soggetto.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_109.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano reale con una pelle naturale e una posa naturale. Non ci sono evidenze di artefatti o incoerenze nell'illuminazione e nell'ombreggiatura. Le linee del volto sembrano naturali e non presentano segni di manipolazione digitale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_113.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle chiara, capelli ricci e una bocca aperta che sembra sorridere. Non ci sono evidenze di artefatti o incoerenze nell'illuminazione e nell'ombreggiatura. Le linee del volto e la texture della pelle sembrano naturali e coerenti con un volto reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_135.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano reale con una bocca chiara e ben definita, senza artefatti evidenti. Le orecchie e l'attaccatura dei capelli sembrano naturali e coerenti con la luce e l'ombra presenti nell'immagine. Non ci sono segni di illuminazione o ombreggiatura incoerenti.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_139.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una buona risoluzione e nessuna evidenza di artefatti comuni nei volti generati, come artefatti attorno alla bocca, alle orecchie o all'attaccatura dei capelli. L'illuminazione e l'ombreggiatura sembrano coerenti e naturali, indicando che non \u00e8 un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_147.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle naturale, capelli ricci e orecchini decorativi. Non ci sono evidenze di artefatti o incoerenze nell'illuminazione e nell'ombreggiatura. Le linee del volto sembrano naturali e non presentano segni di manipolazione digitale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_112.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una chiara ombreggiatura naturale e senza artefatti evidenti attorno alla bocca, alle orecchie e all'attaccatura dei capelli. L'illuminazione \u00e8 coerente e non presenta segni di incoerenza.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_107.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano reale con una pelle naturale e una posizione degli occhi e delle labbra che sembrano naturali. Non ci sono evidenze di artefatti o incoerenze nell'illuminazione e nell'ombreggiatura che potrebbero indicare la presenza di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_141.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle naturale, linee facciali chiare e un'ombreggiatura coerente. Non ci sono evidenze di artefatti o incoerenze nell'illuminazione e nell'ombreggiatura. Le orecchie e l'attaccatura dei capelli sembrano naturali e non presentano segni di artefatto.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_118.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano reale con una chiara ombreggiatura naturale e una posizione della bocca che sembra naturale. Non ci sono evidenze di artefatti o incoerenze nell'illuminazione e nell'ombreggiatura che potrebbero suggerire la presenza di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_114.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una buona risoluzione e senza artefatti evidenti. Le linee del volto sono chiare e coerenti, non vi sono segni di illuminazione o ombreggiatura incoerenti. Non si notano particolari artefatti comuni nei volti generati come artefatti attorno alla bocca o alle orecchie.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_132.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle naturale, occhi aperti, labbra sorridenti e capelli lunghi e ricci. Non ci sono evidenze di artefatti o incoerenze nell'illuminazione e nell'ombreggiatura. Le linee del volto sembrano naturali e non presentano segni di manipolazione digitale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_127.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una buona risoluzione e senza artefatti evidenti. La luce e l'ombreggiatura sembrano coerenti con la natura della luce ambientale. Non ci sono segni di manipolazione digitale o artefatti tipici di immagini generative come artefatti attorno alla bocca o all'attaccatura dei capelli.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_121.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano reale con una chiara definizione dei contorni facciali, occhi, naso e labbra. Non ci sono evidenze di artefatti o incoerenze nell'illuminazione e nell'ombreggiatura, indicando che l'immagine \u00e8 verosimilmente una foto reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_126.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una bocca chiara e ben definita, senza artefatti o incoerenze visibili. L'illuminazione \u00e8 uniforme e non ci sono ombreggiature incoerenti. Non ci sono segni di manipolazione digitale o artefatti tipici di immagini generative.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_146.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una buona risoluzione e senza artefatti evidenti. La luce e l'ombreggiatura sembrano coerenti, non presentando condizioni incoerenti come quelle tipiche di immagini generative. Non vi sono segni di manipolazione digitale o artefatti comuni nelle immagini generative.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_145.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano reale con una bocca chiara e ben definita, orecchie ben visibili e capelli che sembrano naturali. Non ci sono evidenze di artefatti o incoerenze nell'illuminazione e nell'ombreggiatura.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_120.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano reale con una chiara ombreggiatura naturale e una posa naturale. Non ci sono evidenze di artefatti o incoerenze nell'illuminazione e nell'ombreggiatura, indicando che l'immagine potrebbe essere stata scattata in condizioni naturali. Le linee del volto sono chiare e la pelle appare naturale, senza segni di manipolazione digitale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_103.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano reale con una bocca chiara e ben definita, orecchie ben visibili e capelli che sembrano naturali. Non ci sono evidenti artefatti o incoerenze nell'illuminazione e nell'ombreggiatura.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_131.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano reale con una chiara definizione dei contorni facciali, occhi, naso e labbra. Non ci sono evidenze di artefatti o incoerenze nell'illuminazione e nell'ombreggiatura. Le linee del volto sembrano naturali e non presentano segni di manipolazione digitale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_104.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una chiara ombreggiatura naturale e una posizione del capo che sembra naturale. Non ci sono evidenze di artefatti comuni associati ai volti generati, come artefatti attorno alla bocca o alle orecchie. L'illuminazione appare coerente con la posizione del soggetto.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_117.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano reale con una pelle naturale e una forma del viso che sembra naturale. Non ci sono evidenze di artefatti o incoerenze nell'illuminazione e nell'ombreggiatura. Le linee del viso e la struttura del cranio sono chiare e coerenti con un volto reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_289.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una chiara definizione degli occhi, della bocca e dell'orecchio. Non ci sono evidenze di artefatti o incoerenze nell'illuminazione e nell'ombreggiatura. Le linee del volto sembrano naturali e non presentano segni di manipolazione digitale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_297.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano reale con una pelle naturale e una posa naturale. Non ci sono evidenze di artefatti o incoerenze nell'illuminazione e nell'ombreggiatura. Le linee del volto sembrano naturali e non presentano segni di manipolazione digitale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_295.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle naturale, occhi aperti, labbra leggermente aperte e un sorriso. Non ci sono evidenze di artefatti o incoerenze nell'illuminazione e nell'ombreggiatura. Le linee del volto sembrano naturali e non presentano segni di manipolazione digitale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_286.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle naturale, occhi aperti e una posa naturale. Non ci sono evidenze di artefatti comuni associati ai volti generati, come artefatti attorno alla bocca, alle orecchie o all'attaccatura dei capelli. L'illuminazione e l'ombreggiatura sembrano coerenti con la realt\u00e0.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_291.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle naturale e una luce uniforme che riflette la luce naturale. Non ci sono evidenze di artefatti o incoerenze nell'illuminazione e nell'ombreggiatura. Le linee del volto sembrano naturali e non presentano segni di manipolazione digitale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_277.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano reale con una pelle naturale e una posa naturale. Non ci sono evidenze di artefatti o incoerenze nell'illuminazione e nell'ombreggiatura, indicando che l'immagine \u00e8 verosimilmente una foto reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_298.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle naturale, occhi aperti e una bocca che sembra realistica. Non ci sono evidenze di artefatti o incoerenze nell'illuminazione e nell'ombreggiatura, indicando che l'immagine potrebbe essere stata scattata in condizioni naturali. Le linee del volto e la texture della pelle sembrano naturali e non presentano segni di manipolazione digitale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_271.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano reale con una chiara ombreggiatura naturale sulla fronte e sulle guance. Non ci sono evidenze di artefatti o incoerenze nell'illuminazione e nello schiarimento della bocca, delle orecchie o dell'attaccatura dei capelli. L'aspetto del volto appare naturale e non presenta segni di manipolazione digitale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_250.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle liscia e naturale, senza artefatti evidenti attorno alla bocca, alle orecchie o all'attaccatura dei capelli. L'illuminazione \u00e8 uniforme e coerente, non presentando ombreggiazioni incoerenti. Non vi sono segni di manipolazione digitale che potrebbero suggerire la presenza di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_260.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle naturale, occhi aperti, labbra sorridenti e capelli lunghi e ricci. Non ci sono evidenze di artefatti o incoerenze nell'illuminazione e nell'ombreggiatura. Le linee del volto sembrano naturali e non presentano segni di manipolazione digitale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_266.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una chiara definizione degli occhi, della bocca e dell'attaccatura dei capelli. Non ci sono evidenze di artefatti o incoerenze nell'illuminazione e nell'ombreggiatura. L'aspetto del volto appare naturale e non presenta segni di manipolazione digitale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_261.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una chiara ombreggiatura naturale e senza artefatti evidenti attorno alla bocca, alle orecchie e all'attaccatura dei capelli. L'illuminazione \u00e8 coerente e non presenta segni di incoerenza.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_281.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano reale con una bocca chiara e ben definita, orecchie ben visibili e capelli che sembrano naturali. Non ci sono evidenze di artefatti o incoerenze nell'illuminazione e nell'ombreggiatura. La qualit\u00e0 della foto appare naturale e non presenta segni di manipolazione digitale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_292.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una buona risoluzione e senza artefatti evidenti. La luce e l'ombreggiatura sembrano coerenti, non vi sono segni di manipolazione digitale come artefatti intorno alla bocca o alle orecchie. Il volto appare naturale e realistico, indicando che \u00e8 un volto reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_299.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una buona risoluzione e senza artefatti evidenti. Le linee del volto sono chiare e coerenti, non vi sono segni di illuminazione o ombreggiatura incoerenti. Non si notano particolari artefatti come artefatti di illuminazione o ombreggiatura incoerenti. ",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_288.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle naturale, capelli scuri e una bocca chiara. Non ci sono evidenze di artefatti o incoerenze nell'illuminazione e nell'ombreggiatura. Le linee del volto sembrano naturali e non presentano segni di manipolazione digitale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_290.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle naturale e una forma del viso che sembra reale. Non ci sono evidenze di artefatti o incoerenze nell'illuminazione e nell'ombreggiatura che potrebbero suggerire la presenza di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_287.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle naturale e una luce uniforme che riflette la luce naturale. Non ci sono evidenze di artefatti o incoerenze nell'illuminazione e nell'ombreggiatura. Le linee del volto sembrano naturali e non presentano segni di manipolazione digitale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_253.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una buona risoluzione e senza artefatti evidenti. La luminosit\u00e0 e l'ombreggiatura sembrano coerenti, indicando che non \u00e8 un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_257.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle liscia e una forma del viso naturale. Non ci sono evidenze di artefatti o incoerenze nell'illuminazione e nell'ombreggiatura. Le linee del contorno del viso e la struttura dei capelli sembrano naturali e non presentano segni di manipolazione digitale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_274.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano reale con una chiara ombreggiatura naturale sul viso. Non ci sono evidenze di artefatti o incoerenze nell'illuminazione e nello schiarimento, indicando che l'immagine potrebbe essere stata scattata in condizioni naturali. Le linee del contorno del viso e la texture della pelle sembrano naturali e non mostrano segni di manipolazione digitale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_259.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle naturale e una luce uniforme che riflette la luce naturale. Non ci sono evidenze di artefatti o incoerenze nell'illuminazione e nell'ombreggiatura. Le linee del volto sembrano naturali e non presentano segni di manipolazione digitale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_256.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle liscia e naturale, senza artefatti evidenti attorno alla bocca, alle orecchie o all'attaccatura dei capelli. L'illuminazione \u00e8 uniforme e coerente, non presentando ombreggiazioni incoerenti. Non vi sono segni di manipolazione digitale che potrebbero suggerire la presenza di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_267.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle liscia e una bocca aperta che sembra essere in movimento, tipicamente caratteristica di un volto reale. Non ci sono evidenze di artefatti o incoerenze nell'illuminazione e nell'ombreggiatura, indicando che l'immagine potrebbe essere stata scattata in un contesto naturale. Le orecchie e l'attaccatura dei capelli sembrano ben posizionate e non presentano segni di artefatti comuni nei volti generati.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_270.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle naturale e una forma del viso che sembra reale. Non ci sono evidenze di artefatti o incoerenze nell'illuminazione e nell'ombreggiatura che potrebbero suggerire la presenza di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_293.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una buona risoluzione e senza artefatti evidenti. La luce e l'ombreggiatura sembrano coerenti, non presentando condizioni incoerenti come quelle tipiche di immagini generative. Non vi sono segni di manipolazione o artefatti che caratterizzino un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_269.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano reale con una chiara definizione degli occhi, della bocca e dell'orecchio. Non ci sono evidenze di artefatti o incoerenze nell'illuminazione e nell'ombreggiatura, indicando che l'immagine \u00e8 verosimilmente una foto reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_263.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una chiara ombreggiatura naturale e una posizione della bocca che sembra naturale. Non ci sono evidenze di artefatti o incoerenze nell'illuminazione e nell'ombreggiatura. Le linee del volto e la texture dei capelli sembrano naturali e non presentano segni di manipolazione digitale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_252.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "L'immagine mostra artefatti intorno alla bocca e alle orecchie, tipici di immagini generative. Inoltre, l'illuminazione e l'ombreggiatura non sembrano coerenti con una fotografia reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_275.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una buona risoluzione e nessun artefatto evidente attorno alla bocca, alle orecchie o all'attaccatura dei capelli. L'illuminazione e l'ombreggiatura sembrano coerenti e naturali, indicando che non \u00e8 un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_280.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una buona risoluzione e senza artefatti evidenti. Le linee del volto sono chiare e coerenti, non vi sono segni di illuminazione o ombreggiatura incoerenti. Non si notano particolari artefatti come artefatti di illuminazione o ombreggiatura incoerenti.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_262.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una buona risoluzione e senza artefatti evidenti. La luminosit\u00e0 \u00e8 uniforme e non ci sono ombreggiature incoerenti. Le linee del volto sono chiare e ben definite, indicando un volto reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_273.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle naturale, capelli lunghi e una bocca chiara. Non ci sono evidenze di artefatti o incoerenze nell'illuminazione e nell'ombreggiatura. Le linee del volto sembrano naturali e non presentano segni di manipolazione digitale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_255.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una buona risoluzione e senza artefatti evidenti. La bocca, le orecchie e l'attaccatura dei capelli sembrano normali e coerenti con la luce e l'ombra presenti nell'immagine. Non ci sono segni di manipolazione digitale o artefatti tipici di immagini generative.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_282.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano reale con una pelle uniforme e una bocca che sembra naturale. Non ci sono evidenze di artefatti o incoerenze nell'illuminazione e nell'ombreggiatura. Le linee del volto sono chiare e ben definite, indicando una fotografia reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_251.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle naturale e una posizione degli occhi che sembra reale. Non ci sono evidenze di artefatti o incoerenze nell'illuminazione e nell'ombreggiatura, indicando che l'immagine potrebbe essere stata scattata in condizioni naturali. Le orecchie e l'attaccatura dei capelli sembrano ben posizionate e non presentano segni di artefatto.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_254.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una buona risoluzione e senza artefatti evidenti. Le linee del volto sono chiare e coerenti, non vi sono segni di illuminazione o ombreggiatura incoerenti. Non si notano particolari artefatti come artefatti di bocca, orecchie o attaccatura dei capelli.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_265.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano reale con una pelle chiara, capelli lunghi e ricci, e una bocca aperta che sembra sorridere. Non ci sono evidenze di artefatti o incoerenze nell'illuminazione e nell'ombreggiatura. Le linee del volto sono nette e la qualit\u00e0 dell'immagine \u00e8 alta, indicando che potrebbe essere una foto reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_258.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una chiara ombreggiatura naturale e senza artefatti evidenti attorno alla bocca, alle orecchie e all'attaccatura dei capelli. L'illuminazione \u00e8 coerente e non presenta segni di incoerenza.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_296.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle liscia e naturale, senza artefatti evidenti attorno alla bocca, alle orecchie o all'attaccatura dei capelli. L'illuminazione \u00e8 uniforme e coerente, non presentando ombreggiazioni incoerenti. Non vi sono segni di manipolazione digitale che potrebbero suggerire la presenza di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_285.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano reale con una chiara ombreggiatura naturale sulla faccia. Non ci sono evidenze di artefatti o incoerenze nell'illuminazione. Le linee del volto sono nette e la pelle appare naturale, indicando che l'immagine \u00e8 verosimilmente una foto reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_276.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle liscia e naturale, senza artefatti o incoerenze visibili. L'illuminazione \u00e8 uniforme e la ombreggiatura appare naturale, indicando che non si tratta di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_284.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle naturale, linee facciali chiare e un sorriso che sembra naturale. Non ci sono evidenze di artefatti o incoerenze nell'illuminazione e nell'ombreggiatura. Le caratteristiche del volto, come la forma della bocca, le orecchie e l'attaccatura dei capelli, sembrano coerenti con un volto reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_272.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle liscia e uniforme, occhi aperti e una bocca aperta che sembra sorridere. Non ci sono evidenze di artefatti o incoerenze nell'illuminazione e nell'ombreggiatura. Le linee del volto sono chiare e ben definite, indicando un volto reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_283.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano reale con una bocca chiara e ben definita, senza artefatti evidenti attorno alla bocca o all'attaccatura dei capelli. L'illuminazione \u00e8 uniforme e coerente, non presentando ombreggiazioni incoerenti.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_264.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una buona risoluzione e senza artefatti evidenti. La luminosit\u00e0 e l'ombreggiatura sembrano coerenti con la realt\u00e0, non presentando condizioni incoerenti come quelle tipiche di immagini generative.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_278.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una buona risoluzione e senza artefatti evidenti. Le linee del volto sono chiare e coerenti, non vi sono segni di illuminazione o ombreggiatura incoerenti. Non si notano particolari artefatti come artefatti di illuminazione o ombreggiatura incoerenti. ",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_294.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle naturale e una luce uniforme che riflette la luce naturale. Non ci sono evidenze di artefatti o incoerenze nell'illuminazione e nell'ombreggiatura. Le linee del volto sembrano naturali e non presentano segni di manipolazione digitale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_279.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una chiara ombreggiatura naturale e senza artefatti evidenti attorno alla bocca, alle orecchie e all'attaccatura dei capelli. L'illuminazione \u00e8 coerente e non presenta segni di incoerenza.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_268.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle lucida e una bocca aperta che sembra essere in movimento, indicando un volto reale. Non ci sono evidenze di artefatti o incoerenze nell'illuminazione e nell'ombreggiatura.",
+            "error": null
+        }
+    ]
+}

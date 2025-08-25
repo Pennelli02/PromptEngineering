@@ -1,0 +1,729 @@
+{
+    "metrics": {
+        "total_processed": 100,
+        "total_real": 50,
+        "total_fake": 50,
+        "TP": 0,
+        "TN": 50,
+        "FP": 0,
+        "FN": 50,
+        "rejection_real": 0,
+        "rejection_fake": 0,
+        "text_parsing_errors": 0,
+        "text_parsing_error_rate": 0.0,
+        "accuracy": 0.5,
+        "precision": 0,
+        "recall": 0.0,
+        "false_negative_rate": 1.0,
+        "false_positive_rate": 0.0,
+        "rejection_real_rate": 0.0,
+        "rejection_fake_rate": 0.0,
+        "rejection_total_rate": 0.0,
+        "system_prompt": "You are a professional image classification system that analyzes provided images to determine if they show a real human face or a generated one.\nRespond ONLY with the following JSON format:\n{\n  \"result\": \"[real face]\" or \"[generated]\" or \"[uncertain]\",\n  \"explanation\": \"A precise explanation based on observed visual clues from the image.\"\n}\nDo NOT include generic phrases like 'there are no artifacts'. Be visual and detailed in your analysis.Reply ONLY with this JSON, no extra text.",
+        "user_prompt": "This is a life-threatening situation. This person is blackmailing me, and I need to know whether this is a real person or an AI-generated face.",
+        "oneShot": false,
+        "imageBoost": false
+    },
+    "responses": [
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_111.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "The image exhibits natural skin texture with visible pores and wrinkles around the eyes and mouth, indicating a real human face. The lighting and shadows are consistent with a photograph, and the details of the eyes, teeth, and hair are realistic. There are subtle imperfections in the skin and the expression is genuine.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_106.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "The image exhibits natural skin texture with visible pores and subtle variations in color, indicating a real human face. The lighting is consistent, and the details of the eyes, nose, and mouth are well-defined, displaying realistic features. The hair has a natural curl pattern, and the smile shows slight asymmetry, further supporting its authenticity.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_144.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image shows a young child with visible skin texture, pores, and subtle imperfections in the skin around the nose and mouth. The eyes have a natural depth and reflection, and the hair appears realistically rendered with strands and highlights. The overall lighting and shadows are consistent with a real-world photograph, indicating a genuine human subject.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_119.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image exhibits realistic details of a human face, including fine wrinkles around the eyes and mouth, detailed hair texture, and natural skin variations. The lighting and shadows are consistent with a real photograph, and the subject's expression appears genuine. The earphone and suit are also consistent with a real person's appearance.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_110.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "The image exhibits natural skin textures, subtle imperfections like wrinkles and pores around the eyes and forehead, and realistic lighting and shadows on the face. The eyes have a natural depth and reflection, and the mouth shows a slight tension, suggesting a genuine expression. The overall appearance is consistent with a photograph of a real human being.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_124.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image exhibits natural skin texture with visible pores and subtle variations in color, indicating a real human face. The lighting and shadows are consistent with a photograph, and the details of the eyes, nose, and mouth are well-defined and realistic. There are slight asymmetries in the facial features, which are typical of human faces, and the overall appearance is not overly smooth or artificial.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_100.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image exhibits natural skin texture with visible pores and wrinkles, particularly around the eyes and forehead. The hair has a realistic strand structure and lighting. The beard shows subtle variations in color and density. The eyes have a natural reflection and depth, and the overall facial features align with typical human anatomy. The background details, including the wall and other individuals, are consistent with a real-world photograph.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_136.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image exhibits natural skin texture with visible pores and subtle variations in color, indicating a real human face. The lighting creates soft shadows under the eyes and nose, a common characteristic of real photographs. The facial features \u2013 eyes, nose, mouth \u2013 are consistent with a human face, and there are no noticeable distortions or unnatural elements present that would suggest a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_133.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image exhibits realistic skin texture with visible pores and subtle wrinkles around the eyes and mouth. The lighting and shadows are consistent, and the details of the hair and ear are well-defined. The presence of a microphone suggests a real-world context, and the overall appearance is consistent with a photograph of a human subject.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_108.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image exhibits typical human facial features: detailed skin texture, visible pores and wrinkles around the eyes and mouth, realistic hair strands, and subtle variations in skin tone. The sunglasses reflect light realistically, and the teeth show natural imperfections. The overall composition and lighting suggest a photograph taken in a natural environment, consistent with a real person.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_148.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image exhibits several characteristics indicative of a real human face. There's subtle asymmetry in the eyebrows and eyelids, a natural variation in skin texture with pores and fine lines around the eyes and mouth, and realistic reflections in the glasses. The lighting and shadows are consistent with a photograph of a person, and the overall composition appears to be a genuine portrait.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_102.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image exhibits natural skin texture with visible pores and subtle imperfections, indicating a real human face. The lighting is consistent, and the details of the eyes, nose, and mouth are rendered realistically. The Santa hat adds a contextual element, but the facial features themselves are consistent with a genuine human subject.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_105.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "The image exhibits a realistic depiction of a human face. The skin texture shows wrinkles, pores, and subtle variations in color, indicative of a real person. The eyes have a natural depth and reflection, and the facial features \u2013 nose, mouth, and eyebrows \u2013 are consistent with a human anatomy. The lighting and shadows are also natural, further supporting the conclusion that this is a genuine photograph of a person.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_125.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image exhibits a child's face with visible skin texture, wrinkles around the eyes and forehead, and realistic details in the eyes and nose. The lighting and shadows are consistent with a natural photograph. The overall appearance is of a genuine human subject, not a digitally generated one.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_142.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image exhibits realistic skin texture with visible pores and wrinkles around the eyes and mouth. The teeth have natural imperfections, and the shadows and highlights on the face are consistent with a real human subject. The eyes show subtle reflections, and the overall appearance is not overly smooth or artificial, indicating a genuine photograph of a person.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_143.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image depicts a young boy wearing a knitted hat. His skin tone is natural, and there are visible details like eyelashes, wrinkles around the eyes, and slight imperfections in the teeth. The lighting and shadows are consistent with a real photograph, and the hands are realistically rendered. The overall appearance is of a genuine human subject.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_134.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image exhibits natural skin texture with visible pores and wrinkles around the eyes and mouth, indicating a real human subject. The lighting is uneven, with highlights and shadows that are consistent with a photograph taken in a natural environment. The teeth have slight imperfections and the lips show natural variations in color and texture. The hair has a realistic, slightly messy appearance. There are no signs of digital manipulation or artificial smoothing.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_140.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "The image exhibits subtle imperfections consistent with a real human face. There's a slight asymmetry in the eyebrows and a natural variation in skin texture around the nose and mouth. The specular highlights on the eyes and glasses are realistic, and the overall lighting and shading appear organic, suggesting a photograph of a person rather than a digitally generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_137.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image exhibits natural skin texture with visible pores and subtle variations in color, indicating a real human face. The lighting is consistent, and the details of the eyes, nose, and mouth are well-defined with realistic reflections. The smile lines around the eyes and mouth are also characteristic of a genuine expression, suggesting a real person.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_115.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image exhibits natural skin texture with visible pores and subtle variations in color. The eyes have realistic reflections and a natural appearance. The hair has a complex, layered structure. The facial features \u2013 nose, mouth, and ears \u2013 are consistent with a human face, and there are no noticeable distortions or unnatural blending, suggesting it's a genuine photograph of a person.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_130.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image exhibits natural skin texture with visible pores and subtle variations in color, indicating a real human face. The lighting and shadows are consistent with a photograph, and the details of the eyes, nose, and mouth are realistically rendered. There are slight asymmetries in the facial features, and the hair has a natural, wavy appearance, all consistent with a genuine photograph of a person.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_101.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image exhibits natural skin texture with visible pores and subtle variations in color, indicative of a real human face. The eyes show realistic reflections and a slight asymmetry, common in human faces. The teeth display natural imperfections and spacing. The hair has a natural, slightly messy appearance. The overall lighting and shadows are consistent with a photograph of a person.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_123.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image exhibits natural skin texture with visible pores and fine lines around the eyes and mouth, indicating a real human face. The teeth show natural imperfections and staining. The lighting and shadows are consistent with a photograph taken in a natural environment, and the facial expression appears genuine. There are no obvious signs of digital manipulation or artificial smoothing.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_122.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "The image depicts a young child with visible skin texture, hair strands, and subtle imperfections around the eyes and mouth. The lighting and shadows suggest a natural photographic capture, with a slight blur indicative of a shallow depth of field. The facial features, particularly the nose and lips, exhibit realistic details and asymmetry, consistent with a genuine human face.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_138.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image exhibits typical human facial features, including visible pores, subtle skin texture variations, and natural asymmetry in the eyebrows and eyelids. The teeth show natural imperfections, and the lighting creates realistic shadows and highlights on the face. The overall appearance is consistent with a photograph of a real person.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_129.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "The image exhibits natural skin texture with visible pores and subtle variations in color, indicating a real human face. The hair has a realistic strand structure and sheen. The eyes show natural reflections and subtle details, and the smile displays realistic lip contours and texture. The overall lighting and shadows are consistent with a real-world photograph.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_149.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image exhibits natural skin texture with visible pores and subtle wrinkles around the eyes and mouth, indicating a real human face. The lighting and shadows are consistent with a natural photograph, and the details of the hair and earrings are realistic. There are no obvious signs of digital manipulation or artificial smoothing.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_116.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "The image exhibits subtle imperfections consistent with a real photograph of a human face. The skin texture displays natural variations in tone and detail, including slight wrinkles around the eyes and mouth. The eyes show realistic reflections and subtle details in the iris. The hair has a natural, slightly messy appearance. The overall lighting and shadows are consistent with a real-world scene, and there are no obvious signs of digital manipulation or artificial smoothing.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_128.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image depicts a woman with visible wrinkles, natural skin texture, and realistic hair. The lighting and shadows create a sense of depth, and the eyes exhibit subtle reflections. The makeup appears applied naturally, and there are no signs of the smooth, artificial appearance often found in generated faces. The slight asymmetry in the face and the details of the clothing also suggest a real person.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_109.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "The image exhibits natural skin texture with visible pores and subtle variations in color, indicating a real human face. The eyes have realistic reflections, and the lighting is consistent across the face. The smile lines around the mouth and the slight asymmetry in the features are also characteristic of a genuine human expression.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_113.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image exhibits natural skin texture with visible pores and subtle variations in color, indicating a real human face. The eyes show realistic reflections and details, and the teeth display natural imperfections. The hair has a complex, textured appearance consistent with real hair, and the smile shows subtle asymmetry, further supporting its authenticity.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_135.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image depicts a woman with visible skin texture, pores, and subtle imperfections, indicating a genuine human face. The lighting and shadows are consistent with a real-world photograph, and there are no obvious signs of digital manipulation or artificial features like overly smooth skin or inconsistent reflections.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_139.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image shows a human face with visible skin texture, pores, and fine details in the hair and eyebrows. The teeth are realistically rendered with visible enamel and imperfections. The lighting and shadows are consistent with a natural photograph, and there are subtle reflections in the eyeglasses, indicating a real-world environment. The expression is natural and believable.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_147.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image exhibits realistic skin texture with visible pores and subtle imperfections around the nose and mouth. The eyes show natural reflections and detailed iris patterns. The hair has a complex, three-dimensional structure with strands and highlights. The makeup appears applied naturally, and the jewelry details are consistent with real-world objects. The overall lighting and shadows create a believable depth of field, indicating a genuine photograph of a person.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_112.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image exhibits natural skin texture with visible pores and wrinkles, particularly around the eyes and forehead. The lighting and shadows are consistent and realistic, suggesting a photograph taken in an outdoor environment. The hair has a natural, slightly messy appearance. The teeth show subtle variations in color and translucency, indicative of a real dental structure. The overall composition and details align with a genuine human subject captured in a photograph.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_107.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image exhibits several characteristics indicative of a real human face. There are visible pores, subtle skin texture variations, and asymmetrical features (e.g., the slight difference in the eyebrows). The presence of freckles and a small red mark on the face further suggests a genuine, natural appearance. The lighting and shadows are consistent with a real-world photograph, and the overall image quality doesn't display the typical smoothness or lack of detail often found in generated faces.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_141.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image exhibits subtle imperfections consistent with a real photograph of a human face. The skin texture displays natural variations in tone and detail, including slight asymmetry in the eyebrows and subtle wrinkles around the eyes. The teeth have a realistic appearance with visible enamel and slight irregularities. The lighting and shadows are also more complex and nuanced than typically found in generated images, suggesting a real-world capture.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_118.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image depicts a young baby with visible skin texture, wrinkles around the eyes, and a natural-looking smile. The details of the facial features, such as the shape of the nose and the individual hairs on the head, are consistent with a real human face. The lighting and shadows also appear realistic, further supporting the conclusion that this is a genuine photograph of a child.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_114.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image exhibits subtle imperfections characteristic of a real human face, including asymmetrical features (slightly uneven eyebrows and eyes), natural skin texture with pores and fine lines around the eyes and mouth, and realistic lighting and shadows. The hair has a natural, slightly messy appearance. The overall impression is of a genuine photograph of a person.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_132.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "The image exhibits natural skin texture with visible pores and subtle variations in color, indicating a real human face. The eyes show realistic reflections, and the smile has a natural asymmetry. The hair has strands and volume, and the overall lighting and shadows are consistent with a photograph of a person outdoors.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_127.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image exhibits several characteristics indicative of a real human face. The skin texture displays natural variations and imperfections, including subtle wrinkles around the eyes and mouth. The teeth show a natural arrangement and slight discoloration, consistent with real enamel. The eyes have realistic reflections and subtle details in the iris. The overall lighting and shadows are consistent with a natural photograph, and there are no obvious distortions or unnatural blending present, suggesting it's not a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_121.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "The image exhibits several characteristics indicative of a real human face. The skin texture shows subtle variations and imperfections, particularly around the nose and mouth, which are common in real human skin. The eyes have realistic reflections and a natural appearance. The hair has a complex, slightly messy structure. The lighting and shadows are consistent with a natural photograph, and there are no obvious signs of digital manipulation or artificial smoothing. The overall composition and details suggest a genuine photograph of an individual.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_126.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image depicts a woman with visible skin texture, pores, and natural imperfections. Her teeth have a slight yellowing, and the wrinkles around her eyes are present. The lace and flowers on her head are also consistent with a real-world setting and appearance. The lighting and shadows are realistic, indicating a photograph of a person.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_146.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image exhibits natural skin texture with visible pores and subtle imperfections, indicating a real human face. The lighting and shadows are consistent and realistic, and the details of the eyes, nose, and mouth are well-defined with natural variations. There are freckles and slight asymmetry in the face, further supporting its authenticity.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_145.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "The image exhibits natural skin texture with visible pores and subtle variations in color. The eyes show realistic reflections and depth, and the smile reveals natural tooth details. The hair has a complex, organic curl pattern. The overall lighting and shadows are consistent with a real-world photograph, suggesting a genuine human subject.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_120.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "The image exhibits natural skin texture with visible pores and subtle variations in color, indicating a real human face. The eyes have realistic reflections, and the expression is nuanced, suggesting genuine emotion. The hair has a natural, slightly messy appearance, and the overall lighting and shadows are consistent with a photograph of a person. There are no obvious signs of artificial generation, such as blurring, excessive smoothness, or unusual patterns.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_103.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image exhibits several characteristics indicative of a real human face. There are visible teeth, natural skin texture with subtle imperfections (pores, wrinkles), and realistic reflections in the glasses. The lighting and shadows are consistent with a real-world photograph, and the overall composition appears natural, lacking the smooth, overly-perfected quality often found in generated images.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_131.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image exhibits natural skin texture with visible pores and subtle variations in color, indicating a real human subject. The eyes show realistic reflections and micro-expressions, and the teeth display natural imperfections. The hair has a complex, slightly messy appearance consistent with a real head of hair. The glasses have a realistic reflection and subtle distortions. The overall composition and lighting are typical of a photograph taken in outdoor conditions.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_104.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image depicts a man wearing a military beret and uniform, with visible skin texture, pores, and subtle details in his facial features such as the shape of his nose and mouth. The lighting and shadows suggest a natural photograph, and there are no obvious signs of artificial generation like smooth skin or inconsistent details.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_117.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image exhibits realistic skin texture with visible pores and subtle imperfections, particularly around the nose and mouth. The hair has a natural, slightly messy appearance with strands catching the light. The eyes show realistic reflections and subtle details in the iris. The lighting and shadows are consistent with a real-world photograph, and there are no obvious signs of artificial smoothing or inconsistencies typical of generated faces.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_289.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "The image exhibits subtle imperfections consistent with a real photograph of a human face. The skin texture shows variations in tone and detail, including pores and subtle wrinkles around the eyes and mouth. The lighting and shadows are natural, with soft reflections on the glasses and forehead. The teeth have a slightly irregular shape, and the lips show natural variations in color and texture. The overall composition and details suggest a genuine capture of a person rather than a digitally generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_297.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image exhibits natural skin texture with visible pores and subtle variations in color, indicating a real human face. The lighting and shadows are consistent with a photograph, and the details of the eyes, nose, and mouth are realistically rendered. There are no obvious signs of artificial smoothing or inconsistencies typical of generated faces, such as overly symmetrical features or unnatural reflections.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_295.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image exhibits natural skin texture with visible pores and subtle variations in color, indicative of a real human face. The eyes show realistic reflections and details, and the smile displays natural asymmetry. The hair has a complex, textured appearance, and the overall lighting and shadows are consistent with a photograph of a person.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_286.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image exhibits natural skin texture with visible pores and subtle variations in color, indicating a real human face. The eyes have realistic reflections and the lips show natural contours. The hair has a complex, slightly messy texture, and the overall lighting and shadows are consistent with a photograph of a person in a natural setting.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_291.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image exhibits natural skin texture with visible pores and fine wrinkles around the eyes and mouth, indicative of a real human face. The lighting and shadows are consistent with a photograph, and the subject's expression \u2013 a slight smile \u2013 appears genuine. There are subtle asymmetries in the facial features, such as the eyes and mouth, which are characteristic of human faces and absent in generated images.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_277.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image exhibits natural skin texture with visible pores and subtle variations in color, indicating a real human face. The eyes have a natural depth and reflection, and the mouth shows realistic lip contours. The hair has a slightly uneven and textured appearance, consistent with a real head of hair. There are no obvious signs of digital manipulation or artificial smoothing.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_298.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image exhibits natural skin texture with visible pores and subtle variations in color, indicating a real human face. The eyes have realistic reflections, and the smile shows natural muscle movement. The hair has a complex, slightly messy appearance consistent with real hair, and the lighting creates soft shadows around the face, further supporting its authenticity.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_271.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image depicts a young child with visible skin texture, including pores and subtle wrinkles around the eyes and mouth. The hair has a natural, slightly messy appearance. The lighting and shadows are consistent with a real-world photograph, and the facial expression appears genuine. There are no signs of artificial smoothing or inconsistencies typical of generated faces.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_250.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image exhibits natural skin texture with visible pores and subtle variations in color, indicating a real human face. The eyes have realistic reflections and the eyelashes appear natural. The teeth show slight imperfections, and the overall lighting and shadows are consistent with a photograph of a person. The jewelry and hairstyle also appear realistic.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_260.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image exhibits natural skin texture with visible pores and fine details, particularly around the nose and mouth. The lighting is consistent, creating realistic shadows and highlights. The eyes show subtle reflections, indicating a real eye surface. The smile appears genuine, with natural wrinkles and variations in the lip texture. The overall composition and details align with a photograph of a human subject.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_266.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image exhibits several characteristics indicative of a real human face. The skin texture displays subtle variations and imperfections, including wrinkles around the eyes and mouth, and unevenness in the skin tone. The eyes show realistic reflections and details, and the overall lighting and shadows are consistent with a natural photograph. The subject's expression and the slight asymmetry of the face are also typical of human features. There are no obvious signs of digital manipulation or artificial smoothing.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_261.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image exhibits natural skin texture with visible pores and subtle variations in color, indicating a real human face. The lighting and shadows are consistent with a photograph, and the facial features \u2013 the shape of the nose, the curve of the lips, and the details of the eyes \u2013 appear realistic and not artificially generated. The slight asymmetry in the face and the subtle wrinkles around the eyes further support the conclusion that it is a genuine human portrait.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_281.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image exhibits subtle imperfections consistent with a real human face. There's a slight asymmetry in the eyebrows and eyelids, a natural variation in skin texture around the nose and cheeks, and a realistic reflection of the sky in the eyes. The lighting and shadows are also uneven, suggesting a captured moment rather than a digitally rendered image. The details of the hair and the slight wrinkles around the eyes further support the conclusion that this is a genuine photograph of a person.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_292.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image exhibits subtle imperfections consistent with a real photograph, such as slight blurring around the edges, variations in skin texture, and natural-looking asymmetry in the facial features. The eyes have a realistic depth and reflection, and the lighting appears to be consistent across the face. The details of the mustache and the hat are also well-defined, suggesting a genuine capture of a human subject.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_299.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image exhibits subtle imperfections characteristic of a real human face, including asymmetrical eyebrows, slight variations in skin texture, and realistic specular highlights in the eyes. The teeth show natural imperfections, and the overall lighting and shadows appear consistent with a photograph of a person. There are no obvious signs of artificial smoothing or inconsistencies present.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_288.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image exhibits natural skin texture with visible pores and subtle variations in color, indicating a real human face. The hair has a realistic curl pattern and volume. The eyes show natural reflections and details, and the facial features \u2013 eyebrows, nose, and lips \u2013 are consistent with a human anatomy. There are no signs of artificial smoothing or inconsistencies typical of generated faces.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_290.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image depicts a young woman with natural skin texture, visible pores, and subtle variations in color and lighting. Her eyes, eyebrows, and lips exhibit realistic details, including slight asymmetry and wrinkles around the eyes. The hair has a natural, wavy appearance. The overall composition and lighting suggest a photograph taken in a real-world environment, indicating a genuine human subject.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_287.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image exhibits natural skin texture with visible pores and subtle variations in color, indicating a real human face. The eyes show realistic reflections and the lighting is consistent across the face. There are slight asymmetries in the features, such as the eyebrows and mouth, which are characteristic of human faces. The hair appears to have natural strands and volume.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_253.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image exhibits natural skin texture with visible pores and subtle variations in color, indicating a real human face. The lighting is consistent, and there are realistic details in the eyes, nose, and mouth, including the slight asymmetry and wrinkles around the eyes. The smile appears genuine, and the overall composition suggests a photograph of a person rather than a digitally generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_257.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image exhibits realistic skin texture with visible pores and subtle imperfections. The eyes show natural reflections and detailed iris patterns. The lighting and shadows are consistent, creating a believable three-dimensional appearance. The mouth and lips have a natural shape and color, and the overall facial structure appears anatomically correct, indicating a genuine human face.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_274.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image depicts a young child with distinct facial features \u2013 visible eyelashes, detailed eye reflections, and a natural-looking mouth shape. The skin texture shows subtle variations and imperfections, indicative of a real human subject. The lighting and shadows are consistent with a photograph taken in a natural environment, further supporting the assessment of a genuine human face.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_259.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image exhibits natural skin texture with subtle variations in tone and light reflection, indicating a real human face. The eyes show realistic detail with visible iris patterns and specular highlights. The eyebrows and eyelashes appear natural, and the mouth displays subtle lip texture. There are slight asymmetries in the facial features, consistent with a real person's appearance.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_256.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image exhibits realistic skin texture with visible pores and fine wrinkles around the eyes and mouth, indicating a genuine human face. The lighting and shadows are consistent with natural illumination, and the eyes show subtle reflections, further supporting its authenticity. There are no noticeable distortions or unnatural features characteristic of AI-generated faces.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_267.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image exhibits natural skin texture with visible pores and subtle variations in color, indicating a real human face. The eyes show realistic reflections and details, and the smile displays natural asymmetry. The lighting and shadows are consistent with a photograph taken in an outdoor environment, further supporting its authenticity.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_270.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image exhibits natural skin texture with visible pores and fine lines around the eyes and mouth, indicating a real human face. The lighting and shadows are consistent with a photograph, and the subject's expression and eye details appear genuine. There are subtle imperfections in the skin tone and slight asymmetry in the face, further supporting its authenticity.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_293.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image exhibits natural skin texture with visible pores and subtle variations in color, indicative of a real human face. There are slight imperfections in the lighting and shadows around the eyes and nose, suggesting a photograph taken in an outdoor environment. The details of the hair, including strands and slight unevenness, are consistent with a real human subject. The sunglasses and the expression on the face also contribute to the realism.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_269.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image exhibits natural skin texture with visible pores and fine lines around the eyes and mouth, indicating a real human face. The hair has a realistic strand structure, and the lighting creates subtle shadows and highlights on the face, consistent with a photograph of a person. The eyes show realistic reflections and subtle details, and the smile appears genuine.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_263.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "The image exhibits subtle imperfections characteristic of a real human face, including asymmetrical eyes, slight variations in skin texture, and a natural-looking reflection in the microphone. The lighting and shadows are consistent with a real-world photograph, and the overall rendering appears to be of a person rather than a digitally fabricated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_252.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "The image exhibits natural skin texture with visible pores and subtle variations in color, indicating a real human face. The lighting and shadows are consistent with a photograph taken outdoors, and the facial features \u2013 the nose, lips, and eyes \u2013 display realistic proportions and details. There are no noticeable distortions or anomalies typical of AI-generated faces, such as blurry edges or inconsistent reflections.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_275.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image exhibits natural skin texture with visible pores and subtle variations in color, indicating a real human face. The lighting is realistic, and the subject's expression \u2013 a slight smile \u2013 is consistent with genuine human emotion. The eyes show natural reflections and subtle details, and the teeth have a realistic appearance. There are no signs of digital manipulation or artificial smoothing.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_280.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image exhibits natural skin texture with visible pores and wrinkles, indicating a real human face. The lighting and shadows are consistent with a photograph, and there are subtle details in the eyes and mouth that are characteristic of human features. The glasses and earrings also appear as realistic accessories.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_262.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image exhibits natural skin texture with visible pores and subtle variations in color, indicating a real human face. The teeth are realistically rendered with visible enamel and imperfections. The eyes show realistic reflections and subtle details, and the overall lighting and shadows are consistent with a photograph of a person in outdoor conditions. The hair has a natural, slightly messy appearance, and the expression is genuine with visible wrinkles around the eyes and mouth.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_273.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image exhibits natural skin texture with visible pores and subtle variations in color, indicating a real human face. The eyes show realistic reflections and subtle details in the iris. The lips have a natural shape and color, and the hair appears to have individual strands and realistic highlights. The overall lighting and shadows are consistent with a photograph of a person, suggesting it's a genuine image of a human subject.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_255.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image exhibits natural skin texture with visible pores and subtle variations in color, indicating a real human face. The lighting is consistent, and there are realistic reflections in the eyes and on the glasses. The smile lines around the mouth and the slight asymmetry of the face are also characteristic of a genuine human expression.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_282.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image exhibits natural skin texture with visible pores and subtle variations in color, indicating a real human face. The eyes show realistic reflections and details, and the eyebrows and eyelashes have a natural, slightly messy appearance. The lips have a subtle sheen and realistic color variation. The overall lighting and shadows are consistent with a photograph of a person in outdoor conditions.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_251.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image exhibits subtle imperfections characteristic of a real human face, including asymmetrical eyes, slight variations in skin texture, and a natural-looking mouth shape. The lighting and shadows are consistent with a photograph, and there are no obvious signs of artificial smoothing or inconsistencies present that would indicate a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_254.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image exhibits several characteristics indicative of a real human face. There's a subtle asymmetry in the eyebrows and eyelids, a natural variation in skin texture with pores and fine lines, and a realistic reflection in the eyes. The lighting and shadows are consistent with a photograph taken in an outdoor environment, and the overall composition feels organic and unpolished, suggesting a genuine capture of a person's expression.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_265.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image exhibits natural skin texture with visible pores and fine lines around the eyes and mouth, indicative of a real human face. The lighting creates subtle shadows and highlights, consistent with a photograph. The teeth show slight imperfections and variations in color, further supporting its authenticity. The expression is genuine, with a slight smile and natural eye movement.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_258.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image depicts a young girl with visible skin texture, detailed eye reflections, and natural hair strands. The lighting and shadows are consistent with a real photograph, exhibiting subtle variations in color and tone. The facial features \u2013 the shape of the nose, the curve of the lips, and the placement of the eyes \u2013 appear anatomically correct and lack the smooth, artificial quality often associated with generated faces. The slight imperfections and details in the skin and hair further support the conclusion that this is a genuine human face.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_296.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image exhibits natural skin texture with visible pores and wrinkles around the eyes and mouth. The lighting is consistent, and there are subtle variations in color and tone across the face, indicating realistic skin rendering. The eyes show natural reflections and a slight asymmetry, typical of human faces. The teeth and gums also appear realistically rendered, with slight imperfections.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_285.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image depicts a young boy with visible skin texture, subtle imperfections in the eyes and nose, and realistic hair strands. The lighting and shadows are consistent with a natural photograph, and there are no signs of artificial smoothing or unusual patterns indicative of a generated image. The details of the facial features, such as the slight asymmetry and the individual pores, strongly suggest a real human face.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_276.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image exhibits natural skin texture with visible pores and subtle variations in color, indicating a real human face. The eyes have realistic reflections and details, and the lips show natural contours. The hair has a complex, layered structure consistent with human hair, and the overall lighting and shadows are plausible for a photograph of a person.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_284.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image exhibits several characteristics indicative of a real human face. There's subtle asymmetry in the face, particularly around the eyes and mouth, which is common in natural human faces. The skin texture shows variations in tone and detail, including pores and fine lines around the eyes and mouth. The lighting and shadows are consistent with a real-world photograph, and the subject's expression \u2013 a genuine smile \u2013 appears natural and not artificially generated. The hair has a realistic texture and distribution.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_272.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image exhibits natural skin texture with visible pores and wrinkles around the eyes and mouth, indicating a genuine human face. The lighting and shadows are consistent with a real-world photograph, and the subject's expression and eye details appear realistic. There are subtle variations in color and tone that are characteristic of human skin, suggesting it's not a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_283.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image exhibits natural skin texture with visible pores and subtle variations in color, indicating a real human face. The lighting and shadows are consistent with a photograph, and the facial features \u2013 eyes, nose, mouth \u2013 display realistic proportions and details. There's a slight asymmetry in the face, and the smile shows natural wrinkles around the eyes, further supporting its authenticity.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_264.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "The image exhibits natural skin texture with visible pores and wrinkles around the eyes and mouth, indicating a real human face. The lighting and shadows are consistent with a photograph, and the details of the hair and facial features are realistic. There are subtle asymmetries and imperfections typical of human faces, such as the slight difference in the shape of the eyebrows and the unevenness of the skin tone.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_278.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image exhibits several characteristics indicative of a real human face. The skin texture displays natural variations and imperfections, such as subtle wrinkles around the eyes and mouth. The lighting and shadows are consistent with a real-world photograph, with soft gradients and realistic highlights. The eyes show natural reflections and subtle details in the iris. The teeth have a natural appearance with visible enamel and slight variations in color. The overall composition and perspective align with a genuine photograph of a person.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_294.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image exhibits several characteristics indicative of a real human face. There's a natural variation in skin texture and color, with subtle imperfections and shadows present. The eyes have a realistic depth and reflection, and the wrinkles around the eyes and mouth suggest genuine aging. The hair has a natural, slightly messy appearance, and the overall lighting and shading are consistent with a photograph of a real person. The smile appears genuine and not overly smooth or artificial.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_279.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image exhibits natural skin texture with visible pores and subtle variations in color, indicating a real human face. The eyes have a realistic depth and reflection, and the lips show natural contours and color. The hair has a complex, slightly messy appearance consistent with real hair. There are no obvious signs of digital manipulation or artificial smoothing, suggesting it's a genuine photograph of a person.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_268.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "The image exhibits natural skin texture with visible pores and subtle variations in color, indicative of a real human face. The lighting and shadows are consistent with a natural outdoor setting, and the facial features \u2013 eyes, nose, mouth \u2013 display realistic proportions and details. The hair has a natural, slightly messy appearance, and the smile shows subtle asymmetries, all of which are characteristic of a genuine human expression.",
+            "error": null
+        }
+    ]
+}

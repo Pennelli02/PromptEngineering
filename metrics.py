@@ -35,9 +35,9 @@ def analyzeMetrics(counters, images_with_labels, prompt, systemPrompt, oneShot, 
 
     # ================= One-class accuracy =================
     one_class_accuracy_real = counters["tp"] / (counters["tp"] + counters["fn"]) if (
-                counters["tp"] + counters["fn"]) else 0
+            counters["tp"] + counters["fn"]) else 0
     one_class_accuracy_fake = counters["tn"] / (counters["tn"] + counters["fp"]) if (
-                counters["tn"] + counters["fp"]) else 0
+            counters["tn"] + counters["fp"]) else 0
     # =====================================================
 
     print("\n====== FINAL REPORT ======")
@@ -87,7 +87,7 @@ def analyzeMetrics(counters, images_with_labels, prompt, systemPrompt, oneShot, 
     return results
 
 
-# Todo creare una funzione di update per inserire in tutti one-class-accuracy.
+# funzione di update per inserire in tutti one-class-accuracy (non serve per fortuna)
 
 def add_one_class_accuracy(json_file_path):
     """
@@ -178,13 +178,11 @@ def createJSONMeanStats(folder_path, oneshot=False):
     fileList = glob.glob(os.path.join(folder_path, "*.json"))
 
     if not fileList:
-        print("⚠️ Nessun file JSON trovato nella cartella indicata.")
+        print(" Nessun file JSON trovato nella cartella indicata.")
         return
 
     # Prendo il primo file per ricavare nome base
     first_file = os.path.basename(fileList[0])
-
-    # Rimpiazza la parte "_YYYYMMDD-HHMMSS_result.json" con "_mean-result.json"
     output_filename = re.sub(r"_\d{8}-\d{6}_result\.json$", "_mean-result.json", first_file)
 
     for file in fileList:
@@ -192,15 +190,22 @@ def createJSONMeanStats(folder_path, oneshot=False):
             data = json.load(f)
         metrics = data["metrics"]
 
+        # Calcolo one-class accuracy se mancante
+        if "one_class_accuracy_real" not in metrics:
+            total_real = metrics.get("TN", 0) + metrics.get("FP", 0)
+            metrics["one_class_accuracy_real"] = metrics.get("TN", 0) / total_real if total_real else 0
+
+        if "one_class_accuracy_fake" not in metrics:
+            total_fake = metrics.get("TP", 0) + metrics.get("FN", 0)
+            metrics["one_class_accuracy_fake"] = metrics.get("TP", 0) / total_fake if total_fake else 0
+
         # Accumula i valori
         for key in aggregated.keys():
             if key in metrics:
                 aggregated[key].append(metrics[key])
 
     # Calcola la media per metriche continue
-    mean_results = {
-        "num_files": len(fileList)
-    }
+    mean_results = {"num_files": len(fileList)}
     for key in ["accuracy", "precision", "recall", "rejection_real_rate", "rejection_fake_rate",
                 "one_class_accuracy_real", "one_class_accuracy_fake"]:
         values = aggregated[key]
@@ -223,38 +228,26 @@ def createJSONMeanStats(folder_path, oneshot=False):
     mean_results["F1_score"] = f1
     mean_results["F2_score"] = f2
 
-    # Path completo di output
+    # Salvataggio
     output_path = os.path.join(folder_path, output_filename)
-
-    # Salva su file
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(mean_results, f, indent=4, ensure_ascii=False)
-
-    print(f" File salvato in: {output_path}")
+    print(f"File salvato in: {output_path}")
 
     if not oneshot:
-        # --------------------------
-        # Copia nella cartella "promptSection"
-        # --------------------------
-        norm_path = os.path.normpath(folder_path)  # normalizza separatori
+        norm_path = os.path.normpath(folder_path)
         parts = norm_path.split(os.sep)
-        # Esempio: JsonMeanStats/Sure/gemma3/prompt-0-Eng
-        # -> sure_type = Sure, model = gemma3, prompt_folder = prompt-0-Eng
-        sure_type = parts[1]  # Sure / Uncertain
-        model = parts[2]  # gemma3
-        prompt_folder = parts[-1]  # prompt-0-Eng
-
+        sure_type = parts[1]
+        prompt_folder = parts[-1]
         dest_dir = os.path.join("promptSection", sure_type.lower(), prompt_folder.replace("prompt", "Prompt"))
         os.makedirs(dest_dir, exist_ok=True)
-
         dest_path = os.path.join(dest_dir, output_filename)
         shutil.copy(output_path, dest_path)
-
-        print(f" Copiato anche in: {dest_path}")
+        print(f"Copiato anche in: {dest_path}")
 
 
 if __name__ == "__main__":
-    base_path = "JsonMeanStats/Sure/llava"
+    base_path = "JsonMeanStats/Uncertain/gemma3"
 
     for i in range(7):  # indici da 0 a 6
         for lang in ["Eng", "Ita"]:

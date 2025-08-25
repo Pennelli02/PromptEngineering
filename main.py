@@ -8,13 +8,13 @@ import prompt
 # VALORI PER CARICARE IL DATASET
 installDataset = False  # serve nel caso si perdesse tutto
 startMiniDt = False
-NAME = "test_2"
+NAME = "test_3"
 MAX_IMAGES = 100
 SHUFFLE = False
 # ======================================
 
 # VALORI PER IL PROMPT
-INDEX_PROMPT = 0  # (0-6)
+INDEX_PROMPT = 3  # (0-6)
 IS_ITALIAN = False
 SHOW_IMAGES = False
 ONESHOT = False

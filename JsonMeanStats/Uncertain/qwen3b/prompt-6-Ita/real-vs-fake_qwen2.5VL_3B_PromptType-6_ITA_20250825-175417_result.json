@@ -1,0 +1,730 @@
+{
+    "metrics": {
+        "total_processed": 100,
+        "total_real": 50,
+        "total_fake": 50,
+        "TP": 10,
+        "TN": 40,
+        "FP": 10,
+        "FN": 40,
+        "rejection_real": 0,
+        "rejection_fake": 0,
+        "text_parsing_errors": 0,
+        "text_parsing_error_rate": 0.0,
+        "accuracy": 0.5,
+        "precision": 0.5,
+        "recall": 0.2,
+        "false_negative_rate": 0.8,
+        "false_positive_rate": 0.2,
+        "rejection_real_rate": 0.0,
+        "rejection_fake_rate": 0.0,
+        "rejection_total_rate": 0.0,
+        "one_class_accuracy_real": 0.2,
+        "one_class_accuracy_fake": 0.8,
+        "system_prompt": "Sei un sistema professionale di classificazione delle immagini che analizza le immagini fornite per determinare se mostrano un volto umano reale o uno generato.\nRispondi SOLO usando il seguente formato JSON:\n{\n  \"result\": \"[real face]\" oppure \"[generated]\", [uncertain]\n  \"explanation\": \"Una spiegazione precisa basata su indizi visivi osservati nell'immagine.\"\n}\nNON includere frasi generiche come 'non ci sono artefatti'. Sii visivo e dettagliato nella tua analisi.Rispondi ESCLUSIVAMENTE con questo JSON, senza commenti o testo extra.",
+        "user_prompt": "Credo che questa persona non esista. In base all'immagine, ti sembra un volto reale o uno generato?",
+        "one_shot": false
+    },
+    "responses": [
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/real/real_59.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle naturale, occhi, naso e labbra in posizione normale. Non ci sono artefatti o segni di manipolazione digitale che suggeriscano la presenza di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/real/real_73.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle chiara, capelli rossi ricci, occhi azzurri e una bocca sorridente. Non ci sono artefatti o segni di manipolazione digitale che suggeriscano la presenza di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/real/real_98.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano reale con una pelle chiara, capelli biondi ricci e occhi marroni. Non ci sono artefatti o segni di manipolazione digitale che suggeriscano la presenza di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/real/real_94.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano reale, con una pelle che sembra naturale e una posizione del capo che appare normale. Non ci sono evidenze di artefatti o trucchi che potrebbero suggerire la generazione.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/real/real_75.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle chiara, occhi grandi e una bocca sorridente. Il trucco \u00e8 ben applicato e la posa \u00e8 naturale, indicando che potrebbe essere un volto reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/real/real_84.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una chiara definizione e una pelle realistica. Non ci sono artefatti o segni di manipolazione digitale che indicino la presenza di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/real/real_53.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano reale con dettagli come i capelli, la pelle e gli occhi che sembrano naturali. Non ci sono artefatti o segni di manipolazione digitale che suggeriscano una generazione.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/real/real_57.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle chiara, capelli neri ricci e occhi grandi. Non ci sono evidenze di artefatti o tratti che siano tipici di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/real/real_97.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano reale con una pelle chiara, capelli lunghi e ondulati, occhi grandi e una bocca sorridente. Non ci sono artefatti o segni di manipolazione digitale che suggeriscano la presenza di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/real/real_88.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle chiara, capelli ricci e occhiali da sole. Non ci sono evidenze di artefatti o tratti che siano in contrasto con la realt\u00e0 umana.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/real/real_64.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle chiara, capelli corti e una faccia ben definita. Non ci sono evidenze di artefatti o tratti che siano tipici di una generazione di immagini.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/real/real_51.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano reale con una pelle chiara, capelli scuri e una posa naturale. Non ci sono evidenze di artefatti o trucco che potrebbero suggerire la generazione.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/real/real_70.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano reale con una pelle chiara, occhi grandi e una bocca sorridente. Non ci sono artefatti o segni di manipolazione digitale che suggeriscano la presenza di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/real/real_87.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle naturale, capelli e tratti facciali ben definiti. Non ci sono evidenze di artefatti o modifiche che suggeriscano la generazione digitale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/real/real_62.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "L'immagine mostra una persona con occhiali da sole e capelli lunghi, ma la qualit\u00e0 della foto \u00e8 bassa e i dettagli sono sfumati, suggerendo che potrebbe essere un'immagine generata piuttosto che reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/real/real_67.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle naturale, occhi, naso e bocca in posizione normale. Non ci sono artefatti o segni di manipolazione digitale che suggeriscano la presenza di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/real/real_77.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano reale con una pelle scura, capelli corti e una faccia con una leggera espressione. Non ci sono artefatti o segni di manipolazione digitale che suggeriscano la presenza di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/real/real_82.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "L'immagine mostra un volto umano con una pelle molto liscia e uniforme, che non ha i caratteristici segni di umidit\u00e0 e imperfezioni naturali presenti su una pelle reale. Inoltre, la posizione e la forma del naso, degli occhi e della bocca sembrano essere stati modificati in modo non naturale, indicando che potrebbe essere un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/real/real_89.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle naturale, occhi, naso e labbra in posizione normale. Non ci sono artefatti o segni di manipolazione digitale che indicino la presenza di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/real/real_79.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano reale con una chiara definizione dei contorni e degli occhi. Non ci sono artefatti o segni di manipolazione digitale che suggeriscano la presenza di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/real/real_85.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle chiara, occhi aperti, labbra sorridenti e capelli scuri. Non ci sono evidenze di artefatti o tratti che siano tipici di una generazione di immagini.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/real/real_78.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano reale con una pelle colorata, occhi aperti, labbra rosse e capelli ricci. Non ci sono artefatti o segni di manipolazione digitale che suggeriscano la presenza di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/real/real_72.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "L'immagine mostra un volto umano con occhiali da sole riflettenti che creano un effetto di distorsione e sfocatura, tipico dei volti generati. Inoltre, l'aspetto della pelle e la posizione degli occhi sembrano essere stati modificati in modo non naturale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/real/real_80.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle chiara, capelli scuri e occhi grandi. Non ci sono artefatti o segni di manipolazione digitale che suggeriscano la presenza di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/real/real_60.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle chiara, capelli scuri e una barba leggera. Il background \u00e8 neutro e simile a quello di un ritratto professionale, che suggerisce che l'immagine potrebbe essere un ritratto reale di una persona.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/real/real_63.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano reale con una pelle chiara, capelli corti e una barba. Non ci sono artefatti o segni di manipolazione digitale che suggeriscano la presenza di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/real/real_65.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "L'immagine mostra una persona con un viso molto simile a quello di una modella di moda, con una pelle liscia e una posa che sembra essere stata stilizzata. Il contrasto tra la pelle e il fondo \u00e8 molto forte, tipico dei ritratti di modelli. Inoltre, la qualit\u00e0 della foto appare molto pulita e perfetta, che suggerisce che potrebbe essere un'immagine generata.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/real/real_61.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una chiara definizione e una pelle che sembra naturale. Non ci sono artefatti o segni di manipolazione digitale che indicino la presenza di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/real/real_56.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "L'immagine mostra una faccia con una precisione e naturalezza che suggeriscono l'utilizzo di tecniche di generazione di immagini, come ad esempio l'applicazione di reticoli o tecniche di rendering 3D. Le linee della faccia sono molto nette e uniformi, e la luminosit\u00e0 e la contrasto sono regolari, caratteristiche tipiche dei generati.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/real/real_74.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano reale, con una pelle chiara, capelli corti e un naso prominente. Non ci sono evidenze di artefatti o trucchi che potrebbero suggerire la generazione.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/real/real_52.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle chiara, occhi scuri, labbra rosse e capelli lunghi. Non ci sono evidenze di artefatti o tratti che siano tipici di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/real/real_69.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle liscia e una struttura facciale naturale. Non ci sono evidenze di artefatti o tratti che siano in contrasto con la realt\u00e0 umana.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/real/real_68.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "L'immagine mostra una persona con una pelle molto liscia e uniforme, occhi grandi e una posa che sembra essere stata stilizzata. Il contrasto tra la pelle e il fondo \u00e8 molto forte, tipico dei generati. Inoltre, la posa e la luce sono uniformi, come si vede in molte immagini generative.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/real/real_96.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "L'immagine mostra un volto con trucco molto elaborato e particolareggiato, che non corrisponde alle caratteristiche naturali umane. Le linee sono molto nette e uniformi, e la posizione dei muscoli e degli occhi appare artificiale. Inoltre, l'aspetto generale della pelle e del trucco \u00e8 molto simile a quello di un'opera d'arte digitale piuttosto che a quello di una persona reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/real/real_76.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano reale con una pelle chiara, capelli ricci e occhi azzurri. Non ci sono artefatti o segni di manipolazione digitale che suggeriscano la presenza di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/real/real_90.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano reale con una maglia nera e un cappello rosso. Non ci sono evidenze di artefatti o tratti che siano tipici di una generazione di immagini.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/real/real_86.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "L'immagine mostra una persona con un volto molto simile a quello di una modella di moda, con trucco e abbigliamento che sembrano essere stati appositamente selezionati per creare un effetto di realismo. Inoltre, l'aspetto fisico della persona \u00e8 molto simile a modelli di moda, che sono comunemente utilizzati in generazione di immagini.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/real/real_55.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle naturale, capelli lunghi e una posa che sembra reale. Non ci sono artefatti o segni di manipolazione digitale che indicino la presenza di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/real/real_54.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "L'immagine mostra un volto con caratteristiche che sembrano artificiali, come occhi grandi e labbra sottili, tipicamente presenti in generazioni di avatar o personaggi di gioco. Inoltre, la pelle appare liscia e priva di imperfezioni naturali, che \u00e8 comune nelle immagini generative. La posa e la posizione del corpo non sembrano naturali, aggiungendo ulteriori indizi di una generazione artificiale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/real/real_58.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano reale con una pelle chiara, occhi grandi e una bocca sorridente. Non ci sono artefatti o segni di manipolazione digitale che suggeriscano la presenza di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/real/real_95.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle lucida e capelli scuri. Non ci sono evidenze di artefatti o tratti che siano tipici di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/real/real_92.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle chiara, capelli lunghi e ricci, e occhi grandi. Non ci sono evidenze di artefatti o tratti che siano tipici di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/real/real_91.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una chiara definizione e una pelle che sembra naturale. Non ci sono artefatti o segni di manipolazione digitale che indicino la presenza di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/real/real_93.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle chiara, capelli biondi ricci e una posa naturale. Non ci sono evidenze di artefatti o tratti che siano tipici di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/real/real_50.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "L'immagine mostra un volto con una colorazione di capelli gialla molto intensa e lucida, che \u00e8 un caratteristico effetto tipico dei generatori di immagini. Inoltre, la posizione e l'aspetto del viso rispetto al resto dell'immagine sembrano essere stati modificati in modo non naturale, indicando che potrebbe essere un'immagine generata.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/real/real_99.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una chiara definizione e una pelle naturale. Non ci sono artefatti o segni di manipolazione digitale che suggeriscano la presenza di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/real/real_71.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle naturale e una posa che sembra reale. Non ci sono evidenze di artefatti o trucchi che potrebbero suggerire la generazione.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/real/real_66.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano reale di un bambino con una pelle chiara, occhi azzurri, e capelli biondi. Il bambino indossa un cappellino rosso e bianco, e ha un'espressione dolce e sorridente. Non ci sono artefatti o segni di manipolazione digitale che suggeriscano la generazione.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/real/real_81.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle chiara, capelli scuri e occhi marroni. Non ci sono evidenze di artefatti o tratti che siano tipici di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/real/real_83.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una chiara definizione e una luminosit\u00e0 naturale. Non ci sono artefatti o segni di manipolazione digitale che suggeriscano la presenza di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/fake/fake_160.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una maglia blu e un cappello rosso e azzurro. Non ci sono evidenze di artefatti o tratti che siano tipici di una generazione di immagini.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/fake/fake_154.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle naturale, capelli lunghi e occhi che sembrano reali. Non ci sono artefatti o segni di manipolazione digitale che indicino la presenza di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/fake/fake_172.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle chiara, occhi aperti, labbra sorridenti e una barba. Non ci sono evidenze di artefatti o tratti che siano tipici di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/fake/fake_195.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle chiara, capelli scuri e occhi grandi. Non ci sono artefatti o segni di manipolazione digitale che suggeriscano la presenza di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/fake/fake_166.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano reale con una pelle chiara, occhi grandi e una bocca aperta che sembra sorridere. Non ci sono artefatti o segni di manipolazione digitale che indicino la presenza di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/fake/fake_175.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle lucida e capelli ricci, caratteristiche che suggeriscono un volto reale. Non ci sono artefatti o segni di manipolazione digitale che potrebbero indicare la generazione.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/fake/fake_170.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "L'immagine mostra un volto con una pelle molto liscia e uniforme, mancanza di ombreggiature naturali, occhi grandi e luminosi, e una posa che sembra essere stata impostata. Questi elementi indicano che potrebbe essere un volto generato piuttosto che reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/fake/fake_188.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "L'immagine mostra un volto con una pelle molto liscia e uniforme, occhi grandi e luminosi, e capelli di colore viola. Questi elementi sono tipici di modelli di volti generati da computer, in contrasto con i volti reali che mostrano variazioni naturali nella pelle e nei capelli.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/fake/fake_169.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle naturale, occhi, naso e labbra ben definiti. Non ci sono artefatti o segni di manipolazione digitale che suggeriscano la presenza di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/fake/fake_150.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle chiara, occhi grandi e una bocca aperta, che sembra essere una foto reale. Non ci sono artefatti o segni di manipolazione digitale che suggeriscano la presenza di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/fake/fake_184.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle chiara, capelli ricci lunghi e occhi scuri. Non ci sono evidenze di artefatti o tratti che siano tipici di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/fake/fake_161.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "L'immagine mostra un volto con trucco e una maschera che sembrano essere stati applicati digitalmente, rendendo il volto non reale. Le linee del contorno del volto e la precisione della posizione dei tratti facciali suggeriscono l'utilizzo di tecniche di generazione digitale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/fake/fake_164.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle naturale, capelli scuri e una barba leggera. Non ci sono artefatti o segni di manipolazione digitale che indicino la presenza di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/fake/fake_167.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle chiara, capelli scuri e una posa positiva. Non ci sono artefatti o segni di manipolazione digitale che suggeriscano la presenza di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/fake/fake_194.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle chiara, capelli biondi lunghi e occhi verdi. Il contrasto tra i capelli e la pelle, la precisione dei dettagli del volto e l'aspetto naturale suggeriscono che si tratta di un volto reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/fake/fake_192.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle naturale, occhi aperti, labbra in posizione di sorriso e una posizione del capo che sembra naturale. Non ci sono artefatti o segni di manipolazione digitale che indicino la presenza di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/fake/fake_158.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle naturale, capelli lunghi e una posa che sembra reale. Non ci sono artefatti o segni di manipolazione digitale che indicino la presenza di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/fake/fake_181.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "L'immagine mostra una persona con un aspetto molto simile a quello di una modella di moda, con un taglio di capelli particolare e una posa che sembra essere stato stilizzato. Le linee sono molto nette e regolari, tipicamente caratteristiche dei volti generati da software di elaborazione del volto. Inoltre, l'aspetto della pelle e degli occhi appare troppo perfetto e uniforme, che \u00e8 un indicatore comune di una generazione.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/fake/fake_193.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle chiara, capelli ricci rossi, occhi azzurri e una bocca aperta in un sorriso. Non ci sono artefatti o segni di manipolazione digitale che suggeriscano la presenza di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/fake/fake_177.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle chiara, occhi grandi e una bocca aperta che sembra sorridere. Non ci sono evidenze di artefatti o tratti che siano in contrasto con un volto reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/fake/fake_173.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano reale con una pelle chiara, capelli grigi e una barba. Non ci sono artefatti o segni di manipolazione digitale che suggeriscano la presenza di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/fake/fake_157.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle naturale, capelli lunghi e una posa naturale. Non ci sono artefatti o segni di manipolazione digitale che suggeriscano la presenza di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/fake/fake_197.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle chiara, capelli corti e un'espressione facciale naturale. Non ci sono artefatti o segni di manipolazione digitale che suggeriscano la presenza di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/fake/fake_183.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "L'immagine mostra una persona con un aspetto molto stilizzato e artificiale, con linee nette e forme geometriche che non corrispondono a un volto umano reale. Le ombre e i contrasti sono molto accentuati e non presentano la naturale sfumatura di una foto reale. Inoltre, l'aspetto generico e perfetto della persona suggerisce che potrebbe essere un volto generato da un software di elaborazione del volto.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/fake/fake_187.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle chiara, capelli biondi lunghi e una carnagione ben curata. Il ritratto appare realistico e non presenta caratteristiche che siano tipiche di un'immagine generata, come artefatti o una presentazione troppo perfetta.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/fake/fake_182.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle che sembra naturale e una posa che appare reale. Non ci sono evidenze di artefatti o tratti che siano tipici di una generazione di immagini.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/fake/fake_186.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle naturale, capelli lunghi e una posa che sembra reale. Non ci sono artefatti o segni di manipolazione digitale che indicino la presenza di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/fake/fake_176.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano reale con una pelle chiara, capelli corti e occhi grandi. Non ci sono artefatti o segni di manipolazione digitale che suggeriscano la presenza di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/fake/fake_180.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle chiara, capelli rossi lunghi e occhi grandi. Il viso appare naturale e realistico, con linee e contorni ben definiti. Non ci sono artefatti o segni di manipolazione digitale che suggeriscano la generazione.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/fake/fake_191.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle naturale, occhi, naso e bocca in posizione normale. Non ci sono artefatti o segni di manipolazione digitale che suggeriscano la presenza di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/fake/fake_153.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "L'immagine mostra un volto umano con una pelle molto liscia e uniforme, che non ha i caratteristici segni di umidit\u00e0 e umore tipici di una foto reale. Inoltre, la posizione e la forma del naso e della bocca sembrano essere stati modificati in modo non naturale, indicando che potrebbe essere un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/fake/fake_162.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "L'immagine mostra un volto umano con una pelle molto liscia e uniforme, occhi grandi e una bocca smorfiosa, caratteristiche che sono tipiche dei volti generati da computer. Inoltre, la qualit\u00e0 della foto \u00e8 molto alta, con dettagli nitidi e una illuminazione uniforme, che suggerisce l'utilizzo di tecniche di elaborazione digitale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/fake/fake_156.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle naturale, capelli ben curati e una posa naturale. Non ci sono artefatti o segni di manipolazione che suggeriscano la generazione.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/fake/fake_155.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una chiara definizione e una pelle naturale. Non ci sono artefatti o segni di manipolazione digitale che suggeriscano la presenza di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/fake/fake_159.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle chiara, capelli scuri e una barba. Non ci sono evidenze di artefatti o tratti che siano tipici di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/fake/fake_189.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una chiara definizione dei contorni e degli occhi, che sembrano reali. Non ci sono artefatti o segni di manipolazione digitale che potrebbero suggerire la generazione.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/fake/fake_171.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "L'immagine mostra un volto umano con una qualit\u00e0 di immagine molto alta, ma la presenza di artefatti come l'occhio fisso e la pelle lucida suggerisce che potrebbe essere un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/fake/fake_168.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "L'immagine mostra una persona con un aspetto molto stilizzato e perfetto, con linee nette e forme simmetriche che non sono tipiche di una fotografia reale. Le orecchini e la pelle sembrano essere stati appositamente disegnati per creare un effetto di realismo artificiale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/fake/fake_178.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "L'immagine mostra un volto umano con una pelle molto liscia e uniforme, occhi grandi e un naso simmetrico, caratteristiche che sono tipiche di modelli di volti generati. Inoltre, la qualit\u00e0 della foto \u00e8 molto alta, con una risoluzione e una nitidezza che suggeriscono l'utilizzo di tecniche di elaborazione digitale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/fake/fake_190.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano reale con una pelle chiara, occhi grandi e una bocca sorridente. Non ci sono artefatti o segni di manipolazione digitale che suggeriscano la presenza di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/fake/fake_196.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle naturale, capelli lunghi e una posa che sembra reale. Non ci sono artefatti o segni di manipolazione digitale che indicino la presenza di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/fake/fake_152.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle chiara, capelli biondi corti e occhiali. Il background \u00e8 uniforme e non contiene artefatti che potrebbero suggerire la generazione dell'immagine.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/fake/fake_198.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle chiara, capelli scuri e occhi grandi. Il background \u00e8 un campo verde, tipico di una foto di un giocatore di calcio. Non ci sono artefatti o segni di manipolazione digitale che suggeriscano la presenza di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/fake/fake_151.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle chiara, occhi grandi e una bocca aperta in un sorriso. Le linee del volto sono chiare e naturali, con un'ombra naturale sulla guancia sinistra. Non ci sono artefatti o segni di manipolazione digitale che indicino la presenza di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/fake/fake_199.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle chiara, capelli grigi e occhi marroni. Non ci sono artefatti o segni di manipolazione digitale che suggeriscano la presenza di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/fake/fake_163.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle naturale, capelli e occhi che sembrano reali. Non ci sono artefatti o segni di manipolazione digitale che suggeriscano la presenza di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/fake/fake_179.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle naturale, occhi, naso e labbra in posizione normale. Non ci sono artefatti o segni di manipolazione digitale che suggeriscano la presenza di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/fake/fake_174.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano reale con una pelle chiara, capelli scuri e occhi grandi. Non ci sono artefatti o segni di manipolazione digitale che suggeriscano la presenza di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/fake/fake_185.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle chiara, occhi grandi e una bocca sorridente. Non ci sono evidenze di artefatti o tratti che siano tipici di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_2/fake/fake_165.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un volto umano con una pelle che sembra naturale e una posa che appare reale. Non ci sono evidenze di artefatti o tratti che siano tipici di una generazione di immagini.",
+            "error": null
+        }
+    ]
+}

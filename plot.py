@@ -9,18 +9,12 @@ import glob
 import os
 import re
 from collections import Counter
-
 from sklearn.cluster import KMeans
 from transformers import pipeline
-
 import classifier
-import nltk
-from nltk.corpus import stopwords
-from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 import numpy as np
-
-nltk.download('stopwords')
+import seaborn as sns
 
 
 # Fixme Suddividere il grafico di llava-7b in 2/3 grafici separati in base al tipo di prompt: veri, falsi,
@@ -289,7 +283,6 @@ def getInfoPromptByModel(dirName, uncertain=False, oneshot=False):
     for fileName in fileList:
         with open(fileName, "r", encoding="utf-8") as f:
             data = json.load(f)
-        metrics = data["metrics"]
         baseName = os.path.splitext(os.path.basename(fileName))[0]
         parts = baseName.split("_")
 
@@ -303,19 +296,23 @@ def getInfoPromptByModel(dirName, uncertain=False, oneshot=False):
 
         results.append({
             "modello": modello,
-            "accuracy": metrics["accuracy"],
-            "precision": metrics["precision"],
-            "recall": metrics["recall"],
-            "false_negative_rate": metrics["false_negative_rate"],
-            "false_positive_rate": metrics["false_positive_rate"],
-            "rejection_real_rate": metrics["rejection_real_rate"],
-            "rejection_fake_rate": metrics["rejection_fake_rate"]
+            "accuracy": data["accuracy_mean"],
+            "precision": data["precision_mean"],
+            "recall": data["recall_mean"],
+            "rejection_real_rate": data["rejection_real_rate_mean"],
+            "rejection_fake_rate": data["rejection_fake_rate_mean"],
+            "one_class_accuracy_real": data["one_class_accuracy_real_mean"],
+            "one_class_accuracy_fake": data["one_class_accuracy_fake_mean"],
+            "TP": data["TP_total"],
+            "TN": data["TN_total"],
+            "FP": data["FP_total"],
+            "FN": data["FN_total"]
         })
 
     return results
 
 
-def createBarPlot(results, dirName, metrics, positive, uncertain, oneshot):
+def createBarPlot(results, dirName, metrics, positive, uncertain, oneshot, oneclass=False):
     etichette = [r["modello"] for r in results]
     values_list = [[r[m] for r in results] for m in metrics]
 
@@ -330,6 +327,8 @@ def createBarPlot(results, dirName, metrics, positive, uncertain, oneshot):
     if positive:
         flagTitle = "Positive_values"
         cartella_grafici = "plots/modelsBar/positiveStats/"
+        if oneclass:
+            cartella_grafici = "plots/compareAccuracy/"
     else:
         flagTitle = "Negative_values"
         cartella_grafici = "plots/modelsBar/negativeStats/"
@@ -342,6 +341,9 @@ def createBarPlot(results, dirName, metrics, positive, uncertain, oneshot):
     elif oneshot:
         ax.set_title(f" Prestazioni per modello-{dirName}-{flagTitle} (oneshot)")
         cartella = f"{cartella_grafici}oneshot/"
+    elif oneclass:
+        ax.set_title("Prestazioni per modello per one class accuracy")
+        cartella = cartella_grafici
     ax.set_xticks(x)
     ax.set_xticklabels(etichette, rotation=45, ha="right")
     ax.set_ylim(0, 1.1)
@@ -354,11 +356,14 @@ def createBarPlot(results, dirName, metrics, positive, uncertain, oneshot):
 
 
 # Fixme Al posto del grafico a barre di FPR e FNR, mostra la matrice di confusione per ogni llm
+
+
 def plotStatsPromptDividedByModel(dirName, positive=True, uncertain=False, oneshot=False):
     results = getInfoPromptByModel(dirName, uncertain, oneshot)
     if positive:
         createBarPlot(results, dirName, metrics=["accuracy", "precision", "recall"], positive=positive,
                       uncertain=uncertain, oneshot=oneshot)
+        createBarPlot(results, dirName, metrics=["one_class_accuracy_real", "one_class_accuracy_fake"], positive=positive, uncertain=uncertain, oneshot=oneshot, oneclass=True)
     else:
         if uncertain:
             createBarPlot(results, dirName,
@@ -369,6 +374,7 @@ def plotStatsPromptDividedByModel(dirName, positive=True, uncertain=False, onesh
             createBarPlot(results, dirName,
                           metrics=["false_positive_rate", "false_negative_rate"], positive=positive,
                           uncertain=uncertain, oneshot=oneshot)
+            createConfusionMatrix(results, dirName)
 
 
 # funzione che raccoglie tutte le spiegazioni di un modello in base al tipo al momento solo uncertain, Uncertain real, uncertain fake
@@ -410,6 +416,58 @@ def captureOneTypeResponse(path, Type):
                 })
 
     return risultati
+
+
+def createConfusionMatrix(results, dirName, promptType="sure"):
+    """
+    Crea le matrici di confusione per ogni file/modello e un plot generale con tutte le matrici.
+    TP = fake su fake
+    TN = real su real
+    FP = real predetto come fake
+    FN = fake predetto come real
+    results: lista di dizionari con TP, TN, FP, FN e modello
+    dirName: nome della cartella del prompt
+    promptType: 'sure', 'uncertain' o 'oneshot'
+    """
+    num_results = len(results)
+    # Layout subplot (2 colonne, numero di righe necessario)
+    ncols = 2
+    nrows = (num_results + 1) // 2
+
+    fig, axes = plt.subplots(nrows, ncols, figsize=(ncols * 5, nrows * 4))
+    axes = axes.flatten()  # per iterare facilmente
+
+    for i, res in enumerate(results):
+        TP = res.get("TP", 0)
+        TN = res.get("TN", 0)
+        FP = res.get("FP", 0)
+        FN = res.get("FN", 0)
+
+        # Matrice di confusione secondo la tua definizione
+        cm = np.array([[TN, FN],
+                       [FP, TP]])
+
+        sns.heatmap(cm, annot=True, fmt="d", cmap="Blues", cbar=False,
+                    xticklabels=["Real", "Fake"], yticklabels=["Real", "Fake"],
+                    ax=axes[i])
+        axes[i].set_title(res.get("modello", f"Modello {i + 1}"))
+        axes[i].set_ylabel("Predicted")
+        axes[i].set_xlabel("Actual")
+
+    # Nascondi eventuali assi vuoti
+    for j in range(i + 1, len(axes)):
+        axes[j].axis("off")
+
+    plt.tight_layout()
+
+    # Salvataggio cartella
+    save_dir = os.path.join("plots", "confusionMatrix")
+    os.makedirs(save_dir, exist_ok=True)
+
+    save_path = os.path.join(save_dir, f"{promptType}_{dirName}.png")
+    plt.savefig(save_path, dpi=300)
+    plt.close()
+    print(f"Matrice di confusione salvata in: {save_path}")
 
 
 # def saveSummaryToFile(globalSummary, modelName, type, base_folder="plots/infoText"):
@@ -553,7 +611,7 @@ def analyze_and_cluster_uncertain(path, modelName, prompt, n_clusters=5, device=
         print(f"  Accuratezza di cluster: {stats['cluster_accuracy']:.3f}")
         print(f"  Descrizione: {stats['description']}\n")
 
-        # 6. Salvataggio risultati
+    # 6. Salvataggio risultati
     output_dir = f"plots/uncertainClusters"
     os.makedirs(output_dir, exist_ok=True)
     save_path = os.path.join(output_dir, f"{modelName}-{prompt}_clusters.json")
@@ -568,6 +626,8 @@ def analyze_and_cluster_uncertain(path, modelName, prompt, n_clusters=5, device=
     print(f" Risultati salvati in {save_path}")
 
     return cluster_stats, cluster_labels, explanations
+
+
 # Todo calcolare la one-class accuracy. In sostanza consiste nel calcolare l'accuracy separatamente per tutte le
 #  immagini vere (e false)
 
