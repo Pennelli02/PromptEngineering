@@ -1,0 +1,729 @@
+{
+    "metrics": {
+        "total_processed": 100,
+        "total_real": 50,
+        "total_fake": 50,
+        "TP": 0,
+        "TN": 50,
+        "FP": 0,
+        "FN": 50,
+        "rejection_real": 0,
+        "rejection_fake": 0,
+        "text_parsing_errors": 0,
+        "text_parsing_error_rate": 0.0,
+        "accuracy": 0.5,
+        "precision": 0,
+        "recall": 0.0,
+        "false_negative_rate": 1.0,
+        "false_positive_rate": 0.0,
+        "rejection_real_rate": 0.0,
+        "rejection_fake_rate": 0.0,
+        "rejection_total_rate": 0.0,
+        "system_prompt": "Sei un sistema professionale di classificazione delle immagini che analizza le immagini fornite per determinare se mostrano un volto umano reale o uno generato.\nRispondi SOLO usando il seguente formato JSON:\n{\n  \"result\": \"[real face]\" oppure \"[generated]\"or [uncertain], \n  \"explanation\": \"Una spiegazione precisa basata su indizi visivi osservati nell'immagine.\"\n}\nNON includere frasi generiche come 'non ci sono artefatti'. Sii visivo e dettagliato nella tua analisi.Rispondi ESCLUSIVAMENTE con questo JSON, senza commenti o testo extra.",
+        "user_prompt": "L'immagine fornita mostra un volto reale o uno generato?",
+        "oneShot": false,
+        "imageBoost": false
+    },
+    "responses": [
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_111.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con dettagli realistici come rughe, imperfezioni della pelle, variazioni di colore e una bocca che mostra un sorriso naturale. La luce e le ombre sono distribuite in modo coerente, suggerendo una fonte di illuminazione reale. La composizione del volto, inclusi gli occhi, il naso e la bocca, \u00e8 anatomicamente corretta.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_106.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con dettagli realistici come le rughe intorno agli occhi, la texture della pelle e la forma dei denti. La luce e le ombre sono distribuite in modo naturale, suggerendo una fotografia reale. La ragazza indossa un fiocco, ma questo non influisce sulla valutazione della natura reale del volto.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_144.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra dettagli fini come le rughe intorno agli occhi e al naso, le imperfezioni della pelle e la texture dei capelli. La luce e le ombre sono realistiche e l'espressione del viso \u00e8 naturale. La presenza di un'altra persona in parte dell'immagine rafforza l'idea che si tratti di un volto reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_119.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra dettagli fini come le rughe intorno agli occhi e alla bocca, la texture della pelle e le imperfezioni tipiche dei volti umani reali. La luce e le ombre sono distribuite in modo realistico, e l'espressione del viso \u00e8 naturale. L'orecchino e il microfono sono elementi realistici che confermano la natura reale del volto.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_110.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra dettagli realistici come le rughe intorno agli occhi e alla bocca, la texture della pelle e la forma del naso. La luce e le ombre sono applicate in modo naturale, suggerendo che si tratta di un'immagine di un volto umano reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_124.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con caratteristiche realistiche come la pelle, le iridi, le sopracciglia e le labbra. La luce e le ombre sono distribuite in modo naturale, suggerendo che si tratta di una fotografia di un soggetto reale. Non ci sono artefatti o anomalie tipiche delle immagini generate.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_100.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra dettagli fini come le rughe intorno agli occhi e alla bocca, la texture del viso e la forma dei capelli. La luce e le ombre sono distribuite in modo realistico, indicando che si tratta di un volto reale catturato da una fotocamera.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_136.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra dettagli fini come le rughe intorno agli occhi e alla bocca, le imperfezioni della pelle e la texture dei capelli. La luce e le ombre sono realistiche e contribuiscono alla tridimensionalit\u00e0 del volto. La composizione generale suggerisce una fotografia reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_133.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "La pelle mostra una texture e un rilievo realistici, con dettagli come le rughe intorno agli occhi e alla bocca. La luce e le ombre sono distribuite in modo naturale, suggerendo una fonte di illuminazione reale. La forma del viso e le caratteristiche sono coerenti con un volto umano. La presenza di un microfono indica un contesto reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_108.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con dettagli come rughe, imperfezioni e una texture della pelle riconoscibile. Gli occhi, il naso e la bocca sono chiaramente definiti e presentano caratteristiche realistiche. La luce e le ombre sono distribuite in modo coerente, suggerendo una fonte di illuminazione reale. Gli occhiali da sole aggiungono un dettaglio, ma non indicano artefatti di generazione.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_148.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra dettagli fini come le rughe intorno agli occhi e alla bocca, la texture della pelle e la riflessione degli occhiali. La luce e le ombre sono distribuite in modo realistico, suggerendo che si tratta di un volto umano reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_102.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra dettagli realistici come le rughe intorno agli occhi, la texture della pelle e la resa dei colori. La bocca e le labbra sembrano naturali e la luce e le ombre sono coerenti con un'immagine di un volto reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_105.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto presenta rughe, imperfezioni e dettagli fini come le ciglia e le linee sottili intorno agli occhi, che sono tipici dei volti reali. La texture della pelle e le variazioni di colore indicano una rappresentazione realistica. La forma del viso e le proporzioni sono coerenti con un volto umano.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_125.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra dettagli fini come le rughe sulla fronte, le pieghe intorno agli occhi e la texture della pelle, che sono tipici dei volti umani reali. La luce e le ombre sono distribuite in modo naturale, suggerendo una sorgente di illuminazione reale. La composizione del volto, inclusi gli occhi, il naso e la bocca, \u00e8 coerente con la struttura di un volto umano.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_142.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra una pelle con texture e imperfezioni, rughe sottili intorno agli occhi e alle labbra, e una leggera irregolarit\u00e0 nella forma del naso. I denti mostrano una struttura naturale e la bocca presenta un'espressione realistica. I capelli sembrano avere volume e texture, e l'illuminazione \u00e8 diffusa, suggerendo una fonte di luce reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_143.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra dettagli realistici come le rughe intorno agli occhi, la forma dei denti e la texture della pelle. La luce e le ombre sono distribuite in modo naturale, suggerendo una fotografia reale. La posa e l'espressione del viso sono coerenti con un bambino reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_134.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con caratteristiche realistiche, come la pelle, le rughe intorno agli occhi e alla bocca, i capelli e i denti. La luce e le ombre sono distribuite in modo naturale, suggerendo che si tratta di una foto reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_140.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con caratteristiche realistiche come la pelle, le rughe, i pori e i capelli. Gli occhi, il naso e la bocca sono posizionati in modo naturale e coerente con la fisiologia umana. La luce e le ombre sono distribuite in modo realistico sul volto, suggerendo una fonte di illuminazione reale. Non ci sono artefatti o anomalie tipiche delle immagini generate.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_137.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con dettagli realistici come le rughe intorno agli occhi, la texture della pelle e la lucentezza naturale. La bocca \u00e8 leggermente socchiusa in un sorriso, e i capelli sono disordinati, il che suggerisce un volto reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_115.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra dettagli fini come le rughe intorno agli occhi e alla bocca, le imperfezioni della pelle e la texture dei capelli. La luce e le ombre sono realistiche e il soggetto ha un'espressione naturale. La composizione generale e i dettagli del volto suggeriscono che si tratti di un volto umano reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_130.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra dettagli realistici come la texture della pelle, le rughe sottili intorno agli occhi e le imperfezioni naturali. La luce e le ombre sono distribuite in modo coerente, suggerendo una sorgente di illuminazione reale. L'espressione del viso \u00e8 naturale e i dettagli dei capelli sono ben definiti. La bocca mostra un sorriso genuino con denti bianchi e regolari.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_101.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un bambino con caratteristiche facciali naturali, come la forma degli occhi, del naso e della bocca, e la presenza di imperfezioni come i pori e le rughe sottili. La luce e le ombre sono realistiche e l'immagine ha un aspetto naturale, indicando che si tratta di un volto reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_123.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto presenta dettagli realistici come le rughe intorno agli occhi, la texture della pelle e la forma dei denti. La luce e le ombre sono distribuite in modo naturale, suggerendo una fotografia reale. La leggera espressione del viso e la posizione degli occhi indicano un soggetto umano reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_122.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un bambino con caratteristiche facciali realistiche, tra cui una pelle con texture, imperfezioni e dettagli fini come le rughe intorno agli occhi e alla bocca. I capelli sono curvi e naturali. L'espressione del viso \u00e8 realistica e i dettagli degli occhi e del naso sono ben definiti.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_138.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con caratteristiche realistiche come la forma del naso, la bocca e gli occhi. La pelle presenta una texture e una luminosit\u00e0 tipiche di un volto reale. La posa e l'espressione del viso sono naturali e coerenti con un soggetto umano. Non ci sono artefatti o anomalie che suggerirebbero che si tratti di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_129.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con caratteristiche realistiche come la forma del viso, la texture della pelle, le rughe sottili intorno agli occhi e alla bocca, e i capelli. La luce e le ombre sono distribuite in modo naturale, suggerendo una fotografia reale. La bocca \u00e8 leggermente socchiusa in un sorriso, indicando un'espressione naturale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_149.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "La pelle presenta una texture e una lucentezza realistiche, con imperfezioni e micro-variazioni di colore che indicano una superficie biologica. Le rughe sottili intorno agli occhi e alla bocca suggeriscono un'et\u00e0 reale. I dettagli degli occhi, come le pupille e la iride, appaiono naturali e non mostrano artefatti tipici delle immagini generate. Le orecchie e i gioielli sono anch'essi ben definiti e realistici.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_116.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra dettagli realistici come le rughe sottili intorno agli occhi, la texture della pelle e le imperfezioni naturali. I capelli sembrano naturali e i colori degli occhi sono coerenti con un volto reale. La luce e le ombre sono distribuite in modo realistico, suggerendo che si tratta di un volto catturato in un ambiente naturale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_128.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "La pelle presenta una texture e una lucentezza realistiche, con imperfezioni e dettagli fini visibili. Le rughe intorno agli occhi e alla bocca indicano l'et\u00e0. La forma del viso e la disposizione degli occhi e del naso sono coerenti con un volto umano. La parrucca \u00e8 visibile, ma non sembra essere integrata in modo innaturale con la pelle.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_109.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con caratteristiche realistiche come la pelle, le rughe sottili intorno agli occhi, la forma del naso e la bocca. La luce e le ombre sono distribuite in modo naturale, suggerendo che si tratta di una fotografia di un volto reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_113.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto presenta dettagli realistici come la texture del cuoio capelluto, le rughe sottili intorno agli occhi e alle labbra, e la lucentezza dei denti. La luce e le ombre sono distribuite in modo naturale, suggerendo una fotografia reale. La forma del viso e le proporzioni sono coerenti con un volto umano.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_135.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "La pelle presenta una texture e una lucentezza naturali, con imperfezioni e variazioni di colore che indicano una superficie biologica. I dettagli degli occhi, delle labbra e del naso sono ben definiti e coerenti con una rappresentazione realistica di un volto umano. La luce e le ombre sono distribuite in modo naturale, suggerendo una fonte di illuminazione reale. La bocca \u00e8 aperta, indicando un'espressione naturale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_139.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra dettagli realistici come la texture della pelle, le rughe intorno agli occhi e le imperfezioni sui denti. La luce e le ombre sono distribuite in modo naturale, suggerendo una fotografia reale. La posa e l'espressione del viso sono coerenti con un volto umano reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_147.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con caratteristiche realistiche come la pelle, le iridi, le labbra e i capelli. Sono presenti imperfezioni e variazioni di colore naturali che sono tipiche dei volti reali. La luce e le ombre sono distribuite in modo coerente, suggerendo una fonte di illuminazione reale. La composizione del viso e l'espressione sono naturali.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_112.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con dettagli realistici come le rughe intorno agli occhi e alla bocca, la texture dei capelli e la lucentezza della pelle. La luce e le ombre sono distribuite in modo naturale, suggerendo una fotografia reale. La bocca \u00e8 leggermente socchiusa in un sorriso, un'espressione naturale. Non ci sono artefatti o anomalie tipiche delle immagini generate.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_107.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "La pelle mostra imperfezioni, come macchie rosse e rughe, che sono tipiche dei volti reali. Le caratteristiche facciali, come la forma del naso e degli occhi, sono realistiche. La luce e le ombre sono distribuite in modo naturale, suggerendo una fotografia reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_141.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con caratteristiche realistiche come la forma degli occhi, delle labbra e del naso. La pelle presenta variazioni di colore e texture, indicando una rappresentazione realistica. La presenza di brackets sui denti suggerisce che si tratta di un volto reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_118.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra dettagli fini come le rughe intorno agli occhi e la texture della pelle, tipici di un volto reale. La bocca \u00e8 leggermente aperta e i denti sono visibili, indicando un'espressione naturale. La luce e le ombre sono distribuite in modo realistico, suggerendo una fotografia reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_114.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con dettagli realistici come le rughe intorno agli occhi e alla bocca, la texture del cuoio capelluto e la luce che riflette sulla pelle. La composizione e l'illuminazione sono coerenti con una fotografia reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_132.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con caratteristiche realistiche come la forma degli occhi, delle labbra e del naso. La pelle presenta imperfezioni e variazioni di colore, indicando una superficie reale. La luce e le ombre sono distribuite in modo naturale, suggerendo una fonte di illuminazione reale. L'espressione del viso \u00e8 naturale e coerente con un volto umano.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_127.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto presenta dettagli realistici come la texture della pelle, le imperfezioni, le rughe sottili intorno agli occhi e alla bocca, e la lucentezza naturale. La forma del naso e delle labbra \u00e8 coerente con un volto umano. La bocca mostra denti naturali con un leggero colore rosa, indicando una bocca reale. L'illuminazione e le ombre sono realistiche, suggerendo una fotografia reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_121.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto presenta dettagli come le rughe intorno agli occhi e alla bocca, la texture del cuoio capelluto e la forma delle sopracciglia che sono tipici di un volto reale. La luce e le ombre sono realistiche e l'immagine mostra una profondit\u00e0 e una complessit\u00e0 che sono difficili da replicare con le immagini generate.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_126.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con dettagli realistici come rughe intorno agli occhi, denti visibili e un'espressione naturale. La texture della pelle, le ombre e la riflettivit\u00e0 degli occhi suggeriscono una fotografia reale. La presenza di fiori decorativi sul volto indica un contesto specifico, ma non solleva dubbi sulla natura reale del volto.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_146.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con dettagli realistici come le rughe intorno agli occhi, la texture della pelle e la forma dei capelli. La luce e le ombre sono naturali e contribuiscono alla sensazione di un volto reale. La bocca \u00e8 leggermente socchiusa in un sorriso, un'espressione comune nei volti reali.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_145.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra dettagli realistici come la texture della pelle, le rughe sottili intorno agli occhi e la lucentezza dei capelli. La forma del viso e le proporzioni sembrano naturali. La luce e le ombre sono distribuite in modo coerente, suggerendo una sorgente di luce reale. La bocca e le labbra sono definite in modo realistico, e i denti sono visibili. L'espressione \u00e8 naturale e coerente con un volto umano.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_120.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "La ragazza presenta dettagli realistici come la texture della pelle, le imperfezioni, le rughe sottili intorno agli occhi e la forma del naso. I capelli sembrano naturali e la luce e le ombre sono distribuite in modo realistico sul viso. L'espressione \u00e8 naturale e coerente con un volto umano.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_103.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con dettagli realistici come le rughe intorno agli occhi, la texture della pelle e la forma dei denti. La luce e le ombre sono naturali e l'espressione del viso \u00e8 genuina. Gli occhiali e le orecchini sono presenti e sembrano realistici.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_131.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra dettagli fini come le rughe intorno agli occhi e alla bocca, la texture del cuoio capelluto e la lucentezza della pelle. La forma del viso e le proporzioni sono coerenti con un volto umano reale. Gli occhiali sono presenti, ma non presentano artefatti o anomalie che suggerirebbero una generazione artificiale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_104.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra dettagli fini come le rughe intorno agli occhi e alla bocca, le imperfezioni della pelle e la texture dei capelli. La luce e le ombre sono realistiche e il soggetto mostra un'espressione naturale. La qualit\u00e0 dell'immagine suggerisce che si tratta di una foto reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_117.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto presenta dettagli fini come le rughe sottili intorno agli occhi e alla bocca, la texture della pelle e le imperfezioni naturali. La luce e le ombre sono distribuite in modo realistico, suggerendo una fotografia di un soggetto reale. La forma del viso e le proporzioni sembrano naturali.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_289.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto mostra una struttura facciale riconoscibile con dettagli come le sopracciglia, gli occhi, il naso e la bocca. La bocca \u00e8 aperta in un'espressione, e ci sono imperfezioni e variazioni di colore naturali nella pelle, come le ombre e le piccole macchie, che indicano un volto reale. Gli occhiali sono presenti e ben definiti, e la texture dei capelli \u00e8 realistica.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_297.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto mostra dettagli fini come le rughe intorno agli occhi e la texture della pelle, che sono tipici dei volti reali. La luce e le ombre sono distribuite in modo naturale, e la bocca \u00e8 espressiva. Non ci sono artefatti o anomalie che suggerirebbero che l'immagine sia generata.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_295.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con dettagli realistici come le rughe intorno agli occhi, la texture della pelle e le imperfezioni. La luce e le ombre sono distribuite in modo naturale, suggerendo una fotografia reale. La bocca \u00e8 leggermente socchiusa in un sorriso, un'espressione naturale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_286.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con caratteristiche realistiche, come la forma degli occhi, del naso e della bocca, la texture della pelle e le imperfezioni naturali. I capelli sono disposti in modo realistico e la luce e le ombre sono distribuite in modo coerente, suggerendo che si tratta di un volto reale catturato da una fotocamera.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_291.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "La pelle presenta una texture naturale con imperfezioni e variazioni di colore, indicando una rappresentazione realistica. Gli occhi mostrano riflessi e dettagli di iride, suggerendo una luce naturale. Le sopracciglia e i capelli sono ben definiti e presentano una struttura tridimensionale. L'espressione facciale \u00e8 naturale e coerente con un bambino.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_277.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto mostra dettagli realistici come le rughe sottili intorno agli occhi, la texture della pelle e la forma naturale del naso e della bocca. La luce e le ombre sono distribuite in modo coerente, suggerendo una rappresentazione realistica di un volto umano.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_298.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con dettagli realistici come le rughe intorno agli occhi, la texture della pelle e le imperfezioni naturali. La luce e le ombre sono distribuite in modo coerente, suggerendo una sorgente di luce reale. L'espressione facciale \u00e8 naturale e i dettagli degli occhi e delle labbra sono ben definiti.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_271.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto mostra dettagli fini come le rughe intorno agli occhi e alla bocca, la texture del cuoio capelluto e la variazione di colore della pelle. La bocca \u00e8 aperta in un'espressione, suggerendo un movimento naturale. La luce e le ombre sono distribuite in modo realistico, indicando che si tratta di un volto reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_250.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con dettagli realistici come le rughe intorno agli occhi, la texture della pelle e la lucentezza dei denti. La luce e le ombre sono applicate in modo naturale, suggerendo una fotografia reale. La posa e l'espressione del viso sono coerenti con un volto umano.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_260.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con dettagli realistici come le rughe intorno agli occhi, la texture della pelle e la lucentezza dei denti. La luce e le ombre sono distribuite in modo naturale, suggerendo una fotografia reale. La posa e l'espressione del viso appaiono naturali e coerenti con un volto umano.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_266.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto mostra dettagli realistici come le rughe intorno agli occhi e alla bocca, la texture della pelle e le imperfezioni. La luce e le ombre sono distribuite in modo naturale, suggerendo una rappresentazione di un volto umano reale. La forma del viso e le caratteristiche sono coerenti con un volto umano.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_261.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto mostra dettagli fini come le rughe intorno agli occhi e alla bocca, le imperfezioni della pelle e le variazioni di illuminazione che sono tipiche dei volti reali. La texture del tessuto del copricapo e la luce riflessa sugli occhi suggeriscono un'immagine reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_281.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto mostra dettagli realistici come le rughe intorno agli occhi, la texture della pelle e la forma dei denti. La luce e le ombre sono coerenti e naturali. La presenza di un cappello e di un'espressione facciale genuina suggeriscono che si tratti di un volto reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_292.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con dettagli realistici come le rughe intorno agli occhi, la texture della pelle e la forma dei denti. La luce e le ombre sono applicate in modo naturale, suggerendo che si tratta di una fotografia di un volto reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_299.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con dettagli realistici come le rughe intorno agli occhi, la texture della pelle e le imperfezioni naturali. La luce e le ombre sono distribuite in modo coerente, suggerendo una fonte di illuminazione reale. La bocca \u00e8 leggermente socchiusa in un sorriso, e gli occhi mostrano un'espressione naturale. Non ci sono artefatti o anomalie tipiche delle immagini generate.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_288.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto presenta dettagli realistici come la texture del cuoio capelluto, le rughe sottili intorno agli occhi e alla bocca, e la variazione di colore della pelle. La luce e le ombre sono distribuite in modo naturale, suggerendo una rappresentazione realistica di un volto umano. La forma del viso e le caratteristiche facciali sono coerenti e non presentano artefatti tipici delle immagini generate.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_290.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "La pelle presenta una texture e una lucentezza naturali, con imperfezioni e variazioni di colore che indicano una superficie reale. Le caratteristiche facciali, come le sopracciglia, gli occhi e le labbra, sono definite con un dettaglio realistico e mostrano una leggera sfocatura ai bordi, tipica delle immagini reali. La luce e l'ombra sono distribuite in modo coerente, suggerendo una sorgente di luce reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_287.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto presenta dettagli fini come le rughe intorno agli occhi e alla bocca, le imperfezioni della pelle e la texture dei capelli. La luce e le ombre sono realistiche e il soggetto mostra un'espressione naturale. La profondit\u00e0 di campo \u00e8 presente, con un leggero sfocato sullo sfondo.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_253.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto mostra dettagli realistici come le rughe intorno agli occhi, la texture della pelle e la lucentezza dei denti. La luce e le ombre sono distribuite in modo naturale, suggerendo una fonte di illuminazione reale. La forma del viso e le proporzioni sono coerenti con un volto umano. La bocca \u00e8 leggermente aperta in un sorriso, un'espressione naturale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_257.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con dettagli realistici come le rughe sottili intorno agli occhi e alla bocca, la texture della pelle e la riflessione degli occhi. La luce e le ombre sono distribuite in modo naturale, suggerendo che si tratta di un volto reale catturato da una fotocamera.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_274.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto mostra dettagli fini come le rughe intorno agli occhi e alla bocca, la texture dei capelli e la pelle. La luce e le ombre sono realistiche e l'immagine mostra una consistenza naturale che \u00e8 tipica di un volto reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_259.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "La pelle mostra una texture e una variazione di colore naturali, con pori e imperfezioni visibili. I dettagli degli occhi, delle sopracciglia e delle labbra sono ben definiti e realistici. La luce e l'ombra sono distribuite in modo coerente, suggerendo una illuminazione naturale. Non ci sono artefatti o anomalie tipiche delle immagini generate.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_256.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto mostra dettagli fini come le rughe intorno agli occhi e alla bocca, le imperfezioni della pelle e la texture dei capelli. La luce e le ombre sono realistiche e riflettono la forma del viso. La prospettiva e la composizione sono coerenti con un'immagine di un volto umano reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_267.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto mostra dettagli fini come le rughe intorno agli occhi e la texture della pelle. La bocca e le labbra sembrano naturali e la luce e le ombre sono distribuite in modo realistico. La composizione generale del volto \u00e8 coerente con un'immagine di un volto umano reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_270.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "La persona presenta caratteristiche facciali naturali, come le rughe intorno agli occhi e alla bocca, la texture della pelle e la forma del naso. I dettagli del viso sono coerenti e non mostrano artefatti tipici delle immagini generate. La luce e le ombre sono realistiche, suggerendo che l'immagine \u00e8 stata catturata da una fotocamera.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_293.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con dettagli realistici come le rughe intorno agli occhi, la texture del cuoio capelluto e le imperfezioni della pelle. La luce e le ombre sono coerenti e naturali. Gli occhiali riflettono la luce in modo realistico. Non ci sono artefatti o anomalie tipiche delle immagini generate.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_269.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con caratteristiche realistiche come la forma del viso, la distribuzione dei capelli, le rughe intorno agli occhi e la bocca, e un sorriso naturale. La texture della pelle e i dettagli degli occhi appaiono coerenti con un volto reale. Non ci sono artefatti o anomalie tipiche delle immagini generate.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_263.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con caratteristiche realistiche come la forma del naso, la bocca e gli occhi. Ci sono lievi imperfezioni e variazioni di colore sulla pelle che indicano un volto reale. La luce e le ombre sono distribuite in modo naturale, suggerendo che l'immagine \u00e8 stata catturata da una fonte di luce reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_252.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con dettagli realistici come le rughe intorno agli occhi e alla bocca, la texture della pelle e la forma del naso. La luce e le ombre sono applicate in modo naturale, suggerendo che l'immagine \u00e8 stata catturata da una fotocamera reale. La qualit\u00e0 generale dell'immagine \u00e8 alta e non ci sono artefatti evidenti che indichino una generazione artificiale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_275.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con dettagli realistici come le rughe intorno agli occhi, la texture del cuoio capelluto e le imperfezioni della pelle. La luce e le ombre sono distribuite in modo naturale, suggerendo una fotografia reale. L'espressione del viso \u00e8 genuina e i dettagli degli occhiali sono ben definiti.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_280.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con dettagli come rughe, pori e imperfezioni sulla pelle, che sono tipici dei volti reali. La luce e le ombre sono distribuite in modo naturale, e i dettagli degli occhi e della bocca sono ben definiti. Gli occhiali e il colore del vestito indicano che si tratta di una persona reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_262.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "La donna presenta un'espressione naturale e un sorriso genuino. I dettagli della pelle, come le rughe sottili intorno agli occhi e alle labbra, sono realistici. La luce e le ombre sono uniformi e coerenti, indicando una fotografia reale. La texture dei capelli e la forma del naso sono coerenti con un volto umano reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_273.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con dettagli realistici come le rughe sottili intorno agli occhi, la texture della pelle e le imperfezioni naturali. La luce e le ombre sono distribuite in modo realistico, e le caratteristiche del viso, come le labbra e il naso, sono ben definite. Non ci sono artefatti o anomalie tipiche delle immagini generate.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_255.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con dettagli realistici come le rughe intorno agli occhi, la texture della pelle e la forma dei denti. La luce e le ombre sono distribuite in modo naturale, e non ci sono artefatti o anomalie che suggerirebbero che il volto sia stato generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_282.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con dettagli realistici come le rughe intorno agli occhi, la texture della pelle e le imperfezioni naturali. La luce e le ombre sono ben definite, suggerendo una fotografia reale. I dettagli del viso, come le sopracciglia e le labbra, sono coerenti e naturali.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_251.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto mostra dettagli realistici come le rughe sottili intorno agli occhi e alla bocca, la texture della pelle e le imperfezioni. La luce e le ombre sono distribuite in modo naturale, suggerendo una fotografia reale. L'espressione del viso \u00e8 naturale e coerente con un volto umano.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_254.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con caratteristiche realistiche come la forma degli occhi, delle labbra e del naso. Ci sono imperfezioni e variazioni di colore naturali sulla pelle, che indicano che si tratta di un volto reale. La luce e le ombre sono distribuite in modo realistico, suggerendo che l'immagine \u00e8 stata catturata da una fotocamera.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_265.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto di una bambina con dettagli realistici come le rughe intorno agli occhi, la texture della pelle e la forma dei denti. La luce e le ombre sono naturali e l'espressione del viso \u00e8 genuina.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_258.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un bambino con caratteristiche facciali naturali, come la forma del naso, la bocca e gli occhi. Ci sono imperfezioni e variazioni di colore che sono tipiche dei volti reali. La texture della pelle e i dettagli dei capelli sono realistici. La luce e le ombre sono distribuite in modo naturale, suggerendo che l'immagine \u00e8 stata catturata da una fotocamera.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_296.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con dettagli realistici come le rughe intorno agli occhi e alla bocca, la texture della pelle e le imperfezioni. La luce e le ombre sono distribuite in modo naturale, suggerendo che si tratta di una fotografia di un volto reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_285.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto mostra dettagli realistici come le rughe sottili intorno agli occhi e alla bocca, la texture della pelle e la forma naturale del viso. I dettagli del pelo sono ben definiti e l'illuminazione \u00e8 coerente, suggerendo che si tratta di un volto reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_276.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "La pelle presenta una texture e una lucentezza naturali, con imperfezioni e variazioni di colore che sono tipiche dei volti reali. Le rughe sottili intorno agli occhi e alla bocca indicano l'et\u00e0 e l'esperienza. I dettagli degli occhi, come le pupille e la iride, sono ben definiti e realistici. La forma del naso e delle labbra \u00e8 naturale e coerente con l'anatomia umana. L'illuminazione \u00e8 diffusa e crea ombre realistiche sul viso, suggerendo una sorgente di luce reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_284.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto presenta dettagli realistici come le rughe intorno agli occhi e alla bocca, la texture della pelle e la variazione di colore. La luce e le ombre sono distribuite in modo naturale, suggerendo una fotografia reale. La bocca \u00e8 leggermente socchiusa in un sorriso, un'espressione naturale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_272.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto presenta dettagli realistici come le rughe intorno agli occhi e alla bocca, la texture della pelle e la lucentezza dei denti. La luce e le ombre sono distribuite in modo naturale, suggerendo una fotografia reale. La forma del viso e le proporzioni sono coerenti con un volto umano.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_283.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto mostra dettagli fini come le rughe intorno agli occhi e alla bocca, la texture della pelle e la lucentezza naturale. La luce e le ombre sono distribuite in modo realistico, suggerendo una fotografia di un soggetto reale. La bocca \u00e8 leggermente socchiusa in un sorriso, un'espressione naturale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_264.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto presenta dettagli fini come le rughe intorno agli occhi e alla bocca, la texture del cuoio capelluto e le imperfezioni della pelle, che sono tipiche dei volti reali. La luce e le ombre sono distribuite in modo naturale, suggerendo una fotografia reale. La bocca \u00e8 leggermente aperta in un sorriso, e le labbra appaiono realistiche.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_278.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con caratteristiche realistiche, come la forma degli occhi, del naso e della bocca, la consistenza della pelle e i denti visibili. La luce e le ombre sono distribuite in modo naturale, suggerendo che l'immagine \u00e8 stata catturata da una fonte di luce reale. La bocca \u00e8 leggermente socchiusa in un sorriso, un'espressione naturale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_294.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto presenta dettagli fini come le ciglia, le rughe intorno agli occhi e le imperfezioni della pelle, indicando che si tratta di un volto reale. La luce e le ombre sono realistiche e contribuiscono alla sensazione di tridimensionalit\u00e0. La bocca \u00e8 leggermente socchiusa in un sorriso, e le espressioni facciali sono naturali.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_279.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "La pelle presenta una texture e una micro-struttura realistiche, con imperfezioni e variazioni di colore che indicano una superficie biologica. I dettagli degli occhi, delle labbra e del naso sono ben definiti e coerenti con la fisiologia umana. La luce e l'ombra sono distribuite in modo naturale, suggerendo una sorgente di illuminazione reale. La bocca \u00e8 leggermente aperta, indicando un'espressione naturale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_268.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con caratteristiche realistiche, come la consistenza della pelle, le rughe sottili intorno agli occhi e alla bocca, e la luce che riflette sulla pelle. I denti sono visibili e la bocca \u00e8 leggermente aperta in un sorriso. L'immagine non presenta artefatti o anomalie tipiche delle immagini generate.",
+            "error": null
+        }
+    ]
+}

@@ -8,6 +8,11 @@ import json
 import glob
 import os
 import re
+from collections import Counter
+
+from sklearn.cluster import KMeans
+from transformers import pipeline
+
 import classifier
 import nltk
 from nltk.corpus import stopwords
@@ -18,6 +23,8 @@ import numpy as np
 nltk.download('stopwords')
 
 
+# Fixme Suddividere il grafico di llava-7b in 2/3 grafici separati in base al tipo di prompt: veri, falsi,
+#  neutri. Per esempio, io ho clusterizzato i prompt in questo modo: neutri:1,2,4 - veri:5,6 - falsi:3,7.
 def plotStatsPrompt(dirName, Uncertain=False, OneShot=False):
     cartella = dirName  # metti qui la tua cartella
     fileList = glob.glob(os.path.join(cartella, "*.json"))
@@ -346,6 +353,7 @@ def createBarPlot(results, dirName, metrics, positive, uncertain, oneshot):
     plt.close(fig)
 
 
+# Fixme Al posto del grafico a barre di FPR e FNR, mostra la matrice di confusione per ogni llm
 def plotStatsPromptDividedByModel(dirName, positive=True, uncertain=False, oneshot=False):
     results = getInfoPromptByModel(dirName, uncertain, oneshot)
     if positive:
@@ -363,7 +371,6 @@ def plotStatsPromptDividedByModel(dirName, positive=True, uncertain=False, onesh
                           uncertain=uncertain, oneshot=oneshot)
 
 
-# FIXME vautare se tenere in considerazione per tipo di prompt (è da fare)
 # funzione che raccoglie tutte le spiegazioni di un modello in base al tipo al momento solo uncertain, Uncertain real, uncertain fake
 def captureOneTypeResponse(path, Type):
     Type_lower = Type.lower()
@@ -405,105 +412,164 @@ def captureOneTypeResponse(path, Type):
     return risultati
 
 
-def saveSummaryToFile(globalSummary, modelName, type, base_folder="plots/infoText"):
-    os.makedirs(base_folder, exist_ok=True)
-    filename = f"plots/infoText/summary-{type}-{modelName}.txt"
-
-    with open(filename, "w", encoding="utf-8") as f:
-        f.write(globalSummary)
-    print(f"Riassunto salvato in {filename}")
-
-
-# FixMe forse non ha senso considerare l'intero modello ma visualizzare in base al prompt e modello
-def plotWordcloudFromExplanations(explanations, modelName, Type):
-    text = " ".join(explanations).lower()
-
-    # Unisci stopwords inglesi e italiane
-    stop_words = set(stopwords.words('english')).union(set(stopwords.words('italian')))
-
-    wordcloud = WordCloud(
-        width=800,
-        height=400,
-        background_color='white',
-        stopwords=stop_words,
-        collocations=False
-    ).generate(text)
-
-    plt.figure(figsize=(10, 5))
-    plt.imshow(wordcloud, interpolation='bilinear')
-    plt.axis("off")
-    plt.title(f"WordCloud delle spiegazioni-{Type} ({modelName})")
-    cartella_grafici = "plots/wordCloud/"
-    nome_file = f"worldCloud-{modelName}-{Type}.png"
-    os.makedirs(cartella_grafici, exist_ok=True)  # crea la cartella se non esiste
-    # Percorso completo file immagine
-    path_grafico = os.path.join(cartella_grafici, nome_file)
-
-    # Salva il grafico
-    plt.savefig(path_grafico, dpi=300, bbox_inches='tight')
-
-
-def analyze_and_plot_uncertain(path, modelName, prompt, chunk_size=50):
+# def saveSummaryToFile(globalSummary, modelName, type, base_folder="plots/infoText"):
+#     os.makedirs(base_folder, exist_ok=True)
+#     filename = f"plots/infoText/summary-{type}-{modelName}.txt"
+#
+#     with open(filename, "w", encoding="utf-8") as f:
+#         f.write(globalSummary)
+#     print(f"Riassunto salvato in {filename}")
+#
+#
+#
+# # def analyze_and_plot_uncertain(path, modelName, prompt, chunk_size=50):
+# #     risultati = captureOneTypeResponse(path, "uncertain")
+# #     explanations_all = [r["explanation"] for r in risultati if r.get("explanation")]
+# #     explanations_real = [r["explanation"] for r in risultati if r["ground_truth"] == "real" and r.get("explanation")]
+# #     explanations_fake = [r["explanation"] for r in risultati if r["ground_truth"] == "fake" and r.get("explanation")]
+# #
+# #     # Riassunti
+# #     summary_general = classifier.summarize_uncertain_patterns_large(explanations_all,
+# #                                                                     chunk_size) if explanations_all else ""
+# #     saveSummaryToFile(summary_general, modelName, prompt)
+# #     summary_real = classifier.summarize_uncertain_patterns_large(explanations_real,
+# #                                                                  chunk_size) if explanations_real else ""
+# #     saveSummaryToFile(summary_real, modelName, prompt)
+# #     summary_fake = classifier.summarize_uncertain_patterns_large(explanations_fake,
+# #                                                                  chunk_size) if explanations_fake else ""
+# #     saveSummaryToFile(summary_fake, modelName, prompt)
+# #
+# #     # Conta pattern principali
+# #     counter_general = classifier.count_patterns_from_bullets(summary_general)
+# #     counter_real = classifier.count_patterns_from_bullets(summary_real)
+# #     counter_fake = classifier.count_patterns_from_bullets(summary_fake)
+# #
+# #     # Assicurati che la cartella esista
+# #     output_dir = "plots/uncertainGraph"
+# #     os.makedirs(output_dir, exist_ok=True)
+# #
+# #     # Nome file base (puoi sostituire con nome specifico del dataset o modello)
+# #     file_base = f"pattern-incertezza-{modelName}-{prompt}"
+# #
+# #     # --- Grafico generale ---
+# #     if counter_general:
+# #         plt.figure(figsize=(8, 5))
+# #         plt.bar(counter_general.keys(), counter_general.values(), color="skyblue")
+# #         plt.xticks(rotation=45, ha="right")
+# #         plt.ylabel("Numero di occorrenze")
+# #         plt.title("Pattern di incertezza - Generale")
+# #         plt.tight_layout()
+# #
+# #         general_path = os.path.join(output_dir, f"{file_base}_general.png")
+# #         plt.savefig(general_path)
+# #         plt.close()  # chiude la figura per liberare memoria
+# #
+# #     # --- Grafico comparativo real vs fake ---
+# #     patterns = list(set(counter_real.keys()) | set(counter_fake.keys()))
+# #     real_counts = [counter_real.get(p, 0) for p in patterns]
+# #     fake_counts = [counter_fake.get(p, 0) for p in patterns]
+# #
+# #     x = range(len(patterns))
+# #     width = 0.35
+# #     fig, ax = plt.subplots(figsize=(10, 5))
+# #     ax.bar([i - width / 2 for i in x], real_counts, width, label="Real", color="salmon")
+# #     ax.bar([i + width / 2 for i in x], fake_counts, width, label="Fake", color="lightgreen")
+# #     ax.set_xticks(x)
+# #     ax.set_xticklabels(patterns, rotation=30, ha="right")
+# #     ax.set_ylabel("Numero di occorrenze")
+# #     ax.set_title("Confronto pattern di incertezza Real vs Fake")
+# #     ax.legend()
+# #     plt.tight_layout()
+# #
+# #     comparative_path = os.path.join(output_dir, f"{file_base}_real_vs_fake.png")
+# #     plt.savefig(comparative_path)
+# #     plt.close()  # chiude la figura
+# #
+# #     return summary_general, summary_real, summary_fake
+#
+#
+# # Fixme Utilizza google/flan-t5-small su tutto il dataset. Poi puoi clusterizzare gli embedding che ottieni e
+# #  calcolare le accuratezze relative a ciascun cluster.
+# --- Analisi e clustering con descrizione dei cluster ---
+def analyze_and_cluster_uncertain(path, modelName, prompt, n_clusters=5, device="cpu"):
     risultati = captureOneTypeResponse(path, "uncertain")
-    explanations_all = [r["explanation"] for r in risultati if r.get("explanation")]
-    explanations_real = [r["explanation"] for r in risultati if r["ground_truth"] == "real" and r.get("explanation")]
-    explanations_fake = [r["explanation"] for r in risultati if r["ground_truth"] == "fake" and r.get("explanation")]
+    explanations = [r["explanation"] for r in risultati if r.get("explanation")]
+    labels_gt = [r["ground_truth"] for r in risultati if r.get("explanation")]
+    if not explanations:
+        print(" Nessuna spiegazione trovata.")
+        return
 
-    # Riassunti
-    summary_general = classifier.summarize_uncertain_patterns_large(explanations_all, chunk_size) if explanations_all else ""
-    saveSummaryToFile(summary_general, modelName, prompt)
-    summary_real = classifier.summarize_uncertain_patterns_large(explanations_real, chunk_size) if explanations_real else ""
-    saveSummaryToFile(summary_real, modelName, prompt)
-    summary_fake = classifier.summarize_uncertain_patterns_large(explanations_fake, chunk_size) if explanations_fake else ""
-    saveSummaryToFile(summary_fake, modelName, prompt)
+    # 1. Ottieni embedding
+    print(" Generazione embedding con flan-t5-small...")
+    X = classifier.get_embeddings(explanations, device=device)
 
-    # Conta pattern principali
-    counter_general = classifier.count_patterns_from_bullets(summary_general)
-    counter_real = classifier.count_patterns_from_bullets(summary_real)
-    counter_fake = classifier.count_patterns_from_bullets(summary_fake)
+    # 2. Clustering
+    print(" Clustering con KMeans...")
+    kmeans = KMeans(n_clusters=n_clusters, random_state=42)
+    cluster_labels = kmeans.fit_predict(X)
 
-    # Assicurati che la cartella esista
-    output_dir = "plots/uncertainGraph"
+    # 3. Pipeline per sintesi cluster
+    summarizer = pipeline("text2text-generation", model="google/flan-t5-small", device=0 if device == "cuda" else -1)
+
+    # 4. Analisi per cluster
+    cluster_stats = {}
+    for cluster in range(n_clusters):
+        idx = [i for i, c in enumerate(cluster_labels) if c == cluster]
+        if not idx:
+            continue
+
+        true_labels = [labels_gt[i] for i in idx]
+        cluster_explanations = [explanations[i] for i in idx]
+
+        # Conta real/fake
+        counts = Counter(true_labels)
+        majority_class, majority_count = counts.most_common(1)[0]
+        accuracy_cluster = majority_count / len(idx)
+
+        # Riassunto automatico del cluster
+        cluster_text = " ".join(cluster_explanations[:20])  # limitiamo a 20 frasi max per prompt
+        prompt_text = (
+                "Queste sono spiegazioni di incertezze del modello. "
+                "Trova i motivi ricorrenti e sintetizzali in una breve frase:\n\n"
+                + cluster_text
+        )
+        description = summarizer(prompt_text, max_new_tokens=60, do_sample=False)[0]['generated_text']
+
+        cluster_stats[cluster] = {
+            "num_samples": len(idx),
+            "distribution": dict(counts),
+            "majority_class": majority_class,
+            "cluster_accuracy": accuracy_cluster,
+            "description": description.strip()
+        }
+
+    # 5. Stampa risultati
+    print("\n Risultati per cluster:")
+    for cl, stats in cluster_stats.items():
+        print(f"Cluster {cl}:")
+        print(f"  Campioni: {stats['num_samples']}")
+        print(f"  Distribuzione: {stats['distribution']}")
+        print(f"  Classe dominante: {stats['majority_class']}")
+        print(f"  Accuratezza di cluster: {stats['cluster_accuracy']:.3f}")
+        print(f"  Descrizione: {stats['description']}\n")
+
+        # 6. Salvataggio risultati
+    output_dir = f"plots/uncertainClusters"
     os.makedirs(output_dir, exist_ok=True)
+    save_path = os.path.join(output_dir, f"{modelName}-{prompt}_clusters.json")
 
-    # Nome file base (puoi sostituire con nome specifico del dataset o modello)
-    file_base = f"pattern-incertezza-{modelName}-{prompt}"
+    with open(save_path, "w", encoding="utf-8") as f:
+        json.dump({
+            "cluster_stats": cluster_stats,
+            "cluster_labels": cluster_labels.tolist(),
+            "explanations": explanations
+        }, f, ensure_ascii=False, indent=4)
 
-    # --- Grafico generale ---
-    if counter_general:
-        plt.figure(figsize=(8, 5))
-        plt.bar(counter_general.keys(), counter_general.values(), color="skyblue")
-        plt.xticks(rotation=45, ha="right")
-        plt.ylabel("Numero di occorrenze")
-        plt.title("Pattern di incertezza - Generale")
-        plt.tight_layout()
+    print(f" Risultati salvati in {save_path}")
 
-        general_path = os.path.join(output_dir, f"{file_base}_general.png")
-        plt.savefig(general_path)
-        plt.close()  # chiude la figura per liberare memoria
-
-    # --- Grafico comparativo real vs fake ---
-    patterns = list(set(counter_real.keys()) | set(counter_fake.keys()))
-    real_counts = [counter_real.get(p, 0) for p in patterns]
-    fake_counts = [counter_fake.get(p, 0) for p in patterns]
-
-    x = range(len(patterns))
-    width = 0.35
-    fig, ax = plt.subplots(figsize=(10, 5))
-    ax.bar([i - width / 2 for i in x], real_counts, width, label="Real", color="salmon")
-    ax.bar([i + width / 2 for i in x], fake_counts, width, label="Fake", color="lightgreen")
-    ax.set_xticks(x)
-    ax.set_xticklabels(patterns, rotation=30, ha="right")
-    ax.set_ylabel("Numero di occorrenze")
-    ax.set_title("Confronto pattern di incertezza Real vs Fake")
-    ax.legend()
-    plt.tight_layout()
-
-    comparative_path = os.path.join(output_dir, f"{file_base}_real_vs_fake.png")
-    plt.savefig(comparative_path)
-    plt.close()  # chiude la figura
-
-    return summary_general, summary_real, summary_fake
+    return cluster_stats, cluster_labels, explanations
+# Todo calcolare la one-class accuracy. In sostanza consiste nel calcolare l'accuracy separatamente per tutte le
+#  immagini vere (e false)
 
 
 # TODO altre funzioni di plotting (dipende da cosa mi serve nella relazione)

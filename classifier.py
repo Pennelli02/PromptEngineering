@@ -1,11 +1,16 @@
 import json
 import re
 from collections import Counter
-
+from transformers import AutoTokenizer, AutoModel, pipeline
 import ollama
 import pandas as pd
 from ollama import Client
 from PIL import Image
+import torch
+from sklearn.cluster import KMeans
+import numpy as np
+
+import plot
 
 client = Client()
 
@@ -187,50 +192,73 @@ def repair_dates(results):
     return df
 
 
+# SOLUZIONE USANDO GEMMA3
 # --- Funzione di chunking testo ---
-def chunk_list(lst, chunk_size):
-    return [lst[i:i + chunk_size] for i in range(0, len(lst), chunk_size)]
+# def chunk_list(lst, chunk_size):
+#     return [lst[i:i + chunk_size] for i in range(0, len(lst), chunk_size)]
+#
+#
+# def summarize_uncertain_patterns_large(client, explanations, chunk_size=50, model="gemma3:1b"):
+#     chunks = chunk_list(explanations, chunk_size)
+#     chunk_summaries = []
+#
+#     for idx, chunk in enumerate(chunks):
+#         chunk_text = "\n".join(chunk)
+#         prompt = (
+#                 "Analizza queste spiegazioni di risposte incerte e genera un elenco puntato "
+#                 "dei pattern ricorrenti che portano il modello a classificare le immagini come '[uncertain]'. "
+#                 "Indica chiaramente i problemi visivi o ambiguità comuni in ogni punto:\n\n"
+#                 + chunk_text +
+#                 "\n\nFormato desiderato:\n- Pattern 1: descrizione\n- Pattern 2: descrizione\n..."
+#         )
+#         response = client.chat(model=model, messages=[{"role": "user", "content": prompt}])
+#         chunk_summary = response.get("content", "").strip()
+#         chunk_summaries.append(chunk_summary)
+#
+#     if len(chunk_summaries) == 1:
+#         return chunk_summaries[0]
+#
+#     combined_text = "\n".join(chunk_summaries)
+#     final_prompt = (
+#             "Sulla base dei seguenti riassunti di pattern ricorrenti nelle risposte incerte, "
+#             "fornisci un unico elenco puntato sintetico dei pattern principali:\n\n"
+#             + combined_text +
+#             "\n\nFormato desiderato:\n- Pattern 1: descrizione\n- Pattern 2: descrizione\n..."
+#     )
+#     final_response = client.chat(model=model, messages=[{"role": "user", "content": final_prompt}])
+#     final_summary = final_response.get("content", "").strip()
+#
+#     return final_summary
+#
+#
+# def count_patterns_from_bullets(summary_text):
+#     lines = summary_text.splitlines()
+#     patterns = []
+#     for line in lines:
+#         line = line.strip()
+#         if line.startswith("-"):
+#             pattern = line.lstrip("- ").split(":")[0].strip()
+#             patterns.append(pattern)
+#     return Counter(patterns)
 
 
-def summarize_uncertain_patterns_large(client, explanations, chunk_size=50, model="gemma3:1b"):
-    chunks = chunk_list(explanations, chunk_size)
-    chunk_summaries = []
+# SOLUZIONE USANDO GOOGLE/FLAN-T5-SMALL
+# --- Funzione per estrarre embedding con flan-t5-small ---
+def get_embeddings(texts, model_name="google/flan-t5-small", device="cpu"):
+    tokenizer = AutoTokenizer.from_pretrained(model_name)
+    model = AutoModel.from_pretrained(model_name).to(device)
+    model.eval()
 
-    for idx, chunk in enumerate(chunks):
-        chunk_text = "\n".join(chunk)
-        prompt = (
-                "Analizza queste spiegazioni di risposte incerte e genera un elenco puntato "
-                "dei pattern ricorrenti che portano il modello a classificare le immagini come '[uncertain]'. "
-                "Indica chiaramente i problemi visivi o ambiguità comuni in ogni punto:\n\n"
-                + chunk_text +
-                "\n\nFormato desiderato:\n- Pattern 1: descrizione\n- Pattern 2: descrizione\n..."
-        )
-        response = client.chat(model=model, messages=[{"role": "user", "content": prompt}])
-        chunk_summary = response.get("content", "").strip()
-        chunk_summaries.append(chunk_summary)
-
-    if len(chunk_summaries) == 1:
-        return chunk_summaries[0]
-
-    combined_text = "\n".join(chunk_summaries)
-    final_prompt = (
-            "Sulla base dei seguenti riassunti di pattern ricorrenti nelle risposte incerte, "
-            "fornisci un unico elenco puntato sintetico dei pattern principali:\n\n"
-            + combined_text +
-            "\n\nFormato desiderato:\n- Pattern 1: descrizione\n- Pattern 2: descrizione\n..."
-    )
-    final_response = client.chat(model=model, messages=[{"role": "user", "content": final_prompt}])
-    final_summary = final_response.get("content", "").strip()
-
-    return final_summary
+    embeddings = []
+    for text in texts:
+        inputs = tokenizer(text, return_tensors="pt", truncation=True, padding=True).to(device)
+        with torch.no_grad():
+            outputs = model(**inputs)
+            # media dei token embedding come rappresentazione
+            embedding = outputs.last_hidden_state.mean(dim=1).squeeze().cpu().numpy()
+        embeddings.append(embedding)
+    return np.array(embeddings)
 
 
-def count_patterns_from_bullets(summary_text):
-    lines = summary_text.splitlines()
-    patterns = []
-    for line in lines:
-        line = line.strip()
-        if line.startswith("-"):
-            pattern = line.lstrip("- ").split(":")[0].strip()
-            patterns.append(pattern)
-    return Counter(patterns)
+
+

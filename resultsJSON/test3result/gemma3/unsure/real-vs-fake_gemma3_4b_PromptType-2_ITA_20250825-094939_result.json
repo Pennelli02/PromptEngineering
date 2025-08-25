@@ -1,0 +1,729 @@
+{
+    "metrics": {
+        "total_processed": 100,
+        "total_real": 50,
+        "total_fake": 50,
+        "TP": 1,
+        "TN": 49,
+        "FP": 1,
+        "FN": 49,
+        "rejection_real": 0,
+        "rejection_fake": 0,
+        "text_parsing_errors": 0,
+        "text_parsing_error_rate": 0.0,
+        "accuracy": 0.5,
+        "precision": 0.5,
+        "recall": 0.02,
+        "false_negative_rate": 0.98,
+        "false_positive_rate": 0.02,
+        "rejection_real_rate": 0.0,
+        "rejection_fake_rate": 0.0,
+        "rejection_total_rate": 0.0,
+        "system_prompt": "Sei un sistema professionale di classificazione delle immagini che analizza le immagini fornite per determinare se mostrano un volto umano reale o uno generato.\nRispondi SOLO usando il seguente formato JSON:\n{\n  \"result\": \"[real face]\" oppure \"[generated]\"or [uncertain], \n  \"explanation\": \"Una spiegazione precisa basata su indizi visivi osservati nell'immagine.\"\n}\nNON includere frasi generiche come 'non ci sono artefatti'. Sii visivo e dettagliato nella tua analisi.Rispondi ESCLUSIVAMENTE con questo JSON, senza commenti o testo extra.",
+        "user_prompt": "Ci sono artefatti intorno alla bocca, alle orecchie o all'attaccatura dei capelli che potrebbero indicare che il volto \u00e8 stato generato dall'IA?",
+        "oneShot": false,
+        "imageBoost": false
+    },
+    "responses": [
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_111.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra dettagli naturali come le rughe intorno agli occhi e alla bocca, la texture della pelle e la forma dei capelli. La bocca \u00e8 ben definita e i denti sono visibili, indicando un volto reale. Non ci sono artefatti o anomalie che suggerirebbero che il volto sia stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_106.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "La bocca mostra una chiusura naturale e i denti sono chiaramente visibili. Le orecchie hanno una forma e una posizione realistiche. L'attaccatura dei capelli mostra una texture e una direzione coerenti. La pelle presenta una leggera imperfezione e una resa naturale, indicando che si tratta di un volto reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_144.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra dettagli fini come le rughe intorno agli occhi e alla bocca, le imperfezioni della pelle e la texture dei capelli. La bocca \u00e8 ben definita e le orecchie hanno una forma naturale. Non ci sono artefatti evidenti che suggeriscano che il volto sia stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_119.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra dettagli fini come le rughe intorno agli occhi e alla bocca, la texture della pelle e la forma dei capelli, che sono tipici di un volto umano reale. Le orecchie e le cuffie sembrano realistiche e non presentano artefatti o anomalie che suggerirebbero una generazione artificiale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_110.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra una texture della pelle naturale, con dettagli evidenti nelle rughe intorno agli occhi e alla bocca. La forma del naso e delle orecchie \u00e8 coerente con un volto umano reale. Non ci sono artefatti o anomalie che suggerirebbero che l'immagine sia stata generata dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_124.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra una texture della pelle naturale con imperfezioni e variazioni di colore, indicando una rappresentazione realistica. Le caratteristiche facciali, come gli occhi, il naso e la bocca, sono ben definite e coerenti con un volto umano. Non ci sono artefatti evidenti o anomalie che suggerirebbero che l'immagine sia generata dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_100.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra dettagli fini come le rughe intorno agli occhi e alla bocca, la texture della barba e la riflessione degli occhiali. La luce e le ombre sono realistiche e coerenti, suggerendo che si tratta di un volto reale catturato da una fotocamera.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_136.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra una texture della pelle realistica con imperfezioni e variazioni di colore, che sono tipiche dei volti umani reali. Le caratteristiche facciali, come gli occhi, il naso e la bocca, sono ben definite e coerenti. Non ci sono artefatti evidenti o anomalie che suggerirebbero che il volto sia stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_133.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra una texture della pelle naturale, con imperfezioni e variazioni di colore che sono tipiche dei volti reali. La bocca, le orecchie e l'attaccatura dei capelli appaiono naturali e non presentano artefatti o anomalie che suggerirebbero una generazione artificiale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_108.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con dettagli come le rughe, i denti e la texture della pelle. La luce e le ombre sono realistiche e non ci sono artefatti evidenti che suggeriscano che il volto sia stato generato dall'IA. La bocca, le orecchie e l'attaccatura dei capelli appaiono naturali.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_148.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra una texture della pelle naturale, con imperfezioni e variazioni di colore che sono tipiche dei volti reali. Gli occhi sembrano naturali e riflettono la luce. La bocca e le labbra appaiono realistiche. Non ci sono artefatti evidenti o anomalie che suggerirebbero che il volto sia stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_102.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra dettagli realistici come le rughe intorno agli occhi, la texture della pelle e la resa dei colori. La bocca e le orecchie sono definite e non presentano artefatti. L'attaccatura dei capelli \u00e8 naturale e non mostra segni di manipolazione.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_105.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra una texture della pelle naturale, rughe e imperfezioni che sono tipiche dei volti reali. La bocca, le orecchie e l'attaccatura dei capelli appaiono naturali e non presentano artefatti o anomalie che suggerirebbero che il volto \u00e8 stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_125.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra una texture della pelle naturale, con rughe e imperfezioni sottili intorno agli occhi e alla bocca. La forma del naso e delle labbra \u00e8 coerente con un volto umano reale. L'espressione del viso \u00e8 realistica e non ci sono artefatti evidenti che suggeriscano una generazione artificiale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_142.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra dettagli realistici come le rughe intorno agli occhi e alla bocca, la texture della pelle e la forma dei denti. La luce e le ombre sono applicate in modo naturale. Non ci sono artefatti evidenti che suggeriscano che il volto sia stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_143.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra dettagli naturali come le rughe intorno agli occhi e la forma dei denti. La texture del cappotto e delle mani \u00e8 coerente con la realt\u00e0. Non ci sono artefatti evidenti che suggeriscano che il volto sia stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_134.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra una texture della pelle naturale, dettagli realistici degli occhi e dei denti, e un'attaccatura dei capelli naturale. Non ci sono artefatti evidenti o anomalie che suggerirebbero che il volto sia stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_140.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra una texture della pelle naturale con imperfezioni e variazioni di colore, tipiche dei volti reali. Le caratteristiche facciali, come gli occhi, il naso e la bocca, sono ben definite e coerenti. Non ci sono artefatti o anomalie che suggerirebbero che il volto sia stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_137.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra una chiara struttura facciale con dettagli come le rughe intorno agli occhi, la forma del naso e la bocca. La pelle ha una texture e un riflesso realistici. L'illuminazione \u00e8 naturale e non ci sono artefatti o anomalie che suggerirebbero che il volto sia stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_115.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra una texture della pelle naturale, con imperfezioni e variazioni di colore che sono tipiche dei volti reali. Gli occhi, il naso e la bocca hanno forme e proporzioni realistiche. L'attaccatura dei capelli e le orecchie appaiono naturali e non presentano artefatti o anomalie che suggerirebbero una generazione artificiale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_130.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra dettagli realistici come le rughe intorno agli occhi, la texture della pelle e la lucentezza dei denti. La luce e le ombre sono distribuite in modo naturale. Non ci sono artefatti evidenti o anomalie che suggerirebbero che il volto sia stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_101.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con dettagli realistici come le rughe intorno agli occhi, la texture della pelle e la forma dei denti. La luce e le ombre sono distribuite in modo naturale, e non ci sono artefatti o anomalie che suggerirebbero che il volto sia stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_123.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra una texture della pelle realistica con imperfezioni e variazioni di colore. I denti sono visibili e presentano una struttura naturale. Le orecchie e l'attaccatura dei capelli appaiono naturali. La luce e le ombre sono distribuite in modo coerente, suggerendo una fotografia reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_122.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra caratteristiche tipiche di un bambino, come la forma del naso, la bocca e le orecchie. La pelle presenta una texture naturale e ci sono dettagli come le ciocche di capelli e le rughe sottili intorno agli occhi che suggeriscono che si tratta di un volto reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_138.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra una consistenza naturale, con dettagli fini come le rughe intorno agli occhi e la texture della pelle. La bocca e le orecchie sono definite e coerenti con un volto umano reale. L'attaccatura dei capelli \u00e8 naturale e non presenta artefatti o anomalie tipiche delle immagini generate dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_129.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra una texture della pelle naturale con imperfezioni e variazioni di colore, indicando una rappresentazione realistica di un volto umano. La bocca, le orecchie e l'attaccatura dei capelli appaiono naturali e non presentano artefatti o anomalie tipiche delle immagini generate dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_149.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra una texture della pelle naturale, con imperfezioni e variazioni di colore che sono tipiche dei volti reali. Le caratteristiche facciali, come gli occhi, il naso e la bocca, sono ben definite e coerenti. Non ci sono artefatti evidenti o anomalie che suggerirebbero che il volto sia stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_116.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra una texture della pelle naturale, con imperfezioni e variazioni di colore che sono tipiche dei volti reali. Le caratteristiche facciali, come gli occhi, il naso e la bocca, sono ben definite e coerenti. Non ci sono artefatti evidenti o anomalie che suggerirebbero che il volto sia stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_128.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "La bocca presenta un'irregolarit\u00e0 e una texture innaturale, con un'ombra eccessiva e un colore non uniforme. L'attaccatura dei capelli mostra una texture artificiale e una mancanza di dettagli realistici. L'espressione del viso \u00e8 leggermente innaturale, con un'eccessiva intensit\u00e0 e una mancanza di sfumature sottili.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_109.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra una pelle con texture e dettagli realistici, con imperfezioni e variazioni di colore naturali. Gli occhi hanno riflessi e le sopracciglia sono ben definite. La bocca mostra un'espressione naturale e le orecchie sono chiaramente visibili. Non ci sono artefatti evidenti o anomalie che suggerirebbero che il volto sia stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_113.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra una texture della pelle realistica con dettagli fini, come le rughe intorno agli occhi e le imperfezioni sulla pelle. La bocca e le orecchie appaiono naturali e non presentano artefatti o anomalie. L'attaccatura dei capelli mostra una texture complessa e realistica, coerente con i capelli umani. La luce e le ombre sono distribuite in modo naturale, suggerendo che si tratta di un'immagine di un volto reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_135.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra una texture della pelle naturale, con imperfezioni e variazioni di colore. Le caratteristiche facciali, come gli occhi, il naso e la bocca, sono ben definite e coerenti. Non ci sono artefatti evidenti o anomalie che suggerirebbero che il volto sia stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_139.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra dettagli realistici come le rughe intorno agli occhi, la texture della pelle e la forma dei denti. La bocca e le labbra sono definite in modo naturale. Le orecchie appaiono realistiche e l'attaccatura dei capelli mostra una texture naturale. Non ci sono artefatti evidenti che suggerirebbero che il volto sia stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_147.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra dettagli realistici come le rughe sottili intorno agli occhi e alla bocca, la texture della pelle e la lucentezza degli occhi. La forma del viso e le proporzioni sono coerenti con un volto umano reale. Non ci sono artefatti evidenti o anomalie che suggerirebbero che il volto sia stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_112.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra una texture della pelle naturale, con imperfezioni e variazioni di colore che sono tipiche dei volti reali. La bocca e le orecchie sono definite in modo realistico, e l'attaccatura dei capelli mostra una struttura complessa e irregolare, indicando un volto generato da un essere umano.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_107.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "La pelle appare naturale con imperfezioni e variazioni di colore, indicando una rappresentazione realistica di un volto umano. La bocca mostra una leggera macchia di colore, che potrebbe essere un segno di trucco o di un'espressione naturale. Le orecchie e l'attaccatura dei capelli appaiono naturali e non presentano artefatti tipici delle immagini generate dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_141.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra una texture della pelle naturale, con dettagli come le rughe intorno agli occhi e le imperfezioni. La bocca e le orecchie appaiono naturali e ben definite. L'attaccatura dei capelli \u00e8 realistica e non presenta artefatti o anomalie.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_118.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra una texture della pelle naturale, con imperfezioni e variazioni di colore tipiche di un volto umano reale. La bocca \u00e8 aperta in un sorriso, con una chiusura naturale delle labbra. Le orecchie sembrano avere una forma e una posizione realistiche. L'attaccatura dei capelli \u00e8 irregolare e presenta una texture naturale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_114.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra dettagli fini come le rughe intorno agli occhi e la texture del cuoio capelluto. La bocca e le orecchie appaiono naturali e ben definite. L'illuminazione \u00e8 coerente e non ci sono artefatti evidenti che suggeriscano che il volto sia stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_132.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra dettagli fini come le rughe intorno agli occhi e alla bocca, la texture della pelle e le imperfezioni naturali. La bocca \u00e8 espressiva e la forma del naso \u00e8 realistica. L'illuminazione \u00e8 uniforme e non ci sono artefatti evidenti che suggerirebbero che il volto sia stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_127.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra una struttura facciale coerente con quella di un essere umano, con dettagli come le rughe intorno agli occhi, la forma del naso e la bocca. La pelle appare realistica con variazioni di colore e riflessi di luce. Non ci sono artefatti evidenti o anomalie che suggerirebbero che il volto sia stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_121.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra dettagli fini come le rughe intorno agli occhi e alla bocca, la texture del cuoio capelluto e la lucentezza della pelle, indicando che si tratta di un volto reale. La bocca e le orecchie sono ben definite e non presentano artefatti o anomalie che suggerirebbero una generazione artificiale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_126.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra dettagli realistici come la texture della pelle, le rughe intorno agli occhi e la forma dei denti. La bocca \u00e8 chiaramente definita e mostra i denti. La presenza di fiori e un velo aggiunge contesto e rende l'immagine pi\u00f9 naturale, suggerendo che si tratta di un volto umano reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_146.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra una texture della pelle naturale con imperfezioni e variazioni di colore, indicando una rappresentazione realistica. La bocca, le orecchie e l'attaccatura dei capelli sono ben definite e coerenti con una rappresentazione umana. La luce e le ombre sono distribuite in modo realistico, suggerendo che l'immagine \u00e8 stata catturata da una fonte naturale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_145.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra dettagli realistici come le rughe intorno agli occhi, la texture della pelle e la forma naturale dei capelli. La bocca e le orecchie appaiono ben definite e coerenti con un volto umano reale. Non ci sono artefatti evidenti o anomalie che suggerirebbero che il volto sia stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_120.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra una texture della pelle naturale, con imperfezioni e variazioni di colore che sono tipiche dei volti reali. Gli occhi, il naso e la bocca sono ben definiti e presentano dettagli realistici. L'attaccatura dei capelli e le orecchie sembrano naturali e non presentano artefatti o anomalie.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_103.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "La bocca mostra una chiusura naturale dei denti e le orecchie hanno una forma e una texture realistiche. L'attaccatura dei capelli \u00e8 uniforme e non presenta artefatti. La luce e le ombre sono coerenti, suggerendo un'immagine reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_131.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra dettagli fini come le rughe intorno agli occhi e le imperfezioni sui denti, che sono tipici dei volti umani reali. La texture del cuoio capelluto e la forma del viso sono coerenti con un soggetto umano. Non ci sono artefatti evidenti che suggeriscano che il volto sia stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_104.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra dettagli realistici come le rughe intorno agli occhi e alla bocca, la texture della pelle e la forma delle orecchie. La luce e le ombre sono distribuite in modo naturale, suggerendo che si tratta di un volto reale catturato da una fotocamera.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_117.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra una texture della pelle naturale, con imperfezioni e variazioni di colore che sono tipiche dei volti reali. La forma degli occhi, del naso e della bocca \u00e8 coerente con un volto umano. L'attaccatura dei capelli mostra una texture e una direzione realistiche. Non ci sono artefatti evidenti che suggeriscano che il volto sia stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_289.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto mostra dettagli fini come le rughe intorno agli occhi e la texture della pelle. La bocca \u00e8 chiaramente definita e le labbra mostrano un'espressione. Le orecchie sono ben definite e l'attaccatura dei capelli \u00e8 naturale. Non ci sono artefatti evidenti che suggeriscano che il volto sia stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_297.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "La pelle mostra una texture e una variazione di colore realistiche, con dettagli come le rughe sottili intorno agli occhi e la bocca. Le orecchie sono ben definite e posizionate in modo naturale. L'attaccatura dei capelli \u00e8 naturale e non presenta artefatti o anomalie. L'espressione del viso \u00e8 coerente con un volto umano reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_295.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto mostra dettagli fini come le pieghe della pelle intorno agli occhi e alla bocca, le texture dei capelli e le imperfezioni naturali. La luce e le ombre sono distribuite in modo realistico, suggerendo che si tratta di un volto reale catturato da una fotocamera.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_286.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "La pelle mostra una texture e una rifrazione realistiche, con dettagli fini nelle rughe intorno agli occhi e sulle labbra. Le orecchie sono ben definite e posizionate correttamente. L'attaccatura dei capelli mostra una variazione di colore e texture che \u00e8 coerente con i capelli umani. La bocca ha una forma naturale e i labbra appaiono realistiche.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_291.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "La pelle mostra una texture naturale con imperfezioni e variazioni di colore, tipiche dei volti reali. Gli occhi hanno una lucentezza e una profondit\u00e0 che suggeriscono la presenza di una struttura oculare reale. La bocca mostra una leggera curvatura in un sorriso, con dettagli realistici delle labbra. L'attaccatura dei capelli \u00e8 naturale e presenta una texture e una forma che corrispondono a un volto umano reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_277.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto mostra una texture della pelle naturale, con imperfezioni e variazioni di colore che sono tipiche dei volti umani reali. Le caratteristiche facciali, come gli occhi, il naso e la bocca, sono ben definite e coerenti. Non ci sono artefatti evidenti o anomalie che suggerirebbero che il volto sia stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_298.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con dettagli realistici, come le rughe sottili intorno agli occhi e le imperfezioni della pelle. La bocca e le orecchie appaiono naturali e non presentano artefatti o anomalie tipiche delle immagini generate dall'IA. L'attaccatura dei capelli \u00e8 ben definita e coerente con un volto reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_271.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto mostra una texture della pelle naturale, con imperfezioni e variazioni di colore che sono tipiche dei volti reali. La bocca \u00e8 aperta in un'espressione, con dettagli realistici delle labbra e della lingua. Le orecchie sembrano avere una forma e una consistenza naturali. L'attaccatura dei capelli mostra una texture e una direzione realistiche. Non ci sono artefatti evidenti o anomalie che suggerirebbero che il volto sia stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_250.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto mostra una consistenza e una texture realistiche, con dettagli fini come le rughe intorno agli occhi e le imperfezioni sulla pelle. La bocca e le labbra appaiono naturali, cos\u00ec come le orecchie e l'attaccatura dei capelli. La luce e le ombre sono distribuite in modo coerente, suggerendo che si tratta di un volto reale catturato da una fotocamera.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_260.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto mostra una texture della pelle naturale con imperfezioni e variazioni di colore, indicando una rappresentazione realistica. Le caratteristiche facciali, come gli occhi, il naso e la bocca, sono ben definite e coerenti con una rappresentazione umana. Non ci sono artefatti evidenti o anomalie che suggerirebbero che il volto sia stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_266.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto mostra una texture della pelle naturale con imperfezioni e dettagli fini come le rughe intorno agli occhi e alla bocca. Le linee del viso sono ben definite e coerenti. Le orecchie e l'attaccatura dei capelli appaiono naturali e non presentano artefatti o anomalie tipiche delle immagini generate dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_261.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto mostra dettagli fini come le rughe intorno agli occhi e alla bocca, le pieghe della pelle e le imperfezioni naturali. La texture della pelle e la luce riflessa sono coerenti, indicando che si tratta di un volto reale. Non ci sono artefatti evidenti o anomalie che suggerirebbero che il volto sia stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_281.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto mostra una texture della pelle naturale, dettagli realistici degli occhi e dei denti, e una leggera sfocatura intorno ai bordi. La bocca e le orecchie appaiono naturali e non presentano artefatti o anomalie tipiche delle immagini generate dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_292.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto mostra una texture della pelle naturale con dettagli fini come le rughe intorno agli occhi e la barba. La bocca e le orecchie sono definite in modo realistico. Non ci sono artefatti evidenti o anomalie che suggerirebbero che il volto sia stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_299.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto mostra dettagli fini come le rughe intorno agli occhi e alla bocca, la texture della pelle e la forma delle sopracciglia, che sono tipici dei volti reali. La luce e le ombre sono distribuite in modo naturale, suggerendo una fotografia reale. Non ci sono artefatti evidenti che indichino una generazione artificiale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_288.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto mostra una texture della pelle naturale, con dettagli fini nelle rughe e nelle imperfezioni. Le caratteristiche facciali, come gli occhi, il naso e la bocca, sono ben definite e coerenti. L'attaccatura dei capelli mostra una struttura naturale e i dettagli dei singoli fili. Non ci sono artefatti o anomalie che suggerirebbero che il volto sia stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_290.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "La pelle mostra una texture naturale con imperfezioni e variazioni di colore, indicando una vera immagine. Le caratteristiche facciali, come gli occhi, il naso e la bocca, sono ben definite e coerenti con un volto umano reale. Non ci sono artefatti o anomalie evidenti che suggeriscano che l'immagine sia stata generata dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_287.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto mostra una texture della pelle naturale con imperfezioni e variazioni di colore, tipiche dei volti reali. Gli occhi e le labbra hanno una forma e una definizione realistiche. Non ci sono artefatti evidenti o anomalie che suggerirebbero che il volto sia stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_253.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto mostra dettagli fini come le rughe intorno agli occhi e alla bocca, la texture della pelle e la lucentezza degli occhi, che sono tipici dei volti reali. La bocca \u00e8 espressiva e la forma del viso \u00e8 coerente con un volto umano. Non ci sono artefatti evidenti.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_257.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto mostra dettagli fini come le rughe sottili intorno agli occhi e alla bocca, la texture della pelle e la lucentezza naturale degli occhi. Non ci sono artefatti evidenti o anomalie che suggerirebbero che il volto sia stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_274.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto mostra dettagli fini come le pieghe della pelle intorno agli occhi e alla bocca, la texture dei capelli e la forma del naso, indicando che si tratta di un volto umano reale. Non ci sono artefatti evidenti o anomalie che suggerirebbero che il volto sia stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_259.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto mostra dettagli realistici come le rughe intorno agli occhi e alla bocca, la texture della pelle e la forma naturale delle orecchie. L'attaccatura dei capelli \u00e8 naturale e non presenta artefatti o anomalie tipiche delle immagini generate dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_256.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto mostra una texture della pelle naturale con imperfezioni e variazioni di colore, indicando una rappresentazione realistica. Le caratteristiche facciali, come gli occhi, il naso e la bocca, sono ben definite e coerenti. Non ci sono artefatti evidenti o anomalie che suggerirebbero che il volto sia stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_267.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto mostra una texture della pelle naturale con imperfezioni e variazioni di colore, indicando una rappresentazione realistica. La bocca e le orecchie sono definite e coerenti con un volto umano. L'attaccatura dei capelli \u00e8 naturale e non presenta artefatti o anomalie.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_270.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto mostra una texture della pelle naturale, con imperfezioni e variazioni di colore che sono tipiche dei volti reali. Le caratteristiche facciali, come gli occhi, il naso e la bocca, sono ben definite e coerenti. Non ci sono artefatti evidenti o anomalie che suggerirebbero che il volto sia stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_293.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto mostra dettagli realistici come le rughe intorno agli occhi e alla bocca, la texture del cuoio capelluto e la riflessione degli occhiali. La luce e le ombre sono distribuite in modo naturale, indicando che si tratta di un'immagine di un volto umano reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_269.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto mostra caratteristiche realistiche come la forma degli occhi, la posizione delle sopracciglia e la bocca. La pelle ha una texture e un'illuminazione naturali. Non ci sono artefatti o anomalie che suggerirebbero che il volto sia stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_263.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "La bocca presenta un'aspetto innaturale e sfocato, con una mancanza di dettagli e una texture irregolare. Le orecchie sembrano leggermente distorte e l'attaccatura dei capelli mostra una texture innaturale e un'illuminazione non uniforme. L'immagine presenta artefatti visivi che suggeriscono che si tratta di un volto generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_252.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un volto umano con dettagli realistici come le rughe intorno agli occhi e alla bocca, la texture della pelle e la forma delle orecchie. La luce e le ombre sono applicate in modo naturale, suggerendo che si tratta di un volto reale catturato da una fotocamera.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_275.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto mostra dettagli fini come le rughe intorno agli occhi e le imperfezioni della pelle, indicando che si tratta di un volto reale. La bocca e le orecchie sono ben definite e l'attaccatura dei capelli appare naturale. Non ci sono artefatti evidenti che suggeriscano che il volto sia stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_280.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto mostra una texture della pelle naturale con imperfezioni e variazioni di colore, che sono tipiche dei volti reali. Le pieghe intorno agli occhi e alla bocca sono realistiche. Le orecchie e l'attaccatura dei capelli appaiono naturali e non presentano artefatti o anomalie tipiche delle immagini generate dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_262.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "La pelle appare naturale con variazioni di colore e texture. I dettagli degli occhi, del naso e della bocca sono ben definiti e coerenti. L'attaccatura dei capelli mostra una texture naturale e non presenta artefatti o anomalie. La luce e le ombre sono realistiche, suggerendo un'immagine di un volto umano reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_273.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto mostra una texture della pelle naturale, con dettagli fini come le rughe intorno agli occhi e le imperfezioni sulla pelle. La bocca e le orecchie sono definite e non presentano artefatti o anomalie. L'attaccatura dei capelli \u00e8 realistica e mostra la texture e la forma dei capelli naturali.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_255.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto mostra una texture della pelle naturale con dettagli fini come le rughe intorno agli occhi e le imperfezioni sulla pelle. La bocca e le labbra appaiono realistiche, cos\u00ec come le orecchie e l'attaccatura dei capelli. La luce e le ombre sono distribuite in modo coerente, suggerendo una fotografia reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_282.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto mostra una texture della pelle naturale con imperfezioni e variazioni di colore, tipiche dei volti reali. Gli occhi, le sopracciglia e le labbra hanno una forma e una definizione realistiche. Non ci sono artefatti evidenti o anomalie che suggerirebbero che il volto sia stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_251.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto mostra una texture della pelle naturale con imperfezioni e variazioni di colore, indicando una rappresentazione realistica. La bocca, le orecchie e l'attaccatura dei capelli mostrano dettagli realistici e non presentano artefatti tipici delle immagini generate dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_254.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto mostra dettagli realistici come le rughe intorno agli occhi e la forma del naso. La bocca e le orecchie appaiono naturali e non presentano artefatti o anomalie tipiche delle immagini generate dall'IA. L'illuminazione e le texture sono coerenti con un volto reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_265.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto mostra una texture della pelle naturale con imperfezioni e variazioni di colore, tipiche di un volto reale. La bocca, le orecchie e l'attaccatura dei capelli appaiono naturali e non presentano artefatti o anomalie che suggerirebbero una generazione artificiale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_258.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto mostra una struttura facciale coerente con quella di un bambino, con dettagli come le rughe intorno agli occhi, la forma del naso e la posizione delle labbra. Non ci sono artefatti evidenti o anomalie che suggerirebbero che il volto sia stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_296.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto mostra una texture della pelle naturale con imperfezioni e variazioni di colore, indicando una rappresentazione realistica. Le caratteristiche facciali, come gli occhi, il naso e la bocca, sono ben definite e coerenti. Non ci sono artefatti evidenti o anomalie che suggerirebbero che il volto sia stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_285.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto mostra dettagli realistici come le rughe intorno agli occhi, la texture della pelle e la forma delle orecchie. La bocca e l'attaccatura dei capelli appaiono naturali e non presentano artefatti o anomalie che suggerirebbero una generazione artificiale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_276.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto mostra una texture della pelle realistica con dettagli fini come le rughe intorno agli occhi e le imperfezioni sulla pelle. Le caratteristiche del viso, come la forma del naso, la posizione degli occhi e la bocca, sono coerenti e naturali. Non ci sono artefatti o anomalie evidenti che suggerirebbero che il volto sia stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_284.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto mostra una texture della pelle naturale con imperfezioni e variazioni di colore, indicando una rappresentazione realistica di un volto umano. La bocca, le orecchie e l'attaccatura dei capelli appaiono naturali e non presentano artefatti o anomalie tipiche delle immagini generate dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_272.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto mostra una texture della pelle realistica con imperfezioni e variazioni di colore. Le caratteristiche facciali, come gli occhi, il naso e la bocca, sono ben definite e coerenti. Non ci sono artefatti evidenti o anomalie che suggerirebbero che il volto sia stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_283.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto mostra una chiara struttura facciale con dettagli come le pieghe delle palpebre, le rughe intorno agli occhi e la forma delle labbra. La bocca \u00e8 aperta in un sorriso naturale e le orecchie appaiono realistiche. Non ci sono artefatti evidenti o anomalie che suggerirebbero che il volto sia stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_264.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto mostra una texture della pelle naturale con dettagli fini come le rughe intorno agli occhi e alla bocca. Le orecchie sono ben definite e l'attaccatura dei capelli mostra una variazione di colore e texture che \u00e8 tipica di un volto reale. Non ci sono artefatti evidenti o anomalie che suggerirebbero che il volto sia stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_278.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto mostra una chiara struttura facciale con dettagli come le sopracciglia, gli occhi, il naso e la bocca. La bocca \u00e8 leggermente socchiusa in un sorriso, e i denti sono visibili. La pelle presenta variazioni di colore e texture, indicando una rappresentazione realistica di un volto umano. Non ci sono artefatti evidenti o anomalie che suggerirebbero che il volto sia stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_294.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto mostra una texture della pelle naturale, con dettagli fini come le rughe intorno agli occhi e le imperfezioni della pelle. Le caratteristiche facciali, come gli occhi, il naso e la bocca, sono ben definite e coerenti. Non ci sono artefatti evidenti che suggerirebbero che il volto sia stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_279.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto mostra dettagli fini come le rughe intorno agli occhi e le imperfezioni della pelle, che sono tipiche dei volti reali. La bocca e le labbra appaiono naturali e non presentano artefatti o anomalie. L'attaccatura dei capelli e le orecchie appaiono naturali e coerenti con un volto umano.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_268.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "La pelle appare naturale con variazioni di colore e texture. I dettagli del viso, come le rughe intorno agli occhi e la forma del naso, sono realistici. La bocca mostra un sorriso naturale con denti visibili. Le orecchie e l'attaccatura dei capelli appaiono naturali e coerenti con un volto umano reale.",
+            "error": null
+        }
+    ]
+}

@@ -33,6 +33,13 @@ def analyzeMetrics(counters, images_with_labels, prompt, systemPrompt, oneShot, 
     false_negative_rate = counters["fn"] / total_real if total_real else 0
     false_positive_rate = counters["fp"] / total_fake if total_fake else 0
 
+    # ================= One-class accuracy =================
+    one_class_accuracy_real = counters["tp"] / (counters["tp"] + counters["fn"]) if (
+                counters["tp"] + counters["fn"]) else 0
+    one_class_accuracy_fake = counters["tn"] / (counters["tn"] + counters["fp"]) if (
+                counters["tn"] + counters["fp"]) else 0
+    # =====================================================
+
     print("\n====== FINAL REPORT ======")
     print(f"Total processed: {len(images_with_labels)}")
     print(f"TP: {counters['tp']} | TN: {counters['tn']} | FP: {counters['fp']} | FN: {counters['fn']}")
@@ -46,6 +53,8 @@ def analyzeMetrics(counters, images_with_labels, prompt, systemPrompt, oneShot, 
     print(f"False Positive Rate (fake->real): {false_positive_rate * 100:.2f}%")
     print(f"Rejection Rate on real images: {rejection_real_rate * 100:.2f}%")
     print(f"Rejection Rate on fake images: {rejection_fake_rate * 100:.2f}%")
+    print(f"One-class Accuracy (real images): {one_class_accuracy_real:.4f}")
+    print(f"One-class Accuracy (fake images): {one_class_accuracy_fake:.4f}")
 
     results = {
         "total_processed": len(images_with_labels),
@@ -67,6 +76,8 @@ def analyzeMetrics(counters, images_with_labels, prompt, systemPrompt, oneShot, 
         "rejection_real_rate": rejection_real_rate,
         "rejection_fake_rate": rejection_fake_rate,
         "rejection_total_rate": rejection_total_rate,
+        "one_class_accuracy_real": one_class_accuracy_real,
+        "one_class_accuracy_fake": one_class_accuracy_fake,
         "system_prompt": systemPrompt,
         "user_prompt": prompt,
         "oneShot": oneShot,
@@ -74,6 +85,50 @@ def analyzeMetrics(counters, images_with_labels, prompt, systemPrompt, oneShot, 
     if oneShot:
         results["oneShotMessage"] = oneShotMessage
     return results
+
+
+# Todo creare una funzione di update per inserire in tutti one-class-accuracy.
+
+def add_one_class_accuracy(json_file_path):
+    """
+    Legge un file JSON con struttura { "metrics": { ... } },
+    calcola la one-class accuracy e aggiorna il JSON con i nuovi campi.
+    """
+    with open(json_file_path, 'r') as f:
+        data = json.load(f)
+
+    metrics = data.get("metrics", None)
+    if metrics is None:
+        print(f"Errore: 'metrics' non trovato in {json_file_path}")
+        return
+
+    # Calcolo one-class accuracy
+    TP = metrics.get("TP", 0)
+    TN = metrics.get("TN", 0)
+    FP = metrics.get("FP", 0)
+    FN = metrics.get("FN", 0)
+
+    one_class_accuracy_real = TP / (TP + FN) if (TP + FN) else 0
+    one_class_accuracy_fake = TN / (TN + FP) if (TN + FP) else 0
+
+    # Aggiorna il JSON
+    metrics["one_class_accuracy_real"] = one_class_accuracy_real
+    metrics["one_class_accuracy_fake"] = one_class_accuracy_fake
+
+    # Salva di nuovo il JSON
+    with open(json_file_path, 'w') as f:
+        json.dump(data, f, indent=4)
+
+    print(f"Aggiornato {json_file_path} con one-class accuracy.")
+
+
+def process_json_folder(folder_path):
+    """
+    Processa tutti i file JSON in una cartella e aggiunge la one-class accuracy.
+    """
+    for file_name in os.listdir(folder_path):
+        if file_name.endswith(".json"):
+            add_one_class_accuracy(os.path.join(folder_path, file_name))
 
 
 def saveAllJson(metrics, responses, PromptITA, modelName, i):
@@ -109,10 +164,14 @@ def createJSONMeanStats(folder_path, oneshot=False):
         "accuracy": [],
         "precision": [],
         "recall": [],
-        "false_negative_rate": [],
-        "false_positive_rate": [],
         "rejection_real_rate": [],
-        "rejection_fake_rate": []
+        "rejection_fake_rate": [],
+        "TP": [],
+        "TN": [],
+        "FP": [],
+        "FN": [],
+        "one_class_accuracy_real": [],
+        "one_class_accuracy_fake": []
     }
 
     # Prendi tutti i file json nella cartella
@@ -138,17 +197,22 @@ def createJSONMeanStats(folder_path, oneshot=False):
             if key in metrics:
                 aggregated[key].append(metrics[key])
 
-    # Calcola la media
+    # Calcola la media per metriche continue
     mean_results = {
         "num_files": len(fileList)
     }
-    for key, values in aggregated.items():
+    for key in ["accuracy", "precision", "recall", "rejection_real_rate", "rejection_fake_rate",
+                "one_class_accuracy_real", "one_class_accuracy_fake"]:
+        values = aggregated[key]
         mean_results[f"{key}_mean"] = sum(values) / len(values) if values else 0
+
+    # Somma totale per TP, TN, FP, FN
+    for key in ["TP", "TN", "FP", "FN"]:
+        mean_results[f"{key}_total"] = sum(aggregated[key]) if aggregated[key] else 0
 
     # Calcola F1 e F2-score
     precision = mean_results.get("precision_mean", 0)
     recall = mean_results.get("recall_mean", 0)
-
     if precision + recall > 0:
         f1 = 2 * (precision * recall) / (precision + recall)
         beta = 2
@@ -176,8 +240,8 @@ def createJSONMeanStats(folder_path, oneshot=False):
         parts = norm_path.split(os.sep)
         # Esempio: JsonMeanStats/Sure/gemma3/prompt-0-Eng
         # -> sure_type = Sure, model = gemma3, prompt_folder = prompt-0-Eng
-        sure_type = parts[1]       # Sure / Uncertain
-        model = parts[2]           # gemma3
+        sure_type = parts[1]  # Sure / Uncertain
+        model = parts[2]  # gemma3
         prompt_folder = parts[-1]  # prompt-0-Eng
 
         dest_dir = os.path.join("promptSection", sure_type.lower(), prompt_folder.replace("prompt", "Prompt"))
@@ -197,4 +261,3 @@ if __name__ == "__main__":
             folder = os.path.join(base_path, f"prompt-{i}-{lang}")
             print(f" Elaboro: {folder}")
             createJSONMeanStats(folder)
-
