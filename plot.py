@@ -369,10 +369,9 @@ def captureOneTypeResponse(path, Type):
     Type_lower = Type.lower()
     risultati = []
 
-    # Se il percorso è un file singolo
+    # Determina i file JSON da processare
     if os.path.isfile(path) and path.endswith(".json"):
         fileList = [path]
-    # Se è una cartella
     elif os.path.isdir(path):
         fileList = glob.glob(os.path.join(path, "*.json"))
     else:
@@ -380,14 +379,14 @@ def captureOneTypeResponse(path, Type):
         return risultati
 
     for file_path in fileList:
-        with open(file_path, "r", encoding="utf-8") as f:
-            try:
+        try:
+            with open(file_path, "r", encoding="utf-8") as f:
                 data = json.load(f)
-            except json.JSONDecodeError:
-                print(f"Errore nel leggere {file_path}")
-                continue
+        except (json.JSONDecodeError, FileNotFoundError):
+            # Salta i file non leggibili
+            continue
 
-        responses = data.get("responses", [])
+        responses = data.get("responses")
         if not isinstance(responses, list):
             continue
 
@@ -444,23 +443,67 @@ def plotWordcloudFromExplanations(explanations, modelName, Type):
     plt.savefig(path_grafico, dpi=300, bbox_inches='tight')
 
 
-def analyzeSummarizeAndVisualize(dirName, Type, modelName):
-    results = captureOneTypeResponse(dirName, Type)
-    df = classifier.repair_dates(results)
-    explanations = df['explanation'].tolist()
+def analyze_and_plot_uncertain(path, modelName, prompt, chunk_size=50):
+    risultati = captureOneTypeResponse(path, "uncertain")
+    explanations_all = [r["explanation"] for r in risultati if r.get("explanation")]
+    explanations_real = [r["explanation"] for r in risultati if r["ground_truth"] == "real" and r.get("explanation")]
+    explanations_fake = [r["explanation"] for r in risultati if r["ground_truth"] == "fake" and r.get("explanation")]
 
-    # Riassunto globale
-    # global_summary = classifier.summarizeALL(explanations)
-    global_summary = classifier.hierarchical_summarize_with_prompt(explanations)
-    print("\nRiassunto globale finale:")
-    print(global_summary)
+    # Riassunti
+    summary_general = classifier.summarize_uncertain_patterns_large(explanations_all, chunk_size) if explanations_all else ""
+    saveSummaryToFile(summary_general, modelName, prompt)
+    summary_real = classifier.summarize_uncertain_patterns_large(explanations_real, chunk_size) if explanations_real else ""
+    saveSummaryToFile(summary_real, modelName, prompt)
+    summary_fake = classifier.summarize_uncertain_patterns_large(explanations_fake, chunk_size) if explanations_fake else ""
+    saveSummaryToFile(summary_fake, modelName, prompt)
 
-    # Salva su file
-    saveSummaryToFile(global_summary, modelName, Type)
+    # Conta pattern principali
+    counter_general = classifier.count_patterns_from_bullets(summary_general)
+    counter_real = classifier.count_patterns_from_bullets(summary_real)
+    counter_fake = classifier.count_patterns_from_bullets(summary_fake)
 
-    # WordCloud
-    # FixMe o si cambia modo di rappresentare le informazioni o al momento non sta fornendo nulla di sensato
-    # plotWordcloudFromExplanations(explanations, modelName, Type)
+    # Assicurati che la cartella esista
+    output_dir = "plots/uncertainGraph"
+    os.makedirs(output_dir, exist_ok=True)
+
+    # Nome file base (puoi sostituire con nome specifico del dataset o modello)
+    file_base = f"pattern-incertezza-{modelName}-{prompt}"
+
+    # --- Grafico generale ---
+    if counter_general:
+        plt.figure(figsize=(8, 5))
+        plt.bar(counter_general.keys(), counter_general.values(), color="skyblue")
+        plt.xticks(rotation=45, ha="right")
+        plt.ylabel("Numero di occorrenze")
+        plt.title("Pattern di incertezza - Generale")
+        plt.tight_layout()
+
+        general_path = os.path.join(output_dir, f"{file_base}_general.png")
+        plt.savefig(general_path)
+        plt.close()  # chiude la figura per liberare memoria
+
+    # --- Grafico comparativo real vs fake ---
+    patterns = list(set(counter_real.keys()) | set(counter_fake.keys()))
+    real_counts = [counter_real.get(p, 0) for p in patterns]
+    fake_counts = [counter_fake.get(p, 0) for p in patterns]
+
+    x = range(len(patterns))
+    width = 0.35
+    fig, ax = plt.subplots(figsize=(10, 5))
+    ax.bar([i - width / 2 for i in x], real_counts, width, label="Real", color="salmon")
+    ax.bar([i + width / 2 for i in x], fake_counts, width, label="Fake", color="lightgreen")
+    ax.set_xticks(x)
+    ax.set_xticklabels(patterns, rotation=30, ha="right")
+    ax.set_ylabel("Numero di occorrenze")
+    ax.set_title("Confronto pattern di incertezza Real vs Fake")
+    ax.legend()
+    plt.tight_layout()
+
+    comparative_path = os.path.join(output_dir, f"{file_base}_real_vs_fake.png")
+    plt.savefig(comparative_path)
+    plt.close()  # chiude la figura
+
+    return summary_general, summary_real, summary_fake
 
 
 # TODO altre funzioni di plotting (dipende da cosa mi serve nella relazione)

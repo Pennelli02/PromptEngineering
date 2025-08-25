@@ -1,15 +1,11 @@
 import json
 import re
+from collections import Counter
 
-import nltk
-# pip install sentence-transformers hdbscan transformers
+import ollama
 import pandas as pd
 from ollama import Client
 from PIL import Image
-# from sentence_transformers import SentenceTransformer
-# import hdbscan
-# from collections import Counter
-from transformers import pipeline
 
 client = Client()
 
@@ -35,7 +31,8 @@ def extract_prediction_from_text(text):
         # inglese
         "generated", "fake", "generated face", "no real face", "there are some artifacts"
         # italiano
-        "generato", "falso", "volto generato", "nessun volto reale", "ci sono artefatti"
+                                                               "generato", "falso", "volto generato",
+        "nessun volto reale", "ci sono artefatti"
     ]
 
     # Prova a matchare "real"
@@ -123,7 +120,6 @@ def analyze_image(img_path, lab, prompt, modelName, fewShot, few_shot_messages, 
             result_entry["error"] = f"Parsing failed, fallback prediction: {prediction}"
             print(f"Parsing failed, fallback prediction: {prediction}")
 
-
         if showImages:
             Image.open(img_path).show()
 
@@ -192,61 +188,49 @@ def repair_dates(results):
 
 
 # --- Funzione di chunking testo ---
-nltk.download('punkt')
+def chunk_list(lst, chunk_size):
+    return [lst[i:i + chunk_size] for i in range(0, len(lst), chunk_size)]
 
 
-def chunk_text_by_sentence(text, max_len=1000):
-    sentences = nltk.sent_tokenize(text)
-    chunks, current_chunk = [], ""
-    for sentence in sentences:
-        if len(current_chunk) + len(sentence) <= max_len:
-            current_chunk += " " + sentence
-        else:
-            chunks.append(current_chunk.strip())
-            current_chunk = sentence
-    if current_chunk:
-        chunks.append(current_chunk.strip())
-    return chunks
+def summarize_uncertain_patterns_large(client, explanations, chunk_size=50, model="gemma3:1b"):
+    chunks = chunk_list(explanations, chunk_size)
+    chunk_summaries = []
 
-
-def hierarchical_summarize_with_prompt(explanations, max_chunk_len=1000):
-    summarizer = pipeline("summarization", model="google/flan-t5-small")
-
-    # Primo livello
-    full_text = " ".join(explanations)
-    chunks = chunk_text_by_sentence(full_text, max_chunk_len)
-    summaries = []
-    for i, chunk in enumerate(chunks):
-        print(f"Riassumendo chunk {i + 1}/{len(chunks)}...")
+    for idx, chunk in enumerate(chunks):
+        chunk_text = "\n".join(chunk)
         prompt = (
-                "Analizza i seguenti casi e individua le cause principali dell'incertezza del modello, "
-                "descrivendo i problemi visivi o ambiguità ricorrenti:\n" + chunk
+                "Analizza queste spiegazioni di risposte incerte e genera un elenco puntato "
+                "dei pattern ricorrenti che portano il modello a classificare le immagini come '[uncertain]'. "
+                "Indica chiaramente i problemi visivi o ambiguità comuni in ogni punto:\n\n"
+                + chunk_text +
+                "\n\nFormato desiderato:\n- Pattern 1: descrizione\n- Pattern 2: descrizione\n..."
         )
-        summary = summarizer(prompt, max_new_tokens=150, min_length=30, do_sample=False)[0]['summary_text']
-        summaries.append(summary)
+        response = client.chat(model=model, messages=[{"role": "user", "content": prompt}])
+        chunk_summary = response.get("content", "").strip()
+        chunk_summaries.append(chunk_summary)
 
-    # Secondo livello (finché resta più di un riassunto)
-    while len(summaries) > 1:
-        combined_text = " ".join(summaries)
-        chunks = chunk_text_by_sentence(combined_text, max_chunk_len)
-        summaries = []
-        for i, chunk in enumerate(chunks):
-            print(f"Riassumendo livello superiore, chunk {i + 1}/{len(chunks)}...")
-            prompt = (
-                    "Sulla base di questi riassunti, fornisci una sintesi unica dei pattern e cause più frequenti "
-                    "che portano il modello a classificare come 'incerto':\n" + chunk
-            )
-            summary = summarizer(prompt, max_new_tokens=200, min_length=40, do_sample=False)[0]['summary_text']
-            summaries.append(summary)
+    if len(chunk_summaries) == 1:
+        return chunk_summaries[0]
 
-    return summaries[0]
+    combined_text = "\n".join(chunk_summaries)
+    final_prompt = (
+            "Sulla base dei seguenti riassunti di pattern ricorrenti nelle risposte incerte, "
+            "fornisci un unico elenco puntato sintetico dei pattern principali:\n\n"
+            + combined_text +
+            "\n\nFormato desiderato:\n- Pattern 1: descrizione\n- Pattern 2: descrizione\n..."
+    )
+    final_response = client.chat(model=model, messages=[{"role": "user", "content": final_prompt}])
+    final_summary = final_response.get("content", "").strip()
 
-# def summarizeALL(explanations):
-#     summarizer = pipeline("summarization", model="google/flan-t5-small")
-#     full_text = " ".join(explanations)
-#     prompt = (f"Elenca e descrivi i motivi più frequenti per cui il modello ha classificato l'immagine come "
-#               "'incerto', focalizzandoti su pattern comuni o problemi visivi presenti: " + full_text)
-#     summary = summarizer(prompt, max_new_tokens=150, min_length=20, do_sample=False)[0]['summary_text']
-#     return summary
+    return final_summary
 
-# FixMe si può usare per il summerize and explaination gemma3:1b
+
+def count_patterns_from_bullets(summary_text):
+    lines = summary_text.splitlines()
+    patterns = []
+    for line in lines:
+        line = line.strip()
+        if line.startswith("-"):
+            pattern = line.lstrip("- ").split(":")[0].strip()
+            patterns.append(pattern)
+    return Counter(patterns)

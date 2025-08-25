@@ -24,3 +24,8 @@ Sono presenti file json di gemma3 ottenuti facendo girare ollama su un google co
 dovrò mettere anche la risposta del modello per ogni immagine? Magari finiamo tutti i test e poi lo aggiungo
 
 -----------------------------------------------------------------------------------------------------------------------
+## Prompt per modello per one-shot
+- **LlaVa**: prompt-6-eng
+- **Gemma3**: prompt-6-eng
+- **Qwen3b**:
+- **Qwen7b**:

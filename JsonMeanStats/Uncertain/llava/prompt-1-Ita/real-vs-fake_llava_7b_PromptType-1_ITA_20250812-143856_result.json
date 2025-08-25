@@ -1,0 +1,729 @@
+{
+    "metrics": {
+        "total_processed": 100,
+        "total_real": 50,
+        "total_fake": 50,
+        "TP": 5,
+        "TN": 18,
+        "FP": 19,
+        "FN": 29,
+        "rejection_real": 8,
+        "rejection_fake": 4,
+        "text_parsing_errors": 17,
+        "text_parsing_error_rate": 0.17,
+        "accuracy": 0.323943661971831,
+        "precision": 0.20833333333333334,
+        "recall": 0.14705882352941177,
+        "false_negative_rate": 0.6904761904761905,
+        "false_positive_rate": 0.4634146341463415,
+        "rejection_real_rate": 0.19047619047619047,
+        "rejection_fake_rate": 0.0975609756097561,
+        "rejection_total_rate": 0.14457831325301204,
+        "system_prompt": "Sei un sistema professionale di classificazione delle immagini che analizza le immagini fornite per determinare se mostrano un volto umano reale o uno generato.\nRispondi SOLO usando il seguente formato JSON:\n{\n  \"result\": \"[real face]\" oppure \"[generated]\"or [uncertain], \n  \"explanation\": \"Una spiegazione precisa basata su indizi visivi osservati nell'immagine.\"\n}\nNON includere frasi generiche come 'non ci sono artefatti'. Sii visivo e dettagliato nella tua analisi.Rispondi ESCLUSIVAMENTE con questo JSON, senza commenti o testo extra.",
+        "user_prompt": "L'immagine fornita mostra un volto reale o uno generato? Tieni presente che i volti generati spesso presentano artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli. Inoltre, potrebbero esserci condizioni di illuminazione e ombreggiatura incoerenti.",
+        "oneShot": false,
+        "imageBoost": false
+    },
+    "responses": [
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_45.jpg",
+            "ground_truth": "real",
+            "prediction": null,
+            "explanation": null,
+            "error": "JSON parsing error: Unterminated string starting at: line 3 column 18 (char 44)"
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_4.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto presenta una illuminazione naturale e una ombreggiatura coerente. Non ci sono artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli. Il volto sembra essere quello di un uomo reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_30.jpg",
+            "ground_truth": "real",
+            "prediction": "uncertain",
+            "explanation": "Non \u00e8 possibile determinare con certezza se l'immagine mostra un volto reale o uno generato. Le caratteristiche del volto, come la forma delle orecchie e la posizione dei capelli, non sono sufficienti per stabilire con certezza la natura del volto. Inoltre, la qualit\u00e0 dell'immagine e la presenza di artefatti intorno alla bocca e all'attaccatura dei capelli rendono difficile la determinazione con certezza.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_6.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "Il volto presenta artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli. Inoltre, ci sono condizioni di illuminazione e ombreggiatura incoerenti.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_46.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "Il volto presenta artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli. Inoltre, ci sono condizioni di illuminazione e ombreggiatura incoerenti.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_41.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "Il volto presenta artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli, che sono caratteristiche comuni dei volti generati. Inoltre, ci sono condizioni di illuminazione e ombreggiatura incoerenti che rendono il volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_47.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "Il volto presenta artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli. Inoltre, ci sono condizioni di illuminazione e ombreggiatura incoerenti.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_29.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "Il volto presenta artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli. Inoltre, ci sono condizioni di illuminazione e ombreggiatura incoerenti.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_37.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "Il volto presenta artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli. Inoltre, ci sono condizioni di illuminazione e ombreggiatura incoerenti.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_44.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto presenta una illuminazione naturale e una ombreggiatura coerente. Non ci sono artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli. Il volto sembra essere quello di un uomo reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_13.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "Il volto presenta artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli. Inoltre, ci sono condizioni di illuminazione e ombreggiatura incoerenti.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_21.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto presenta una espressione naturale e le orecchie sono in linea con il resto del corpo. Non ci sono artefatti intorno alla bocca o all'attaccatura dei capelli. L'illuminazione e l'ombreggiatura sono coerenti con il resto del corpo.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_3.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto presenta una illuminazione naturale e una ombreggiatura coerente. Non ci sono artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli. L'immagine mostra un volto reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_27.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto presenta una illuminazione naturale e una ombreggiatura coerente. Non ci sono artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli. Il volto sembra essere quello di un bambino reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_16.jpg",
+            "ground_truth": "real",
+            "prediction": null,
+            "explanation": null,
+            "error": "JSON parsing error: Unterminated string starting at: line 3 column 18 (char 44)"
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_25.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "Il volto presenta artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli. Inoltre, ci sono condizioni di illuminazione e ombreggiatura incoerenti.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_8.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto presenta una illuminazione naturale e una ombreggiatura coerente con il resto del corpo. Non ci sono artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_34.jpg",
+            "ground_truth": "real",
+            "prediction": null,
+            "explanation": null,
+            "error": "JSON parsing error: Unterminated string starting at: line 3 column 18 (char 44)"
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_39.jpg",
+            "ground_truth": "real",
+            "prediction": "uncertain",
+            "explanation": "Non \u00e8 possibile determinare con certezza se l'immagine mostra un volto reale o uno generato. Le caratteristiche del volto, come la bocca, le orecchie e l'attaccatura dei capelli, non sono sufficienti per stabilire con certezza la natura del volto. Potrebbe essere necessario un'analisi pi\u00f9 approfondita per determinare se ci sono artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli, o se ci sono condizioni di illuminazione e ombreggiatura incoerenti.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_18.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "Il volto presenta artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli. Inoltre, ci sono condizioni di illuminazione e ombreggiatura incoerenti.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_2.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto presenta una illuminazione naturale e una ombreggiatura coerente con il resto del corpo. Non ci sono artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_49.jpg",
+            "ground_truth": "real",
+            "prediction": "uncertain",
+            "explanation": "Non \u00e8 possibile determinare con certezza se l'immagine mostra un volto reale o uno generato. Le condizioni di illuminazione e ombreggiatura incoerenti rendono difficile distinguere i dettagli che potrebbero indicare la presenza di artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_43.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto presenta una illuminazione naturale e una ombreggiatura coerente. Non ci sono artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli. Il volto sembra essere quello di un uomo reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_17.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "Il volto presenta artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli. Inoltre, ci sono condizioni di illuminazione e ombreggiatura incoerenti.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_7.jpg",
+            "ground_truth": "real",
+            "prediction": null,
+            "explanation": null,
+            "error": "JSON parsing error: Unterminated string starting at: line 3 column 18 (char 44)"
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_20.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto presenta una illuminazione naturale e una ombreggiatura coerente con la pelle. Non ci sono artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_35.jpg",
+            "ground_truth": "real",
+            "prediction": null,
+            "explanation": null,
+            "error": "JSON parsing error: Unterminated string starting at: line 3 column 18 (char 44)"
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_38.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto presenta una illuminazione naturale e una ombreggiatura coerente con la pelle. Non ci sono artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_0.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto presenta una illuminazione naturale e una ombreggiatura coerente. Non ci sono artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_42.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "Il volto presenta una somiglianza con i volti generati, in quanto ci sono artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli. Inoltre, ci sono condizioni di illuminazione e ombreggiatura incoerenti che rendono il volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_14.jpg",
+            "ground_truth": "real",
+            "prediction": "uncertain",
+            "explanation": "Non \u00e8 possibile determinare con certezza se l'immagine mostra un volto reale o uno generato. Le caratteristiche del volto, come la bocca, le orecchie e l'attaccatura dei capelli, non sono sufficienti per stabilire con certezza la natura del volto. Inoltre, la qualit\u00e0 dell'immagine e le condizioni di illuminazione e ombreggiatura potrebbero influire sulla determinazione. Per una valutazione pi\u00f9 precisa, sarebbe necessario un'immagine di alta qualit\u00e0 e con una posizione e un'illuminazione pi\u00f9 standardizzata.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_31.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto presenta una illuminazione naturale e una ombreggiatura coerente con il resto del viso. Non ci sono artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_36.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "Il volto presenta artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli. Inoltre, ci sono condizioni di illuminazione e ombreggiatura incoerenti.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_22.jpg",
+            "ground_truth": "real",
+            "prediction": "uncertain",
+            "explanation": "Non \u00e8 possibile determinare con certezza se l'immagine mostra un volto reale o uno generato. Le caratteristiche del volto, come la bocca, le orecchie e l'attaccatura dei capelli, non sono sufficienti per stabilire con certezza la natura del volto. Inoltre, la qualit\u00e0 dell'immagine e le condizioni di illuminazione e ombreggiatura potrebbero influire sulla determinazione. Per una risposta pi\u00f9 precisa, sarebbe necessario un'immagine di maggior qualit\u00e0 e con una posizione del soggetto che permeta una migliore analisi delle caratteristiche del volto.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_24.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "Il volto presenta artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli. Inoltre, ci sono condizioni di illuminazione e ombreggiatura incoerenti.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_48.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto presenta una illuminazione naturale e una ombreggiatura coerente con la pelle. Non ci sono artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_11.jpg",
+            "ground_truth": "real",
+            "prediction": "uncertain",
+            "explanation": "Non \u00e8 possibile determinare con certezza se l'immagine mostra un volto reale o uno generato. I volti generati spesso presentano artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli. Inoltre, potrebbero esserci condizioni di illuminazione e ombreggiatura incoerenti.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_28.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto presenta una illuminazione naturale e una ombreggiatura coerente con il resto del viso. Non ci sono artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_19.jpg",
+            "ground_truth": "real",
+            "prediction": "uncertain",
+            "explanation": "Non \u00e8 possibile determinare con certezza se il volto appare in una immagine reale o generata. Ci sono alcuni artefatti intorno alla bocca e alle orecchie, ma non \u00e8 possibile affermare con certezza se siano artefatti di un generatore di immagini o condizioni di illuminazione e ombreggiatura incoerenti.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_33.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto presenta una illuminazione naturale e una ombreggiatura coerente con la pelle. Non ci sono artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_5.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto presenta una illuminazione naturale e una ombreggiatura coerente. Non ci sono artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli. La pelle ha una tonalit\u00e0 naturale e le orecchie sono di forma umana. Il volto sembra essere quello di una persona reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_23.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "Il volto presenta artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli. Inoltre, ci sono condizioni di illuminazione e ombreggiatura incoerenti.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_15.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto presenta una illuminazione naturale e una ombreggiatura coerente con il resto del corpo. Non ci sono artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_40.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "Il volto presenta artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli. Inoltre, ci sono condizioni di illuminazione e ombreggiatura incoerenti.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_10.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto presenta una illuminazione naturale e una ombreggiatura coerente con la pelle. Non ci sono artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_12.jpg",
+            "ground_truth": "real",
+            "prediction": "uncertain",
+            "explanation": "Non \u00e8 possibile determinare con certezza se l'immagine mostra un volto reale o uno generato. L'immagine presenta una qualit\u00e0 non ottimale e ci sono artefatti intorno alla bocca e alle orecchie, che rendono difficile la distinzione tra un volto reale e uno generato. Inoltre, ci sono condizioni di illuminazione e ombreggiatura incoerenti che rendono difficile la distinzione tra un volto reale e uno generato.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_1.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "Il volto presenta artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli. Inoltre, ci sono condizioni di illuminazione e ombreggiatura incoerenti.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_32.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "Il volto presenta artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli. Inoltre, ci sono condizioni di illuminazione e ombreggiatura incoerenti.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_9.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "Il volto presenta artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli. Inoltre, ci sono condizioni di illuminazione e ombreggiatura incoerenti.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_26.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "Il volto presenta artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli. Inoltre, ci sono condizioni di illuminazione e ombreggiatura incoerenti.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_94.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "Il volto presenta artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli. Inoltre, ci sono condizioni di illuminazione e ombreggiatura incoerenti.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_93.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto presenta una illuminazione naturale e una ombreggiatura coerente con il resto del viso. Non ci sono artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_68.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto presenta una illuminazione naturale e una ombreggiatura coerente. Non ci sono artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli. Le orecchie sono naturali e non presentano artefatti. La pelle \u00e8 uniforme e non ci sono artefatti sulla faccia. Le ombreggiature sono coerenti e non ci sono artefatti sulla testa. Il volto \u00e8 quindi reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_67.jpg",
+            "ground_truth": "fake",
+            "prediction": null,
+            "explanation": null,
+            "error": "JSON parsing error: Unterminated string starting at: line 3 column 18 (char 44)"
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_58.jpg",
+            "ground_truth": "fake",
+            "prediction": null,
+            "explanation": null,
+            "error": "JSON parsing error: Unterminated string starting at: line 3 column 18 (char 44)"
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_74.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto presenta una illuminazione naturale e una ombreggiatura coerente con il resto del viso. Non ci sono artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_80.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto presenta una illuminazione naturale e una ombreggiatura coerente con la pelle. Non ci sono artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_65.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto presenta una illuminazione naturale e una ombreggiatura coerente con il resto del viso. Non ci sono artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_77.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto presenta una illuminazione naturale e una ombreggiatura coerente con la pelle. Non ci sono artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_81.jpg",
+            "ground_truth": "fake",
+            "prediction": null,
+            "explanation": null,
+            "error": "JSON parsing error: Unterminated string starting at: line 3 column 18 (char 44)"
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_75.jpg",
+            "ground_truth": "fake",
+            "prediction": null,
+            "explanation": null,
+            "error": "JSON parsing error: Unterminated string starting at: line 3 column 18 (char 44)"
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_85.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "Il volto presenta artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli. Inoltre, ci sono condizioni di illuminazione e ombreggiatura incoerenti.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_89.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto presenta una illuminazione naturale e una ombreggiatura coerente con il resto del viso. Non ci sono artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_55.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto presenta una illuminazione naturale e una ombreggiatura coerente con il resto del viso. Non ci sono artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_87.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto presenta una illuminazione naturale e una ombreggiatura coerente con la pelle. Non ci sono artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_91.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto presenta una illuminazione naturale e una ombreggiatura coerente con la pelle. Non ci sono artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_96.jpg",
+            "ground_truth": "fake",
+            "prediction": null,
+            "explanation": null,
+            "error": "JSON parsing error: Unterminated string starting at: line 3 column 18 (char 44)"
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_73.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "Il volto presenta artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli. Inoltre, ci sono condizioni di illuminazione e ombreggiatura incoerenti.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_54.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto presenta una illuminazione naturale e una ombreggiatura coerente. Non ci sono artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli. Il volto sembra essere quello di un uomo reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_76.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto presenta una illuminazione naturale e una ombreggiatura coerente con la pelle. Non ci sono artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_78.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto presenta una illuminazione naturale e una ombreggiatura coerente con il resto del corpo. Non ci sono artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_59.jpg",
+            "ground_truth": "fake",
+            "prediction": "uncertain",
+            "explanation": "Non \u00e8 possibile determinare con certezza se l'immagine mostra un volto reale o uno generato. Le caratteristiche del volto, come la bocca, le orecchie e l'attaccatura dei capelli, non mostrano artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli. Tuttavia, la luce e l'ombreggiatura sembrano essere incoerenti, rendendo difficile la determinazione con certezza.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_88.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto presenta una illuminazione naturale e una ombreggiatura coerente con il resto del viso. Non ci sono artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_71.jpg",
+            "ground_truth": "fake",
+            "prediction": "uncertain",
+            "explanation": "Non \u00e8 possibile determinare con certezza se l'immagine mostra un volto reale o uno generato. Le caratteristiche visive, come la bocca, le orecchie e l'attaccatura dei capelli, non sono sufficienti per stabilire con certezza la natura del volto. Inoltre, la qualit\u00e0 dell'immagine e le condizioni di illuminazione e ombreggiatura potrebbero influire sulla determinazione. Per una valutazione pi\u00f9 precisa, sarebbe necessario un'immagine di maggior qualit\u00e0 e con una posizione e un'illuminazione pi\u00f9 standardizzata.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_60.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto presenta una illuminazione naturale e una ombreggiatura coerente. Non ci sono artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli. Le orecchie sono naturali e non presentano artefatti. La pelle ha una tonalit\u00e0 uniforme e non ci sono artefatti sulla faccia. Il volto sembra essere quello di una persona reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_79.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "Il volto presenta artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli. Inoltre, ci sono condizioni di illuminazione e ombreggiatura incoerenti.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_82.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto presenta una illuminazione naturale e una ombreggiatura coerente con il resto del viso. Non ci sono artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_57.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto presenta una illuminazione naturale e una ombreggiatura coerente con la realt\u00e0. Non ci sono artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_99.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto presenta una illuminazione naturale e una ombreggiatura coerente con il resto del viso. Non ci sono artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_63.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto presenta una illuminazione naturale e una ombreggiatura coerente con la pelle. Non ci sono artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_86.jpg",
+            "ground_truth": "fake",
+            "prediction": null,
+            "explanation": null,
+            "error": "JSON parsing error: Unterminated string starting at: line 3 column 18 (char 44)"
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_52.jpg",
+            "ground_truth": "fake",
+            "prediction": "uncertain",
+            "explanation": "Non \u00e8 possibile determinare con certezza se l'immagine mostra un volto reale o uno generato. Le caratteristiche del volto, come la bocca, le orecchie e l'attaccatura dei capelli, non sono sufficienti per stabilire con certezza la natura del volto. Inoltre, la qualit\u00e0 dell'immagine e le condizioni di illuminazione e ombreggiatura potrebbero influire sulla determinazione.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_90.jpg",
+            "ground_truth": "fake",
+            "prediction": null,
+            "explanation": null,
+            "error": "JSON parsing error: Unterminated string starting at: line 3 column 18 (char 44)"
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_98.jpg",
+            "ground_truth": "fake",
+            "prediction": null,
+            "explanation": null,
+            "error": "JSON parsing error: Unterminated string starting at: line 3 column 18 (char 44)"
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_70.jpg",
+            "ground_truth": "fake",
+            "prediction": null,
+            "explanation": null,
+            "error": "JSON parsing error: Unterminated string starting at: line 3 column 18 (char 44)"
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_84.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto presenta una illuminazione naturale e una ombreggiatura coerente con il resto del corpo. Non ci sono artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_69.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto presenta una illuminazione naturale e una ombreggiatura coerente con il resto del viso. Non ci sono artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_53.jpg",
+            "ground_truth": "fake",
+            "prediction": "uncertain",
+            "explanation": "Non \u00e8 possibile determinare con certezza se l'immagine mostra un volto reale o uno generato. L'immagine presenta una qualit\u00e0 non ottimale e ci sono artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli. Inoltre, ci sono condizioni di illuminazione e ombreggiatura incoerenti che rendono difficile la determinazione con certezza.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_66.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto presenta una illuminazione naturale e una ombreggiatura coerente con il resto del viso. Non ci sono artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_64.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto presenta una illuminazione naturale e una ombreggiatura coerente con la pelle. Non ci sono artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_56.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto presenta una illuminazione naturale e una ombreggiatura coerente con il resto del viso. Non ci sono artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_95.jpg",
+            "ground_truth": "fake",
+            "prediction": null,
+            "explanation": null,
+            "error": "JSON parsing error: Unterminated string starting at: line 3 column 18 (char 44)"
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_61.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto presenta una illuminazione naturale e una ombreggiatura coerente. Non ci sono artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli. Il volto sembra essere quello di un uomo reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_50.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto presenta una illuminazione naturale e una ombreggiatura coerente con il resto della testa. Non ci sono artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_83.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto presenta una illuminazione naturale e una ombreggiatura coerente con il resto del viso. Non ci sono artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_92.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto presenta una illuminazione naturale e una ombreggiatura coerente con il resto della testa. Non ci sono artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_51.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto presenta una illuminazione naturale e una ombreggiatura coerente. Non ci sono artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli. Il volto sembra essere quello di un uomo reale.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_62.jpg",
+            "ground_truth": "fake",
+            "prediction": null,
+            "explanation": null,
+            "error": "JSON parsing error: Unterminated string starting at: line 3 column 18 (char 44)"
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_97.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "Il volto presenta artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli. Inoltre, ci sono condizioni di illuminazione e ombreggiatura incoerenti.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_72.jpg",
+            "ground_truth": "fake",
+            "prediction": null,
+            "explanation": null,
+            "error": "JSON parsing error: Unterminated string starting at: line 3 column 18 (char 44)"
+        }
+    ]
+}

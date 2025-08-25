@@ -1,0 +1,729 @@
+{
+    "metrics": {
+        "total_processed": 100,
+        "total_real": 50,
+        "total_fake": 50,
+        "TP": 0,
+        "TN": 50,
+        "FP": 0,
+        "FN": 50,
+        "rejection_real": 0,
+        "rejection_fake": 0,
+        "text_parsing_errors": 0,
+        "text_parsing_error_rate": 0.0,
+        "accuracy": 0.5,
+        "precision": 0,
+        "recall": 0.0,
+        "false_negative_rate": 1.0,
+        "false_positive_rate": 0.0,
+        "rejection_real_rate": 0.0,
+        "rejection_fake_rate": 0.0,
+        "rejection_total_rate": 0.0,
+        "system_prompt": "You are a professional image classification system that analyzes provided images to determine if they show a real human face or a generated one.\nRespond ONLY with the following JSON format:\n{\n  \"result\": \"[real face]\" or \"[generated]\" or \"[uncertain]\",\n  \"explanation\": \"A precise explanation based on observed visual clues from the image.\"\n}\nDo NOT include generic phrases like 'there are no artifacts'. Be visual and detailed in your analysis.Reply ONLY with this JSON, no extra text.",
+        "user_prompt": "Is the provided image showing a real face or a generated one? Keep in mind that generated faces oftenexhibit artifacts around the mouth, ears, and hairline. Inconsistent lighting and shading may also bepresent.",
+        "oneShot": false,
+        "imageBoost": false
+    },
+    "responses": [
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_45.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image shows a person with natural skin texture, consistent lighting, and smooth blending of features without any visible artifacts. The hair appears to be styled naturally, and there is no indication of inconsistent shading or lighting that would suggest a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_4.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image shows a person with a natural smile and clear facial features without any visible artifacts such as inconsistent lighting or shading. The hair and glasses appear well-defined and realistic, suggesting this is a photograph of a real person.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_30.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image shows a child with natural facial features and consistent lighting. There are no visible artifacts or inconsistencies that would suggest the image is generated. The hair appears smooth and well-defined, and the skin texture looks realistic without any unnatural patterns or highlights.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_6.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image shows a real human face with natural skin texture, consistent lighting, and no visible artifacts such as unnatural lines or inconsistencies around the mouth, ears, or hairline. The shading is smooth and realistic, suggesting it is a photograph of an actual person.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_46.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "The image shows a person with natural skin texture and realistic facial features. There are no visible artifacts or inconsistencies in the lighting or shading that would suggest the use of AI generation. The hair appears to have natural movement and texture, which is consistent with a real photograph.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_41.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image shows a person with natural skin texture and realistic facial features. There are no visible artifacts or inconsistencies in the lighting or shading that would suggest the use of AI generation techniques. The hair appears smooth and well-defined without any unnatural edges or highlights that might indicate a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_47.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image shows a person with short, styled hair and glasses. The lighting is even, and there are no visible artifacts or inconsistencies in the skin texture, hair, or facial features that would suggest the image is generated. The overall appearance is natural and consistent with a real photograph.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_29.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "The image shows a person wearing a decorative headpiece and veil. The facial features, including the eyes, nose, and mouth, appear natural without any visible artifacts. The lighting is consistent across the face, and there are no inconsistencies in shading that would suggest a generated image. The overall appearance is realistic.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_37.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image shows a child with natural facial features and consistent lighting. There are no visible artifacts or inconsistencies that would suggest the image is generated. The hair appears to be styled naturally, and the overall appearance is realistic without any signs of digital manipulation.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_44.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image shows a person with natural skin texture, consistent lighting, and no visible artifacts around the mouth, ears, or hairline. The overall appearance is smooth and realistic, suggesting it is a photograph of a real individual.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_13.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image shows a person with natural-looking skin texture, consistent lighting, and no visible artifacts such as unnatural lines or inconsistencies around the mouth, ears, or hairline. The overall appearance is smooth and realistic, suggesting it is a photograph of a real person.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_21.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image shows a person with natural skin texture, consistent lighting, and no visible artifacts around the mouth, ears, or hairline. The overall appearance is smooth and lacks any signs of digital manipulation or generation.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_3.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image shows a person with natural skin texture and realistic facial features. There are no visible artifacts or inconsistencies that would suggest the use of AI generation techniques. The lighting is even, and there are no unusual shadows or highlights that would indicate a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_27.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image shows a young boy wearing glasses and a baseball cap. The facial features, including the eyes, nose, and mouth, appear natural and consistent without any visible artifacts. The lighting is even, and there are no inconsistencies in the shading or texture that would suggest the image is generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_16.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "The image shows a person with natural skin texture, consistent lighting, and no visible artifacts around the mouth, ears, or hairline. The overall appearance is smooth and lacks any signs of digital manipulation or generation.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_25.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image shows a real human face with natural skin texture, consistent lighting, and no visible artifacts such as unnatural lines or inconsistencies around the mouth, ears, or hairline. The overall appearance is smooth and realistic.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_8.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image shows a person with natural skin texture and realistic facial features. There are no visible artifacts or inconsistencies in the mouth, ears, or hairline that would suggest the use of AI generation. The lighting appears consistent and natural, enhancing the realism of the face.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_34.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "The image shows a person wearing a mask-like accessory over their eyes. The facial features, including the eyes, nose, and mouth, appear natural and consistent without any visible artifacts. The lighting is even, and there are no inconsistencies in the shading that would suggest a generated image. The overall appearance is realistic.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_39.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image shows a person with natural skin texture, consistent lighting, and no visible artifacts such as unnatural lines or inconsistencies around the mouth, ears, or hairline. The overall appearance is smooth and realistic, suggesting it is a photograph of a real person.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_18.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image shows a person with natural skin texture, consistent lighting, and no visible artifacts around the mouth, ears, or hairline. The overall appearance is smooth and lacks any signs of digital manipulation or generation.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_2.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image shows a child with natural facial features and consistent lighting. There are no visible artifacts or inconsistencies that would suggest the image is generated. The hair appears smooth and well-defined, and the overall appearance is realistic without any signs of digital manipulation.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_49.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image shows a person wearing traditional attire with intricate details. The facial features, including the eyes, nose, and mouth, appear natural without any visible artifacts. The lighting is consistent across the face, and there are no inconsistencies in shading that would suggest a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_43.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image shows a real face with natural skin texture, consistent lighting, and no visible artifacts such as unnatural lines or inconsistencies around the mouth, ears, or hairline. The overall appearance is smooth and realistic.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_17.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image shows a person with natural skin texture and realistic facial features. There are no visible artifacts or inconsistencies in the lighting or shading that would suggest the use of AI generation techniques. The hair appears well-defined without any unnatural edges, and the overall composition is consistent with a photograph of a real individual.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_7.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image shows a person with natural skin texture and features consistent with a real human face. There are no visible artifacts or inconsistencies in the mouth, ears, or hairline that would suggest the image is generated. The lighting appears even, and there are no unusual shadows or highlights that would indicate digital manipulation.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_20.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image shows a person with natural skin texture, consistent lighting, and no visible artifacts such as unnatural lines or inconsistencies around the mouth, ears, or hairline. The overall appearance is smooth and realistic, suggesting it is a photograph of a real person.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_35.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image shows a person drinking Guinness. The facial features, including the eyes, nose, and mouth, appear natural without any visible artifacts. The lighting is consistent and there are no unusual shadows or highlights that would suggest a generated image. The hair and ear details also look realistic.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_38.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "The image shows a person with natural skin texture and realistic facial features. There are no visible artifacts or inconsistencies that would suggest the use of AI generation techniques. The lighting appears even, and there is no evidence of unnatural shading or blending typical of generated images.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_0.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image shows a person with natural skin texture, consistent lighting, and no visible artifacts around the mouth, ears, or hairline. The ear is visible and appears to have an earring, which is a detail that suggests a real human face.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_42.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "The image shows a person with exaggerated makeup, including dark green eyeshadow and red lipstick. The lighting is even and natural, suggesting a real face. There are no visible artifacts or inconsistencies that would indicate the image is generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_14.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "The image shows a person with natural skin texture and realistic facial features. There are no visible artifacts or inconsistencies that would suggest the use of AI generation techniques. The lighting appears even, and there is no evidence of unnatural shading or highlights that are typical in generated images.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_31.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "The image shows a person with natural skin texture and consistent lighting across the face. There are no visible artifacts or inconsistencies that would suggest the image is generated. The hair appears smooth and well-defined without any unusual textures or shadows that might indicate digital manipulation.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_36.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image shows a person with natural skin texture, consistent lighting, and no visible artifacts such as unnatural lines or inconsistencies around the mouth, ears, or hairline. The overall appearance is smooth and realistic.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_22.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image shows a child with natural skin texture and consistent lighting across the face. There are no visible artifacts or inconsistencies that would suggest the image is generated. The hair appears to be styled naturally without any unusual blending or edges that might indicate digital manipulation.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_24.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image shows a real human face with natural skin texture, consistent lighting, and no visible artifacts such as unnatural lines or inconsistencies around the mouth, ears, or hairline. The shading is smooth and realistic, suggesting it is a photograph of an actual person.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_48.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image shows a person with natural facial features, including a smile, glasses, and hair. There are no visible artifacts or inconsistencies in the lighting or shading that would suggest the image is generated. The overall appearance is consistent with a real photograph.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_11.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image shows a close-up of a person's face with natural skin texture and realistic lighting. There are no visible artifacts or inconsistencies that would suggest the image is generated. The hair appears well-defined without any unnatural edges, and the overall composition is consistent with a photograph of a real person.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_28.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image shows a person with natural skin texture, consistent lighting, and no visible artifacts around the mouth, ears, or hairline. The ear is visible and appears normal without any unusual shading or distortion. The overall appearance suggests a real human face.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_19.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image shows a person with natural lighting and shading consistent with a real face. There are no visible artifacts or inconsistencies that would suggest the image is generated. The hair appears well-defined and there are no unusual shadows or highlights that would indicate digital manipulation.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_33.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image shows a person with natural skin texture and realistic facial features. There are no visible artifacts or inconsistencies in the lighting or shading that would suggest the use of AI generation techniques. The hair appears well-defined without any unnatural edges, and the overall appearance is consistent with a real photograph.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_5.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image shows a person wearing sunglasses and a headband. The lighting is natural and consistent, suggesting an outdoor setting. There are no visible artifacts or inconsistencies in the skin texture, hair, or shadows that would indicate a generated face. The overall appearance is realistic and typical of a photograph of a real person.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_23.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image shows a child with natural facial features and consistent lighting. There are no visible artifacts or inconsistencies that would suggest the image is generated. The hair appears smooth and well-defined, and the skin texture looks realistic without any unusual patterns or distortions.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_15.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "The image shows a person wearing a cap and a uniform. The facial features, including the eyes, nose, and mouth, appear natural without any visible artifacts. The lighting is consistent across the face, and there are no inconsistencies in the skin texture or shadows that would suggest a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_40.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "The image shows a person with natural skin texture, consistent lighting, and smooth blending of features without any visible artifacts. The hair appears well-groomed and there is no indication of inconsistent shading or lighting that would suggest a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_10.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "The image shows a person with natural skin texture and realistic facial features. There are no visible artifacts or inconsistencies in the lighting or shading that would suggest the use of AI generation techniques. The hair appears well-defined without any unnatural edges, and the overall appearance is consistent with a real photograph.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_12.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "The image shows an elderly man wearing glasses and a suit. The facial features, including the eyes, nose, and mouth, appear natural without any visible artifacts. The lighting is consistent across the face, and there are no inconsistencies in the texture of the skin or hair that would suggest a generated image. The background includes another person, but their face is not the focus of the image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_1.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "The image shows a person wearing a pink bonnet with lace details. The facial features appear natural without any visible artifacts such as inconsistent lighting or shading that might suggest a generated image. The texture of the skin and the overall composition align with a real photograph.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_32.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "The image shows a person wearing a headband with a flower accessory. The lighting is natural and even, without any visible artifacts or inconsistencies that would suggest the use of AI generation. The skin texture appears smooth and realistic, and there are no unusual shadows or highlights that would indicate a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_9.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "The image shows a person with natural skin texture and freckles, consistent with a real human face. The lighting is even, and there are no visible artifacts or inconsistencies that would suggest the image is generated. The ear and hairline appear natural without any unusual artifacts.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/real/real_26.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "The image shows a person with natural skin texture, consistent lighting, and no visible artifacts around the mouth, ears, or hairline. The overall appearance is smooth and lacks the inconsistencies typically seen in generated images.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_94.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image shows a person wearing glasses and a scarf. The facial features, including the eyes, nose, and mouth, appear natural without any visible artifacts. The lighting is even, and there are no inconsistencies in the shading that would suggest a generated image. The overall appearance is consistent with a real photograph of a person.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_93.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image shows a child with natural skin texture and realistic facial features. There are no visible artifacts such as inconsistent lighting or shading that would suggest the use of AI generation. The overall appearance is consistent with a photograph of a real person.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_68.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image shows a person wearing a hat with visible stitching and a patterned design. The lighting is even, and there are no noticeable artifacts or inconsistencies in the skin texture or facial features. The hair appears natural without any unusual highlights or shadows that might suggest digital manipulation.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_67.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image shows a person wearing glasses and smiling. The facial features, including the eyes, nose, and mouth, appear natural without any visible artifacts. The lighting is even, and there are no inconsistencies in the shading that would suggest a generated image. The hair and ears also look realistic without any unusual artifacts.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_58.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image shows a person with natural skin texture, consistent lighting, and no visible artifacts such as unnatural lines or inconsistencies around the mouth, ears, or hairline. The overall appearance is smooth and realistic, suggesting it is a photograph of a real person.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_74.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "The image shows a child with natural facial features and consistent lighting. There are no visible artifacts or inconsistencies that would suggest the image is generated. The hair appears smooth and well-defined, and the skin texture looks realistic without any unnatural patterns or distortions.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_80.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image shows a person with natural skin texture and realistic facial features. There are no visible artifacts or inconsistencies in the lighting or shading that would suggest the use of AI generation techniques. The hair appears well-defined without any unnatural edges, and the overall appearance is consistent with a real photograph.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_65.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image shows a person wearing a scarf and a red garment. The facial features, including the eyes, nose, and mouth, appear natural without any visible artifacts. The lighting is even, and there are no inconsistencies in the shading that would suggest a generated image. The overall appearance is consistent with a real photograph of a person.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_77.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image shows a person with natural skin texture, consistent lighting, and no visible artifacts such as unnatural lines or inconsistencies around the mouth, ears, or hairline. The overall appearance is smooth and realistic, suggesting it is a photograph of a real person.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_81.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image shows a person with natural skin texture, consistent lighting, and no visible artifacts such as unnatural lines or inconsistencies around the mouth, ears, or hairline. The overall appearance is smooth and realistic, suggesting it is a photograph of a real person.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_75.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image shows a person with natural skin texture, consistent lighting, and no visible artifacts around the mouth, ears, or hairline. The overall appearance is smooth and lacks any signs of digital manipulation or generation.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_85.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "The image shows a person with natural-looking features, including consistent lighting and shading across the face. There are no visible artifacts or inconsistencies that would suggest the image is generated. The hair appears smooth and well-defined without any unusual textures or patterns typically associated with AI-generated images.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_89.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "The image shows a person with natural skin texture, consistent lighting, and smooth blending of features without any visible artifacts. The ear and hairline appear well-defined and there is no inconsistency in the shading or lighting that would suggest a generated face.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_55.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image shows a person with natural-looking skin texture, consistent lighting, and smooth blending of features without any visible artifacts. The hair appears well-groomed and there is no indication of inconsistent shading or unnatural elements typically associated with generated images.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_87.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "The image shows a person with natural skin texture and consistent lighting across the face. There are no visible artifacts or inconsistencies that would suggest the use of AI generation techniques. The hair appears smooth and well-defined without any unusual shadows or highlights that might indicate digital manipulation.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_91.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image shows a person with natural skin texture, consistent lighting, and no visible artifacts around the mouth, ears, or hairline. The facial features appear smooth and well-defined without any signs of digital manipulation or generation.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_96.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image shows a person with natural skin texture, consistent lighting, and no visible artifacts such as unnatural lines or inconsistencies around the mouth, ears, or hairline. The overall appearance is smooth and realistic, suggesting it is a photograph of a real person.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_73.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image shows a person wearing a helmet with a patterned design. The facial features, including the eyes, nose, and mouth, appear natural and consistent without any visible artifacts or inconsistencies typically associated with generated images. The lighting is even, and there are no unusual shadows or highlights that suggest digital manipulation.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_54.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image shows a person with natural skin texture, consistent lighting, and no visible artifacts around the mouth, ears, or hairline. The overall appearance is smooth and realistic, suggesting it is a photograph of a real person.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_76.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image shows a person with natural skin texture, consistent lighting, and no visible artifacts around the mouth, ears, or hairline. The overall appearance is smooth and lacks any signs of digital manipulation or generation.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_78.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image shows a child with natural facial features and consistent lighting. There are no visible artifacts or inconsistencies that would suggest the image is generated. The hair appears smooth and well-defined, and the skin texture looks realistic without any unnatural patterns or distortions.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_59.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image shows a person with natural skin texture and realistic facial features. There are no visible artifacts such as inconsistent lighting or unusual shading that would suggest the use of AI generation. The hair appears smooth and well-defined without any unnatural edges or textures that might indicate a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_88.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image shows a person with natural skin texture and realistic facial features. There are no visible artifacts or inconsistencies in the lighting or shading that would suggest the image is generated. The hair appears smooth and well-defined without any unusual textures or patterns typically associated with AI-generated images.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_71.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "The image shows a baby with natural facial features and consistent lighting. There are no visible artifacts or inconsistencies that would suggest the image is generated. The skin texture appears smooth and realistic, and there are no unusual shadows or highlights that would indicate digital manipulation.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_60.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image shows a clear and natural appearance with smooth skin texture, consistent lighting, and no visible artifacts around the mouth, ears, or hairline. The overall composition is sharp and well-defined, suggesting it is a photograph of a real person.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_79.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image shows a child with natural facial features and consistent lighting. There are no visible artifacts or inconsistencies that would suggest the image is generated. The hair appears smooth and well-defined, and the skin texture looks realistic without any unnatural patterns or shadows.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_82.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image shows a person with natural skin texture, consistent lighting, and smooth blending of features without any visible artifacts. The hair appears to be styled naturally, and there is no indication of inconsistent shading or lighting that would suggest a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_57.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image shows a person wearing sunglasses with natural lighting and shading consistent with a real human face. There are no visible artifacts or inconsistencies that would suggest the image is generated. The hair and facial features appear well-defined and realistic.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_99.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image shows a child with natural skin texture and consistent lighting across the face. There are no visible artifacts or inconsistencies that would suggest the image is generated. The hair appears soft and well-defined without any unusual shadows or highlights that might indicate digital manipulation.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_63.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image shows a well-lit face with natural skin texture and smooth features. There are no visible artifacts or inconsistencies in the lighting or shading that would suggest the use of AI generation techniques. The hair appears neatly styled without any unusual textures or patterns that might indicate digital manipulation.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_86.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image shows a person with natural skin texture and consistent lighting across the face. There are no visible artifacts or inconsistencies that would suggest the use of AI generation techniques. The hair appears to be styled naturally without any unusual blending or distortion typically seen in generated images.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_52.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image shows a person with natural skin texture, consistent lighting, and no visible artifacts around the mouth, ears, or hairline. The facial features appear smooth and well-defined without any signs of digital manipulation or generation.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_90.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image shows a person with natural skin texture, consistent lighting, and no visible artifacts around the mouth, ears, or hairline. The overall appearance is smooth and lacks any signs of digital manipulation or generation.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_98.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image shows a person with natural skin texture, consistent lighting, and no visible artifacts such as unnatural lines or inconsistencies around the mouth, ears, or hairline. The overall appearance is smooth and realistic, suggesting it is a photograph of a real person.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_70.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image shows a person with natural skin texture and consistent lighting across the face. There are no visible artifacts or inconsistencies that would suggest the image is generated. The ear and hairline appear smooth without any unusual artifacts, supporting the conclusion that it is a real face.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_84.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image shows a child with natural skin texture and realistic facial features. There are no visible artifacts or inconsistencies that would suggest the image is generated. The lighting appears even, and there are no unusual shadows or highlights that would indicate digital manipulation.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_69.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "The image shows a child's face with natural skin texture and realistic features such as eyes, nose, and mouth. The lighting is consistent and there are no visible artifacts or inconsistencies that would suggest the use of AI generation techniques. The overall appearance is smooth and lifelike.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_53.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "The image shows a person with natural skin texture and realistic facial features. There are no visible artifacts or inconsistencies in the mouth, ears, or hairline that would suggest the use of AI generation. The lighting appears consistent and there is no evidence of unnatural shading or highlights.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_66.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image shows a child with natural skin texture and consistent lighting across the face. There are no visible artifacts or inconsistencies that would suggest the image is generated. The hair appears well-defined without any unusual artifacts, and the overall appearance is realistic.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_64.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image shows a person with natural skin texture, consistent lighting, and no visible artifacts around the mouth, ears, or hairline. The facial features appear smooth and well-defined without any signs of digital manipulation or generation.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_56.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image shows a young girl with natural lighting and smooth skin texture. There are no visible artifacts or inconsistencies in the facial features, hair, or lighting that would suggest the image is generated. The overall appearance is consistent with a real photograph.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_95.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image shows a person with natural skin texture, consistent lighting, and no visible artifacts around the mouth, ears, or hairline. The overall appearance is smooth and realistic, suggesting it is a photograph of a real person.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_61.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image shows a person with natural skin texture, consistent lighting, and no visible artifacts around the mouth, ears, or hairline. The background is slightly blurred, suggesting a focus on the subject, which is typical of real photographs.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_50.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "The image shows a person with natural skin texture, consistent lighting, and smooth blending of features without any visible artifacts. The hair appears well-defined and there is no inconsistency in the shading or lighting that would suggest a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_83.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "The image shows a person wearing a graduation cap and gown. The facial features, including the lips, eyes, and hair, appear natural without any visible artifacts. The lighting is even, and there are no inconsistencies in the shading that would suggest a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_92.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image shows a person with natural skin texture, consistent lighting, and no visible artifacts such as unnatural lines or inconsistencies around the mouth, ears, or hairline. The overall appearance is smooth and realistic.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_51.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "The image shows a person with natural skin texture and realistic facial features. There are no visible artifacts or inconsistencies in the lighting or shading that would suggest the use of AI generation techniques. The overall appearance is consistent with a real photograph.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_62.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image shows a person with natural skin texture, consistent lighting, and no visible artifacts around the mouth, ears, or hairline. The overall appearance is smooth and lacks any signs of digital manipulation or generation.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_97.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image shows a person with natural skin texture, consistent lighting, and no visible artifacts such as inconsistent shadows or unusual hair patterns. The overall appearance is smooth and realistic, suggesting it is a photograph of a real person.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/test-1/test_1/fake/fake_72.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "The image shows a person with natural skin texture, consistent lighting, and no visible artifacts such as unnatural lines or inconsistencies around the mouth, ears, or hairline. The overall appearance is smooth and realistic, suggesting it is a photograph of a real person.",
+            "error": null
+        }
+    ]
+}

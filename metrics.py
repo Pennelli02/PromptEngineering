@@ -145,6 +145,20 @@ def createJSONMeanStats(folder_path, oneshot=False):
     for key, values in aggregated.items():
         mean_results[f"{key}_mean"] = sum(values) / len(values) if values else 0
 
+    # Calcola F1 e F2-score
+    precision = mean_results.get("precision_mean", 0)
+    recall = mean_results.get("recall_mean", 0)
+
+    if precision + recall > 0:
+        f1 = 2 * (precision * recall) / (precision + recall)
+        beta = 2
+        f2 = (1 + beta ** 2) * (precision * recall) / (beta ** 2 * precision + recall)
+    else:
+        f1, f2 = 0, 0
+
+    mean_results["F1_score"] = f1
+    mean_results["F2_score"] = f2
+
     # Path completo di output
     output_path = os.path.join(folder_path, output_filename)
 
@@ -181,6 +195,6 @@ if __name__ == "__main__":
     for i in range(7):  # indici da 0 a 6
         for lang in ["Eng", "Ita"]:
             folder = os.path.join(base_path, f"prompt-{i}-{lang}")
-            print(f"➡️ Elaboro: {folder}")
+            print(f" Elaboro: {folder}")
             createJSONMeanStats(folder)
 
