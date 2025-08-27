@@ -1,0 +1,730 @@
+{
+    "metrics": {
+        "total_processed": 100,
+        "total_real": 50,
+        "total_fake": 50,
+        "TP": 0,
+        "TN": 0,
+        "FP": 0,
+        "FN": 0,
+        "rejection_real": 50,
+        "rejection_fake": 50,
+        "text_parsing_errors": 0,
+        "text_parsing_error_rate": 0.0,
+        "accuracy": 0,
+        "precision": 0,
+        "recall": 0,
+        "false_negative_rate": 0.0,
+        "false_positive_rate": 0.0,
+        "rejection_real_rate": 1.0,
+        "rejection_fake_rate": 1.0,
+        "rejection_total_rate": 1.0,
+        "one_class_accuracy_fake": 0,
+        "one_class_accuracy_real": 0,
+        "system_prompt": "You are a professional image classification system that analyzes provided images to determine if they show a real human face or a generated one.\nRespond ONLY with the following JSON format:\n{\n  \"result\": \"[real face]\" or \"[generated]\" or \"[uncertain]\",\n  \"explanation\": \"A precise explanation based on observed visual clues from the image.\"\n}\nDo NOT include generic phrases like 'there are no artifacts'. Be visual and detailed in your analysis.Reply ONLY with this JSON, no extra text.",
+        "user_prompt": "Are there any artifacts around the mouth, ears, or hairline that might indicate the face is AI-generated?",
+        "one_shot": false
+    },
+    "responses": [
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_111.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person with short hair and a visible ear. There are no clear artifacts such as unnatural skin texture, inconsistent lighting, or unusual features around the mouth, ears, or hairline that would suggest the face is AI-generated. The overall appearance seems natural.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_106.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a photograph of a real person. There are no visible artifacts such as pixelation, unnatural lighting, or distortions around the mouth, ears, or hairline that would suggest it is an AI-generated image. The details in the hair and skin texture seem consistent with a real photograph.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_144.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The facial features appear natural, but there are slight variations in skin texture and lighting that could be indicative of AI generation. Additionally, the edges of the hair and the background elements do not show any obvious artifacts that would definitively indicate a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_119.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person with a mustache and headphones, but there are no clear indicators of artificial features such as artifacts around the mouth, ears, or hairline. The facial features appear natural and well-defined.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_110.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person with glasses and a suit, but there are no clear indicators of artificial features such as artifacts around the mouth, ears, or hairline. The details appear consistent with a real photograph.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_124.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The facial features appear natural, but there are slight variations in skin texture and lighting that could be indicative of AI generation. Additionally, the edges of the hair and ears seem slightly irregular, which might suggest a generated image. However, without more context or a comparison to known AI-generated faces, it's difficult to definitively classify this as either real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_100.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The facial features appear natural, but there are slight variations in lighting and shadowing that could be indicative of an AI-generated image. Additionally, the texture of the skin and the edges of the hair and beard seem consistent with real human features, but without more detailed analysis, it's difficult to definitively classify the image as either real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_136.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The facial features appear natural, but there are slight variations in skin texture and lighting that could be indicative of AI generation. Additionally, the edges of the hair and the background do not show any obvious artifacts that would definitively indicate a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_133.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person with a bald head and a beard, but there are no clear indicators of artificial features such as artifacts around the mouth, ears, or hairline. The skin texture and lighting appear natural, which could suggest either a real photograph or a high-quality AI-generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_108.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The facial features appear to be well-defined and natural, but there are no clear indicators of artificial artifacts such as pixelation, unnatural skin texture, or unusual lighting effects that would suggest an AI-generated image. The overall appearance is consistent with a real human face.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_148.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person with short blonde hair and glasses. There are no visible artifacts such as unnatural skin texture, inconsistent lighting, or unusual hair patterns that would suggest an AI-generated face. However, without more specific details about the image quality and resolution, it's difficult to definitively classify the face as real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_102.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person wearing a Santa hat, which is a common accessory for festive occasions. There are no visible artifacts such as pixelation, unnatural skin texture, or other signs of AI generation around the mouth, ears, or hairline. The facial features appear to be natural and well-defined.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_105.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person with a bald head and a beard, wearing a black shirt. There are no visible artifacts such as lines, distortions, or unnatural features around the mouth, ears, or hairline that would typically indicate an AI-generated image. However, without more specific details about the image's quality or resolution, it is difficult to definitively classify it as either real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_125.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The facial features appear smooth and lack the typical imperfections found in real human faces, which could suggest an AI-generated image. However, without more specific details about the texture and lighting, it's difficult to definitively classify the image as either real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_142.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person with a clear and natural facial expression. There are no visible artifacts such as unnatural lines, distortions, or inconsistencies around the mouth, ears, or hairline that would typically suggest an AI-generated image. However, without more specific details about the image quality and resolution, it is difficult to definitively classify it as either real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_143.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The edges of the face appear smooth and lack the texture typically found in real human skin. The lighting and shadows also seem consistent with artificial lighting, which could suggest a generated image. However, without more specific indicators such as pixelation or unnatural features, it's uncertain whether this is a real face or a generated one.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_134.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a photograph of a real person. There are no visible artifacts such as pixelation, unnatural skin texture, or other signs typically associated with AI-generated images around the mouth, ears, or hairline. The details and lighting seem consistent with a real photograph.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_140.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person with a clear facial structure and natural skin texture. There are no visible artifacts such as unnatural lines, distortions, or inconsistencies that would typically suggest an AI-generated image. However, without more specific indicators, it is uncertain whether the face is real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_137.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The facial features appear natural, but there are slight variations in skin texture and lighting that could be indicative of AI generation. Additionally, the edges of the hair and ears seem slightly irregular, which might suggest a generated image. However, without more specific indicators such as pixelation or unnatural coloration, it's difficult to definitively classify this image as either real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_115.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person with glasses and a suit, but there are no clear indicators of artificial artifacts such as unnatural skin texture, inconsistent lighting, or unusual hair patterns that would suggest an AI-generated face. The facial features appear to be consistent with those of a real person.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_130.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a photograph of a person with natural facial features. There are no visible artifacts such as pixelation, unnatural skin texture, or other signs that would suggest it is an AI-generated image. However, without more specific details about the image quality or context, it is difficult to definitively classify it as either real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_101.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The edges of the hair and the skin around the mouth appear smooth and consistent, which could be indicative of AI generation. However, without more context or a comparison to known AI-generated faces, it's difficult to definitively classify this image as either real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_123.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a photograph of a real person. There are no visible artifacts such as pixelation, unnatural skin texture, or other signs typically associated with AI-generated images around the mouth, ears, or hairline. However, without more specific details about the image quality and resolution, it is difficult to definitively classify the image as either real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_122.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a real photograph of a child's face. There are no visible artifacts such as pixelation, unnatural skin texture, or other signs that would suggest it is an AI-generated image. The details in the hair, eyes, and skin tone seem consistent with a real photograph.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_138.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person with dark hair and a blue turtleneck sweater. There are no visible artifacts such as lines, distortions, or unnatural coloration around the mouth, ears, or hairline that would typically indicate an AI-generated image. However, without more specific details about the image quality or features, it is difficult to definitively classify the image as either real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_129.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The edges of the mouth, ears, and hairline appear smooth and lack the texture and imperfections typically found in real human faces. This could suggest either a real face or an AI-generated one. However, without more context or additional features, it is difficult to definitively classify the image as real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_149.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a photograph of a person with natural features. There are no visible artifacts such as unnatural skin texture, inconsistent lighting, or unusual hair patterns that would suggest an AI-generated origin. However, without more specific details about the image quality and composition, it is difficult to definitively classify it as either real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_116.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a real photograph of a young girl with natural features. There are no visible artifacts such as pixelation, unnatural skin texture, or other signs that would suggest it is AI-generated. The details in her hair and clothing also seem consistent with a real photograph.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_128.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person with gray hair and a slightly tilted head, which could be a natural pose. There are no clear artifacts such as pixelation, unnatural skin texture, or other signs of AI generation around the mouth, ears, or hairline. The facial features appear to be well-defined and consistent with a real human face.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_109.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person with straight, shoulder-length brown hair and a neutral expression. There are no visible artifacts such as unnatural skin texture, unusual lighting, or distortions around the mouth, ears, or hairline that would suggest the face is AI-generated. The overall appearance seems natural.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_113.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a photograph of a real person. There are no visible artifacts such as pixelation, unnatural lighting, or distortions that would suggest the face is AI-generated. The skin texture, hair, and facial features look natural and consistent with a real human face.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_135.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person with sunglasses and a microphone, but there are no clear indicators of artificial artifacts such as pixelation, unnatural skin texture, or other signs typically associated with AI-generated images. The facial features appear natural, and there are no obvious signs of digital manipulation.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_139.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The edges of the hair and the skin texture around the mouth appear smooth and consistent, which could suggest an AI-generated image. However, without more context or a comparison to other images, it's difficult to definitively classify this as either real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_147.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The facial features appear natural, but there are subtle variations in skin texture and lighting that could be indicative of AI generation. Additionally, the edges of the hair and earrings seem slightly irregular, which might suggest a generated image. However, without more specific indicators, it's uncertain whether these are artifacts or simply part of the natural appearance.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_112.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person with a slightly uneven hairline and some visible artifacts around the mouth area. These could be natural variations or artifacts from the photographing process. However, without more specific indicators such as unnatural skin texture, inconsistent lighting, or other clear signs of AI generation, it is difficult to definitively classify this as either real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_107.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person wearing a cap and a green scarf. There are no visible artifacts such as unnatural skin texture, inconsistent lighting, or unusual hair patterns that would suggest an AI-generated face. However, without more specific details about the facial features, it's difficult to definitively classify the image as either real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_141.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person with a well-defined jawline, clear skin texture, and natural lighting. However, without specific indicators such as pixelation, unnatural shading, or artifacts around the eyes, nose, or mouth, it is difficult to definitively classify the face as real or generated. The facial features appear to be consistent with those of a real human.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_118.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The facial features appear natural, but there are subtle variations in skin texture and lighting that could be indicative of AI generation. Additionally, the edges of the hair and the background do not show any obvious artifacts that would definitively indicate a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_114.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a photograph of a real person. There are no visible artifacts such as pixelation, unnatural lighting, or distortions around the mouth, ears, or hairline that would suggest it is an AI-generated image. The facial features look natural and well-defined.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_132.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a real photograph of a person with natural features. There are no visible artifacts such as pixelation, unnatural lighting, or distortions around the mouth, ears, or hairline that would suggest it is AI-generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_127.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a photograph of a real person. There are no visible artifacts such as pixelation, unnatural lighting, or distortions that would suggest the face is AI-generated. The skin texture, hair, and facial features look natural and consistent with a real photograph.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_121.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The facial features appear natural, but there are slight variations in skin texture and lighting that could be indicative of a real human face. However, without more specific indicators such as artifacts or unnatural features, it is uncertain whether the face is real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_126.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person wearing a decorative hat with colorful flowers and a veil. There are no visible artifacts such as pixelation, unnatural skin texture, or other signs of AI generation around the mouth, ears, or hairline. The facial features appear to be natural and well-defined.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_146.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person with a clear and natural facial expression. There are no visible artifacts such as lines, distortions, or unnatural features around the mouth, ears, or hairline that would typically suggest an AI-generated image. However, without more specific details about the image quality or additional context, it is difficult to definitively classify the image as either real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_145.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person wearing a uniform with a hat, but there are no clear indicators of artificial features such as artifacts around the mouth, ears, or hairline. The facial features appear natural and well-defined.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_120.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows two individuals with clear skin and natural features. There are no visible artifacts such as unnatural lines, distortions, or unusual coloration around the mouth, ears, or hairline that would suggest an AI-generated origin. The facial features appear to be realistic and well-defined.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_103.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a real photograph of a person with glasses and earrings. There are no visible artifacts such as pixelation, unnatural lighting, or distortions that would suggest it is an AI-generated image. The facial features and expressions seem natural and consistent with a real photograph.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_131.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person with clear facial features and natural lighting. There are no visible artifacts such as pixelation, unnatural skin texture, or unusual lighting effects that would suggest the face is AI-generated. However, without more specific indicators, it is uncertain whether the face is real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_104.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person wearing a military beret, which could be an artifact of the photo being taken in a specific lighting condition or angle. However, without more context or additional images for comparison, it's difficult to definitively determine if the face is real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_117.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a photograph of a person with a realistic appearance. There are no visible artifacts such as pixelation, unnatural lighting, or distortions around the mouth, ears, or hairline that would suggest it is an AI-generated image. The details and shading look consistent with a real human face.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_289.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person with short black hair and glasses. There are no visible artifacts such as lines, distortions, or unnatural coloration around the mouth, ears, or hairline that would typically suggest an AI-generated image. However, without more specific details about the image quality or resolution, it is difficult to definitively classify the face as either real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_297.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a photograph of a person with natural facial features. There are no visible artifacts such as lines, distortions, or unnatural coloration around the mouth, ears, or hairline that would suggest it is an AI-generated image. However, without more specific details about the image quality and resolution, it is difficult to definitively classify it as either real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_295.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a photograph of a real person. There are no visible artifacts such as pixelation, unnatural skin texture, or other signs that would suggest it is an AI-generated image. The facial features and expressions seem natural and consistent with those of a real person.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_286.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a photograph of a real person. There are no visible artifacts such as pixelation, unnatural lighting, or distortions around the mouth, ears, or hairline that would suggest it is an AI-generated image. The details and clarity of the features align more closely with a real photograph than a generated one.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_291.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a photograph of a real person. There are no visible artifacts such as pixelation, unnatural lighting, or distortions around the mouth, ears, or hairline that would suggest it is an AI-generated image. The facial features look natural and well-defined.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_277.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a high-resolution photograph of a person's face. There are no visible artifacts such as pixelation, unnatural lighting, or distortions around the mouth, ears, or hairline that would typically suggest an AI-generated image. However, without more specific details about the image quality and composition, it is difficult to definitively classify it as either real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_298.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The facial features appear smooth and symmetrical, which could be characteristic of both real faces and AI-generated ones. There are no visible artifacts such as pixelation, blurring, or unnatural skin texture that would definitively indicate an AI-generated image. The lighting and shadows also seem natural, without any signs of digital manipulation.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_271.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The edges of the hair and the skin around the mouth appear smooth and lack the texture typically found in real human skin. However, without more context or a comparison to known real faces, it's difficult to definitively classify this as either real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_250.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The facial features appear smooth and symmetrical, which could be characteristic of both real faces and AI-generated ones. There are no visible artifacts such as unnatural skin texture, sharp lines, or unusual lighting that would definitively indicate an AI-generated image. The overall appearance is consistent with a real human face.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_260.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person with a clear and natural facial expression. There are no visible artifacts such as lines, distortions, or unnatural features around the mouth, ears, or hairline that would typically suggest an AI-generated image. However, without more specific details about the image quality and resolution, it is difficult to definitively classify it as either real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_266.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a photograph of a person wearing a cap. There are no visible artifacts such as lines, distortions, or unnatural coloration around the mouth, ears, or hairline that would typically suggest an AI-generated image. However, without more specific details about the image quality or features, it is difficult to definitively classify it as either real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_261.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The facial features appear smooth and symmetrical, which could be characteristic of both real faces and AI-generated ones. There are no visible artifacts such as pixelation, blurring, or unnatural skin texture that would definitively indicate an AI-generated image. The lighting and shadows also seem natural, without any signs of digital manipulation.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_281.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The facial features appear natural, but there are slight variations in skin texture and lighting that could be indicative of AI generation. Additionally, the edges of the hat and the background do not show any obvious artifacts that would suggest artificial creation.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_292.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The facial features appear natural, but there are subtle variations in skin texture and lighting that could suggest an AI-generated origin. Additionally, the edges of the hat and the background foliage have a slightly unnatural appearance, which may be indicative of digital manipulation.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_299.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a photograph of a person with natural facial features. There are no visible artifacts such as lines, distortions, or unnatural coloration that would suggest the face is AI-generated. The skin texture, hair, and overall appearance seem consistent with a real human face.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_288.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a photograph of a real person. There are no visible artifacts such as pixelation, unnatural lighting, or distortions around the mouth, ears, or hairline that would suggest it is an AI-generated image. The details and clarity of the facial features are consistent with a real photograph.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_290.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a photograph of a real person. There are no visible artifacts such as lines, distortions, or unnatural features around the mouth, ears, or hairline that would suggest it is an AI-generated image. The skin texture and lighting also seem consistent with a real photograph.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_287.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The facial features appear smooth and symmetrical, which could be characteristic of both real faces and AI-generated ones. There are no visible artifacts such as unnatural skin texture, sharp lines, or unusual coloration that would definitively indicate an AI-generated image. The overall appearance is consistent with a real human face.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_253.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person with a clear and natural facial expression. There are no visible artifacts such as lines, distortions, or unnatural features around the mouth, ears, or hairline that would typically suggest an AI-generated image. However, without more specific details about the image quality or additional context, it is difficult to definitively classify the image as either real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_257.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a high-resolution photograph of a person's headshot. There are no visible artifacts such as pixelation, unnatural lighting, or distortions around the mouth, ears, or hairline that would typically suggest an AI-generated image. However, without more specific details about the image quality and composition, it is difficult to definitively classify it as either real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_274.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a photograph of a child with natural features. There are no visible artifacts such as pixelation, unnatural skin texture, or other signs that would suggest an AI-generated image. However, without more specific details about the image quality or context, it is difficult to definitively classify it as either real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_259.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a high-resolution photograph of a person's face. There are no visible artifacts such as pixelation, blurring, or unnatural lighting that would typically suggest an AI-generated image. However, without more specific details about the image quality and composition, it is difficult to definitively classify it as either real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_256.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a photograph of a person with natural facial features. There are no visible artifacts such as unnatural skin texture, inconsistent lighting, or unusual hair patterns that would suggest it is an AI-generated image. However, without more specific details about the image quality and composition, it is difficult to definitively classify it as either real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_267.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The edges of the hair and the skin around the mouth appear smooth and consistent, which could be indicative of AI generation. However, without more context or a comparison to known AI-generated faces, it's difficult to definitively classify this image as either real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_270.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person with short, light-colored hair and a neutral expression. There are no visible artifacts such as unnatural skin texture, unusual lighting, or distortions around the mouth, ears, or hairline that would suggest an AI-generated origin. However, without more specific indicators, it is uncertain whether the face is real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_293.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a real photograph of a person with natural facial features. There are no visible artifacts such as unnatural skin texture, inconsistent lighting, or unusual hair patterns that would suggest it is AI-generated. However, without more specific details about the image, it is difficult to definitively classify it as either real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_269.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The facial features appear smooth and symmetrical, which could be characteristic of both real faces and AI-generated ones. There are no visible artifacts such as pixelation, unusual skin texture, or unnatural lighting that would definitively indicate an AI-generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_263.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person holding a microphone, but the facial features appear to be slightly distorted or blurred, which could suggest an AI-generated image. However, without more context or a clearer view of the entire face, it's difficult to definitively classify the image as either real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_252.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be of a real person with natural features. There are no visible artifacts such as pixelation, unnatural skin texture, or other signs that would suggest the face is AI-generated. However, without more specific details about the image quality and resolution, it's difficult to definitively classify it as either real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_275.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a high-resolution photograph of a person's face. There are no visible artifacts such as pixelation, blurring, or unnatural lighting that would typically suggest an AI-generated image. However, without more specific details about the image quality and composition, it is difficult to definitively classify it as either real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_280.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person with glasses and a red garment. There are no visible artifacts such as unnatural skin texture, inconsistent lighting, or unusual hair patterns that would suggest an AI-generated face. However, without more specific details about the facial features, it is difficult to definitively classify the image as either real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_262.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person with a clear and natural facial expression. There are no visible artifacts such as lines, distortions, or unnatural features around the mouth, ears, or hairline that would typically suggest an AI-generated image. However, without more specific details about the image's quality and resolution, it is difficult to definitively classify it as either real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_273.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a photograph of a person with natural features. There are no visible artifacts such as pixelation, unnatural skin texture, or other signs that would suggest it is an AI-generated image. However, without more specific details about the image quality and resolution, it is difficult to definitively classify it as either real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_255.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a high-resolution photograph of a real person. There are no visible artifacts such as pixelation, blurring, or unnatural lighting that would suggest it is an AI-generated image. The details in the hair, skin texture, and facial features look natural and consistent with a real photograph.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_282.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The facial features appear natural, but there are subtle variations in skin texture and lighting that could be indicative of AI generation. Additionally, the edges of the hair and ears seem slightly irregular, which might suggest a generated image. However, without more specific indicators such as pixelation or unnatural coloration, it's difficult to definitively classify this image as either real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_251.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person with long brown hair and an earring. There are no visible artifacts such as unnatural skin texture, inconsistent lighting, or unusual hair patterns that would suggest the face is AI-generated. The facial features appear natural and well-defined.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_254.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person wearing a hat and a jacket, but there are no clear indicators of artificial features such as artifacts around the mouth, ears, or hairline. The facial features appear natural without any obvious signs of digital manipulation.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_265.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a high-resolution photograph of a young child with natural lighting. There are no visible artifacts such as pixelation, unnatural skin texture, or other signs typically associated with AI-generated images around the mouth, ears, or hairline. However, without more specific details about the image's quality and composition, it is difficult to definitively classify it as either real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_258.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a child with a colorful headband and a blue shirt. There are no visible artifacts such as lines, distortions, or unnatural coloration around the mouth, ears, or hairline that would typically indicate an AI-generated face. However, without more specific details about the facial features, it is difficult to definitively classify the image as either real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_296.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a photograph of a person with natural skin texture and lighting. There are no visible artifacts such as unnatural lines, distortions, or inconsistencies that would suggest it is an AI-generated image. The facial features look realistic and well-defined.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_285.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The edges of the child's mouth, ears, and hairline appear smooth and lack the texture and imperfections typically found in real human faces. This could suggest either a real face or a highly realistic AI-generated image. However, without more context or additional features, it is difficult to definitively classify the image as real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_276.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a photograph of a person with natural skin texture and lighting. There are no visible artifacts such as pixelation, unnatural color gradients, or distortions around the mouth, ears, or hairline that would suggest it is AI-generated. However, without more specific details about the image quality and composition, it is difficult to definitively classify it as either real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_284.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a photograph of a real person. There are no visible artifacts such as pixelation, unnatural skin texture, or other signs typically associated with AI-generated images around the mouth, ears, or hairline. However, without more specific details about the image quality and resolution, it is difficult to definitively classify the image as either real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_272.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a high-resolution photograph of a person's face. There are no visible artifacts such as pixelation, unnatural skin texture, or other signs typically associated with AI-generated images around the mouth, ears, or hairline. However, without more context or additional images for comparison, it is difficult to definitively determine whether the face is real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_283.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The facial features appear smooth and symmetrical, which could be characteristic of both real faces and AI-generated ones. There are no visible artifacts such as pixelation, blurring, or unnatural skin texture that would definitively indicate an AI-generated image. The lighting and shadows also seem natural, without any signs of digital manipulation.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_264.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a photograph of a real person. There are no visible artifacts such as lines, distortions, or unnatural features around the mouth, ears, or hairline that would suggest it is an AI-generated image. The facial features look natural and well-defined.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_278.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The facial features appear natural, but there are slight variations in skin texture and lighting that could be indicative of AI generation. Additionally, the background does not contain any obvious artifacts that would suggest digital manipulation.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_294.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a photograph of a person with natural skin texture and lighting. There are no visible artifacts such as pixelation, unnatural color gradients, or distortions around the mouth, ears, or hairline that would suggest it is AI-generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_279.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person wearing a purple headscarf. There are no visible artifacts such as lines, distortions, or unnatural features around the mouth, ears, or hairline that would typically suggest an AI-generated image. However, without more specific details about the image quality or resolution, it's difficult to definitively classify it as either real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_268.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a high-resolution photograph of a person's face. There are no visible artifacts such as pixelation, unnatural skin texture, or other signs typically associated with AI-generated images around the mouth, ears, or hairline. However, without more specific details about the image quality and composition, it is difficult to definitively classify it as either real or generated.",
+            "error": null
+        }
+    ]
+}

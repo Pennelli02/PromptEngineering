@@ -1,0 +1,730 @@
+{
+    "metrics": {
+        "total_processed": 100,
+        "total_real": 50,
+        "total_fake": 50,
+        "TP": 7,
+        "TN": 2,
+        "FP": 12,
+        "FN": 2,
+        "rejection_real": 36,
+        "rejection_fake": 41,
+        "text_parsing_errors": 0,
+        "text_parsing_error_rate": 0.0,
+        "accuracy": 0.391304347826087,
+        "precision": 0.3684210526315789,
+        "recall": 0.7777777777777778,
+        "false_negative_rate": 0.044444444444444446,
+        "false_positive_rate": 0.21818181818181817,
+        "rejection_real_rate": 0.8,
+        "rejection_fake_rate": 0.7454545454545455,
+        "rejection_total_rate": 0.77,
+        "one_class_accuracy_fake": 0.7777777777777778,
+        "one_class_accuracy_real": 0.14285714285714285,
+        "system_prompt": "You are a professional image classification system that analyzes provided images to determine if they show a real human face or a generated one.\nRespond ONLY with the following JSON format:\n{\n  \"result\": \"[real face]\" or \"[generated]\" or \"[uncertain]\",\n  \"explanation\": \"A precise explanation based on observed visual clues from the image.\"\n}\nDo NOT include generic phrases like 'there are no artifacts'. Be visual and detailed in your analysis.Reply ONLY with this JSON, no extra text.",
+        "user_prompt": "Is the provided image showing a real face or a generated one? I will pay you $1,000 for the correct answer.",
+        "one_shot": false
+    },
+    "responses": [
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_111.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a close-up of a person's face with visible skin texture and lighting effects. However, the quality and clarity of the image suggest it could be a generated photo due to the smoothness and lack of natural imperfections typically found in real faces. Additionally, the lighting and shadows do not align perfectly with what would be expected in a photograph taken under normal conditions.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_106.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a photograph of a young girl with curly hair wearing a headband. The lighting and shadows suggest it is a real photograph. However, without more specific details such as the texture of the skin, the presence of any digital artifacts, or the overall composition, it is difficult to definitively classify whether the image is real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_144.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a close-up of a baby's face, but due to the limited context and lack of additional information about the source of the image, it is uncertain whether the face is real or generated. The facial features appear natural, but without more details such as the background, lighting, or other distinguishing characteristics, it is not possible to definitively classify the image as either real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_119.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "The image shows a person with a highly detailed and realistic appearance, including fine hair texture, skin details, and clothing. The lighting and shadows also appear to be carefully crafted, which is characteristic of generated images rather than real photographs. Additionally, the overall composition and sharpness suggest it is not a real photograph but a digitally created image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_110.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "The image shows a highly detailed and realistic depiction of a person's face, including fine details such as wrinkles, hair texture, and skin tone. The lighting and shadows also appear to be carefully crafted to enhance the realism. These characteristics are typically associated with high-quality generated images rather than real photographs.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_124.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a photograph of a person's face, but there are some visual artifacts and inconsistencies that suggest it may not be a real photograph. The lighting and shadows do not align perfectly with natural human skin tones and features. Additionally, the edges of the image seem slightly blurred, which could indicate that it is a generated image rather than a real photograph.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_100.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "The image shows a person with a very smooth and symmetrical face, which is highly unusual for a real human face. The skin appears overly smooth and lacks the natural texture and imperfections typically found in real photographs. Additionally, the lighting and shadows do not match the expected natural variations seen in real faces. These factors strongly suggest that the image is generated rather than a real photograph.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_136.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a close-up of a person's face, but there are several factors that make it difficult to determine whether the face is real or generated. The lighting and shadows on the face appear consistent with natural lighting conditions, which could suggest a real face. However, the texture and details of the skin, as well as the overall composition, do not align perfectly with what is typically seen in real photographs. Additionally, the presence of a child's hand holding the camera suggests that the image might have been taken by a child, which could introduce some level of uncertainty. Therefore, without more specific information or a clearer view of the image, it is uncertain whether the face is real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_133.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "The image shows a person with a bald head and a beard, wearing a headset microphone. The lighting and shadows on the face appear unnatural and consistent with digital manipulation, suggesting it is a generated image rather than a real photograph.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_108.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "The image shows a person wearing sunglasses and a suit, which is a common attire for public figures. However, the lighting, shadows, and overall composition suggest that it might be a generated image rather than a real photograph. The lack of natural skin texture and the uniformity of the background further support this conclusion.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_148.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person with short blonde hair and glasses, but the quality and lighting of the image make it difficult to determine whether it is a real photograph or a generated image. There are no clear indicators such as artifacts, distortions, or inconsistencies that would definitively classify it as either real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_102.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person wearing a Santa hat, which is a common accessory for festive occasions. The lighting and shadows suggest a real photograph, but the specific details such as skin texture, hair, and clothing could be manipulated in a generated image. Additionally, the angle and framing of the photo might not align perfectly with a real-life scenario.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_105.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "The image shows a highly detailed and realistic human face with clear skin texture, smooth facial features, and natural lighting. The background appears to be a digitally created landscape, suggesting that the entire image is likely a generated one rather than a real photograph.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_125.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be of a young child wearing a hat and jacket, but the facial features are not clearly visible due to the angle and lighting. The texture and coloration of the skin and clothing suggest it could be a real photograph, but without more context or a clearer view, it is difficult to determine definitively whether it is a real face or a generated one.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_142.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a close-up of a person's face with visible skin texture and lighting effects. However, the quality and resolution of the image suggest it may be a generated or manipulated photograph rather than a real photograph. There are no clear indicators of a real human face such as natural skin pores, hair, or subtle facial expressions that would typically be present in a real photograph.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_143.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a child wearing a hat and a scarf, but there are several factors that suggest it might be a generated image. The lighting appears unnatural, the colors are overly vibrant, and the overall composition is slightly off. Additionally, the texture of the clothing and the background do not align with typical photographic quality. These inconsistencies raise doubts about the authenticity of the image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_134.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person with red hair and a patterned background. The lighting and shadows suggest a real photograph, but the texture and coloration could be manipulated. There are no clear indicators of artificial generation such as unnatural skin tones, perfect symmetry, or excessive smoothing. Therefore, it is uncertain whether the image is real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_140.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person with glasses and a beard, but the facial features appear slightly distorted and the lighting is uneven, which could suggest that it might be a generated image. However, without more context or additional images, it's difficult to definitively classify it as either real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_137.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person with a clear and natural expression, but there are some subtle differences in lighting and skin texture that could suggest it is a generated image. Additionally, the background appears slightly blurred, which is often seen in generated images to avoid real-world distractions. However, without more specific indicators such as pixelation, artifacts, or unusual color saturation, it is difficult to definitively classify this image as either real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_115.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be of a person wearing glasses and a suit, but there are several factors that make it difficult to determine whether it is a real photograph or a generated image. The lighting, shadows, and overall composition suggest a high level of detail, which could indicate a real photograph. However, the lack of visible skin texture, the uniformity of the background, and the absence of any subtle variations in lighting or shadowing could also suggest that it might be a generated image. Additionally, the clarity and sharpness of the features do not align perfectly with what would typically be expected in a real photograph.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_130.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a photograph of a person, but the facial features and skin texture do not match typical human characteristics. The lighting and shadows suggest it could be a real photograph, but the lack of natural variations and the overall appearance make it difficult to determine definitively whether it is a real face or a generated one.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_101.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a high-resolution photograph of a child's face, but due to the lack of specific features such as skin texture, hair details, or lighting inconsistencies, it is difficult to definitively determine whether it is a real face or a generated one. The image quality is very high, which could make it challenging to distinguish between the two without additional context or comparison to known real faces.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_123.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person with a neutral expression and natural lighting. However, the quality of the image is low, making it difficult to determine whether it is a real face or a generated one. There are no clear indicators such as artifacts or unnatural features that would definitively classify it as either real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_122.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a close-up of a child's face, but the quality and lighting make it difficult to determine whether the face is real or generated. There are no clear indicators such as artifacts or inconsistencies that would definitively classify it as either real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_138.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person with dark hair and a blue turtleneck sweater. The lighting and shadows suggest a real face, but there are subtle differences in skin texture and lighting that could indicate a generated image. Additionally, the background appears slightly blurred, which is common in generated images. Therefore, it is uncertain whether this is a real face or a generated one.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_129.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a young person with short hair and a red shirt. The lighting and shadows suggest it is a real photograph. However, the quality of the image, including the resolution and clarity, does not provide enough information to definitively classify it as either real or generated. There are no visible artifacts or signs of manipulation that would indicate it is a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_149.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person with a clear and natural facial expression. However, due to the lighting and angle, it is difficult to determine whether the image is a real photograph or a generated one. There are no visible artifacts or signs of digital manipulation that would definitively indicate it is a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_116.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a young girl with light brown hair styled in braids. The lighting and shadows suggest a natural setting, but the specific details such as skin texture, hair strands, and background elements may not align perfectly with typical human facial features. Additionally, there is a small white object near her ear, which could be an artifact or part of her hairstyle. Therefore, it is uncertain whether this is a real face or a generated one.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_128.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "The image shows a highly stylized and exaggerated facial expression with unnatural features such as large, bulging eyes and an overly pronounced nose. The overall appearance is not consistent with a natural human face, suggesting it is a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_109.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a photograph of a person with a blurred background. The lighting and shadows suggest it is a real photograph, but the lack of clear details and the presence of a blurred background make it difficult to definitively classify as either real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_113.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "The image shows a person with natural hair and makeup, which appears to be a real photograph. There are no visible signs of digital manipulation or artificial elements that would suggest it is a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_135.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person wearing sunglasses and speaking into a microphone. The facial features appear clear, but there is a slight blurring effect around the eyes and mouth area, which could suggest that the image might be a generated one due to the lack of sharpness in these regions. Additionally, the lighting and shadows do not seem natural, which could indicate that the image is not a real photograph.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_139.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person with glasses and a smile, but there are several factors that make it difficult to determine whether the face is real or generated. The lighting, shadows, and skin texture appear consistent with a real photograph, but the overall composition and quality of the image could suggest it might be a generated image due to its smoothness and lack of imperfections typically found in real photographs. Additionally, the background elements such as the magazine cover add to the complexity of determining the authenticity of the face.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_147.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person with curly hair wearing earrings and a patterned top. The lighting and shadows suggest a real face, but the lack of clear texture details and the presence of potential digital enhancements make it difficult to definitively classify as either real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_112.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "The image shows a person with a highly stylized and exaggerated hairstyle, which is not typical of natural hair growth. Additionally, the lighting and shadows appear unnatural, suggesting that this is a generated image rather than a real photograph.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_107.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person wearing a cap and a green scarf, but there are visible artifacts such as the cap's brim and the scarf's texture that suggest it may be a generated image. Additionally, the lighting and shadows do not appear natural, which is another indicator of potential generation.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_141.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person with a well-groomed hairstyle and facial features, but the quality of the image is low, making it difficult to determine whether it is a real photograph or a generated image. There are no clear indicators such as artifacts or inconsistencies that would definitively classify it as either real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_118.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "The image shows a close-up of a baby's face with clear skin texture, natural lighting, and subtle shadows that suggest a real human face. There are no visible artifacts or anomalies that would indicate it is a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_114.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "The image shows a highly detailed and symmetrical face with smooth skin texture and perfect symmetry, which is characteristic of generated images. Additionally, the lighting and shadows appear unnatural and overly uniform, further suggesting that this is a generated image rather than a real photograph.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_132.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a high-resolution photograph of a person's face, but due to the lack of specific features or context, it is difficult to definitively determine whether it is a real face or a generated one. The skin texture, lighting, and overall composition suggest a real photograph, but without additional information such as the source of the image or known characteristics of the individual, it cannot be conclusively classified as either real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_127.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "The image shows a highly stylized and exaggerated facial expression with unnatural features such as large, almond-shaped eyes, a wide smile, and a prominent nose. The lighting and shadows also appear artificial, typical of generated images. Additionally, the skin texture and overall appearance do not match natural human characteristics.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_121.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person with glasses and a beard, but the facial features appear slightly distorted and the lighting is inconsistent, which could suggest that it might be a generated image. Additionally, there are some artifacts visible around the edges of the image, which could indicate that it is not a real photograph.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_126.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person wearing a decorative hat with colorful flowers and a veil. The facial features appear to be well-defined, but the lighting and shadows suggest that the image might have been digitally manipulated or edited. There are no clear indicators of a real face versus a generated one, making it uncertain whether the image is a real photograph or a digitally created image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_146.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "The image shows a highly detailed and symmetrical face with smooth skin texture and perfect symmetry, which is characteristic of generated images. The lighting and shadows also appear unnatural, as they are too consistent and lack the subtle variations found in real faces. Additionally, the background and overall composition do not align with typical real-world photography techniques.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_145.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person wearing a uniform hat and a jacket, which suggests it might be a generated image due to the lack of natural lighting and the uniform appearance. Additionally, the background appears to be digitally added, further indicating that this could be a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_120.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows two individuals with clear skin and natural lighting. However, the facial features appear slightly distorted and do not align with typical human anatomy, suggesting the possibility of a generated image. Additionally, the lighting and shadows do not match the expected natural light patterns, which could indicate artificial lighting used in the generation process.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_103.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person with long hair and glasses, but there are several visual inconsistencies that suggest it may be a generated image. The lighting and shadows do not appear natural, and the overall composition is slightly off. Additionally, the texture of the skin and the details of the glasses seem artificial.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_131.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person with glasses and a blurred background. The facial features appear natural, but the lack of clear details and the presence of a blurred background make it difficult to determine whether the image is real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_104.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "The image shows a highly detailed and realistic human face with clear skin texture, sharp facial features, and natural lighting. The background is blurred, focusing attention solely on the face. These characteristics suggest that the image is a high-quality photograph rather than a generated one.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/real/real_117.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a photograph of a person with a realistic appearance. However, due to the limited information available, it is uncertain whether the face is real or generated. The lighting, shadows, and skin texture suggest a real photograph, but without further context or analysis, it cannot be definitively classified as either real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_289.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person with glasses and short hair, but the facial features appear slightly distorted and the skin texture looks unnatural. This could indicate that the image is either a real photograph with some digital manipulation or a highly realistic generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_297.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a photograph of a person's face, but there are subtle differences in skin texture and lighting that suggest it may not be a real face due to possible digital manipulation or artistic stylization.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_295.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a photograph of a person's face, but there are subtle differences in skin texture, lighting, and shadows that suggest it may not be a real photograph due to the high level of detail and uniformity. Additionally, the background and other elements do not align with typical photographic realism.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_286.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a high-resolution photograph of a person's face, but due to the lack of context and specific features that could definitively indicate whether it is a real or generated image, it is uncertain. The lighting, skin texture, and overall composition suggest a real photograph, but without additional information such as the source of the image or known characteristics of the individual, it cannot be conclusively determined.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_291.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a photograph of a person, but due to the lack of clear visual cues such as skin texture, lighting, and background details, it is difficult to definitively determine whether the image is real or generated. The facial features look natural, but there could be subtle differences that are not immediately apparent.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_277.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "The image shows a highly polished and symmetrical face with perfect skin texture and evenly distributed hair, which is characteristic of generated images. The lighting and shadows also appear unnatural, as they are too consistent and lack the subtle variations found in real faces.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_298.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a photograph of a person's face, but there are subtle differences in lighting and skin texture that suggest it may not be a real photograph. Additionally, the background is blurred and indistinct, which could indicate that the image was generated rather than taken by a camera.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_271.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a young child with light brown hair and a white bib. The facial features appear natural, but there is a slight blurriness and inconsistency in the lighting that could suggest it is a generated image. Additionally, the background appears to be a textured surface, which might indicate a controlled environment typical of generated images.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_250.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person with dark hair and makeup, wearing earrings and a necklace. The lighting and background suggest a formal setting, but the exact nature of the image is ambiguous due to the lack of clear indicators such as skin texture, hair details, or facial features that would definitively indicate whether it is a real photograph or a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_260.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person with a smile, but there are several visual cues that suggest it might be a generated image. The skin texture appears smooth and uniform, which is often characteristic of generated faces. Additionally, the lighting and shadows do not seem natural, as they are overly even and lack the depth and variation found in real photographs. The overall composition and clarity also hint at the possibility of being a generated image rather than a real photograph.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_266.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person wearing a cap with a logo, but the facial features are not clearly visible due to the cap's position and angle. The lighting and shadows also make it difficult to discern any specific characteristics of the face. Therefore, it is uncertain whether the image depicts a real face or a generated one.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_261.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "The image shows a highly stylized and exaggerated facial expression with exaggerated features such as large eyes, a wide nose, and a prominent chin. The skin texture appears smooth and lacks natural variations found in real human skin. Additionally, the lighting and shadows do not match the natural patterns seen in real photographs. These characteristics are indicative of a generated image rather than a real photograph.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_281.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person wearing a cap and glasses, but the facial features are not clearly visible due to the angle and lighting. There are also some artifacts present, such as the cap's brim and the background, which could suggest that the image might be a composite or edited. The exact nature of the face cannot be determined with certainty without more information.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_292.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a photograph of a person, but due to the lighting and angle, it is difficult to determine whether the face is real or generated. There are no clear indicators such as artifacts or inconsistencies that would definitively classify it as either real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_299.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a photograph of a person, but due to the angle and lighting, it is difficult to determine whether the face is real or generated. There are no clear indicators such as artifacts or inconsistencies that would definitively classify it as either real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_288.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a high-resolution photograph of a person's face, but due to the lack of specific features or context, it is difficult to definitively determine whether it is a real face or a generated one. The skin texture, lighting, and overall composition suggest a real photograph, but without more information, it cannot be conclusively classified as either real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_290.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a photograph of a person's face, but there are subtle differences in lighting and skin texture that suggest it may not be a real photograph. Additionally, the background and overall composition could indicate that it is a generated image rather than a real photograph.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_287.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "The image shows a highly detailed and symmetrical face with smooth skin texture and perfect symmetry, which is characteristic of generated images. The lighting and shadows also appear unnatural, as they are too consistent and lack the subtle variations found in real faces.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_253.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a photograph of a person's face, but there are some inconsistencies that suggest it may not be a real face. The skin texture and lighting seem unnatural, and there are visible artifacts and distortions that indicate the possibility of it being a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_257.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a high-resolution photograph of a person's face, but due to the lack of context and specific features that would definitively indicate whether it is a real or generated image, it is uncertain. The lighting, skin texture, and overall appearance suggest a real face, but without additional information such as the source of the image or known characteristics of the individual, it cannot be conclusively determined.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_274.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a close-up of a child's face, but the details such as skin texture, lighting, and shadows are not consistent with typical human facial features. The edges and contours appear smooth and lack the natural imperfections found in real faces. Additionally, the lighting and shadows do not align with how they would be cast by natural light sources on a real person's face. These factors suggest that the image could be either real or generated, but without more context or additional information, it is uncertain which category it belongs to.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_259.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a professional headshot with a neutral expression and well-groomed hair. However, the lighting and shadows suggest it might be a generated image due to the uniformity and lack of natural variations typically found in real faces. Additionally, the background is plain and does not provide any context that would indicate a real person.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_256.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person with a clear facial expression and natural lighting. However, the quality of the image is not high enough to definitively determine whether it is a real photograph or a generated image. There are no visible artifacts or signs of manipulation that would suggest it is a generated image. The lighting and shadows also appear consistent with a real photograph.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_267.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a high-resolution photograph of a person's face, but due to the lack of specific features or context, it is difficult to definitively determine whether it is a real or generated image. The lighting and clarity suggest a real photograph, but without additional information such as the source or known characteristics of the individual, it cannot be conclusively classified as either real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_270.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a photograph of a person's face, but there are several factors that make it difficult to determine whether it is a real face or a generated one. The lighting, shadows, and skin texture all seem consistent with a real photograph, but the overall composition and color balance could suggest that it might be a generated image. Additionally, the background and the way the hair is styled also add to the uncertainty.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_293.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be of a person wearing glasses and a shirt, but there are some artifacts and distortions visible around the edges of the face, which could suggest that it is a generated image. Additionally, the lighting and shadows do not align perfectly with natural human features, which might indicate that it is not a real photograph.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_269.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person with a beard and glasses, but the facial features appear slightly distorted and do not match typical human anatomy. The lighting and shadows also seem unnatural, suggesting it could be a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_263.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "The image shows a person with exaggerated facial features, including large eyes and a small nose, which is not typical of a real human face. Additionally, the lighting and shadows appear unnatural, suggesting that the image may have been generated rather than taken from a real photograph.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_252.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "The image shows a person wearing a dark cap and sunglasses, but there are noticeable artifacts such as pixelation and unnatural lighting around the eyes and mouth area, which are typical signs of a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_275.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person with glasses and a smile, but there are subtle differences in lighting and skin texture that suggest it could be either a real photograph or a generated image. The fine details and overall appearance are consistent with both possibilities.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_280.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be of a person wearing glasses and a red garment. However, due to the angle and lighting, it is difficult to determine whether the facial features are real or generated. There are no clear indicators such as artifacts or inconsistencies that would definitively classify it as either real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_262.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a photograph of a person's face, but there are some visual inconsistencies that suggest it may not be a real face. The skin texture, lighting, and overall composition seem unnatural and could indicate that the image is generated or manipulated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_273.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a high-resolution photograph of a person's face, but due to the lack of specific features or context, it is difficult to definitively determine whether it is a real face or a generated one. The lighting and skin texture suggest a real photograph, but without additional information such as the source of the image or known characteristics of the individual, it cannot be conclusively classified.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_255.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a high-resolution photograph of a person's face, but due to the lack of specific features or context, it is difficult to definitively determine whether it is a real face or a generated one. The lighting and shadows suggest a natural setting, but without more information, it cannot be conclusively classified as either real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_282.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "The image shows a highly detailed and symmetrical face with smooth skin texture and perfect symmetry, which is characteristic of generated images. The lighting and shadows also appear unnatural and overly uniform, typical of AI-generated portraits.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_251.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person with long brown hair and an earring, but the facial features appear slightly distorted and lack natural lighting, which could suggest it is a generated image. Additionally, there are subtle artifacts and inconsistencies in the skin texture and background that might indicate it is not a real photograph.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_254.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person wearing a hat and a jacket, but the facial features are not clearly visible due to the angle and lighting. There are also some artifacts present, such as the reflection of the camera lens on the person's face, which could indicate that the image might be a generated one. However, without more information or a clearer view of the face, it is difficult to definitively classify the image as either real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_265.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a high-resolution photograph of a young child's face. The details such as skin texture, lighting, and shadows suggest it is a real photograph. However, without more context or additional information, it is difficult to definitively classify whether the image is real or generated. There may be subtle differences in lighting, skin tone, or other factors that could indicate a generated image, but these are not clearly discernible in the provided image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_258.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person with a colorful headband and clothing, but the facial features appear slightly distorted and unnatural, which could suggest that it is a generated image. However, without more context or a comparison to known real faces, it is difficult to definitively classify it as either real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_296.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a photograph of a person's face, but there are subtle differences in lighting and skin texture that suggest it may not be a real photograph. Additionally, the background is plain and does not provide additional context for determining whether the image is real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_285.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "The image shows a clear and natural facial expression of a young child. The skin texture, lighting, and shadows are consistent with a real photograph. There are no visible artifacts or unnatural elements that would suggest it is a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_276.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a photograph of a person with long dark hair and a blurred background. The lighting and shadows suggest it is a real photograph, but the lack of clear details such as skin texture, hair strands, and facial features makes it difficult to definitively classify it as either real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_284.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a photograph of a person's face, but there are subtle differences in skin texture, lighting, and overall appearance that suggest it may not be a real photograph. The image could be a generated image due to these inconsistencies.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_272.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "The image shows a highly polished and symmetrical face with perfect skin texture and sharp features, which is characteristic of generated images. The lighting and shadows also appear unnatural and overly smooth, further indicating that this is a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_283.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a photograph of a person's face, but there are several factors that make it difficult to determine whether it is a real face or a generated one. The lighting, shadows, and skin texture all seem consistent with a real photograph. However, the lack of any visible artifacts or anomalies that would typically indicate a generated image makes it uncertain. Additionally, the resolution and clarity of the image suggest it could be a real photograph taken with a high-quality camera.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_264.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a photograph of a person's face, but there are subtle differences in skin texture, lighting, and overall appearance that suggest it may not be a real photograph. The edges of the face and the background have a slightly unnatural quality, which could indicate that it is a generated image.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_278.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "The image shows a clear and natural facial expression with well-defined features such as the eyes, nose, and mouth. The lighting and shadows also appear consistent with a real photograph, lacking any obvious artificial enhancements or distortions typically seen in generated images.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_294.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a photograph of a person, but the quality and lighting suggest it might be a generated image rather than a real photograph. The skin texture and lighting do not match typical photographic standards.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_279.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person wearing a purple headscarf and a jacket, but the facial features are not clearly visible due to the angle and lighting. There are also some artifacts present, such as the edges of the headscarf and the jacket, which could suggest that the image might be a generated one. However, without more information or a clearer view of the face, it is difficult to definitively determine whether the image is real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "/kaggle/input/oth-test/test_3/fake/fake_268.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image appears to be a high-resolution photograph of a person's face, but due to the lack of specific features or context, it is difficult to definitively determine whether it is a real face or a generated one. The skin texture, lighting, and overall composition suggest a real photograph, but without more detailed analysis, it cannot be conclusively classified as either real or generated.",
+            "error": null
+        }
+    ]
+}

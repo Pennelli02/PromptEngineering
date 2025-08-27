@@ -1,0 +1,730 @@
+{
+    "metrics": {
+        "total_processed": 100,
+        "total_real": 50,
+        "total_fake": 50,
+        "TP": 35,
+        "TN": 21,
+        "FP": 29,
+        "FN": 15,
+        "rejection_real": 0,
+        "rejection_fake": 0,
+        "text_parsing_errors": 0,
+        "text_parsing_error_rate": 0.0,
+        "accuracy": 0.56,
+        "precision": 0.546875,
+        "recall": 0.7,
+        "false_negative_rate": 0.3,
+        "false_positive_rate": 0.58,
+        "rejection_real_rate": 0.0,
+        "rejection_fake_rate": 0.0,
+        "rejection_total_rate": 0.0,
+        "one_class_accuracy_fake": 0.7,
+        "one_class_accuracy_real": 0.42,
+        "system_prompt": "Sei un sistema professionale di classificazione delle immagini che analizza le immagini fornite per determinare se mostrano un volto umano reale o uno generato.\nRispondi SOLO usando il seguente formato JSON:\n{\n  \"result\": \"[real face]\" oppure \"[generated]\" o [uncertain], \n  \"explanation\": \"Una spiegazione precisa basata su indizi visivi osservati nell'immagine.\"\n}\nNON includere frasi generiche come 'non ci sono artefatti'. Sii visivo e dettagliato nella tua analisi.Rispondi ESCLUSIVAMENTE con questo JSON, senza commenti o testo extra.",
+        "user_prompt": "L'immagine fornita mostra un volto reale o uno generato? Ti pagher\u00f2 1.000 dollari per una risposta corretta.",
+        "oneShot": false
+    },
+    "responses": [
+        {
+            "image_path": "test_3\\real\\real_100.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "L'immagine mostra un volto generato, come evidenziado pela sua somiglianza artificiale e pelo tipo di filtro usado nel rosto. In particolare, o rosto pare ser modificado con tecnologia de generazione di immagini (GAN), poich\u00e9 apresenta detalhes quase perfetti e um contraste meno naturale. ",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_101.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra caracter\u00edsticas comuns em rostos humanos, como as orelhas e os dentes, al\u00e9m de uma express\u00e3o facial natural.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_102.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "L'immagine presenta un volto che somiglia a un volto generato, in quanto il contorno delle labbra e le ossicone sembrano non essere naturali per una persona umana. L'espressione della donna non pare completamente naturale e ci sono anche alcune irregolarit\u00e0 nel contorno delle labbra e dei denti.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_103.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto presente nel quadro non \u00e8 stato generato. Ecco alcuni dettagli che supportano questa affermazione: il volto mostra una pelle naturale con tonalit\u00e0 pi\u00f9 scure sui contorni del viso; la pelle appare lucida e con visibili tracce naturali, come pore e rughe, che sono tipicamente assenti nei volti generati. La pelle ha anche sfine; infatti, si pu\u00f2 notare una lieve variazione di tonalit\u00e0 dal centro del viso verso le estremit\u00e0 (il mento), dove la sfine \u00e8 maggiore rispetto al resto del viso. Le orecchie sono anche naturali e hanno una consistenza uniforme nella loro forma, colorazione e posizione sul capo. Infine, il volto presenta un'espressione naturale, con la muscolatura che contorna le guance, i denti e la testa, e il colore della pelle e dell'occhiale \u00e8 uniforme, senza alcuna discontinuit\u00e0 o variazioni. Non esiste alcuna evidenza di tecniche di generazione di volti naturali nella pelle o nella muscolatura.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_104.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "La persona est\u00e1 salutando con il braccio destro, mentre la mano sinistra tiene il capo in saluto. La posizione del corpo e il gesto di saluto indicano un volto reale.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_105.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "Il volto nella foto presenta tratti caratteristici come il pio, la barba, e le rughe sulla pelle, che sono spesso associadas a un viso reale. Quindi, si pu\u00f2 concludere che il volto \u00e8 real.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_106.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "Indichi di generazione sono i filtri usados na pelle e la moda casual dell'immagine, con umbraliette e un ciondolo che sembrano escluirsi indizi di una vera persona. La sua postura e il sorriso parem essere forzati e non spontanei.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_107.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "Nell'immagine, si pu\u00f2 osservare che il 'bacio' sulla pelle della persona a destra non \u00e8 naturale e pare essere un tipo di tatuaggio, similhando a una marca. Quando v\u00ea um 'bacio' queimico, \u00e9 comum usar essa forma de marcar o identificar a pessoa em quest\u00e3o. A parte da piel onde o 'bacio' est\u00e1 presente pare ser uma pele artificial, o que sugere que a imagem n\u00e3o mostra un volto reale, mas um generado.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_108.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "Il volto sembra essere reale e non generato. Ci sono particolari come ossicones, la piega della pelle, la tonalit\u00e0 della pelle e le stigmati sulla pelle che si verificano in una persona umana reale.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_109.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "L'immagine presenta una donna che ha un viso molto dettagliato, con tratti facciali e contorni ben definiti. Tuttavia, l'esperienza di riconoscimento del volto reale o generato pu\u00f2 essere difficile a causa della qualit\u00e0 dell'immagine e delle caratteristiche di cui si ha notizie. Sebbene non posso eseguire una valutazione definitiva, questa analisi suggerisce che il volto potrebbe essere stato generato in quanto le tracce facciali sembrano essere pi\u00f9 regolari e smussate rispetto a un volto umano reale. ",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_110.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine presenta un rostro umano che mostra caratteristicas naturales e non artificiales, t\u00edpicas de un rostro reais. Pode-se verificar detalhes como a textura da pele, o contorno dos olhos e do nariz, que parecem ser naturais.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_111.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "La persona ha una somiglianza molto uniforme e regolare, che non \u00e8 comune in volti umani reali. Inoltre, la pelle sembra ben nutrita e perfetta, e ognuno dei tratti del viso - come denti, naso e sopracciglia - si presentano con un certo grado di simmetria e armonia che non \u00e8 tipico in volti umani reais. Questi indizi suggeriscono che la immagine mostra un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_112.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "Il volto presentato nell'immagine mostra alcuni segnali di non naturalit\u00e0, come la pelle irregolare e il contorno del volto che appare sporgente rispetto alla faccia reale. La sintesi dei caratteri faciali sembra essersi ottenuta tramite tecniche di generazione automatica.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_113.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "La persona presente nella foto ha tratti naturali del viso come occhi, mascule e labbra, che indicante una creazione artificiale come un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_114.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "Il volto mostra segni che suggerem que n\u00e3o \u00e8 un volto reale, ma uno generato.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_115.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "Il volto \u00e8 quello di un uomo, il cui aspetto \u00e8 molto simile ai comportamenti e alle caratteristiche visive delle persone in foto. La somiglianza con le facciate reali \u00e8 cos\u00ec stretta che non si pu\u00f2 considerarlo come un generatore di immagini.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_116.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Una spiegazione precisa basata su indizi visivi osservati nell'immagine, come la trama del capello e le caratteristiche del volto, nonch\u00e9 la possibilit\u00e0 di identificare il giovane in un'altra foto.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_117.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "L'immagine mostra un volto umano con tracce e linee sull'espressione, oltre a un profilo del viso che sembra essere stato ottenuto attraverso una tecnica di generazione di immagini. Ci sono anche una certa quantit\u00e0 de pixelation sulla pelle, e ci sono modifiche minori ai tratti delle ossi e al pelo che potrebbero indicare l'uso di un software di generazione di volti.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_118.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "L'immagine presenta il viso di un bambino che appare essere stato generato in quanto mostra alcune caratteristiche tipiche dei volti umani, tuttavia ci sono alcune anomalie come la pelle liscia e una certa somiglianza con le figure tridimensionali. Tuttavia, queste anomalie non sono sufficienti per considerare il volto reale o generato.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_119.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "La persona sulla destra presenta una espressione concentrata e possui caratteristiche umane come il naso, gli occhi e la pelle, che non sembrano essere artificiali. La sua posizione e l'abbigliamento sembrano appropriati per un ambiente professionale. Gli occhiali sono anche una indicazione del fatto che ci sono indizi di esperienze giornaliere o pubbliche.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_120.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "Nella immagine, si vede un volto di una persona che sembra essere generato. Ci sono dettagli visivi che lo fanno apparire come una creazione artificiale: la pelle apparecchiata, le ombreggi artificiali e i contorni dei tratti facciali non sono naturali. Le dita degli occhiali e le sopraccate sono anche evidenti.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_121.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il suolo dell'immagine, la sua posizione e il contesto naturalista indicano che si tratta di un volto reale",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_122.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "La persona nell'immagine ha una somiglianza troppo perfetta, le proporzioni del volto sembrano essere molto regolate e la qualit\u00e0 della fotografia non permette di vedere tutti gli elementi che costituiscono un volto reale. Pertanto, l'immagine mostra un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_123.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "Il volto della persona presente nell'immagine ha feature umane, come occhi e labbra, che sembrano essere generati o modificati artificially. Ci\u00f2 indica che la persona nella foto potrebbe non avere un vero viso, ma invece uno generato.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_124.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "Il volto presente nell'immagine \u00e8 generato, come evidenziato dalla assenza di caratteristiche uniche e la qualit\u00e0 delle superfici, che rispecchiano il tipo di materiali tipicamente utilizzati per generare immagini virtuali.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_125.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "Il bambino non ha la pelle naturale, ma un'immagine proiettata sulla superficie della pelle. L'immagine mostra dei pixel regolari che simulano la pelle umana, con tinte diverse e linee parallele. Ci\u00f2 indica che si tratta di una replicazione digitale o generata per imitare il volto umano.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_126.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "L'immagine presenta un tronco di fiori sulla testa e l'indosso \u00e8 di tessuto, che non sono elementi naturali, quindi il volto \u00e8 generato.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_127.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "La persona ha lineamenti smussati e perfetti, che sono tipici di volti generati. Inoltre, a diferirez de un volto reale, ognuno dei due occhi \u00e8 in un unico punto, che non ocorre naturalmente.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_128.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "Il volto presenta tratti caratteristici che indicano un volto generato, come la precisione delle linee e l'asimmetria del contorno dei contorni della testa.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_129.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "Il volto presente nell'immagine non sembra essere generato: ci sono dei tratti naturali come la pelle, le pieghe, e il colore della pelle che indicano un volto reale. Inoltre, ci sono dettagli come l'osservazione delle pupille, gli angoli del viso e l'espressione facciale che sembrano essere naturali.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_130.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "Il volto della persona nell'immagine mostra caratteristiche naturali e non artificiali, come pelle, occhi, bocca e barba irregolare, al contrario de um volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_131.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "Il volto del personaggio nella foto \u00e8 molto realistico e presenta una somiglianza con uno schema di generazione di immagini, come quello utilizzato in tecniche di riconoscimento facciale. Tuttavia, ci sono alcune differenze che lo rendono poco naturale, come la presenza di linee pi\u00f9 marcate rispetto alla pelle reale o dei punti de collante non uniformi.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_132.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "Il volto presente nella foto \u00e8 stato generato, come indicato dal tipo di immagine che mostra caratteristiche umane e non umane che indicano la sua natura artificiale.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_133.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "Il volto sembra essere stato prodotto utilizzando tecnologie di generazione di immagini. Ci sono caratteristiche atipiche che non si trovano in un volto reale, come la uniformit\u00e0 delle ombre e la precisione dei tratti facciali.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_134.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "La persona ha una precision e definizione delle caratteristiche facciali, come il naso e le ossicone, che non sono del tutto naturali. Inoltre, ci sono segnali di tracciamenti sulla pelle e su certi elementi come la fronte e le guance, che insieme a questi dettagli indicano una immagine generata.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_135.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "Una spiegazione precisa basata su indizi visivi osservati nell'immagine. Nel volto presente, ci sono lineamenti e dettagli che non si riscontrano nella maggior parte delle immagini umane reali. Inoltre, l'immagine mostra un colore delle corde vocali (laringe) simile a quello di una persona che sta parlando in modo artificiale. Ci\u00f2 suggerisce che il volto fornito non sia quello di una persona umana reale, ma probabilmente generato.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_136.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto mostra tratti caratteristici, come pelle tosta e irregolare, barba e pupille colorate che non si trovano in immagini generative.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_137.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto presenta caratteristiche umane come occhi, pelle e lineamenti facciali che non sono associati a un algoritmo o modello di generazione. Inoltre, ci sono delle espressioni muscolari che fanno sembrare il volto appartenere a una persona viva.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_138.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "L'immagine presenta il trattamento della pelle che non sembra naturale e la forma del viso che segue un pattern stereotipico delle caratteristiche umane generati. Queste sono indicatori che l'immagine mostra un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_139.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "Il volto nell'immagine presenta caratteristiche come la pelle liscia, gli occhiali e le labbra che hanno un leggero effetto di trasparenza. Queste caratteristiche sono molto comuni nei volti generati attraverso le tecnologie di generazione automatica del volto (GAV).",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_140.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "L'immagine semble presentare un volto umano reale, senza artefatti visibili che lo possano mascherare o modificar. Il tono della pelle, le ombri e il comportamento del collo sono tipici di una persona viva.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_141.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "Il volto presente nell'immagine mostra una faccialta che non sembra naturalmente generata da un sistema di intelligenza artificiale, ma piuttosto \u00e8 stato modificado o creato artificialmente. I tratti della testa e dei denti sono troppo perfetti per essere considerados naturali. Inoltre, il volto presenta una certa simetria e regularit\u00e0 che non si riscontra in un volto umano reale.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_142.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "L'immagine sembra presentare una caratteristica faciale poco comune, che pu\u00f2 essere associada a un sistema di generazione di immagini di volti umani reali. Tuttavia, si debba considerar che anche persone con caratteristiche uniche possono essere presenti in immagini. Una spiegazione precisa basata su indizi visivi osservati nell'immagine non \u00e8 possibile.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_143.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "Il bambino indossa un cappuccio rosso e un vestito con un colletto grigio, mostrando la pelle reale. Le espressioni facciali del bambino sembram essere naturali e spontanee.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_144.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "L'immagine fornita sembra essere stata modificata, e il volto presente non ha la stessa consistenza e detalle come un volto reale. L'espressione del bimbo \u00e8 artificiale, e le linee dei tratti facciali non sono naturali per un bambino vero.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_145.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "Il volto sembra essere naturalista e non generato. Ci sono caratteristiche umane come le pupille, la mascella, i tratti facciali e la espressione che suggeriscono una persona viva. La pelle e il pelo appaionti naturali e non digitalizzati.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_146.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "Il volto dell'immagine presenta una serie di artifici, come il colore dei capelli e la pelle non naturale, che indicano che questo \u00e8 un volto generato. Non ci sono artefatti visibili sull'immagine che potrebbero essere confusi con questi elementi.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_147.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "La donna ha un viso reale con una barba e cabelos curts, che sono naturali e non generati.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_148.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "Il viso presente nell'immagine si trova in un contesto professionale e non \u00e8 stata eseguita alcuna modificazione o generazione di immagini, quindi si pu\u00f2 considerare un volto reale.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_149.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "L'immagine presenta una persona con tratti fisici reali, come lo occhio, la pelle e i capelli, oltre alla morfologia faciale e alle espressioni. Non si vede alcuna indicazione evidente di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_250.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "La persona fornecida pare ser um robo, pois n\u00e3o possui caracter\u00edsticas naturais e sua express\u00e3o \u00e9 muito est\u00e1tica.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_251.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "L'immagine presenta una faccia generata. I feature come la textura della pelle e la forma del viso, che non sembrano essere naturali, fanno pensare a un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_252.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "Il personaggio nella foto ha il viso piuttosto sintetico e l'espressione \u00e8 poco naturale, indicando che si tratta di un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_253.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "La persona nell'immagine sembra avere caratteristiche non naturali come la pelle smussata e il naso sporgente, che sono comuni nella generazione di immagini. Questi indizi suggeriscono che si tratti di una immagine generata invece di un volto reale.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_254.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "L'immagine mostra un volto generato, identific\u00e1vel per l'assenza di caratteristiche individuali e il tracciamento artificiale.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_255.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "Il volto presentato non sembra avere le stigmate dei sensori, il colore della pelle \u00e8 uniforme e non c'\u00e8 alcuna irregolarit\u00e0 nel profilo del viso. L'immagine fornita \u00e8 un esempio di volto generato, poich\u00e9 i volti reali tendono a presentare una maggiore variabilit\u00e0 nel colore della pelle e nella struttura dei riflessi.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_256.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "Nel volto generato, ci sono linee e sfumature artificiali che non si trovano in un volto reale. Ad esempio, nel generato, le linee del viso sembram essere meno definite e naturalistiche, mentre il tono della pelle risulta pi\u00f9 uniforme e non presenta imperfezioni come l'acne o le rughe. Inoltre, ci sono sfumature artificiale che non si trovano nel volto reale.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_257.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "Una spiegazione precisa basata su indizi visivi osservati nell'immagine, come la pelle, ombri e riflessi naturali nel pelo e nella faccia. L'immagine mostra un volto umano reale, sembra una dona con cabelos lisci e um corpo reale.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_258.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "La figura ha caratteristiche facciali atipiche di un volto generato, come l'assenza delle ossicone e la pelle perfetta.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_259.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "La persona mostra un viso molto regolare, che suggeri que pode ser um volto generato, pois o rosto \u00e9 sim\u00e9trico e a pelle parece ser perfetta. Isso pode indicar que n\u00e3o h\u00e1 segnaletas naturais que revelen que este \u00e9 um volto real.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_260.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "L'immagine mostra il volto di una persona che sembra essere generata, evidenziada pela sua perfec\u00e7\u00e3o e pelo fatto de non esprimire alcuna emoci\u00f3n. Le caratteristiche facciali sono perfette e proporzionate, oltre a ci\u00f2 ci sono linee e contorni netti che confermano il caratteristico di una immagine generata.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_261.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto nel fronte mostra lineamentos naturali, come poros, rughe e crepe sulle pelli. Al\u00e9m disso, oculos est\u00e3o arredondados e de uma cor natural. Tudo isso indica que \u00e9 um volto reale e n\u00e3o generato.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_262.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "Il viso presenta linee regolari e sembra avere una estructura poco naturale, che indica un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_263.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "La persona nel quadro ha il viso modificato e ci sono dei segni sulla sua testa, che indica l'uso di un sistema di modifica visiva. Inoltre, ci sono alcune caratteristiche come l'occhio destro che sembra essere piu grande e l'orecello che appare poco naturale rispetto al resto del corpo.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_264.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "Nel primo foto, si nota la pelle meno omogenea, le labbra generosamente modificate e il profilo del viso che \u00e8 molto tipico dei volti artificiali. Il secondo foto, invece, mostra una testa meno artificiale con una pelle naturale e un naso pi\u00f9 irregolare.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_265.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "La figura presenta caratteristiche come la pelle, gli occhi e il naso, che sono tipici di volti reali. Inoltre, la posizione della testa in relazione all'immagine esclusa oggetti estranei e la loro ubicazione, confermando l'autenticit\u00e0 del volto.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_266.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "Il viso dell'uomo \u00e8 caratterizzato da linee e sfintomi, indicando un effetto di un generatore di immagini. Inoltre, ci sono elementi come il logo sulla capa che sembrano essere inserimenti o aggiunte a una superficie, non naturali per un volto reale.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_267.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "L'immagine mostra un viso umano real, con dettagli come linee sulla fronte e contorni saldamente delincerto.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_268.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine presenta un volto umano reale, identificabile per la sua anatomia e il tessuto della pelle, che sembrano essere quelli di un essere vivo. I tratti facciali, come le ossicone, l'espressione, i contorni del viso, e la struttura dei capelli, sono compatibili con una persona reale. Inoltre, il volto sembra non presentare nessuna anomalia che potrebbe indicarne un essere generato.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_269.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il volto nell'immagine mostra caratteristiche naturali e dettagli comuns em pessoas reais, como a textura do pele, a estrutura facial completa e a express\u00e3o do rosto. O foco no visor e a ilumina\u00e7\u00e3o suave suggerem que a fotografia foi tirada de forma naturalista, o que \u00e9 mais comum em pessoas reais.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_270.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "La persona presentada in the image has a very smooth complexion and facial features that are highly symmetrical, which is often characteristic of generated faces. The skin appears to have an even tone without blemishes or wrinkles, and the symmetry of the face is quite striking. Additionally, the lighting on the person's face creates soft shadows and highlights, which can be typical in images of computer-generated characters.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_271.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "Il volto del bambino presenta caratteristiche come la pelle liscia e il profilo d'occhi molto simili a quelli dei generatori di immagini, che non sono naturali per un bambino reale.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_272.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "L'immagine mostra un rostiro reais con caracter\u00edsticas naturales, come dentes e pelle real. La foto \u00e8 ben illuminata e il rostro esprime una sonrisa leggera.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_273.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "La persona presenta tratti caratteristici come la espressione, le frontole e il naso, oltre a segni pi\u00f9 personali come il pelo scuro e le labbra. Tuttavia, \u00e8 difficile determinare se l'immagine rappresenta un volto reale o generato senza ulteriori informazioni. L'immagine mostra tratti umani ed emozionali che possono essere associati a un vero volto. Inoltre, la persona sta guardando direttamente alla c\u00e1mara, e ci\u00f2 pu\u00f2 suggerire una certa autenticit\u00e0 o autoreferenza.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_274.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "L'immagine presenta il viso di una creatura che appare di aver caratteristiche umane, ma non \u00e8 un volto reale, poich\u00e9 i caratteri fisici, come la forma delle orecchie e lo spalmo della mano, sono atipici per un bambino reale. La pelle, il taglio dei capelli, l'occhio, la boca e le ombre di un corpo umano sono anche molto atipici.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_275.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "L'uomo ha un viso non naturale e sembra che la pelle sia retoccata, il che lo rende molto probabilmente una immagine di un volto generato (CGI). La qualit\u00e0 della pelle \u00e8 impeccabile, e le linee del viso sono perfettamente proporzionate. Ci\u00f2 indica l'utilizzo di tecnologie per creare una immagine di un essere umano non naturale.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_276.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "Il volto della persona nell'immagine sembra essere generato, con tracce ed anomalie che non sono naturali a un volto umano reale.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_277.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "Il viso presenta caratteristiche come la pelle, gli occhi e i peli che non sono associati a figure generative.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_278.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "La persona presenta caratteristiche tipiche di una immagine generata, come la pelle regolare e il colore dei capelli uguale. Inoltre, la fotografia sembra essere stata manipolata o trattata in modo particolare per mostrarlo come una immagine generata.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_279.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "L'immagine mostra un individuo con un capelo marcante e cabelos escuramente tingidos, su pessoa parece estar usando uma m\u00e1scara ou corre\u00e7\u00e3o facial, o que sugere que ela possui um volto generado.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_280.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "La persona mostra caratter\u00edsticas com uma pelle liscia e tonalidades de cor artificial, sugerindo que ela pode n\u00e3o ser um ser humano reais.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_281.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "La persona in immagine sembra avere una espressione e un viso artificiale, con una pelle liscia e danni di tipo non naturale. Le somiglianze sono piuttosto marcate, e la pelle \u00e8 uniformemente colorata. Ci\u00f2 suggerisce che il volto sia generato o modificato per creare un effetto estremo e artificiale.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_282.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "Il viso non presenta tratti naturali e il tono delle ombrescente \u00e8 monotono, suggerindo che potrebbe essere stato generato da un algoritmo.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_283.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "Il volto mostra caratteristiche atipiche, come la pelle artificiale e acesso limitato alla testa e collo, che \u00e8 inconsistente con il resto del corpo. Il volto presenta anche un sorriso artificiale.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_284.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "Il viso sembra artificiale, con tratti retangolari e linee molto nette sui tratti ossei. Inoltre, il colore della pelle pare uniforme e la somiglianza dei contorni facciali \u00e8 irregolare.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_285.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "La testa del bambino presenta una textura e tonalit\u00e0 che non si trovano in un volto reale umano, indicando la possibilit\u00e0 di essere generato.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_286.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "Una spiegazione precisa basata su indizi visivi osservati nell'immagine.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_287.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "La pelle del volto mostra poros e imperfe\u00e7\u00f5es normales. Iris e pupile sono de tonalidade uniforme, o que sugere un volto reale. Incorpora tamb\u00e9m elementi come cabelo e ombros, sugerindo que n\u00e3o seja una immagine generata de um solo pezzo.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_288.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "[\n{\n\"result\": \"generated\",\n\"explanation\": \"Il volto dell'uomo sembra essere stato generato con alta definizione e dettagliati, ma presenta un'apparenza artificiale che lo distingue da quello reale. Ci sono tracce e linee di definizione sull'impronta del viso che non si riscontrano nel viso umano reale.\"\n}\n]",
+            "error": "Parsing failed, fallback prediction: real face"
+        },
+        {
+            "image_path": "test_3\\fake\\fake_289.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "Il volto mostra tratti caratteristici tipicamente associados a immagens generativas, come un contorno meno naturale e um padr\u00e3o de textura que n\u00e3o se encontra nas peles reais. Al\u00e9m disso, o rosto apresenta una estrat\u00e9gia facial conscientez e uma express\u00e3o artificial.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_290.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "L'immagine mostra il viso di una persona che presenta tratti atipici di un volto generato, come la pelle con un poquito di irregolarit\u00e0 e la barba artificiale. Tais tratti distintos del volto reale.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_291.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "L'immagine non mostra il rosto naturale di una persona reale, poich\u00e9 oltre al volto generato, ci sono anche elementi che indicano la presenza di un sistema di classificazione come il testo che dice 'Dipinto con Photoshop', lo sfondo che sembra essere costruito e non naturale, e altri segni che suggeriscono l'uso di tecniche di creazione digitale per generare questo immagine.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_292.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "Il volto mostra caratteristiche non naturali come il colore e l'illuminazione che sembrano essere artificiali, nonch\u00e9 la pelle perfetta e la precisione dell'occhio. Queste caracteristicas indicante un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_293.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "Il volto nella foto sembra essere real, con dettagli visibili come pelle, ossiconi e la struttura del naso e della fronte, che sono pi\u00f9 comuni in immagini di persone vive. Il colore dell'occhio e il pelo sembrano anche essere naturali.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_294.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "La persona na immagine mostra carater\u00edsticas biol\u00f3gicas e naturais que indicam um rostinho reale, como perec\u00e7\u00f5es nas ossas e express\u00e3o natural no rosto.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_295.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "La donna ha un viso molto realistico e la pelle sembra artificiale, quindi il volto \u00e8 generato.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_296.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "[\n{\n\"result\": \"generated\",\n\"explanation\": \"Il viso presenta caratteristiche tipicamente associate a un volto generato, come l'espressione non naturale e la morfologia della testa che appare un po' rigida.\"\n}\n]",
+            "error": "Parsing failed, fallback prediction: generated"
+        },
+        {
+            "image_path": "test_3\\fake\\fake_297.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "L'immagine sembra presentare caratteristiche che sono comuni a volti generati, come la pelle impeccable e le fronte di linea perfette. Inoltre, il volto esiste in un'unica dimensione e non sembra mostrar nenhum tipo de irregolaridade o distorsione.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_298.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "Il viso presente sulleimmagini sembra essere stato elaborato artificially, come in un generatore di immagini, poich\u00e9 non ci sono tracce naturali e la qualit\u00e0 e le linee del volto appaiono pi\u00f9 artificiale",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_299.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "La immagem apresenta caracter\u00edsticas faciais consistentes com o uso de tecnologia de genera\u00e7\u00e3o de imagens, como o uso de algoritmos para ajuste e corre\u00e7\u00e3o das express\u00f5es, as cores e detalhes da pele e o cabelo. Isso sugere que o rosto na imagem \u00e9 um resultado gerado por um sistema de genera\u00e7\u00e3o de imagens.",
+            "error": null
+        }
+    ]
+}

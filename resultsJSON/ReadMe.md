@@ -27,5 +27,5 @@ dovrò mettere anche la risposta del modello per ogni immagine? Magari finiamo t
 ## Prompt per modello per one-shot
 - **LlaVa**: prompt-6-eng
 - **Gemma3**: prompt-6-eng
-- **Qwen3b**:
-- **Qwen7b**:
+- **Qwen3b**: prompt-3-eng
+- **Qwen7b**: 

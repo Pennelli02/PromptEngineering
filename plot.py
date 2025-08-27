@@ -114,7 +114,7 @@ def plotStatsPrompt(dirName, Uncertain=False, OneShot=False):
     plt.savefig(path_grafico, dpi=300, bbox_inches='tight')  # dpi=300 per alta qualità
 
 
-def autolabel(rects, ax, fontsize, decimal):
+def autolabel(rects, ax, fontsize, decimal=True):
     for rect in rects:
         height = rect.get_height()
         if decimal:
@@ -129,78 +129,90 @@ def autolabel(rects, ax, fontsize, decimal):
                     fontsize=fontsize, fontweight='bold', color='black')
 
 
-def graphItaEng(dirName, Uncertain=False, OneShot=False):
-    cartella = dirName
-    fileList = glob.glob(os.path.join(cartella, "*.json"))
+def graphLangAvg(modelName, metrics=["accuracy", "precision", "recall"], tag="",
+                 Uncertain=False, OneShot=False, baseDir="JsonMeanStats"):
+    subDir = "Uncertain" if Uncertain else "Sure"
+    modelDir = os.path.join(baseDir, subDir, modelName)
+    cartella_grafici = "plots/graphITAvsENG/"
+    os.makedirs(cartella_grafici, exist_ok=True)
+
+    # cerca file ENG/ITA
+    files_eng = glob.glob(os.path.join(modelDir, "prompt-*-Eng", "*_ENG_mean-result.json"))
+    files_ita = glob.glob(os.path.join(modelDir, "prompt-*-Ita", "*_ITA_mean-result.json"))
+
+    datiLingua = { "ENG": {m: [] for m in metrics}, "ITA": {m: [] for m in metrics} }
     modello = None
-    # Dizionario per accumulare metriche per lingua
-    datiLingua = {
-        "ENG": {"accuracy": [], "precision": [], "recall": []},
-        "ITA": {"accuracy": [], "precision": [], "recall": []}
-    }
-    for file_path in fileList:
-        with open(file_path, "r", encoding="utf-8") as f:
+
+    # ENG
+    for fp in files_eng:
+        with open(fp, "r", encoding="utf-8") as f:
             data = json.load(f)
-        metrics = data["metrics"]
-
-        # Estrai la lingua dal nome file
-        baseName = os.path.splitext(os.path.basename(file_path))[0]
-        parts = baseName.split("_")
+        parts = os.path.splitext(os.path.basename(fp))[0].split("_")
         modello = f"{parts[1]}-{parts[2]}"
+        for m in metrics:
+            key = f"{m}_mean" if f"{m}_mean" in data else m
+            if key in data:
+                datiLingua["ENG"][m].append(data[key])
 
-        lingua = parts[4]
-        # Accumula metriche
-        datiLingua[lingua]["accuracy"].append(metrics["accuracy"])
-        datiLingua[lingua]["precision"].append(metrics["precision"])
-        datiLingua[lingua]["recall"].append(metrics["recall"])
-    # Calcola le medie
-    lingue = list(datiLingua.keys())
-    accuracy_medie = [np.mean(datiLingua[ling]["accuracy"]) if datiLingua[ling]["accuracy"] else 0 for ling in lingue]
-    precision_medie = [np.mean(datiLingua[ling]["precision"]) if datiLingua[ling]["precision"] else 0 for ling in
-                       lingue]
-    recall_medie = [np.mean(datiLingua[ling]["recall"]) if datiLingua[ling]["recall"] else 0 for ling in lingue]
+    # ITA
+    for fp in files_ita:
+        with open(fp, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        parts = os.path.splitext(os.path.basename(fp))[0].split("_")
+        modello = f"{parts[1]}-{parts[2]}"
+        for m in metrics:
+            key = f"{m}_mean" if f"{m}_mean" in data else m
+            if key in data:
+                datiLingua["ITA"][m].append(data[key])
 
-    # Grafico a barre
-    x = np.arange(len(lingue))
-    width = 0.25
+    # calcola medie
+    lingue = ["ENG", "ITA"]
+    medie = {m: [np.mean(datiLingua[ling][m]) if datiLingua[ling][m] else 0 for ling in lingue]
+             for m in metrics}
 
+    # grafico grouped bar
+    x = np.arange(len(metrics))
+    width = 0.35
     fig, ax = plt.subplots(figsize=(10, 6))
-    rects1 = ax.bar(x - width, accuracy_medie, width, label="Accuracy")
-    rects2 = ax.bar(x, precision_medie, width, label="Precision")
-    rects3 = ax.bar(x + width, recall_medie, width, label="Recall")
+    rects1 = ax.bar(x - width/2, [medie[m][0] for m in metrics], width, label="ENG")
+    rects2 = ax.bar(x + width/2, [medie[m][1] for m in metrics], width, label="ITA")
 
     ax.set_xticks(x)
-    ax.set_xticklabels(lingue)
-    ax.set_ylim(0, 1)
+    ax.set_xticklabels(metrics)
+    ax.set_ylim(0, 1.1)
     ax.set_ylabel("Valore medio")
+
+    # titolo + nome file
+    # normalizza il tag
+    tag_str = f"_{tag}" if tag else ""
+
+    # titolo + nome file
     if Uncertain:
         if OneShot:
-            ax.set_title(f"Confronto metriche medie ENG vs ITA ({modello}) - Incertezza e OneShot")
-            nome_file = f"{modello}-Uncertain-Oneshot.png"
+            titolo = f"Confronto medio ENG vs ITA ({modello}) - Incertezza e OneShot"
+            nome_file = f"{modello}-ENGvsITA-Uncertain-Oneshot{tag_str}.png"
         else:
-            ax.set_title(f"Confronto metriche medie ENG vs ITA ({modello}) - Incertezza")
-            nome_file = f"{modello}-Uncertain.png"
+            titolo = f"Confronto medio ENG vs ITA ({modello}) - Incertezza"
+            nome_file = f"{modello}-ENGvsITA-Uncertain{tag_str}.png"
     else:
         if OneShot:
-            ax.set_title(f"Confronto metriche medie ENG vs ITA ({modello}) - OneShot")
-            nome_file = f"{modello}-Oneshot.png"
+            titolo = f"Confronto medio ENG vs ITA ({modello}) - OneShot"
+            nome_file = f"{modello}-ENGvsITA-Oneshot{tag_str}.png"
         else:
-            ax.set_title(f"Confronto metriche medie ENG vs ITA ({modello})")
-            nome_file = f"{modello}.png"
+            titolo = f"Confronto medio ENG vs ITA ({modello})"
+            nome_file = f"{modello}-ENGvsITA{tag_str}.png"
+
+    ax.set_title(titolo)
     ax.legend()
 
-    autolabel(rects1, ax, 10, True)
-    autolabel(rects2, ax, 10, True)
-    autolabel(rects3, ax, 10, True)
+    autolabel(rects1, ax, 10)
+    autolabel(rects2, ax, 10)
 
-    cartella_grafici = "plots/graphITAvsENG/"
-    os.makedirs(cartella_grafici, exist_ok=True)  # crea la cartella se non esiste
-
-    # Percorso completo file immagine
     path_grafico = os.path.join(cartella_grafici, nome_file)
+    plt.savefig(path_grafico, dpi=300, bbox_inches='tight')
+    plt.close()
+    print(f"Salvato: {path_grafico}")
 
-    # Salva il grafico
-    plt.savefig(path_grafico, dpi=300, bbox_inches='tight')  # dpi=300 per alta qualità
 
 
 # inserire una funzione che in base al tipo di prompt analizza tutti i dati e faccia una media di tutti i tipi
@@ -363,21 +375,19 @@ def plotStatsPromptDividedByModel(dirName, positive=True, uncertain=False, onesh
     if positive:
         createBarPlot(results, dirName, metrics=["accuracy", "precision", "recall"], positive=positive,
                       uncertain=uncertain, oneshot=oneshot)
-        createBarPlot(results, dirName, metrics=["one_class_accuracy_real", "one_class_accuracy_fake"], positive=positive, uncertain=uncertain, oneshot=oneshot, oneclass=True)
+        createBarPlot(results, dirName, metrics=["one_class_accuracy_real", "one_class_accuracy_fake"],
+                      positive=positive, uncertain=uncertain, oneshot=oneshot, oneclass=True)
     else:
         if uncertain:
             createBarPlot(results, dirName,
-                          metrics=["false_positive_rate", "false_negative_rate", "rejection_real_rate",
-                                   "rejection_fake_rate"], positive=positive,
-                          uncertain=uncertain, oneshot=oneshot)
+                          metrics=["rejection_real_rate", "rejection_fake_rate"],
+                          positive=positive, uncertain=uncertain, oneshot=oneshot)
         else:
-            createBarPlot(results, dirName,
-                          metrics=["false_positive_rate", "false_negative_rate"], positive=positive,
-                          uncertain=uncertain, oneshot=oneshot)
             createConfusionMatrix(results, dirName)
 
 
-# funzione che raccoglie tutte le spiegazioni di un modello in base al tipo al momento solo uncertain, Uncertain real, uncertain fake
+# funzione che raccoglie tutte le spiegazioni di un modello in base al tipo al momento solo uncertain,
+# Uncertain real, uncertain fake
 def captureOneTypeResponse(path, Type):
     Type_lower = Type.lower()
     risultati = []
@@ -635,14 +645,24 @@ def analyze_and_cluster_uncertain(path, modelName, prompt, n_clusters=5, device=
 # TODO altre funzioni di plotting (dipende da cosa mi serve nella relazione)
 if __name__ == "__main__":
     # analyzeSummarizeAndVisualize("resultsJSON/newFormats/qwenVL3b/Uncertain", "uncertain", "qwenVL-3b")
-    promptList = ["Prompt-0-Eng", "Prompt-0-Ita", "Prompt-1-Eng", "Prompt-1-Ita", "Prompt-2-Eng", "Prompt-2-Ita",
-                  "Prompt-3-Eng", "Prompt-3-Ita", "Prompt-4-Eng", "Prompt-4-Ita", "Prompt-5-Eng", "Prompt-5-Ita",
-                  "Prompt-6-Eng", "Prompt-6-Ita"]
-    results = captureOneTypeResponse(
-        "resultsJSON/newFormats/gemma3/uncertain/real-vs-fake_gemma3_4b_PromptType-1_ENG_20250812-182524_result.json",
-        "uncertain")
-    print(results)
-    for prompt in promptList:
-        plotStatsPromptDividedByModel(prompt, True)
-    for prompt in promptList:
-        plotStatsPromptDividedByModel(prompt, False)
+    # promptList = ["Prompt-0-Eng", "Prompt-0-Ita", "Prompt-1-Eng", "Prompt-1-Ita", "Prompt-2-Eng", "Prompt-2-Ita",
+    #               "Prompt-3-Eng", "Prompt-3-Ita", "Prompt-4-Eng", "Prompt-4-Ita", "Prompt-5-Eng", "Prompt-5-Ita",
+    #               "Prompt-6-Eng", "Prompt-6-Ita"]
+    # for prompt in promptList:
+    #     plotStatsPromptDividedByModel(prompt, True)
+    # for prompt in promptList:
+    #     plotStatsPromptDividedByModel(prompt, False)
+    graphLangAvg("gemma3")
+    graphLangAvg("gemma3", Uncertain=True)
+    graphLangAvg("gemma3", ["one_class_accuracy_real", "one_class_accuracy_fake"], "OCA")
+    graphLangAvg("gemma3", ["rejection_real_rate", "rejection_fake_rate"], tag="NEG",Uncertain=True)
+    graphLangAvg("llava")
+    graphLangAvg("llava", Uncertain=True)
+    graphLangAvg("llava", ["one_class_accuracy_real", "one_class_accuracy_fake"], "OCA")
+    graphLangAvg("llava", ["rejection_real_rate", "rejection_fake_rate"], tag="NEG", Uncertain=True)
+    graphLangAvg("qwen3b")
+    graphLangAvg("qwen3b", Uncertain=True)
+    graphLangAvg("qwen3b", ["one_class_accuracy_real", "one_class_accuracy_fake"], "OCA")
+    graphLangAvg("qwen3b", ["rejection_real_rate", "rejection_fake_rate"], tag="NEG", Uncertain=True)
+    graphLangAvg("qwen7b")
+    graphLangAvg("qwen7b", ["one_class_accuracy_real", "one_class_accuracy_fake"], "OCA")

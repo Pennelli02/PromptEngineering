@@ -18,11 +18,11 @@ INDEX_PROMPT = 3  # (0-6)
 IS_ITALIAN = False
 SHOW_IMAGES = False
 ONESHOT = False
-UNCERTAIN_EN = True  # abilitare l'opzione al modello di rispondere incerto
+UNCERTAIN_EN = False  # abilitare l'opzione al modello di rispondere incerto
 # ===================================
 # VALORI PER IL MODELLO
 
-MODEL_NAME = "llava:7b"
+MODEL_NAME = "qwen2.5vl:7b"
 # ===================================
 # MODALITA' AUTOMATICA
 AUTO_ON = True
@@ -41,6 +41,17 @@ oneShotMessage = None
 if ONESHOT:
     oneShotMessage = prompt.usingOneShot()
 if AUTO_ON:
+    # DATASETS = ["test_2", "test_3"]
+    # for data in DATASETS:
+    #     print(f"\n=== Running dataset: {data} ===")
+    #
+    #     images_with_labels, fakes, reals = dataset.loadExistingDataset(data)
+    #     if SHUFFLE:
+    #         dataset.shuffleDataset(images_with_labels)
+    #     if data == "test_2":
+    #         startPoint = 2
+    #     else:
+    #         startPoint = 0
     for INDEX_PROMPT in range(7):  # Prompt da 0 a 6
         for IS_ITALIAN in [False, True]:  # Prima inglese, poi italiano
             userPrompt = prompt.chooseAPrompt(INDEX_PROMPT, IS_ITALIAN)

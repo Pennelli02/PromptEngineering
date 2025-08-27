@@ -1,0 +1,730 @@
+{
+    "metrics": {
+        "total_processed": 100,
+        "total_real": 50,
+        "total_fake": 50,
+        "TP": 36,
+        "TN": 8,
+        "FP": 33,
+        "FN": 5,
+        "rejection_real": 9,
+        "rejection_fake": 9,
+        "text_parsing_errors": 0,
+        "text_parsing_error_rate": 0.0,
+        "accuracy": 0.5365853658536586,
+        "precision": 0.5217391304347826,
+        "recall": 0.8780487804878049,
+        "false_negative_rate": 0.1,
+        "false_positive_rate": 0.66,
+        "rejection_real_rate": 0.18,
+        "rejection_fake_rate": 0.18,
+        "rejection_total_rate": 0.18,
+        "one_class_accuracy_fake": 0.8780487804878049,
+        "one_class_accuracy_real": 0.1951219512195122,
+        "system_prompt": "You are a professional image classification system that analyzes provided images to determine if they show a real human face or a generated one.\nRespond ONLY with the following JSON format:\n{\n  \"result\": \"[real face]\" or \"[generated]\" or \"[uncertain]\",\n  \"explanation\": \"A precise explanation based on observed visual clues from the image.\"\n}\nDo NOT include generic phrases like 'there are no artifacts'. Be visual and detailed in your analysis.Reply ONLY with this JSON, no extra text.",
+        "user_prompt": "Is the provided image showing a real face or a generated one? I will pay you $1,000 for the correct answer.",
+        "oneShot": false
+    },
+    "responses": [
+        {
+            "image_path": "test_3\\real\\real_100.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image does not provide enough information to confidently determine if the image shows a real human face or a generated one.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_101.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "The image shows a child with features that are less naturalistic than human faces typically have. The symmetry of the face, the uniformity of the hair and skin texture, and the sharpness of certain facial features like the eyebrows and lips suggest that this is not an actual human face but rather a generated one.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_102.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "The image shows a person wearing a Santa hat and makeup that mimics human facial features. The symmetry of the face and the quality of the skin texture are indicative of a generated face rather than a real one.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_103.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "The image shows a person with features that are more indicative of digital manipulation or artificial intelligence rather than human characteristics.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_104.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "The image shows a person wearing a military uniform with a salute and a badge on their shoulder. The quality of the image appears to be high resolution, which is consistent with typical photographic output. However, upon close examination, certain visual cues suggest that this is not a real face but rather a highly realistic digital rendering or simulation. These include subtle imperfections in the skin texture and an unnatural symmetry in facial features, such as the hairline, eyebrows, and contours of the nose and cheekbones. Additionally, there may be a lack of depth and natural variation that is often observed in real human faces. This conclusion is based on visual analysis and comparison to the expected appearance of real individuals.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_105.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "The features such as the hair, skin texture and overall shape of the face suggest it is likely a digitally generated image, rather than a photograph of a real human.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_106.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "The face in the image is not an actual human face. The features are smooth and lack the natural imperfections and variations typically found in human faces. The hair texture and styling also indicate that the image has been digitally manipulated or created by a computer program.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_107.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "The features in the image are not consistent with human facial characteristics, suggesting that it is a digitally generated face.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_108.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "The image shows a person who appears to be an older individual with a realistic appearance. The facial features are consistent and do not exhibit any obvious signs of artificiality or digital manipulation.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_109.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "The image provided appears to be a composite of a real face with elements that do not naturally occur in human skin. This includes blemishes and markings that are not typical of real human skin, as well as some distortions around the eyes and nose, which suggest that this is likely a result of digital manipulation or a generated image rather than a real photograph.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_110.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The provided image is of a person who appears to be in the middle of speaking, as suggested by the context. The image does not provide enough visual clues to definitively determine if the face is real or generated. It would require a higher resolution image or additional information to make a reliable determination.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_111.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "Visual clues such as texture and lighting inconsistencies suggest that the face is not natural but rather generated.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_112.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "The image shows a person who does not appear to have any natural human features, such as pores, wrinkles, or variations in skin tone. The facial structure and proportions are also uniform and lack the subtle irregularities typically found on human faces.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_113.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "The features such as skin texture, hair pattern, and facial expressions are consistent with human characteristics. The image appears to be of a real person.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_114.jpg",
+            "ground_truth": "real",
+            "prediction": "uncertain",
+            "explanation": "The image provided does not have enough visual clues to confidently determine whether it is a real human face or a generated one.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_115.jpg",
+            "ground_truth": "real",
+            "prediction": "uncertain",
+            "explanation": "The image is not clear enough to confidently determine if it is of a real face or a generated one.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_116.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "The image shows a young girl with visible facial features and natural hair texture, which are characteristic of a real human face.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_117.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "The image features what appears to be a well-done CGI rendering of a female figure with a short haircut. The overall quality and realism of the face suggest it is indeed a generated rather than a real human face.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_118.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "The image shows a baby with a flat and uniform surface across the entire face, which is indicative of facial recognition technology or similar image manipulation methods being used to obscure personal information rather than depicting an actual human face.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_119.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image does not provide clear visual clues to definitively determine if the face is real or generated. Factors such as the quality of the image, lighting conditions, and subtle details that may indicate artificiality are not visible or distinguishable in this photo.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_120.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "The image shows a person with a young girl's facial features, such as hair, eyebrows, and eye makeup. These details suggest that this is a real face rather than a generated one.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_121.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "The presence of smooth edges and an overall lack of natural texture suggest that this is a generated image rather than a real face.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_122.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "A precise explanation based on observed visual clues from the image.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_123.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "The image shows artificial skin texture, which is indicative of a generated human face.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_124.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "The face appears to have an unnatural texture and lack of natural facial features that are common in real human faces. It could also be due to a lack of shadows or highlights typically found on the skin.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_125.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "The provided image appears to show a baby wearing a hat and looking concerned with its mouth open, which could be a natural expression of surprise or concern. However, upon closer inspection, there are visual clues that suggest the face is not real but generated. The features, especially around the eyes and nose, have an unnatural smoothness and lack of detail typically found in real human faces. This consistency in texture and absence of normal skin variations like freckles or blemishes indicate it's likely a digitally manipulated image.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_126.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "The image shows facial features that do not match typical human faces. The texture and smoothness of the skin, as well as the symmetry of the features and the lack of natural imperfections or blemishes, suggest that this is a digitally created face rather than one from an actual human.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_127.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person with a broad smile and dark hair. The quality of the photo is somewhat low, making it difficult to confidently determine if the face is real or generated. There are no clear visual clues in this image that would allow me to conclusively classify the image as either 'real' or 'generated'.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_128.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image depicts an older individual with noticeable wrinkles and creases on their face, along with grey hair and a slight smirk. The image quality is not high enough to confidently determine if the face is real or generated. Visual clues such as the skin texture, the lighting, and the overall appearance could provide indications towards whether it's a real face or a deepfake, but without higher resolution or more context, I cannot confidently make that determination.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_129.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "The image shows a human face with a notable lack of natural texture and imperfections commonly found on real faces. This suggests that the face is not a naturally occurring one, but rather a digital rendering or a creation using artificial intelligence.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_130.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "The image displays a person smiling at the camera with a well-defined facial structure that is typical of computer-generated imagery (CGI). Visual clues include the smoothness of the skin, symmetrical facial features, and the absence of any natural imperfections or blemishes that are common in real faces.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_131.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "The image shows a person with natural facial features such as skin texture, pores, and small variations in color that are characteristic of real human skin. Additionally, the individual has realistic hair follicles which are not uniformly patterned like those seen on generated images.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_132.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "The person in the image has a smooth, artificial-looking complexion with an unnatural sheen to their skin, as well as features that appear to be stylized or not natural to human skin. These visual clues suggest that the face is generated rather than real.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_133.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image provided is not clear enough to confidently determine if it shows a real face or a generated one. The resolution and lighting of the image are insufficient for accurate analysis.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_134.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "The facial features are unnaturally smooth and appear to be from a digital creation rather than a real human.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_135.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "The image shows signs of digital manipulation on the face, such as smoother skin and unnatural proportions.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_136.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "The face in the image has a smoother texture and lacks the natural imperfections that are characteristic of real human skin.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_137.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "The image shows a person with natural facial features and skin texture. The symmetry of the face, pores, and wrinkles are consistent with human appearance rather than the uniformity often seen in generated faces.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_138.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "The image provided is of low resolution and does not provide enough details to confidently determine if it is a real face or a generated one.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_139.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "The facial features appear to be of a high quality and could be mistaken for a real face if it were not for subtle visual clues like the texture and lighting that do not match typical human skin. There are no artifacts visible in this image, which is consistent with advanced generative AI technology.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_140.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "The image appears to be of lower resolution and quality compared to high-definition images typically associated with real human faces. Additionally, there are visible lines and artifacts on the face that suggest it is not a natural human skin texture, but rather that of an artificial or generated image.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_141.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "The image shows a person with a highly symmetrical facial structure and very smooth skin texture, which are common characteristics of generated faces.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_142.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "The image shows a human face with natural facial features and variations in skin tone that suggest it is indeed a real human face.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_143.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "The image appears to show a humanoid figure with an artificial face and hair texture. The face lacks the natural variation in skin tone, pores, and texture that are typically present in real human faces. Additionally, there is no visible aging or natural imperfections found on real human faces.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_144.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "The image appears to be of a very young child with an expression that is not typically associated with natural human expressions. The features, such as the eyes and nose, seem artificial or digitally created.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_145.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "The image shows a uniform with a face that appears to be a digital or artificial representation. The texture of the skin is not consistent with human skin, and there are no natural variations in the complexion.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_146.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "The features of the face appear to be smooth and somewhat unnatural, which could indicate that it is a digitally generated image rather than a real human face.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_147.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "The image appears to show a woman with features that are consistent with human-generated technology rather than organic growth. The skin texture, symmetry, and overall facial structure give away that this is not an organic face.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_148.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "The image shows a human with natural facial features and characteristics consistent with a real person. The texture of the skin, the way light interacts with it, and the overall proportions suggest that this is not an artificial or generated face.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_149.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "The image appears to show a human face with some features that are not typically present in natural faces, such as overly smooth skin and an unnaturally symmetric facial structure.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_250.jpg",
+            "ground_truth": "fake",
+            "prediction": "uncertain",
+            "explanation": "The image provided is not clear enough to confidently determine if it is a real face or a generated one. More information or a higher resolution image would be necessary for an accurate assessment.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_251.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image is not clear enough to confidently determine if the face is real or generated. The resolution and quality of the photo are insufficient to provide a definitive answer.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_252.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image provided is not clear enough to confidently determine if it shows a real human face or a generated one.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_253.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "The image displays a woman with a smiling expression and has some visual clues that suggest it may not be a real human face but rather a generated one. The facial features appear to have an artificial quality, such as the smoothness of the skin and the symmetry of certain features which are often associated with artificial intelligence-generated images.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_254.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "The image shows a person with a neutral expression and minimal detailing. This is typical of a computer-generated face where the features are less sharp and defined than in a photograph of a real human. The skin texture, facial structure, and overall quality indicate that this is likely an AI-generated or digitally manipulated face rather than one from a photograph of an actual person.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_255.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "The image appears to show a person with a well-defined facial structure and symmetry that is often associated with generated faces. This may include features such as smooth skin, precise details of the hair and eyebrows, and an overall uniformity that could indicate the use of artificial intelligence or digital manipulation.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_256.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "The image appears to be of an individual with a very smooth complexion and features that are not typical for human skin, suggesting that the face may have been generated or altered using technology.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_257.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "The image depicts a woman with natural facial features and expressions. The texture of her skin is consistent throughout and there are no visible signs of digital alteration, such as pixelation or an unnatural quality to the skin tones or reflections. Her hair also appears natural and not digitally enhanced.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_258.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "The image shows signs of digital manipulation that suggest it is not an authentic photograph but rather a digitally-created or modified image.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_259.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "Based on visual clues, such as the symmetry of facial features and the smoothness of skin, it appears that the image is a photograph of a person with a real face rather than a generated one.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_260.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "The image shows characteristics that are common in generated faces, such as a smoother complexion and certain patterns that suggest it is not a real human face.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_261.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image is not of high enough resolution to determine with certainty if the face is real or generated.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_262.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "The image is manipulated to appear as if it's of a human face. There are signs of digital alteration such as the smoothness of the skin, the perfection of the facial features, and the unnatural lighting. These visual clues suggest that this is not a real human face but a generated one.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_263.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "The image shows an individual who appears to have features that are not typical of a natural human face. There is visible texture and contours that suggest a generated appearance, such as the skin's smoothness and the facial structure's symmetry.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_264.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "The facial features and symmetry are indicative of computer-generated imagery.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_265.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "The image shows a young girl with natural facial features, such as pores, skin texture and blemishes, which are consistent with those of real human skin. Additionally, her hair and eyes have a realistic appearance that indicates the photo is not digitally generated.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_266.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "The image appears to show a person wearing what looks like a firefighter's helmet, but upon closer inspection, it becomes apparent that the face is not a real human face but rather a highly realistic digital or AI-generated one. This can be inferred from the lack of subtle facial features and the overall perfection of the skin texture and facial structure.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_267.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "The image shows facial features that are consistent with those created through generative technology. There are no visible signs of imperfections or inconsistencies typically associated with a real human face, such as wrinkles, blemishes, or variations in skin texture and tone.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_268.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "The image provided shows a woman with a visibly smooth complexion and an overall appearance that is consistent with AI-generated images. The features such as skin texture, pores, and the way light reflects on her face are distinct from natural human faces.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_269.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "The image provided appears to show a real human face, with visible pores, skin texture and natural facial features that are consistent with a real person's face.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_270.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "The image displays several characteristics that suggest it is of a generated face, such as an unnaturally smooth complexion, uniform texture on the skin, and certain facial features that are not typical in human skin.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_271.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "The image appears to show a child with an exaggerated facial expression, which is indicative of a digitally altered or generated face rather than a real human face.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_272.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "The image appears to show a man with a well-defined jawline and a smooth skin texture, which are common characteristics of faces generated by AI systems. Additionally, there is a certain uniformity in the features that may not be naturally occurring.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_273.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "The image provided appears to be of a woman with a smooth complexion and features that are more refined than typical human skin texture. These factors, such as the perfect skin without any blemishes or imperfections, as well as the facial symmetry, suggest that the image may have been generated rather than being a real human face.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_274.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "The image shows a child with an unusual facial structure and features, suggesting that it is not a naturally occurring human face.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_275.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "The image shows facial features that are not typical of human faces, such as the symmetry and uniformity in the skin texture, which suggests it might be a digitally created or altered image.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_276.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "The image shows facial features that are consistent with human faces, such as skin texture, eye and mouth shape, and hair. Additionally, there is a natural complexity to the lighting and shadows on the face, which suggests a real human face rather than a generated one.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_277.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "The image shows a man with an unnaturally smooth complexion and a facial structure that appears to be digitally manipulated or created, indicative of a generated face.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_278.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "The image shows a person with a facial feature that appears to be highly symmetrical and possibly digitally enhanced or manipulated.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_279.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a woman who appears to be wearing makeup and has hair. While there are some indicators such as skin texture that could potentially suggest a generated face, it is not possible for me to definitively determine if the face is real or generated without more context or an examination of the finer details of the image.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_280.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "The features of the person's face appear to be artificial and lack the natural imperfections and variations that are commonly seen in real human faces.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_281.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a person with noticeable digital artifacts, such as the skin texture that appears to be composed of small squares. However, without more context or a clearer image, it's difficult to determine if these are signs of a generated face or simply an effect created through photo editing software. I would need a higher resolution image or additional visual clues to make a more accurate assessment.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_282.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "The image shows a face that appears to have been generated rather than being an actual human face. Visual clues include the smoothness of the skin, the uniformity and symmetry of the facial features, and the lack of natural imperfections or blemishes typically seen in real human faces.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_283.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "The image appears to be of a person standing in front of a mirror with a reflective surface in the background. The face and surroundings are clear, but the reflective surface creates an illusion that the face is real. In fact, it looks like a reflection of a person who might have been taking the picture.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_284.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "The facial features show signs of manipulation such as symmetry that is often indicative of generated faces.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_285.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "The image appears to have an unnatural smoothness and symmetry in facial features that are not typical of real human faces.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_286.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real]",
+            "explanation": "The image provided appears to be of a person with natural skin texture and facial features that are consistent with human characteristics. There are no visible signs of image manipulation or artificial components, such as reflections or overly smooth skin. The image is consistent with a real face.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_287.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "The image shows clear signs of digital manipulation, including altered skin texture and subtle differences in facial features compared to real human faces.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_288.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image provided does not give clear visual clues to determine whether it is a real human face or a generated one.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_289.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "The image displays a person wearing glasses with noticeable digital artifacts that do not align with typical human skin textures and facial features. The eyes appear to have digital glitches, and the overall quality of the image suggests it is not of a real face but rather a digitally created or manipulated one.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_290.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "The facial features and structure of this person's face are inconsistent with natural human features, indicating that the image is likely a product of artificial intelligence or digital manipulation.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_291.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image shows a human face, but there are not enough visual clues to confidently determine if it is a real face or a generated one.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_292.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "The image appears to be digitally altered with noticeable pixelation and lack of natural texture, indicative of a generated face.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_293.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "The image provided is too blurry to determine with certainty whether it shows a real human face or a generated one. Visual clues that are typically used to distinguish between real and generated faces, such as texture, lighting, and other subtle cues, are not clearly visible due to the image's low resolution.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_294.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "The image shows a person with a stylized appearance, including a large head compared to their body, which is indicative of a generated face or an image edited to exaggerate features.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_295.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "The image appears to be of a woman with an artificial appearance, possibly due to digital alterations or filters that are commonly used in social media applications. The facial features and overall quality suggest that it may not be a real human face.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_296.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "The facial features and texture are indicative of a generated image rather than a real human face.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_297.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "The image provided appears to be of a person with facial features that are not typical of humans, which suggests it is likely generated rather than real.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_298.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "The image appears to be that of a person with artificial intelligence facial features. The visual clues suggest the face is not natural but rather a digital creation.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_299.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "The image shows a man with a symmetrical facial structure and an unnatural level of smoothness to his skin, which are common visual cues for generated faces.",
+            "error": null
+        }
+    ]
+}

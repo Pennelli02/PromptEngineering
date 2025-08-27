@@ -1,12 +1,10 @@
 import os
 import re
 import shutil
-from collections import defaultdict
 from datetime import datetime
 import json
 from pathlib import Path
 import glob
-import numpy as np
 
 
 def initMetrics():
@@ -34,10 +32,10 @@ def analyzeMetrics(counters, images_with_labels, prompt, systemPrompt, oneShot, 
     false_positive_rate = counters["fp"] / total_fake if total_fake else 0
 
     # ================= One-class accuracy =================
-    one_class_accuracy_real = counters["tp"] / (counters["tp"] + counters["fn"]) if (
-            counters["tp"] + counters["fn"]) else 0
-    one_class_accuracy_fake = counters["tn"] / (counters["tn"] + counters["fp"]) if (
+    one_class_accuracy_real = counters["tn"] / (counters["tn"] + counters["fp"]) if (
             counters["tn"] + counters["fp"]) else 0
+    one_class_accuracy_fake = counters["tp"] / (counters["tp"] + counters["fn"]) if (
+            counters["tp"] + counters["fn"]) else 0
     # =====================================================
 
     print("\n====== FINAL REPORT ======")
@@ -247,7 +245,7 @@ def createJSONMeanStats(folder_path, oneshot=False):
 
 
 if __name__ == "__main__":
-    base_path = "JsonMeanStats/Uncertain/gemma3"
+    base_path = "JsonMeanStats/Sure/qwen7b"
 
     for i in range(7):  # indici da 0 a 6
         for lang in ["Eng", "Ita"]:

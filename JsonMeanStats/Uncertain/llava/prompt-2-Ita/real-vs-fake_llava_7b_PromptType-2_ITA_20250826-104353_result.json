@@ -1,0 +1,730 @@
+{
+    "metrics": {
+        "total_processed": 100,
+        "total_real": 50,
+        "total_fake": 50,
+        "TP": 30,
+        "TN": 8,
+        "FP": 22,
+        "FN": 6,
+        "rejection_real": 20,
+        "rejection_fake": 14,
+        "text_parsing_errors": 0,
+        "text_parsing_error_rate": 0.0,
+        "accuracy": 0.5757575757575758,
+        "precision": 0.5769230769230769,
+        "recall": 0.8333333333333334,
+        "false_negative_rate": 0.10714285714285714,
+        "false_positive_rate": 0.5,
+        "rejection_real_rate": 0.35714285714285715,
+        "rejection_fake_rate": 0.3181818181818182,
+        "rejection_total_rate": 0.34,
+        "one_class_accuracy_fake": 0.8333333333333334,
+        "one_class_accuracy_real": 0.26666666666666666,
+        "system_prompt": "Sei un sistema professionale di classificazione delle immagini che analizza le immagini fornite per determinare se mostrano un volto umano reale o uno generato.\nRispondi SOLO usando il seguente formato JSON:\n{\n  \"result\": \"[real face]\" oppure \"[generated]\" o [uncertain], \n  \"explanation\": \"Una spiegazione precisa basata su indizi visivi osservati nell'immagine.\"\n}\nNON includere frasi generiche come 'non ci sono artefatti'. Sii visivo e dettagliato nella tua analisi.Rispondi ESCLUSIVAMENTE con questo JSON, senza commenti o testo extra.",
+        "user_prompt": "Ci sono artefatti intorno alla bocca, alle orecchie o all'attaccatura dei capelli che potrebbero indicare che il volto \u00e8 stato generato dall'IA?",
+        "oneShot": false
+    },
+    "responses": [
+        {
+            "image_path": "test_3\\real\\real_100.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "Nell'immagine non ci sono artefatti visibili intorno alla bocca, alle orecchie o all'attaccatura dei capelli che potrebbero indicare che il volto \u00e8 stato generato dall'IA. Le caratteristiche del viso, come la barba e i capelli, non presentano alcuna irregolarit\u00e0 strutturale o deformazione che siano associati a un volto generato.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_101.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Non ci sono artefatti visibili nell'immagine fornita. Il piccolo bambino sembra avere una pelle normale, capelli naturali e occhi non manipolati. La sua espressione e le caratteristiche della faccia sono naturali e consistenti con il resto del corpo. Ci sono anche tracce delle crepe sulla pelle che possono essere normali per una persona di questo et\u00e0.",
+            "error": "Parsing failed, fallback prediction: real face"
+        },
+        {
+            "image_path": "test_3\\real\\real_102.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "Il sorriso sembra troppo perfetto e simmetrico per essere quello di un umano reale. Il trucco sulla pelle \u00e8 uniforme e molto visibile, che potrebbe indicare una applicazione del computer-generato. Inoltre, ci sono linee e pixel intorno alla bocca e all'attaccatura dei capelli che possono essere artefatti o parte dell'IA generata.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_103.jpg",
+            "ground_truth": "real",
+            "prediction": null,
+            "explanation": "Non ho accesso ai sensori visivi e non posso valutare l'immagine come se fosse realmente presente. Tuttavia, per quanto possa valutarlo visualizzando la descrizione dell'immagine, potrei fornire informazioni generali sull'aspetto dell'immagine che potrebbero avere un certo valore indicativo del suo tipo. Se l'immagine dovesse essere stata fornita con il formato JSON specificato nella richiesta, potresti fornire la mia analisi su quale tipo di volto \u00e8 presente e perch\u00e9.",
+            "error": "Parsing failed, fallback prediction: None"
+        },
+        {
+            "image_path": "test_3\\real\\real_104.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "Non posso fornire una risposta su questo aspetto perch\u00e9 non sono rilevando i dettagli specifici dell'immagine. Tuttavia, se ci sono artefatti visibili nella testa o nell'attaccatura dei capelli, questi potrebbero indicare che il volto \u00e8 stato generato dall'IA.",
+            "error": "Parsing failed, fallback prediction: generated"
+        },
+        {
+            "image_path": "test_3\\real\\real_105.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "Il volto presenta un'espressione che pu\u00f2 essere generata dall'IA, dato lo stile della pelle, dei capelli e dell'occhio sinistro. Ci sono anche una certa omogeneit\u00e0 nei tratti del viso, come la somiglianza delle esigenze, della linea nasale e degli occhi, che possono essere generati dall'IA per ottenere un risultato pi\u00f9 realistico. Inoltre, ci sono dettagli come la scanalatura dei capelli e il taglio del collo che sembrano essere tratti comuni in volti umani, ma potrebbero anche essere generati dall'IA per ottenere un risultato pi\u00f9 realistico.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_106.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "La foto mostra una bambina sorridente. La sua fronte e le sue orecchie sembrano normali, ma ci sono alcune sospetto di artefatti intorno alla bocca che possono essere generati dall'IA. Tuttavia, non \u00e8 possibile verificare con certezza se si tratta di artefatti o di una foto normale senza informazioni aggiuntive.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_107.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "La donna ha un colletivo intorno alla bocca, alle orecchie e all'attaccatura dei capelli. Queste caratteristiche sono comuni in immagini generati dall'IA e non si trovano naturalmente sull'uomo. La mano sulla faccia \u00e8 una delle molteplici forme di artefatto che si possono trovare nell'immagine.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_108.jpg",
+            "ground_truth": "real",
+            "prediction": "uncertain",
+            "explanation": "Non sono possibili artefatti intorno alla bocca, alle orecchie o all'attaccatura dei capelli. Non ho sufficiente informazioni visive per determinare se il volto \u00e8 generato dall'IA o reale.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_109.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "Il volto presenta una somiglianza con le immagini di personaggi reali, ma vi sono anche artefatti che possono essere indicati dalle irregolarit\u00e0 nella pelle e dalla mancanza di un contorno completo del viso, che suggeriscono l'uso di tecniche di generazione di immagini.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_110.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "Il volto dell'uomo in foto ha una espressione e un comportamento umano molto naturali. Tuttavia, ci sono alcune differenze rispetto a un viso reale: le orecchie hanno un design pi\u00f9 semplice e regolare, il colore della pelle \u00e8 piu' uniforme e la carnagina non presenta i piccoli imperfezzi naturali come gli strigli, le pieghe e le bolsue. Inoltre, ci sono alcune differenze nel pelo, che appare meno folioso e non ha le irregolarit\u00e0 naturali come i taglietti o i rameggi che tipicamente si riscontrano in un viso umano reale.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_111.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "L'immagine mostra una persona con un viso generato. Ci sono alcuni artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli che potrebbero indicare la presenza di filtri o altri effetti generati dalla tecnologia dell'IA. Tuttavia, questi artefatti non sono molto evidenti come quelli che caratterizzano spesso un volto generato, come per esempio il corredorino che pu\u00f2 essere visibile intorno alle labbra e al mento.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_112.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "Il volto in questione presenta artefatti intorno alla bocca e agli occhi, come una maggiore rigidezza delle linee del viso e l'assenza di particolari come la pelle elastica, gli oste, e la muscolatura che si osservano in un volto umano reale. Queste caratteristiche suggeriscono che il volto potrebbe essere stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_113.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "Non posso fornire una conclusione precisa basata su indizi visivi. La donna ha una espressione sorridente e un'espressione faciale che sembra reale, ma ci sono alcuni artefatti intorno alla bocca, alle orecchie e all'attaccatura dei capelli, che potrebbero indicare che il volto \u00e8 stato generato dall'IA. Tuttavia, esistono anche possibilit\u00e0 di alterazioni retinate o effetto del fotoapppio, che rendere difficile distinguere tra un volto reale e uno generato. Per una conclusione precisa, sarebbe necessario un'analisi pi\u00f9 dettagliata dell'immagine.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_114.jpg",
+            "ground_truth": "real",
+            "prediction": null,
+            "explanation": "\"uncertain\"",
+            "error": "Parsing failed, fallback prediction: None"
+        },
+        {
+            "image_path": "test_3\\real\\real_115.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "Il viso del personaggio mostra caratteristiche e dettagli come la precisione delle orecchie, il tracciamento delle linee di fronte, le ombreggi che appaiono sofisticate e l'assenza di artefatti che potrebbero essere presenti in un volto reale, come screzi o irregolarit\u00e0 nella superficie della pelle.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_116.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "Il sistema non pu\u00f2 fornire una risposta definitiva in base alla fotografia. Il volto dell'infante potrebbe appartenere a una persona reale, ma potrebbe anche essere stato generato dall'IA. L'indeterminazione \u00e8 dovuta alla presenza di artifici come la frangia bianca e la barretta sulla testa. Questi elementi sono comuni nella fotografia di bambini e non sono necessariamente artefatti dell'IA. Per una valutazione pi\u00f9 certa, il sistema sarebbe dovuto analizzare il contesto e le caratteristiche del volto stesso.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_117.jpg",
+            "ground_truth": "real",
+            "prediction": "uncertain",
+            "explanation": "In questa immagine, c'\u00e8 una persona con un aspetto fisico e una certa somiglianza con i modelli di intelligenza artificiale. Tuttavia, ci sono alcune anomalie che rendono difficile determinare se il volto \u00e8 reale o generato: la pelle non ha le imperfezioni tipiche delle persone reali, ma anche queste caratteristiche possono essere intenzionalmente modificate per dare un'impressione pi\u00f9 umana. Inoltre, ci sono dei segni sul viso che potrebbero indicare l'uso di una retorica o del processo di generazione dell'immagine, ma non sono sufficienti a stabilire con certezza se il volto \u00e8 reale o generato. Per garantirsi un risultato pi\u00f9 preciso, sarebbe necessario analizzare le caratteristiche pi\u00f9 dettagliate e le anomalie che si potrebbero trovare in altre parti del corpo dell'individuo.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_118.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "Il bambino sembra aver una espressione di felicit\u00e0 con una faccia piuttosto artificiale, come se l'immagine non rappresenti un vero volto umano. Le caratteristiche della pelle, dell'osso, delle orecchie e degli occhi sono irregolari e poco coerenti con quello che si aspetta da una persona vera.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_119.jpg",
+            "ground_truth": "real",
+            "prediction": null,
+            "explanation": "\"uncertain\"",
+            "error": "Parsing failed, fallback prediction: None"
+        },
+        {
+            "image_path": "test_3\\real\\real_120.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "Il pugnale della persona appare irregolare e non si trova una somiglianza naturale con il resto del viso. Le ossa sono spiegate in modo artificiale e la pelle non ha le solite imperfezioni naturali. Queste indiscrezioni suggeriscono che il volto \u00e8 stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_121.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "Il volto presenta tracce di algoritmo, come la precisione delle linee del viso e la regolarit\u00e0 della piega dei bordi della bocca, che possono essere riscontro di una manipolazione artificiale dell'immagine. Inoltre ci sono alcune linee pi\u00f9 sottili che potrebbero indicare la presenza di un filtro o un meccanismo di correzione dell'IA sul volto.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_122.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "Il ragazzo ha una espressione di pensiero intenso e la bocca sembra essere modificata o generata, mancando di alcune caratteristiche comuni nelle fotografie. Inoltre, ci sono un po' di artefatti al di dietro alla fronte, che potrebbero essere parte di una tecnologia di realt\u00e0 virtuale o dell'IA.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_123.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "La donna ha occhi e un naso reali, la pelle sembra avere tonalit\u00e0 naturali, le labbra sono chiare e il colore dei capelli non viene modificato. Ci sono tracce sul viso e sulla pelle che potrebbero essere segni di et\u00e0, stigma da precedenti malattie, o blemmi comuni. La presenza di tali elementi rende la probabilit\u00e0 di un generatore di immagini non elevata.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_124.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "Non ci sono artefatti visibili nell'immagine che indicano se il volto sia reale o generato dall'IA. Le orecchie, l'attaccatura dei capelli e le parti della faccia sembrano essere normali per un volto umano reale. Tuttavia, non esiste alcun indicatore esplicito che permeta di determinare con certezza la natura del volto.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_125.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "In questa immagine, esiste un bambino con una faccia un po' stizzata e la fronte pare essere sottoposta a uno strumento di misurazione. Il volto del bambino non mostra artefatti o caratteristiche che siano inconsistenti rispetto alle norme umane. Tuttavia, ci sono alcune differenze notevoli tra il viso del bambino e quello di un adulto, che potrebbero essere dovute ad una manipolazione digitale o alla natura stessa del volto umano. Ci sono anche alcuni segnali di uno strumento di misurazione nella parte superiore della fronte. Tuttavia, non ci sono artefatti visibili all'occhio e alle orecchie dello strumento in uso.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_126.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il volto dell'immagine mostra un gran dettaglio e sembra essere reale. Non ci sono artefatti intorno alla bocca, alle orecchie o all'attaccatura dei capelli che potrebbero indicare che il volto \u00e8 stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_127.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "La persona sembra avere una barba e la pelle apparecchia pi\u00f9 liscia rispetto alle imperfezioni comuni nel volto umano. Tuttavia, non sono presenti artefatti intorno alla bocca o alle orecchie che potrebbero indicare un generatore di immagini. La attenzione sull'immagine e il sorriso della persona suggeriscono che l'immagine \u00e8 stata generata dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_128.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "Non sono possibili conclusioni certe sulla presenza di artefatti sull'immagine fornita, poich\u00e9 non si hanno informazioni visive su dettagli che potrebbero indicare la presenza di artefatti. Una determinazione precisa necessiterebbe di una visione dell'immagine con un angolo piu' grande e con una qualit\u00e0 di immagine migliore per permettere un'analisi pi\u00f9 dettagliata.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_129.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "Non ci sono artefatti intorno alla bocca, alle orecchie o all'attaccatura dei capelli che potrebbero indicare che il volto \u00e8 stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_130.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "Il ritratto mostra una persona che sembra essere generata, ma ci sono alcune ambiguit\u00e0. La precisione del tracciamento facciale \u00e8 sufficiente per identificare il contorno della bocca, delle orecchie e degli occhi. Tuttavia, la qualit\u00e0 dell'immagine non consente di analizzare i dettagli specifici dell'attaccatura dei capelli, che potrebbero indicare un tracciamento pi\u00f9 avanzato rispetto alla precisione del contorno della bocca e delle orecchie. Inoltre, ci sono alcune sfumature e sfide nel viso della persona, come la sfuma tra le linee e le pelle di fronte, che possono essere indicative di un tracciamento pi\u00f9 complesso.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_131.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "La persona ha una precisione elevata e i tratti del viso sono molto simili a quelli dei volti reali, ma l'atteggiamento della mascella, la proporzione delle ossa e la mancanza di alcuni dettagli naturali come irregolarit\u00e0 sulla pelle e la luminosit\u00e0 naturale sull'occhio destra potrebbero indicare che il volto \u00e8 stato generato dall'IA. Ci sono anche dei tratti sulle guance, sullo zigomo e sull'attaccatura dei capelli che possono essere artefatti generati.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_132.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "In the image provided, non ci sono artefatti visibili che indicano se la donna ha un volto reale o generato. Le sue espressioni e l'aspetto della sua pelle sembrano naturali, ma senza ulteriori informazioni, non \u00e8 possibile affermare con certezza se il volto \u00e8 reale o generato da una Intelligenza Artificiale.",
+            "error": "Parsing failed, fallback prediction: real face"
+        },
+        {
+            "image_path": "test_3\\real\\real_133.jpg",
+            "ground_truth": "real",
+            "prediction": "uncertain",
+            "explanation": "In questa immagine, ci sono due persone. La persona sulla sinistra mostra un volto umano reale con caratteristiche naturali come pelle, capelli, orecchie. Non ci sono artefatti visibili che possammo associare al volto generato dall'IA. Invece, la persona sulla destra sembra avere una barba artificiale e un look piuttosto stilizzato. Ci sono alcune linee sulla pelle e le orecchie sono ben definiti, ma non ci sono artefatti visibili che potrebbero indicare che il volto \u00e8 stato generato dall'IA. La presenza di una microfonia indica che la persona sta parlando. In questa foto, non si possono identificare artefatti intorno alla bocca, alle orecchie o all'attaccatura dei capelli che potrebbero indicare che il volto \u00e8 stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_134.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Non ci sono artefatti intorno alla bocca, alle orecchie o all'attaccatura dei capelli. Tuttavia ci sono indizi che potrebbero suggerire che il volto \u00e8 stato generato dall'IA: la pelle sembra priva di imperfezioni comuni negli esseri umani (ad esempio, acne, segni d'et\u00e0), la precisione dei contorni facciali, l'assenza di ombro e altri accessori che normalmente accompagnano le foto di persone. Tuttavia, questi indizi sono spesso presenti anche in foto di persone reali, quindi non ci sono artefatti esclusivamente per questo motivo.",
+            "error": "Parsing failed, fallback prediction: real face"
+        },
+        {
+            "image_path": "test_3\\real\\real_135.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "Sono rilevando alcuni artefatti intorno alla bocca e alle orecchie, come una scanaletta sulla fronte e un tipo di trama o filtro che passa attraverso l'apparato visivo. Tuttavia, \u00e8 difficile distinguere se il volto sia reale o generato solo analizzando questi artefatti.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_136.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "Non posso identificarci artefatti intorno alla bocca, alle orecchie o all'attaccatura dei capelli del personaggio in immagine. Se c'erano artefatti che indichino generazione di immagini, potrebbero essere molto difficili da identificare.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_137.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "Non ci sono artefatti visibili intorno alla bocca, alle orecchie o all'attaccatura dei capelli. Ci sono solo linee che potrebbero essere legate al contorno del viso e delle strisce sulla camicia. Non \u00e8 possibile concludere con certezza se il volto \u00e8 stato generato dall'IA solo basandosi su questi indicatori.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_138.jpg",
+            "ground_truth": "real",
+            "prediction": "[real face]",
+            "explanation": "Nella immagine, ci sono pochi artefatti che si possono notare intorno alla bocca, alle orecchie e all'attaccatura dei capelli. L'immagine sembra mostrar un volto umano realescente senza segni di artefatti generati dall'IA come ad esempio filtri o modificazioni digitali che alterino la verit\u00e0 del volto.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_139.jpg",
+            "ground_truth": "real",
+            "prediction": null,
+            "explanation": "Le immagini fornite non forniscono dettagli sufficienti per verificare la presenza di artefatti intorno alla bocca, alle orecchie o all'attaccatura dei capelli. Per poterci fornire un'analisi precisa, sarebbe necessario una descrizione pi\u00f9 dettagliata della scena o di altre immagini che mostrano la persona in questione.",
+            "error": "Parsing failed, fallback prediction: None"
+        },
+        {
+            "image_path": "test_3\\real\\real_140.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "Il volto nell'immagine presenta delle caratteristiche atipiche, come la pelle senza rughe e l'assenza di ossiconi visibili. Ci sono anche alcune deformazioni nella struttura della testa e degli occhi che sembrano essere artificiosi. Questi indicatori suggeriscono che il volto \u00e8 stato generato da un algoritmo, poich\u00e9 non esiste nessuna evidenza di artefatti naturali come rughe, segni etnici o caratteristiche distintive personali.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_141.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "Il volto dell'uomo presenta una alta precisione nella forma delle linee e nei toni di colore delle pelle e dei capelli, che sembrano essere di tipo reale. Tuttavia, ci sono delle protesi dentali molto realistiche e il trucco del viso sembra essere stato applicato con cura e professionalit\u00e0. Questi elementi, insieme alla sua espressione seria e all'attezzatura generale, fanno sospettare che il volto sia stato generato dall'IA. Ci sono anche alcune imperfezioni come la barba, che non ha la stessa intensit\u00e0 di colore rispeto alle zone della pelle e dei capelli, ma queste imperfezioni possono essere considerate come artefatti naturali in una persona reale.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_142.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "Non ci sono artefatti intorno alla bocca, alle orecchie o all'attaccatura dei capelli che potrebbero indicare che il volto \u00e8 stato generato dall'IA. La pelle, gli occhi e la posa della persona suggeriscono una persona viva e non generata da tecnologia.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_143.jpg",
+            "ground_truth": "real",
+            "prediction": "real face",
+            "explanation": "Il bambino ha un viso genuinamente umano. Non vi sono artefatti intorno alla bocca, alle orecchie o all'attaccatura dei capelli che potrebbero indicare che il volto \u00e8 stato generato dall'IA. Le caratteristiche facciali, come la pelle, gli occhi e il naso, sono naturali e coerenti con le altre parti del volto e con il bambino stesso.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_144.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "[{\"result\": \"[generated]\", \"explanation\": \"L'immagine mostra un bambino che mostra una pelle irregolare e irregolari, in particolare sulla fronte e sulle guance. Ci sono anche dei piccoli artefatti sulla fronte e sull'attaccatura dei capelli. Questi dettagli suggeriscono che il volto potrebbe essere stato generato dall'IA, poich\u00e9 gli artefatti sono comuni nella creazione di immagini generate da software di intelligenza artificiale.\"}]",
+            "error": "Parsing failed, fallback prediction: generated"
+        },
+        {
+            "image_path": "test_3\\real\\real_145.jpg",
+            "ground_truth": "real",
+            "prediction": "real",
+            "explanation": "La persona indossa un uniforme di poliziotto e ha una espressione felice. La somiglianza con le caratteristiche umane naturali, come il naso, gli occhi e la struttura del viso, suggerisce che il volto \u00e8 reale.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_146.jpg",
+            "ground_truth": "real",
+            "prediction": "generated",
+            "explanation": "Non ci sono artefatti intorno alla bocca, alle orecchie o all'attaccatura dei capelli. Il volto presenta una quantit\u00e0 insufficiente di dettagli come ad esempio il tricorne, la barba e la pelle che indicano un generato invece di un reale.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_147.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "La persona ha un viso composto da molteplici linee e strutture che non seguono la coerencia tipica dei volti umani. Ci sono anche una serie di linee che sembrano seguire uno schema di rete o modelli di matematica, in contrasto con le normali linee delle pieghe del viso umano. Le orecchie e il resto dell'attaccatura dei capelli presentano un'estetica molto irregolare, che non coincide con la proporzione e la coerenza delle orecchie di una persona reale.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_148.jpg",
+            "ground_truth": "real",
+            "prediction": "[uncertain]",
+            "explanation": "Non sono in grado di fornire una certa conclusione sulla verit\u00e0 del volto umano. Ci sono alcune anomalie visive, come la precisione delle orecchie e della fronte, che potrebbero indicare un'immagine generata dall'IA. Tuttavia, ci sono anche dettagli naturali come l'occhiello e i segni di et\u00e0 sulla pelle, che rendono difficile determinare se la donna ha un volto umano real o generato.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\real\\real_149.jpg",
+            "ground_truth": "real",
+            "prediction": "[generated]",
+            "explanation": "La donna ha un sorriso, una pelle regolare e gli occhi hanno un colore naturale. Tuttavia, ci sono alcune caratteristiche che potrebbero indicare un volto generato. La linea del contorno della bocca \u00e8 molto regolare e perfetta, mentre la parte inferiore della faccia sembra essere un po' pi\u00f9 semplice o meno dettagliata rispetto alla parte superiore. Inoltre, gli occhi sono molto ben definiti e non ci sono artefatti visibili nella bocca o sull'attaccatura dei capelli che potrebbero indicare un volto generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_250.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "[\n{\n  \"result\": \"[uncertain]\",\n  \"explanation\": \"Non sono stati in grado di identificare se l'immagine rappresenta un volto reale o uno generato, poich\u00e9 ci sono artefatti intorno alla bocca che potrebbero essere dovuti a filtro o ad altre manipolazioni. Non \u00e8 stato possibile fornire un'analisi dettagliata su questi artefatti.\"\n}\n]",
+            "error": "Parsing failed, fallback prediction: real face"
+        },
+        {
+            "image_path": "test_3\\fake\\fake_251.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "Non sono rilevabili artefatti visibili nella bocca, alle orecchie o all'attaccatura dei capelli della donna. La sua espressione e la sua faccia sono normali e naturali, ma ci sono alcune irregolarit\u00e0 nel suo colletto che potrebbero indicare una modifica digitale o un accessorio non naturalista.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_252.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "Non ho possibilit\u00e0 di analizzar l'immagine perch\u00e9 il formato JSON richiede una descrizione testuale e non permette di elaborare i dati visivi in modo dettagliato. Se fornitesti una immagine, potresti aiutarti ad analizzarla e fornire una risposta appropriata per questo formato?",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_253.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "Il volto della persona in the image presents a smooth and polished texture. The features of the face appear consistent, which is typical for a generated image. Additionally, the skin tones are even without any visible pores or other imperfections common to real human faces.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_254.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "La donna presenta linee e pixelazione in modo irregolare sul viso, suggerendo l'uso di un algoritmo di generazione dell'immagine.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_255.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "Il viso mostra una precisione elevata delle funzioni di generazione, come l'attaccatura dei capelli e la textura della pelle. Tuttavia ci sono alcuni indizi che potrebbero indicare che il volto \u00e8 stato generato dall'IA: le orecchie, che possono essere un po' pi\u00f9 piccole rispetto alle esigenze naturali, la somiglianza delle linee dei capelli e la compattezza del viso. Inoltre, ci sono alcune discrepanze nella conformazione della fronte e nel profilo facciale, che potrebbero essere un po' meno armoniosa rispetto a quella naturale.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_256.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "Non sono presenti artefatti intorno alla bocca, alle orecchie o all'attaccatura dei capelli. Tuttavia, ci sono alcune irregolarit\u00e0 nella pelle che potrebbero essere effetto di una fotografia generata dall'IA. Questi indici includono linee e sfumature non uniformi nella pelle, che possono essere segni di un modello di IA in grado di creare immagini molto realistici ma ancora con alcuni difetti visivi.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_257.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "Non sono possibili analisi dettagliate sulla presenza di artefatti intorno alla bocca, alle orecchie o all'attaccatura dei capelli, poich\u00e9 la qualit\u00e0 dell'immagine fornita non permette di esaminare queste parti con precisione. Il volto \u00e8 visibile e di facile lettura, ma gli artefatti possono essere difficili da identificare in dettaglio per via della risoluzione limitata.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_258.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "Il volto della bambina in foto mostra tracce e segnali visibili sulla pelle, oltre al colore dei capelli e delle orecchie che appaiono irregolari e non estremamente naturalistiche. Tali indizi suggeriscono che il volto della bambina \u00e8 stato generato dall'IA e non si tratta di un'immagine reale.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_259.jpg",
+            "ground_truth": "fake",
+            "prediction": null,
+            "explanation": "\"uncertain\"",
+            "error": "Parsing failed, fallback prediction: None"
+        },
+        {
+            "image_path": "test_3\\fake\\fake_260.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "Non sono possibili valutazioni su artefatti in un immagine. La presenza di artefatti dipende da vari fattori, come la qualit\u00e0 della fotografia e la tecnologia utilizzata per generare l'immagine. In ogni caso, ci sono alcune caratteristiche visibili che potrebbero essere indicate dal sistema professionale di classificazione delle immagini come indicatori di un volto umano reale o uno generato: la qualit\u00e0 della fotografia, i dettagli del volto (come il colore delle orecchie e le ciglia), la precisione degli accenti, il rendimento delle ombrosi e dei capelli. Tuttavia, l'analisi di questi fattori richiederebbe una valutazione pi\u00f9 approfondita che non \u00e8 possibile in questo caso.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_261.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "Il personaggio nella immagine sta indossando una maschera con un modello di testa umano. Ci sono artefatti intorno alla bocca e alle orecchie, che potrebbero indicare che il volto \u00e8 stato generato dall'IA. Tuttavia, ci sono alcune irregolarit\u00e0 nella conformazione del viso e delle ossicone, che possono indicare che la maschera ha un fit imperfetto con la testa reale. Inoltre, ci sono linee sul volto che potrebbero essere il risultato di una tecnologia di riempimento che cerca di somigliare il viso umano alla maschera.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_262.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "Non posso determinare se ci sono artefatti intorno alla bocca, alle orecchie o all'attaccatura dei capelli in un immagine statico. Se hai una domanda sulle immagini di movimento, potresti fornire un link ad un altro file o descrivere in modo pi\u00f9 dettagliato le caratteristiche degli artefatti che si aspetterebbero trovare nell'immagine.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_263.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "Il sistema non ha fornito un risultato chiaro in questo caso, poich\u00e9 ci sono diverse possibilit\u00e0. Esistono artefatti come la linea che incrocia il naso e l'occhio, ma questi sono comuni a causa della struttura del volto umano. La testa sembra essere leggermente distorta o piegata in modo non naturale, ma ci\u00f2 pu\u00f2 anche essere una caratteristica intenzionale nella creazione del personaggio.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_264.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "Nella prima immagine, la bocca sembra essere artificiale perch\u00e9 ci sono elementi che non si trovano in una bocca umana reale: il naso \u00e8 lungo e sottile, con un raccordamento poco naturale. I denti non sono perfettamente allineamento, e ci sono alcuni artefatti che potrebbero indicare la presenza di linee guida o una sorta di struttura tridimensionale intorno alla bocca. Le orecchie sembrano anche essere particolarmente stilizzate. La terza immagine, invece, presenta un volto molto simile a quello umano reale, con linee guida meno evidenti e una maggiore somiglianza all'uomo che lo genera.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_265.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "Il volto della persona sembra essere generato, ma ci sono alcune anomalie che possono essere dovute a un'immagine di base non completamente integrata con l'ambiente o ad una post-processing. Ad esempio, la linea dell'occhio sinistro sembra non completamente allineata con le altre parti del volto.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_266.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "La persona nella foto presenta tracce artificiali sulla pelle, specialmente intorno alla bocca e alle orecchie. Queste tracce possono essere indicative di manipolazioni digitali che hanno generato il volto della persona in questione.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_267.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "Il volto della persona nella foto ha tratti caratteristici di una faccia generata dall'intelligenza artificiale, come la precisione delle linee e il contraste dei toni che rendono l'immagine poco naturale.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_268.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "Non posso fornire una valutazione precisa sulla presenza di artefatti nell'immagine. Tuttavia, se ci sono artefatti intorno alla bocca o alle orecchie, potrebbero essere segnali indiziabili che il volto \u00e8 stato generato dall'IA. Ecco alcuni esempi di artefatti che si potrebbero trovare in un'immagine:\n\n- Artefatti digitali sull'attaccatura dei capelli, sulla pelle o sulle orecchie che potrebbero essere indicatori di un volto generato dall'IA.\n- Linee o strisce intorno alla bocca che potrebbero essere segnali indiziabili del processo di generazione dell'immagine.\n- Segni e tracce che non seguono le linee naturali dei capelli o della pelle, in quanto sono stati modificati dall'IA.\n\nSenza poter esaminare l'immagine con i miei occhi, mi limito a indicare alcuni possibili artefatti che possono essere segnali di un volto generato dall'IA.",
+            "error": "Parsing failed, fallback prediction: generated"
+        },
+        {
+            "image_path": "test_3\\fake\\fake_269.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "L'immagine mostra una persona con una somiglanza ben definita e una espressione neutra. Ci sono alcuni artefatti che indicano che il volto \u00e8 stato generato dall'IA, come la precisione dei contorni del viso e delle orecchie, nonch\u00e9 i pochi capelli scuri, i quali potrebbero essere stati aggiunti in modo artificiale per creare una somiglanza reale. Tuttavia, ci sono anche elementi come la barba irregolare e le irregolarit\u00e0 nella colorazione dei capelli che rendono il volto pi\u00f9 naturale.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_270.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "Non sono possibili determinazioni precise sulla presenza di artefatti intorno alla bocca, alle orecchie o all'attaccatura dei capelli dell'immagine. I criteri di identificazione e le indeterminatezioni del viso possono rendere difficile la distinzione tra un volto reale e uno generato.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_271.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "Il bambino ha una fronte con un rilievo molto regolare e semplice, senza dettagli naturali come la linea del naso, i pores della pelle e le macchie individuali. Le orecchie sono semplicemente sporgenti dalle parti superiori del capo. Il capo \u00e8 anche in un angolo strano rispetto al resto del corpo, il che suggerisce che la testa potrebbe essere stata apposta o modificata per creare una faccia realistica.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_272.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "Il volto mostra alcune caratteristiche atipiche, come la pelle perfetta e la struttura dei capelli pi\u00f9 regolare di una persona reale. Ci sono anche alcuni dettagli che possono essere artefatti intorno alla bocca e alle orecchie, che potrebbero indicare che il volto \u00e8 stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_273.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "Il volto in questa immagine presenta alcune ambiguit\u00e0 nella valutazione della veridicit\u00e0. La persona ha un leggero segno di unione tra gli occhi e la fronte, ma ci sono anche dei tratti naturali come l'ombreggiatura e il colore dei capelli che potrebbero essere dovuti all'IA per creare un effetto pi\u00f9 reale. Non \u00e8 possibile definire con certezza se si tratta di un volto reale o generato.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_274.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "L'immagine mostra un bambino di fronte, ma ci sono alcuni indizi che potrebbero suggerire che il volto sia stato generato. Dai capelli bianchi e non naturali alla testa, all'estremit\u00e0 inferiore del viso e nella parte inferiore dell'attaccatura dei capelli, si notano strutture che ricordano la presenza di artefatti, come se fosse stato aggiunto al volto con un software di generazione di immagini. Tuttavia, la qualit\u00e0 della foto e i dettagli sono abbastanza scarsi per risolvere definitivamente l'indicatore in questione.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_275.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "Il personaggio mostra una barba e degli occhiali, ma ci sono alcune inconsistencies nella fotografia che lo rendono sospetto di essere un generatore di immagini. La proporzione della barba rispetto al resto del volto pu\u00f2 variare da una persona reale a una generazione. Inoltre, gli occhiali possono essere indice di una fotografia di archivio o una generazione di immagini con un po' meno realismo. Tuttavia, ci sono anche alcune inconsistencies nel taglio dei capelli e nella pelle che fanno sospetto di essere state manipolate. Queste inconsistencies, combinate con la presenza di artefatti visibili sull'immagine, rendono il volto sospettato di essere stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_276.jpg",
+            "ground_truth": "fake",
+            "prediction": "[real face]",
+            "explanation": "Il viso presenta una espressione naturale, linee e sfintre del collo pi\u00f9 comuni nella foto reale. Ci sono alcune piccole irregolarit\u00e0 sul contorno del capo e sull'espressione che potrebbero indicare un effetto di manipolazione o il volto potrebbe essere stato generato, ma non ci sono artefatti estremi intorno alla bocca, alle orecchie o all'attaccatura dei capelli.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_277.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "La fotografia presentata mostra un uomo con una fronte forte e definite, ma non ci sono artefatti visibili intorno alla bocca, alle orecchie o all'attaccatura dei capelli che potrebbero indicare che il volto \u00e8 stato generato dall'IA. L'immagine sembra riproduce una persona reale con tracce di attivit\u00e0 giornaliere e la postura consente di vedere le caratteristiche naturali come il muscolo, la fronte e il colore della pelle.",
+            "error": "Parsing failed, fallback prediction: real face"
+        },
+        {
+            "image_path": "test_3\\fake\\fake_278.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "Il volto dell'immagine presenta una estremit\u00e0 della fronte che sembra essere una superficie molto liscia e smussata, in modo da rendere il volto pi\u00f9 naturale. Tuttavia, ci sono anche alcune differenze evidenti come la pelle poco uniforme e la luminosit\u00e0 non perfettamente equilibrata sul viso, che potrebbero indicare una tecnica di generazione di immagini avanzata, ma non esclude l'opportunit\u00e0 che sia un volto reale con alcune caratteristiche estremamente retificate o manipolate.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_279.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Il personaggio nel primo immagine sembra essere una donna con un viso realistico. Non ci sono artefatti evidenti intorno alla bocca, alle orecchie o all'attaccatura dei capelli che potrebbero indicare il volto \u00e8 stato generato dall'IA. La fotografia del personaggio si concentra sulla sua espressione facciale e sull'abbigliamento, senza artefatti che siano evidenti nella parte inferiore della testa o nella loro attaccatura.",
+            "error": "Parsing failed, fallback prediction: real face"
+        },
+        {
+            "image_path": "test_3\\fake\\fake_280.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "La donna sembra avere un viso natural, ma ci sono alcune irregolarit\u00e0 nella pelle e nei moduli di luce che potrebbero essere dovuti all'IA generativa. Questo non permette di concludere con certezza se il volto sia reale o generato.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_281.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "L'immagine mostra un individuo che sembra essere una donna con caratteristiche naturali, come il naso che appare disproporcionatamente grande per la faccia, le orecchie a forma di focaccia e i capelli disordinati. Tuttavia, ci sono alcuni artefatti che possono indicare un'operazione di generazione di immagini: il naso sembra essere stato manipolato per essere molto allungato e l'attaccatura dei capelli non rispecchia la realt\u00e0 naturale. Inoltre, ci sono una serie di linee nere che si estendono dalle orecchie alla bocca dell'individuo, che possono indicare un'alta definizione o una trama di caratteristiche.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_282.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "Non sono stati osservati artefatti intorno alla bocca, alle orecchie o all'attaccatura dei capelli che potrebbero indicare che il volto \u00e8 stato generato dall'IA. Il volto sembra essere quello di un uomo reale, ma non sono stati trovati elementi che definiscano definitivamente se sia real o generato.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_283.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "L'immagine non mostra nessuna evidenza visibile di artefatti sulla bocca, alle orecchie o all'attaccatura dei capelli che potrebbero indicare la presenza di una maschera. L'unica differenza rispetto a un volto reale consiste nella superficie metallica che sembra coprire il fondo dell'immagine, ma non ci sono evidenze di che cosa si tratta in realt\u00e0 sotto questa superficie. Non \u00e8 possibile affermare con certezza se l'immagine mostra un volto generato dall'IA o no.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_284.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "L'immagine mostra un uomo che sembra sorridere. L'immagine non mostra artefatti intorno alla bocca, alle orecchie o all'attaccatura dei capelli, ma ci sono alcune sfumature e piccole imperfezioni nella qualit\u00e0 dell'immagine che potrebbero essere indicativi di una manipolazione digitale o un processo di generazione. Tuttavia, escludendo queste sfumature e imperfezioni, non ci sono artefatti intorno alla bocca, alle orecchie o all'attaccatura dei capelli che potrebbero indicare che il volto \u00e8 stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_285.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "Lo sguardo sul volto del bambino in questa immagine mostra che non ci sono artefatti intorno alla bocca, alle orecchie o all'attaccatura dei capelli. Il bambino ha un volto reale e naturalistico.",
+            "error": "Parsing failed, fallback prediction: real face"
+        },
+        {
+            "image_path": "test_3\\fake\\fake_286.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "Nella immagine, vi sono alcuni artefatti visivi che possono essere dovuti ad un sistema di generazione di immagini. Si pu\u00f2 notare una leggera deformit\u00e0 dei contorni facciali e dei tratti lineari come gli occhi, la bocca e il naso, che non presentano le imperfezioni naturali di un'immagine reale. Inoltre, ci sono alcune zone dove la retinna dell'occhio pu\u00f2 essere stata inserita, come ad esempio nei due lati del volto. Le bocche e gli occhi sembrano anche avere una certa uniformit\u00e0 che non \u00e8 presente nell'immagine di un volto reale.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_287.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "L'immagine mostra una persona con una barba visibile che sembra essere un artefatto. L'attaccatura del capo e la barba sono elementi tipici della generazione di immagini umane generative, in cui questi dettagli non vengono presentati nella maggior parte delle persone reali.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_288.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "Non ci sono artefatti visibili intorno alla bocca, alle orecchie o all'attaccatura dei capelli. L'immagine presenta un volto umano reale.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_289.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "Il volto presenta una precisione elevata nel tracciamento delle caratteristiche umane, come gli occhiali, le orecchie e la barba, ma alcuni dettagli sembrano essere generati artificialmente. La pelle del viso mostra una certa regolarit\u00e0 che non \u00e8 comune in una fotografia reale, come se ci fossero delle linee rette o dei bordi netti, e il sorriso ha una certa monotonia che potrebbe essere generato dall'IA per creare un effetto di autenticazione.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_290.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "Il viso mostra caratteristiche e dettagli atipici di un generatore di immagini, come una precisione indefinida dei contorni del volto e la mancanza di alcune ombre, ma non ci sono artefatti intorno alla bocca, alle orecchie o all'attaccatura dei capelli che potrebbero indicare che il volto \u00e8 stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_291.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "Il volto mostra una precisione elevata nella riproduzione delle caratteristiche umane, con dintorni della bocca che sembrano essere artefatti di alta definizione. Tuttavia, ci sono alcuni dettagli che sembrano essere inconsistenti con le regole naturali del tessuto umano come il porellum e la struttura dei capelli, che potrebbero indicare una generazione non perfetta dell'immagine.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_292.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "Il volto non presenta artefatti intorno alla bocca, alle orecchie o all'attaccatura dei capelli. Ci sono alcune strisce sui capelli che potrebbero essere una caratteristica naturale dell'individuo oppure un artefatto del processo di generazione dell'immagine. In ogni caso, ci\u00f2 non basta a determinare se il volto \u00e8 stato generato dall'IA.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_293.jpg",
+            "ground_truth": "fake",
+            "prediction": "generated",
+            "explanation": "Il volto mostra un'estremit\u00e0 assimmetrica e una precisione nella riproduzione dei tratti fisici, come la linea centrale del naso e il profilo della fronte. Ci sono anche artefatti intorno alla bocca che potrebbero indicare un'attaccatura delle immagini utilizzate per generare il volto o un processo di smorfamento delle estremit\u00e0 del viso.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_294.jpg",
+            "ground_truth": "fake",
+            "prediction": "real face",
+            "explanation": "La prima immagine:\n{\n  \"result\": \"generated\",\n  \"explanation\": \"Il viso della persona presenta caratteristiche tipicamente associate alla tecnologia di immaginamento automatica come la pelle regolare, la conturazione dei lineamenti facciali e le suture in modo perfetto, che indicano la creazione di un volto generato da una IA.\"\n}\n\nLa seconda immagine:\n{\n  \"result\": \"uncertain\",\n  \"explanation\": \"Il volto di questa persona presenta una combinazione di caratteristiche naturali e artificiati, rendendo difficile la distinzione tra un volto reale e uno generato. Il contorno del viso \u00e8 regolare, ma ci sono tracce pi\u00f9 fine che potrebbero essere artefatti o semplicemente sfumature di pennello nell'immagine.\"\n}",
+            "error": "Parsing failed, fallback prediction: real face"
+        },
+        {
+            "image_path": "test_3\\fake\\fake_295.jpg",
+            "ground_truth": "fake",
+            "prediction": "[uncertain]",
+            "explanation": "L'immagine non mostra artefatti intorno alla bocca, alle orecchie o all'attaccatura dei capelli. L'immagine sembra essere una foto reale di una persona che sta posando per la fotografia.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_296.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "Il volto presenta caratteristiche uniche, come la pelle sinuosa e la struttura del viso generale, che potrebbero essere elusive da identificare completamente. Inoltre, ci sono degli artefatti intorno alla bocca che possono indicare la presenza di una tecnologia di rilevamento o generazione dell'immagine come l'IA. Tuttavia, il contesto e la qualit\u00e0 della foto limitano la precisione dell'analisi.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_297.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "La combinazione di linee e sfumature sui lineamenti facciali, sulla pelle e sulle orecchie suggerisce che il volto \u00e8 stato generato dall'IA. Ci sono pochissime artefatti intorno alla bocca, alle orecchie o all'attaccatura dei capelli.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_298.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "Le immagini mostrano una persona con caratteristiche facciali e stili di vestizione molto naturali, tuttavia ci sono alcune anomalie che potrebbero indicare un'immagine generata dall'IA: la proporzione delle fronte, le forme degli occhi, il profilo del naso e l'atteggiamento della bocca. Tuttavia queste caratteristiche possono anche essere naturali per una persona.",
+            "error": null
+        },
+        {
+            "image_path": "test_3\\fake\\fake_299.jpg",
+            "ground_truth": "fake",
+            "prediction": "[generated]",
+            "explanation": "Il volto del soggetto presenta un'apertura della bocca maggiore e una morfologia delle orecchie e dei capelli che potrebbero essere artefatti. Ci sono anche linee sulla pelle che possono indicare la presenza di filtri o di tecniche di modificazione digitale.",
+            "error": null
+        }
+    ]
+}
