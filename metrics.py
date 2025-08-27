@@ -245,7 +245,7 @@ def createJSONMeanStats(folder_path, oneshot=False):
 
 
 if __name__ == "__main__":
-    base_path = "JsonMeanStats/Sure/qwen7b"
+    base_path = "JsonMeanStats/Uncertain/qwen7b"
 
     for i in range(7):  # indici da 0 a 6
         for lang in ["Eng", "Ita"]:
