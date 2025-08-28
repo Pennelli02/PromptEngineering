@@ -24,7 +24,7 @@ CLUSTER_PROMPT = {
 }
 
 
-def plotStatsPrompt(dirName, Uncertain=False, OneShot=False, grafici="tutti"):
+def plotStatsPrompt(dirName, grafici="tutti"):
     # Cerca in tutte le sottocartelle prompt-* i file *_mean-result.json
     fileList = glob.glob(os.path.join(dirName, "prompt-*", "*_mean-result.json"))
 
@@ -67,7 +67,6 @@ def plotStatsPrompt(dirName, Uncertain=False, OneShot=False, grafici="tutti"):
             "f2": data.get("F2_score", 0),
             "one_class_real": data.get("one_class_accuracy_real_mean", 0),
             "one_class_fake": data.get("one_class_accuracy_fake_mean", 0),
-            "modello": modello
         })
     crea_tutti_grafici(risultati, modello, grafici)
 
