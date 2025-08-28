@@ -63,7 +63,8 @@ def loadExistingDataset(folder_name):
 
 
 if __name__ == "__main__":
+    installDataset()
     MAX_IMAGES = 300
-    NAME = "test_3"
+    NAME = "test_OS"
     images_with_labels, fakes, reals = loadDataset(MAX_IMAGES)
     saveDataset(images_with_labels, NAME)
