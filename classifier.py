@@ -2,7 +2,6 @@ import json
 import re
 from collections import Counter
 from transformers import AutoTokenizer, AutoModel, pipeline
-import ollama
 import pandas as pd
 from ollama import Client
 from PIL import Image
@@ -10,47 +9,39 @@ import torch
 from sklearn.cluster import KMeans
 import numpy as np
 
-import plot
-
 client = Client()
 
 
 def extract_prediction_from_text(text):
     """
-    Cerca di estrarre prediction anche da testo non JSON usando regex.
-    Riconosce sia inglese che italiano.
+    Estrae la predizione da testo non JSON usando keyword sia in inglese che italiano.
     Restituisce 'real face', 'generated', o None se non trova nulla.
+    Utilizza le stesse keyword della versione originale ma fa un conteggio ponderato.
     """
     text_lower = text.lower()
 
-    # Liste di parole chiave in inglese e italiano
+    # Keyword originali
     real_keywords = [
-        # inglese
         "real", "real face", "no generated", "not see any artifacts", "no artifacts",
-        # italiano
-        "reale", "volto reale", "non generato", "non vedo artefatti", "nessun artefatto", "non ci sono artefatti",
-        "non indica la presenza di artefatti"
+        "reale", "volto reale", "non generato", "non vedo artefatti", "nessun artefatto",
+        "non ci sono artefatti", "non indica la presenza di artefatti"
     ]
 
     fake_keywords = [
-        # inglese
-        "generated", "fake", "generated face", "no real face", "there are some artifacts"
-        # italiano
-                                                               "generato", "falso", "volto generato",
-        "nessun volto reale", "ci sono artefatti"
+        "generated", "fake", "generated face", "no real face", "there are some artifacts",
+        "generato", "falso", "volto generato", "nessun volto reale", "ci sono artefatti"
     ]
 
-    # Prova a matchare "real"
-    for kw in real_keywords:
-        if re.search(rf"\b{re.escape(kw)}\b", text_lower):
-            return "real face"
+    # Conteggio match
+    real_score = sum(1 for kw in real_keywords if re.search(rf"\b{re.escape(kw)}\b", text_lower))
+    fake_score = sum(1 for kw in fake_keywords if re.search(rf"\b{re.escape(kw)}\b", text_lower))
 
-    # Prova a matchare "fake"
-    for kw in fake_keywords:
-        if re.search(rf"\b{re.escape(kw)}\b", text_lower):
-            return "generated"
-
-    return None
+    if real_score > fake_score:
+        return "real face"
+    elif fake_score > real_score:
+        return "generated"
+    else:
+        return None
 
 
 def analyze_image(img_path, lab, prompt, modelName, fewShot, few_shot_messages, systemPrompt, counters, showImages):
@@ -258,7 +249,3 @@ def get_embeddings(texts, model_name="google/flan-t5-small", device="cpu"):
             embedding = outputs.last_hidden_state.mean(dim=1).squeeze().cpu().numpy()
         embeddings.append(embedding)
     return np.array(embeddings)
-
-
-
-

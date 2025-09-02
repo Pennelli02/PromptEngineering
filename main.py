@@ -8,24 +8,42 @@ import prompt
 # VALORI PER CARICARE IL DATASET
 installDataset = False  # serve nel caso si perdesse tutto
 startMiniDt = False
-NAME = "test_3"
-MAX_IMAGES = 100
+NAME = "test_OS"
+MAX_IMAGES = 300
 SHUFFLE = False
 # ======================================
 
 # VALORI PER IL PROMPT
-INDEX_PROMPT = 3  # (0-6)
+INDEX_PROMPT = 6  # (0-6)
 IS_ITALIAN = False
 SHOW_IMAGES = False
-ONESHOT = False
+ONESHOT = True
 UNCERTAIN_EN = False  # abilitare l'opzione al modello di rispondere incerto
 # ===================================
 # VALORI PER IL MODELLO
 
-MODEL_NAME = "qwen2.5vl:7b"
+MODEL_NAME = "gemma3:4b"
 # ===================================
 # MODALITA' AUTOMATICA
-AUTO_ON = True
+AUTO_ON = False
+
+# =============================
+# GEMMA3 ONESHOT
+imagePath = "photoEx/real/woman3-4.jpg"
+description = ("This is a close-up, head-and-shoulders portrait of a young woman. She has shoulder-length, dark brown "
+               "hair that is parted on her left side, with some strands falling forward around her face. Her face is "
+               "a smooth, light tone. She has large, brown eyes that are looking directly at the camera, "
+               "a small nose, and full, light-toned lips. Her expression is calm and neutral. The lighting is soft, "
+               "evenly illuminating her face and hair. The background is blurred, but you can make out the vague "
+               "shapes and colors of what appear to be party balloons, including a reddish one on the upper left and "
+               "a light-colored one on the upper right with a faint, darker pattern on it.")
+labelImage = "real face"
+reason = ("The image shows a person with natural skin texture, including visible pores and slight unevenness in tone, "
+          "particularly around the nose. The eyes have realistic reflections and subtle imperfections. The hair has a "
+          "natural variation in strand thickness and highlights, and there are realistic, soft focus gradients in the "
+          "background, consistent with a photograph taken with a camera.")
+# ho usato la spiegazione fornita da gemini (stessa casa di produzione di gemma3)
+# ======================================
 # dataset section
 if startMiniDt:
     images_with_labels, fakes, reals = dataset.loadDataset(MAX_IMAGES)
@@ -38,8 +56,7 @@ if SHUFFLE:
 
 # prompt section
 oneShotMessage = None
-if ONESHOT:
-    oneShotMessage = prompt.usingOneShot()
+
 if AUTO_ON:
     # DATASETS = ["test_2", "test_3"]
     # for data in DATASETS:
@@ -87,6 +104,8 @@ if AUTO_ON:
 else:
     userPrompt = prompt.chooseAPrompt(INDEX_PROMPT, IS_ITALIAN)
     systemPrompt = prompt.getSystemPrompt(IS_ITALIAN, UNCERTAIN_EN)
+    if ONESHOT:
+        oneShotMessage = prompt.usingOneShot(imagePath, description, labelImage, userPrompt, IS_ITALIAN, reason)
 
     print("you choose " + userPrompt)
     # initialize metrics

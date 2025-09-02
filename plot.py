@@ -9,6 +9,8 @@ import glob
 import os
 import re
 from collections import Counter
+from natsort import natsorted
+import pandas as pd
 from sklearn.cluster import KMeans
 from transformers import pipeline
 import classifier
@@ -67,11 +69,12 @@ def plotStatsPrompt(dirName, grafici="tutti"):
             "f2": data.get("F2_score", 0),
             "one_class_real": data.get("one_class_accuracy_real_mean", 0),
             "one_class_fake": data.get("one_class_accuracy_fake_mean", 0),
+            "modello": modello
         })
     crea_tutti_grafici(risultati, modello, grafici)
 
 
-def crea_tutti_grafici(risultati, modello, grafici="tutti" ):
+def crea_tutti_grafici(risultati, modello, grafici="tutti"):
     # ===== 1. Grafici divisi per tipo prompt =====
     if grafici in ("tutti", "prompt"):
         for categoria, prompts in CLUSTER_PROMPT.items():
@@ -326,7 +329,13 @@ def getInfoPromptByModel(dirName, uncertain=False, oneshot=False):
         else:
             modello = "ModelloSconosciuto"
 
+        # Estrai il tipo di prompt (es. prompt-0-eng o prompt-0-ita)
+        tipo_prompt = parts[0] if len(parts) > 0 else "prompt-sconosciuto"
+        if len(parts) > 1 and parts[0].startswith("prompt"):
+            tipo_prompt += f"-{parts[1]}"  # esempio: prompt-0-eng
+
         results.append({
+            "prompt": tipo_prompt,
             "modello": modello,
             "accuracy": data["accuracy_mean"],
             "precision": data["precision_mean"],
@@ -387,7 +396,7 @@ def createBarPlot(results, dirName, metrics, positive, uncertain, oneshot, onecl
     plt.close(fig)
 
 
-def plotStatsPromptDividedByModel(dirName, positive=True, uncertain=False, oneshot=False):
+def plotStatsPromptDividedByModel(dirName, positive=True, uncertain=False, oneshot=False, single=False):
     results = getInfoPromptByModel(dirName, uncertain, oneshot)
     if positive:
         createBarPlot(results, dirName, metrics=["accuracy", "precision", "recall"], positive=positive,
@@ -399,9 +408,9 @@ def plotStatsPromptDividedByModel(dirName, positive=True, uncertain=False, onesh
             createBarPlot(results, dirName,
                           metrics=["rejection_real_rate", "rejection_fake_rate"],
                           positive=positive, uncertain=uncertain, oneshot=oneshot)
-            createConfusionMatrix(results, dirName, "uncertain")
+            createConfusionMatrix(results, dirName, "uncertain", single)
         else:
-            createConfusionMatrix(results, dirName)
+            createConfusionMatrix(results, dirName, single=single)
 
 
 # funzione che raccoglie tutte le spiegazioni di un modello in base al tipo al momento solo uncertain,
@@ -446,56 +455,142 @@ def captureOneTypeResponse(path, Type):
     return risultati
 
 
-def createConfusionMatrix(results, dirName, promptType="sure"):
+def createConfusionMatrix(results, dirName, promptType="sure", single=False):
     """
-    Crea le matrici di confusione per ogni file/modello e un plot generale con tutte le matrici.
-    TP = fake su fake
-    TN = real su real
-    FP = real predetto come fake
-    FN = fake predetto come real
-    results: lista di dizionari con TP, TN, FP, FN e modello
-    dirName: nome della cartella del prompt
-    promptType: 'sure', 'uncertain' o 'oneshot'
+    Crea le matrici di confusione:
+    - Se single=False: un'immagine con tutte le matrici (come ora).
+    - Se single=True: un'immagine per ogni modello (cartella plots/confusionMatrix/single/...).
     """
-    num_results = len(results)
-    # Layout subplot (2 colonne, numero di righe necessario)
-    ncols = 2
-    nrows = (num_results + 1) // 2
-
-    fig, axes = plt.subplots(nrows, ncols, figsize=(ncols * 5, nrows * 4))
-    axes = axes.flatten()  # per iterare facilmente
-
-    for i, res in enumerate(results):
-        TP = res.get("TP", 0)
-        TN = res.get("TN", 0)
-        FP = res.get("FP", 0)
-        FN = res.get("FN", 0)
-
-        # Matrice di confusione secondo la tua definizione
-        cm = np.array([[TN, FN],
-                       [FP, TP]])
-
-        sns.heatmap(cm, annot=True, fmt="d", cmap="Blues", cbar=False,
-                    xticklabels=["Real", "Fake"], yticklabels=["Real", "Fake"],
-                    ax=axes[i])
-        axes[i].set_title(res.get("modello", f"Modello {i + 1}"))
-        axes[i].set_ylabel("Predicted")
-        axes[i].set_xlabel("Actual")
-
-    # Nascondi eventuali assi vuoti
-    for j in range(i + 1, len(axes)):
-        axes[j].axis("off")
-
-    plt.tight_layout()
-
-    # Salvataggio cartella
     save_dir = os.path.join("plots", "confusionMatrix")
+    if single:
+        save_dir = os.path.join(save_dir, "single")
     os.makedirs(save_dir, exist_ok=True)
 
-    save_path = os.path.join(save_dir, f"{promptType}_{dirName}.png")
-    plt.savefig(save_path, dpi=300)
-    plt.close()
-    print(f"Matrice di confusione salvata in: {save_path}")
+    if single:
+        # Una immagine per ogni modello
+        for i, res in enumerate(results):
+            TP = res.get("TP", 0)
+            TN = res.get("TN", 0)
+            FP = res.get("FP", 0)
+            FN = res.get("FN", 0)
+
+            cm = np.array([[TN, FN],
+                           [FP, TP]])
+
+            plt.figure(figsize=(4, 4))
+            sns.heatmap(cm, annot=True, fmt="d", cmap="Blues", cbar=False,
+                        xticklabels=["Real", "Fake"], yticklabels=["Real", "Fake"])
+            plt.title(res.get("modello", f"Modello {i + 1}"))
+            plt.ylabel("Predicted")
+            plt.xlabel("Actual")
+
+            save_path = os.path.join(save_dir, f"{promptType}_{dirName}_{res.get('modello', i)}.png")
+            plt.savefig(save_path, dpi=300)
+            plt.close()
+            print(f"Matrice singola salvata in: {save_path}")
+    else:
+        # Plot unico con tutte le matrici
+        num_results = len(results)
+        ncols = 2
+        nrows = (num_results + 1) // 2
+
+        fig, axes = plt.subplots(nrows, ncols, figsize=(ncols * 5, nrows * 4))
+        axes = axes.flatten()
+
+        for i, res in enumerate(results):
+            TP = res.get("TP", 0)
+            TN = res.get("TN", 0)
+            FP = res.get("FP", 0)
+            FN = res.get("FN", 0)
+
+            cm = np.array([[TN, FN],
+                           [FP, TP]])
+
+            sns.heatmap(cm, annot=True, fmt="d", cmap="Blues", cbar=False,
+                        xticklabels=["Real", "Fake"], yticklabels=["Real", "Fake"],
+                        ax=axes[i])
+            axes[i].set_title(res.get("modello", f"Modello {i + 1}"))
+            axes[i].set_ylabel("Predicted")
+            axes[i].set_xlabel("Actual")
+
+        # Nascondi assi vuoti
+        for j in range(i + 1, len(axes)):
+            axes[j].axis("off")
+
+        plt.tight_layout()
+        save_path = os.path.join(save_dir, f"{promptType}_{dirName}.png")
+        plt.savefig(save_path, dpi=300)
+        plt.close()
+        print(f"Matrice multipla salvata in: {save_path}")
+
+
+def createPromptStatsTable(modello_dir):
+    """
+    Crea un DataFrame con le statistiche TP, TN, FP, FN per ogni prompt di un modello.
+    Ogni riga: tipo prompt | TP | TN | FP | FN
+    """
+    pattern = os.path.join(modello_dir, "**", "*mean-result.json")
+    fileList = glob.glob(pattern, recursive=True)
+
+    rows = []
+    for filePath in fileList:
+        with open(filePath, "r", encoding="utf-8") as f:
+            data = json.load(f)
+
+        # Estrai tipo prompt dalla cartella padre
+        parts = filePath.replace("\\", "/").split("/")
+        prompt_folder = parts[-2]  # es. Prompt-0-Eng
+        tipo_prompt = prompt_folder.lower()
+
+        rows.append({
+            "tipo_prompt": tipo_prompt,
+            "TP": data.get("TP_total", 0),
+            "TN": data.get("TN_total", 0),
+            "FP": data.get("FP_total", 0),
+            "FN": data.get("FN_total", 0)
+        })
+
+    df = pd.DataFrame(rows)
+    # Ordinamento naturale dei prompt
+    df = df.loc[natsorted(df.index)].reset_index(drop=True)
+    return df
+
+
+def savePromptStatsTable(modello_dir, model_name, save_path_csv=None, save_path_img="plots/tableStats/"):
+    """
+    Crea e salva una tabella con TP, TN, FP, FN per ogni prompt di un modello.
+    """
+    df = createPromptStatsTable(modello_dir)
+
+    # Salva CSV se richiesto
+    if save_path_csv:
+        os.makedirs(os.path.dirname(save_path_csv), exist_ok=True)
+        df.to_csv(save_path_csv, index=False)
+        print(f"Tabella salvata come CSV in: {save_path_csv}")
+
+    # Salva immagine tabella
+    if save_path_img:
+        os.makedirs(save_path_img, exist_ok=True)
+        fig, ax = plt.subplots(figsize=(8, len(df) * 0.5 + 1))
+        ax.axis('tight')
+        ax.axis('off')
+
+        table = ax.table(cellText=df.values,
+                         colLabels=df.columns,
+                         cellLoc='center',
+                         loc='center')
+        table.auto_set_font_size(False)
+        table.set_fontsize(10)
+        table.scale(1, 1.5)
+
+        # Titolo della tabella
+        ax.set_title(f"Statistica prompt per modello: {model_name}", fontweight='bold', pad=20)
+
+        plt.tight_layout()
+        save_file = os.path.join(save_path_img, f"{model_name}.png")
+        plt.savefig(save_file, dpi=300)
+        plt.close()
+        print(f"Tabella salvata come immagine in: {save_file}")
 
 
 # def saveSummaryToFile(globalSummary, modelName, type, base_folder="plots/infoText"):
@@ -662,10 +757,14 @@ if __name__ == "__main__":
     # promptList = ["Prompt-0-Eng", "Prompt-0-Ita", "Prompt-1-Eng", "Prompt-1-Ita", "Prompt-2-Eng", "Prompt-2-Ita",
     #               "Prompt-3-Eng", "Prompt-3-Ita", "Prompt-4-Eng", "Prompt-4-Ita", "Prompt-5-Eng", "Prompt-5-Ita",
     #               "Prompt-6-Eng", "Prompt-6-Ita"]
-    # # for prompt in promptList:
-    # #     plotStatsPromptDividedByModel(prompt, True)
     # for prompt in promptList:
-    #     plotStatsPromptDividedByModel(prompt, False, uncertain=True)
+    # plotStatsPromptDividedByModel(prompt, True, single=True)
+    savePromptStatsTable("JsonMeanStats/Sure/gemma3", "gemma3")
+    savePromptStatsTable("JsonMeanStats/Sure/llava", "llava")
+    savePromptStatsTable("JsonMeanStats/Sure/qwen3b", "qwen3b")
+    savePromptStatsTable("JsonMeanStats/Sure/qwen7b", "qwen7b")
+    # for prompt in promptList:
+    #     plotStatsPromptDividedByModel(prompt, False, uncertain=True, single=True)
     # graphLangAvg("gemma3")
     # graphLangAvg("gemma3", Uncertain=True)
     # graphLangAvg("gemma3", ["one_class_accuracy_real", "one_class_accuracy_fake"], "OCA")
@@ -685,7 +784,7 @@ if __name__ == "__main__":
     # graphLangAvg("qwen7b", ["one_class_accuracy_real", "one_class_accuracy_fake"], "OCA")
     # graphLangAvg("qwen7b", ["rejection_real_rate", "rejection_fake_rate"], tag="NEG", Uncertain=True)
     # graphLangAvg("qwen7b", ["one_class_accuracy_real", "one_class_accuracy_fake"], "OCA", True)
-    plotStatsPrompt("JsonMeanStats/Sure/gemma3")
-    plotStatsPrompt("JsonMeanStats/Sure/llava")
-    plotStatsPrompt("JsonMeanStats/Sure/qwen3b")
-    plotStatsPrompt("JsonMeanStats/Sure/qwen7b")
+    # plotStatsPrompt("JsonMeanStats/Sure/gemma3")
+    # plotStatsPrompt("JsonMeanStats/Sure/llava")
+    # plotStatsPrompt("JsonMeanStats/Sure/qwen3b")
+    # plotStatsPrompt("JsonMeanStats/Sure/qwen7b")

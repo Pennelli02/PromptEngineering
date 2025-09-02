@@ -1,3 +1,5 @@
+import json
+
 PromptListEng = ["Is the provided image showing a real face or a generated one?",  # 0
                  "Is the provided image showing a real face or a generated one? Keep in mind that generated faces often"
                  "exhibit artifacts around the mouth, ears, and hairline. Inconsistent lighting and shading may also be"
@@ -89,28 +91,33 @@ def getSystemPrompt(isItalian, uncertainEn):
             )
 
 
-def usingOneShot():
-    oneShotMessages = [
-        {
-            "role": "user",
-            "content": "Is the provided image showing a real face or a generated one?",
-            "images": ["real_vs_fake/real-vs-fake/test/fake/0A266M95TD.jpg"]
-        },
-        {
-            "role": "assistant",
-            "content": '''{ "result": "generated", "reason": "The image shows distinctive characteristics of 
-            artificially generated faces, typical of GAN models (such as StyleGAN). First, there are slight 
-            asymmetries in the glasses: the right and left parts are not perfectly aligned, a common detail in 
-            synthetic faces. Second, the background appears blurred and lacks realistic depth, 
-            with no distinguishable elements, showing an unnatural blending of hair and head contours. Additionally, 
-            the lighting on the face is too uniform and lacks consistent shadows; for example, there are no shadows 
-            cast by the glasses, as would be expected in a real photo. The teeth are overly regular and symmetrical, 
-            and the eyes appear perfectly centered and devoid of complex reflections or imperfections, 
-            which are normally found in real human faces. All these subtle signals combined strongly indicate that 
-            this is an artificially generated face." }'''
-        }
-    ]
-    return oneShotMessages
+def usingOneShot(examplePath, description, exampleLabel, prompt, isItalian=False, reason=None):
+    """
+    Crea un esempio one-shot testuale per Gemma3 (che non supporta input immagine).
+    """
+    # Reason di default
+    default_reason_it = f"L'immagine mostra caratteristiche tipiche di un volto {exampleLabel}."
+    default_reason_en = f"The image shows characteristics typical of a {exampleLabel} face."
+    reason = reason or (default_reason_it if isItalian else default_reason_en)
+
+    # USER EXAMPLE (solo testo, descrivendo l'immagine)
+    # USER EXAMPLE
+    example_user = {
+        "role": "user",
+        "content": f"{prompt}\n" +
+                   (f"(Descrizione immagine ({examplePath}): {description})" if isItalian
+                    else f"(Image description ({examplePath}): {description})")
+    }
+
+    # ASSISTANT EXAMPLE
+    example_assistant = {
+        "role": "assistant",
+        "content": json.dumps({
+            "result": exampleLabel,
+            "explanation": reason
+        }, indent=2, ensure_ascii=False)
+    }
+    return [example_user, example_assistant]
 
 
 # FixMe gestione gemma3

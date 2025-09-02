@@ -25,7 +25,12 @@ dovrò mettere anche la risposta del modello per ogni immagine? Magari finiamo t
 
 -----------------------------------------------------------------------------------------------------------------------
 ## Prompt per modello per one-shot
-- **LlaVa**: prompt-6-eng
+- **LlaVa**: prompt-4-ita
 - **Gemma3**: prompt-6-eng
-- **Qwen3b**: prompt-3-eng
-- **Qwen7b**: 
+- **Qwen3b**: prompt-4-eng (scelto non per le prestazioni con i fake ma per un equilbrio con i real)
+- **Qwen7b**: prompt-6-eng
+-------------------------------------------------------------------------------------------
+## Set di immagini scelto per fare one-shot
+- tre vere
+- tre false 
+sono presenti nella cartella photoEx
