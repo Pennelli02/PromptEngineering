@@ -1,13 +1,15 @@
 import json
 import re
 from collections import Counter
-from transformers import AutoTokenizer, AutoModel, pipeline
+from transformers import AutoTokenizer, T5EncoderModel, T5Tokenizer, T5ForConditionalGeneration, AutoModelForSeq2SeqLM
 import pandas as pd
 from ollama import Client
 from PIL import Image
 import torch
 from sklearn.cluster import KMeans
 import numpy as np
+
+import plot
 
 client = Client()
 
@@ -235,17 +237,108 @@ def repair_dates(results):
 
 # SOLUZIONE USANDO GOOGLE/FLAN-T5-SMALL
 # --- Funzione per estrarre embedding con flan-t5-small ---
-def get_embeddings(texts, model_name="google/flan-t5-small", device="cpu"):
+def get_embeddings(texts, model_name="google/flan-t5-small", device="cpu", batch_size=16, chunk_size=512):
     tokenizer = AutoTokenizer.from_pretrained(model_name)
-    model = AutoModel.from_pretrained(model_name).to(device)
+    model = T5EncoderModel.from_pretrained(model_name).to(device)
     model.eval()
 
-    embeddings = []
-    for text in texts:
-        inputs = tokenizer(text, return_tensors="pt", truncation=True, padding=True).to(device)
-        with torch.no_grad():
-            outputs = model(**inputs)
-            # media dei token embedding come rappresentazione
-            embedding = outputs.last_hidden_state.mean(dim=1).squeeze().cpu().numpy()
-        embeddings.append(embedding)
-    return np.array(embeddings)
+    all_embeddings = []
+
+    def embed_text(text):
+        tokens = tokenizer(text, return_tensors="pt", truncation=False)
+        input_ids = tokens["input_ids"].squeeze(0)
+
+        chunks = [input_ids[i:i + chunk_size] for i in range(0, len(input_ids), chunk_size)]
+        chunk_embeddings = []
+
+        for chunk in chunks:
+            chunk = chunk.unsqueeze(0).to(device)
+            with torch.no_grad():
+                outputs = model(input_ids=chunk)
+                emb = outputs.last_hidden_state.mean(dim=1)
+                chunk_embeddings.append(emb.cpu().numpy())
+
+        return np.mean(np.vstack(chunk_embeddings), axis=0)
+
+    for i in range(0, len(texts), batch_size):
+        batch_texts = texts[i:i + batch_size]
+        batch_embs = [embed_text(t) for t in batch_texts]
+        all_embeddings.extend(batch_embs)
+
+    return np.array(all_embeddings)
+
+
+def analyze_and_cluster_uncertain(path, modelName, prompt, n_clusters=5, device="cpu"):
+    # --- 0. Prepara i risultati ---
+    risultati = plot.captureOneTypeResponse(path, "uncertain")
+    explanations = [r["explanation"] for r in risultati if r.get("explanation")]
+    labels_gt = [r["ground_truth"] for r in risultati if r.get("explanation")]
+
+    if not explanations:
+        print("Nessuna spiegazione trovata.")
+        return
+
+    # --- 1. Generazione embedding ---
+    print("Generazione embedding con flan-t5-small...")
+    X = get_embeddings(explanations, device=device)  # truncation a 512 token dentro get_embeddings
+
+    # --- 2. Clustering ---
+    print(f"Clustering con KMeans su {n_clusters} cluster...")
+    kmeans = KMeans(n_clusters=n_clusters, random_state=42, n_init="auto")
+    cluster_labels = kmeans.fit_predict(X)
+
+    # --- 3. Setup FLAN-T5-LARGE per summarization ---
+    print("Caricamento modello flan-t5-large per summarization...")
+    tokenizer = AutoTokenizer.from_pretrained("google/flan-t5-large")
+    model = AutoModelForSeq2SeqLM.from_pretrained("google/flan-t5-large")
+    model.to(device)
+
+    def summarize_with_flan(text, max_length=100, min_length=30):
+        inputs = tokenizer(
+            f"summarize: {text}",
+            return_tensors="pt",
+            truncation=True,
+            padding=True,
+            max_length=512
+        ).to(device)
+        summary_ids = model.generate(
+            **inputs,
+            max_length=max_length,
+            min_length=min_length,
+            do_sample=False
+        )
+        return tokenizer.decode(summary_ids[0], skip_special_tokens=True)
+
+    # --- 4. Analisi cluster ---
+    cluster_stats = {}
+    for cluster in range(n_clusters):
+        idx = [i for i, c in enumerate(cluster_labels) if c == cluster]
+        if not idx:
+            continue
+
+        true_labels = [labels_gt[i] for i in idx]
+        cluster_explanations = [explanations[i] for i in idx]
+
+        counts = Counter(true_labels)
+        majority_class, majority_count = counts.most_common(1)[0]
+        accuracy_cluster = majority_count / len(idx)
+
+        # Concatenazione testi per cluster (deduplica base)
+        cluster_text = " ".join(list(dict.fromkeys(cluster_explanations)))
+
+        # --- Genera la descrizione ---
+        try:
+            description = summarize_with_flan(cluster_text)
+        except Exception as e:
+            description = f"(Errore nella generazione del riassunto: {e})"
+
+        cluster_stats[cluster] = {
+            "num_samples": len(idx),
+            "distribution": dict(counts),
+            "majority_class": majority_class,
+            "cluster_accuracy": accuracy_cluster,
+            "description": description
+        }
+
+    return cluster_stats, cluster_labels, explanations
+

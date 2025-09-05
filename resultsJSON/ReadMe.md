@@ -34,3 +34,9 @@ dovrò mettere anche la risposta del modello per ogni immagine? Magari finiamo t
 - tre vere
 - tre false 
 sono presenti nella cartella photoEx
+----------------------------------------------------------------
+## Prompt per modello per embedding
+- **LlaVa**: prompt-2-ita
+- **Gemma3**: prompt-6-eng
+- **Qwen3b**: prompt-3-eng
+- **Qwen7b**: prompt-6-eng

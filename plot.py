@@ -8,11 +8,10 @@ import json
 import glob
 import os
 import re
-from collections import Counter
 from natsort import natsorted
 import pandas as pd
-from sklearn.cluster import KMeans
-from transformers import pipeline
+from sklearn.manifold import TSNE
+
 import classifier
 import matplotlib.pyplot as plt
 import numpy as np
@@ -122,7 +121,7 @@ def genera_grafico(risultati_filtrati, metriche, titolo, nome_file, folder):
     for i, m in enumerate(metriche):
         valori = [r[m] * 100 for r in risultati_filtrati]
         rect = ax.bar(x + (i - len(metriche) / 2) * width, valori, width, label=m)
-        autolabel(rect, ax, 10, False)
+        autolabel(rect, ax, 10, True)
         rects.append(rect)
 
     ax.set_title(titolo)
@@ -672,59 +671,13 @@ def savePromptStatsTable(modello_dir, model_name, save_path_csv=None, save_path_
 # # Fixme Utilizza google/flan-t5-small su tutto il dataset. Poi puoi clusterizzare gli embedding che ottieni e
 # #  calcolare le accuratezze relative a ciascun cluster.
 # --- Analisi e clustering con descrizione dei cluster ---
-def analyze_and_cluster_uncertain(path, modelName, prompt, n_clusters=5, device="cpu"):
-    risultati = captureOneTypeResponse(path, "uncertain")
-    explanations = [r["explanation"] for r in risultati if r.get("explanation")]
-    labels_gt = [r["ground_truth"] for r in risultati if r.get("explanation")]
-    if not explanations:
-        print(" Nessuna spiegazione trovata.")
-        return
 
-    # 1. Ottieni embedding
-    print(" Generazione embedding con flan-t5-small...")
-    X = classifier.get_embeddings(explanations, device=device)
 
-    # 2. Clustering
-    print(" Clustering con KMeans...")
-    kmeans = KMeans(n_clusters=n_clusters, random_state=42)
-    cluster_labels = kmeans.fit_predict(X)
-
-    # 3. Pipeline per sintesi cluster
-    summarizer = pipeline("text2text-generation", model="google/flan-t5-small", device=0 if device == "cuda" else -1)
-
-    # 4. Analisi per cluster
-    cluster_stats = {}
-    for cluster in range(n_clusters):
-        idx = [i for i, c in enumerate(cluster_labels) if c == cluster]
-        if not idx:
-            continue
-
-        true_labels = [labels_gt[i] for i in idx]
-        cluster_explanations = [explanations[i] for i in idx]
-
-        # Conta real/fake
-        counts = Counter(true_labels)
-        majority_class, majority_count = counts.most_common(1)[0]
-        accuracy_cluster = majority_count / len(idx)
-
-        # Riassunto automatico del cluster
-        cluster_text = " ".join(cluster_explanations[:20])  # limitiamo a 20 frasi max per prompt
-        prompt_text = (
-                "Queste sono spiegazioni di incertezze del modello. "
-                "Trova i motivi ricorrenti e sintetizzali in una breve frase:\n\n"
-                + cluster_text
-        )
-        description = summarizer(prompt_text, max_new_tokens=60, do_sample=False)[0]['generated_text']
-
-        cluster_stats[cluster] = {
-            "num_samples": len(idx),
-            "distribution": dict(counts),
-            "majority_class": majority_class,
-            "cluster_accuracy": accuracy_cluster,
-            "description": description.strip()
-        }
-
-    # 5. Stampa risultati
+def visualize_cluster_uncertain(path, modelName, prompt, n_cluster=5, device="cpu"):
+    cluster_stats, cluster_labels, explanations = classifier.analyze_and_cluster_uncertain(path, modelName, prompt,
+                                                                                           n_clusters=n_cluster,
+                                                                                           device=device)
+    # --- 6. Stampa risultati ---
     print("\n Risultati per cluster:")
     for cl, stats in cluster_stats.items():
         print(f"Cluster {cl}:")
@@ -734,8 +687,8 @@ def analyze_and_cluster_uncertain(path, modelName, prompt, n_clusters=5, device=
         print(f"  Accuratezza di cluster: {stats['cluster_accuracy']:.3f}")
         print(f"  Descrizione: {stats['description']}\n")
 
-    # 6. Salvataggio risultati
-    output_dir = f"plots/uncertainClusters"
+    # --- 7. Salvataggio risultati ---
+    output_dir = "plots/uncertainClusters"
     os.makedirs(output_dir, exist_ok=True)
     save_path = os.path.join(output_dir, f"{modelName}-{prompt}_clusters.json")
 
@@ -748,21 +701,66 @@ def analyze_and_cluster_uncertain(path, modelName, prompt, n_clusters=5, device=
 
     print(f" Risultati salvati in {save_path}")
 
-    return cluster_stats, cluster_labels, explanations
+
+def plot_tsne_prediction_with_errors(json_path, model_name):
+    # Carica il file JSON
+    with open(json_path, "r") as f:
+        data = json.load(f)
+
+    responses = data["responses"]
+
+    embeddings, predictions, ground_truths = [], [], []
+    for r in responses:
+        if "embedding_mean" in r and r["embedding_mean"] is not None:
+            embeddings.append(r["embedding_mean"])
+            predictions.append(r.get("prediction", "unknown"))
+            ground_truths.append(r.get("ground_truth", "unknown"))
+
+    if not embeddings:
+        print("⚠️ Nessun embedding_mean trovato.")
+        return
+
+    embeddings = np.array(embeddings)
+
+    # Riduzione dimensionale con t-SNE
+    tsne = TSNE(n_components=2, random_state=42, perplexity=30)
+    reduced = tsne.fit_transform(embeddings)
+
+    # Grafico scatter
+    fig, ax = plt.subplots(figsize=(10, 7))
+    unique_labels = set(predictions)
+    colors = plt.get_cmap("tab10")(np.linspace(0, 1, len(unique_labels)))
+
+    for lab, col in zip(unique_labels, colors):
+        idx = [i for i, l in enumerate(predictions) if l == lab]
+        for i in idx:
+            marker = 'o' if predictions[i].lower() == ground_truths[i].lower() else 'x'
+            ax.scatter(reduced[i, 0], reduced[i, 1], c=[col], marker=marker, alpha=0.6)
+
+    ax.set_title(f"t-SNE visualization ({model_name}) - colored by prediction\n'o' correct, 'x' wrong", fontsize=14)
+    ax.legend(unique_labels)
+    plt.show()
 
 
 # TODO altre funzioni di plotting (dipende da cosa mi serve nella relazione)
 if __name__ == "__main__":
-    # analyzeSummarizeAndVisualize("resultsJSON/newFormats/qwenVL3b/Uncertain", "uncertain", "qwenVL-3b")
+    os.environ["OMP_NUM_THREADS"] = "1"
+    visualize_cluster_uncertain("JsonMeanStats/Uncertain/qwen3b/prompt-1-Eng/real-vs-fake_qwen2.5VL_3B_PromptType"
+                                "-1_ENG_20250810-135041_result.json", "qwen3b", "prompt-1-eng")
+    visualize_cluster_uncertain("JsonMeanStats/Uncertain/llava/prompt-0-Eng/real-vs-fake_llava_7b_PromptType"
+                                "-0_ENG_20250812-120301_result.json", "llava", "prompt-0-eng")
+    visualize_cluster_uncertain("JsonMeanStats/Uncertain/llava/prompt-0-Ita/real-vs-fake_llava_7b_PromptType"
+                                "-0_ITA_20250812-134801_result.json", "llava", "prompt-0-ita")
+    # analyzeSummarizeAndVisualize("resultsJSON/newFormats/qwenVL3b/Uncertain", "uncertain", "qwenVL-3b")"prompt-1-eng"
     # promptList = ["Prompt-0-Eng", "Prompt-0-Ita", "Prompt-1-Eng", "Prompt-1-Ita", "Prompt-2-Eng", "Prompt-2-Ita",
     #               "Prompt-3-Eng", "Prompt-3-Ita", "Prompt-4-Eng", "Prompt-4-Ita", "Prompt-5-Eng", "Prompt-5-Ita",
     #               "Prompt-6-Eng", "Prompt-6-Ita"]
     # for prompt in promptList:
     # plotStatsPromptDividedByModel(prompt, True, single=True)
-    savePromptStatsTable("JsonMeanStats/Sure/gemma3", "gemma3")
-    savePromptStatsTable("JsonMeanStats/Sure/llava", "llava")
-    savePromptStatsTable("JsonMeanStats/Sure/qwen3b", "qwen3b")
-    savePromptStatsTable("JsonMeanStats/Sure/qwen7b", "qwen7b")
+    # savePromptStatsTable("JsonMeanStats/Sure/gemma3", "gemma3")
+    # savePromptStatsTable("JsonMeanStats/Sure/llava", "llava")
+    # savePromptStatsTable("JsonMeanStats/Sure/qwen3b", "qwen3b")
+    # savePromptStatsTable("JsonMeanStats/Sure/qwen7b", "qwen7b")
     # for prompt in promptList:
     #     plotStatsPromptDividedByModel(prompt, False, uncertain=True, single=True)
     # graphLangAvg("gemma3")
@@ -784,7 +782,7 @@ if __name__ == "__main__":
     # graphLangAvg("qwen7b", ["one_class_accuracy_real", "one_class_accuracy_fake"], "OCA")
     # graphLangAvg("qwen7b", ["rejection_real_rate", "rejection_fake_rate"], tag="NEG", Uncertain=True)
     # graphLangAvg("qwen7b", ["one_class_accuracy_real", "one_class_accuracy_fake"], "OCA", True)
-    # plotStatsPrompt("JsonMeanStats/Sure/gemma3")
-    # plotStatsPrompt("JsonMeanStats/Sure/llava")
-    # plotStatsPrompt("JsonMeanStats/Sure/qwen3b")
-    # plotStatsPrompt("JsonMeanStats/Sure/qwen7b")
+    plotStatsPrompt("JsonMeanStats/Sure/gemma3")
+    plotStatsPrompt("JsonMeanStats/Sure/llava")
+    plotStatsPrompt("JsonMeanStats/Sure/qwen3b")
+    plotStatsPrompt("JsonMeanStats/Sure/qwen7b")

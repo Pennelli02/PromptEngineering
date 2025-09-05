@@ -156,7 +156,7 @@ def saveAllJson(metrics, responses, PromptITA, modelName, i):
 
 
 # funzione che prende i valori di una cartella e ne fa la media
-def createJSONMeanStats(folder_path, oneshot=False):
+def createJSONMeanStats(folder_path):
     # Inizializza accumulatore
     aggregated = {
         "accuracy": [],
@@ -231,24 +231,23 @@ def createJSONMeanStats(folder_path, oneshot=False):
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(mean_results, f, indent=4, ensure_ascii=False)
     print(f"File salvato in: {output_path}")
-
-    if not oneshot:
-        norm_path = os.path.normpath(folder_path)
-        parts = norm_path.split(os.sep)
-        sure_type = parts[1]
-        prompt_folder = parts[-1]
-        dest_dir = os.path.join("promptSection", sure_type.lower(), prompt_folder.replace("prompt", "Prompt"))
-        os.makedirs(dest_dir, exist_ok=True)
-        dest_path = os.path.join(dest_dir, output_filename)
-        shutil.copy(output_path, dest_path)
-        print(f"Copiato anche in: {dest_path}")
+    norm_path = os.path.normpath(folder_path)
+    parts = norm_path.split(os.sep)
+    sure_type = parts[1]
+    prompt_folder = parts[-1]
+    dest_dir = os.path.join("promptSection", sure_type.lower(), prompt_folder.replace("prompt", "Prompt"))
+    os.makedirs(dest_dir, exist_ok=True)
+    dest_path = os.path.join(dest_dir, output_filename)
+    shutil.copy(output_path, dest_path)
+    print(f"Copiato anche in: {dest_path}")
 
 
 if __name__ == "__main__":
     base_path = "JsonMeanStats/Uncertain/qwen7b"
 
-    for i in range(7):  # indici da 0 a 6
-        for lang in ["Eng", "Ita"]:
-            folder = os.path.join(base_path, f"prompt-{i}-{lang}")
-            print(f" Elaboro: {folder}")
-            createJSONMeanStats(folder)
+    # for i in range(7):  # indici da 0 a 6
+    #     for lang in ["Eng", "Ita"]:
+    #         folder = os.path.join(base_path, f"prompt-{i}-{lang}")
+    #         print(f" Elaboro: {folder}")
+    #         createJSONMeanStats(folder)
+    createJSONMeanStats("JsonMeanStats/OneShot/llava/real_example")
