@@ -8,9 +8,15 @@ import json
 import glob
 import os
 import re
+from collections import Counter
+
+from matplotlib.lines import Line2D
 from natsort import natsorted
 import pandas as pd
+from sklearn.cluster import KMeans
+from sklearn.decomposition import PCA
 from sklearn.manifold import TSNE
+from sklearn.metrics.pairwise import cosine_similarity
 
 import classifier
 import matplotlib.pyplot as plt
@@ -128,7 +134,7 @@ def genera_grafico(risultati_filtrati, metriche, titolo, nome_file, folder):
     ax.set_ylabel("Valore %")
     ax.set_xticks(x)
     ax.set_xticklabels(etichette, rotation=45, ha="right")
-    ax.set_ylim(0, 100)
+    ax.set_ylim(0, 115)
     ax.legend()
     plt.tight_layout()
 
@@ -201,7 +207,7 @@ def graphLangAvg(modelName, metrics=["accuracy", "precision", "recall"], tag="",
     rects2 = ax.bar(x + width / 2, [medie[m][1] for m in metrics], width, label="ITA")
 
     ax.set_xticks(x)
-    ax.set_xticklabels(metrics)
+    ax.set_xticklabels(metrics, rotation=30, ha="right")
     ax.set_ylim(0, 1.1)
     ax.set_ylabel("Valore medio")
 
@@ -702,87 +708,450 @@ def visualize_cluster_uncertain(path, modelName, prompt, n_cluster=5, device="cp
     print(f" Risultati salvati in {save_path}")
 
 
-def plot_tsne_prediction_with_errors(json_path, model_name):
-    # Carica il file JSON
+def _normalize_pred(s: str) -> str:
+    """Mappa la stringa di output del modello in {real,fake,uncertain}."""
+    if s is None:
+        return "uncertain"
+    t = str(s).strip().lower()
+
+    real_set = {"real", "real face", "[real]", "[real face]", "agreed", "no", "[no]"}
+    fake_set = {"fake", "generated", "generated face", "[generated]", "yes", "[yes]", "didn't agree"}
+    uncertain_set = {"uncertain", "unknown", "not sure", "cannot determine",
+                     "n/a", "reject", "rejection", "skip", "[uncertain]"}
+
+    if t in real_set: return "real"
+    if t in fake_set: return "fake"
+    if t in uncertain_set: return "uncertain"
+
+    # fallback per varianti testuali
+    if "real" in t: return "real"
+    if "gen" in t or "fake" in t or "ai" in t: return "fake"
+    return "uncertain"
+
+
+def plot_tsne_prediction_with_errors(json_path, model_name,
+                                     save_path="plots/tsne/prediction_with_{model}.png",
+                                     show=False, perplexity=30, random_state=42,
+                                     show_errors=True):
     with open(json_path, "r") as f:
         data = json.load(f)
-
     responses = data["responses"]
 
-    embeddings, predictions, ground_truths = [], [], []
+    embs, preds_raw, gts_raw = [], [], []
     for r in responses:
-        if "embedding_mean" in r and r["embedding_mean"] is not None:
-            embeddings.append(r["embedding_mean"])
-            predictions.append(r.get("prediction", "unknown"))
-            ground_truths.append(r.get("ground_truth", "unknown"))
+        if r.get("embedding_mean") is not None:
+            embs.append(r["embedding_mean"])
+            preds_raw.append(r.get("prediction"))
+            gts_raw.append(r.get("ground_truth"))
 
-    if not embeddings:
+    if not embs:
         print("⚠️ Nessun embedding_mean trovato.")
         return
 
-    embeddings = np.array(embeddings)
+    # Normalizza classi
+    preds = [_normalize_pred(p) for p in preds_raw]
+    gts = [("real" if str(gt).lower().startswith("real") else
+            "fake" if str(gt).lower().startswith("fake") else "unknown")
+           for gt in gts_raw]
 
-    # Riduzione dimensionale con t-SNE
-    tsne = TSNE(n_components=2, random_state=42, perplexity=30)
-    reduced = tsne.fit_transform(embeddings)
+    X = np.array(embs, dtype=np.float32)
 
-    # Grafico scatter
+    tsne = TSNE(n_components=2, random_state=random_state, perplexity=perplexity)
+    X2 = tsne.fit_transform(X)
+
+    # Colori per classe prevista; marker per correttezza se richiesto
+    class_order = ["real", "fake", "uncertain"]
+    class_colors = {"real": "#1f77b4", "fake": "#d62728", "uncertain": "#7f7f7f"}  # blu/rosso/grigio
+    marker_for = []
+    for p, gt in zip(preds, gts):
+        if not show_errors:
+            marker_for.append("o")  # tutti cerchietti
+        else:
+            if p == "uncertain" or gt not in {"real", "fake"}:
+                marker_for.append("s")  # quadrato per incerto
+            else:
+                marker_for.append("o" if p == gt else "x")
+
     fig, ax = plt.subplots(figsize=(10, 7))
-    unique_labels = set(predictions)
-    colors = plt.get_cmap("tab10")(np.linspace(0, 1, len(unique_labels)))
+    for cls in class_order:
+        idxs = [i for i, p in enumerate(preds) if p == cls]
+        if not idxs:
+            continue
+        for i in idxs:
+            ax.scatter(X2[i, 0], X2[i, 1],
+                       c=[class_colors[cls]],
+                       marker=marker_for[i],
+                       alpha=0.75,
+                       edgecolors="none")
 
-    for lab, col in zip(unique_labels, colors):
-        idx = [i for i, l in enumerate(predictions) if l == lab]
-        for i in idx:
-            marker = 'o' if predictions[i].lower() == ground_truths[i].lower() else 'x'
-            ax.scatter(reduced[i, 0], reduced[i, 1], c=[col], marker=marker, alpha=0.6)
+    # Legenda
+    if show_errors:
+        legend_handles = []
 
-    ax.set_title(f"t-SNE visualization ({model_name}) - colored by prediction\n'o' correct, 'x' wrong", fontsize=14)
-    ax.legend(unique_labels)
-    plt.show()
+        # Classi con i colori
+        for cls in class_order:
+            if cls not in preds:
+                continue
+            legend_handles.append(
+                Line2D([0], [0], marker='o', color='w',
+                       label=f"Pred: {cls}",
+                       markerfacecolor=class_colors[cls], markersize=9)
+            )
+
+        # Marker con il significato degli esiti
+        legend_handles.extend([
+            Line2D([0], [0], marker='o', color='w',
+                   label='Correct', markerfacecolor='black', markersize=9),
+            Line2D([0], [0], marker='x', color='w',
+                   label='Wrong', markeredgecolor='black', markersize=9),
+            Line2D([0], [0], marker='s', color='w',
+                   label='Uncertain', markerfacecolor='black', markersize=9),
+        ])
+
+        ax.legend(handles=legend_handles, title="Legend", loc="best")
+
+    else:
+        # Solo classi (senza outcome)
+        color_legend = [Line2D([0], [0], marker='o', color='w',
+                               label=f"Pred: {cls}",
+                               markerfacecolor=class_colors[cls], markersize=9)
+                        for cls in class_order if cls in preds]
+        ax.legend(handles=color_legend, title="Predicted class", loc="upper left")
+
+    ax.set_title(f"t-SNE visualization ({model_name})", fontsize=12)
+    ax.set_xlabel("t-SNE dim 1")
+    ax.set_ylabel("t-SNE dim 2")
+    plt.tight_layout()
+
+    # Riepilogo
+    print("Pred counts:", Counter(preds))
+    print("GT counts:", Counter(gts))
+    if show_errors:
+        correct = sum(1 for p, gt in zip(preds, gts) if p in {"real", "fake"} and p == gt)
+        wrong = sum(1 for p, gt in zip(preds, gts) if p in {"real", "fake"} and gt in {"real", "fake"} and p != gt)
+        uncertain = preds.count("uncertain")
+        print(f"Correct: {correct}, Wrong: {wrong}, Uncertain: {uncertain}")
+
+    # Salvataggio
+    out_path = save_path.format(model=model_name)
+    os.makedirs(os.path.dirname(out_path), exist_ok=True)
+    plt.savefig(out_path, dpi=300, bbox_inches="tight")
+    print(f" Grafico salvato in {out_path}")
+    if show:
+        plt.show()
+    plt.close(fig)
 
 
-# TODO altre funzioni di plotting (dipende da cosa mi serve nella relazione)
+def analyze_embeddings_from_json(json_path, model_name="model",
+                                 tsne_perplexity=30, pca_components=2,
+                                 n_clusters=5, show=False, save_dir="analysis_results"):
+    """
+    Analizza embeddings letti da JSON con t-SNE, PCA e KMeans, salva CSV e produce grafici.
+    """
+    # Carica JSON
+    with open(json_path, "r") as f:
+        data = json.load(f)
+
+    responses = data.get("responses", [])
+    filtered_responses = [r for r in responses if r.get("embedding_mean") is not None]
+    if not filtered_responses:
+        print("⚠️ Nessun embedding_mean trovato nel JSON.")
+        return
+
+    X = np.array([r["embedding_mean"] for r in filtered_responses], dtype=np.float32)
+    os.makedirs(save_dir, exist_ok=True)
+
+    # -------------------------
+    # 1️⃣ t-SNE
+    tsne = TSNE(n_components=2, random_state=42, perplexity=tsne_perplexity)
+    X_tsne = tsne.fit_transform(X)
+
+    tsne_df = pd.DataFrame({
+        "x": X_tsne[:, 0],
+        "y": X_tsne[:, 1],
+        "image_path": [r["image_path"] for r in filtered_responses],
+        "prediction": [r.get("prediction", "uncertain") for r in filtered_responses],
+        "ground_truth": [r.get("ground_truth", "unknown") for r in filtered_responses],
+    })
+    tsne_df.to_csv(os.path.join(save_dir, f"{model_name}_tsne.csv"), index=False)
+
+    plt.figure(figsize=(10, 7))
+    class_colors = {"real": "#1f77b4", "fake": "#d62728", "uncertain": "#7f7f7f"}
+    for cls, color in class_colors.items():
+        subset = tsne_df[tsne_df["prediction"] == cls]
+        if not subset.empty:
+            plt.scatter(subset["x"], subset["y"], c=color, label=cls, alpha=0.7)
+    if plt.gca().has_data():
+        plt.title(f"t-SNE ({model_name})")
+        plt.xlabel("Dim 1")
+        plt.ylabel("Dim 2")
+        plt.legend()
+        plt.savefig(os.path.join(save_dir, f"{model_name}_tsne.png"), dpi=300, bbox_inches="tight")
+        if show: plt.show()
+        plt.close()
+
+    # -------------------------
+    # 2️⃣ PCA
+    pca = PCA(n_components=pca_components)
+    X_pca = pca.fit_transform(X)
+    print(f"PCA explained variance: {pca.explained_variance_ratio_}")
+
+    pca_df = pd.DataFrame({f"PC{i + 1}": X_pca[:, i] for i in range(pca_components)})
+    pca_df["image_path"] = [r["image_path"] for r in filtered_responses]
+    pca_df["prediction"] = [r.get("prediction", "uncertain") for r in filtered_responses]
+    pca_df["ground_truth"] = [r.get("ground_truth", "unknown") for r in filtered_responses]
+    pca_df.to_csv(os.path.join(save_dir, f"{model_name}_pca.csv"), index=False)
+
+    plt.figure(figsize=(10, 7))
+    for cls, color in class_colors.items():
+        subset_idx = [i for i, p in enumerate(pca_df["prediction"]) if p == cls]
+        if subset_idx:
+            plt.scatter(X_pca[subset_idx, 0], X_pca[subset_idx, 1], c=color, label=cls, alpha=0.7)
+    if plt.gca().has_data():
+        plt.title(f"PCA ({model_name})")
+        plt.xlabel("PC1")
+        plt.ylabel("PC2")
+        plt.legend()
+        plt.savefig(os.path.join(save_dir, f"{model_name}_pca.png"), dpi=300, bbox_inches="tight")
+        if show: plt.show()
+        plt.close()
+
+    # -------------------------
+    # 3️⃣ KMeans clustering
+    kmeans = KMeans(n_clusters=n_clusters, random_state=42)
+    labels = kmeans.fit_predict(X)
+
+    # -------------------------
+    # Creazione frasi descrittive per cluster
+    custom_stopwords = {
+        "the", "a", "and", "is", "with", "of", "in", "it", "to", "or", "on", "at",
+        "for", "by", "from", "as", "this", "that", "an", "be", "are", "was",
+        "were", "image", "photo", "photograph", "photographs", "picture", "face", "person", "background",
+        "pixel", "real", "fake", "uncertain", "generated", "shows", "show", "but", "he", "she",
+    }
+
+    all_explanations = [r.get("explanation") for r in filtered_responses if r.get("explanation")]
+    all_words_global = []
+    for s in all_explanations:
+        if s:
+            all_words_global.extend(re.findall(r'\b[a-zA-Z]+\b', s.lower()))
+    all_words_global = [w for w in all_words_global if w not in custom_stopwords]
+    global_counter = Counter(all_words_global)
+
+    cluster_keywords = {}
+    for c in range(n_clusters):
+        subset = [r.get("explanation") for i, r in enumerate(filtered_responses)
+                  if labels[i] == c and r.get("explanation")]
+        all_words = []
+        for s in subset:
+            if s:
+                all_words.extend(re.findall(r'\b[a-zA-Z]+\b', s.lower()))
+        meaningful_words = [w for w in all_words if w not in custom_stopwords]
+
+        if meaningful_words:
+            counter = Counter(meaningful_words)
+            scores = {w: counter[w] / (global_counter.get(w, 1)) for w in counter}
+            top_words = sorted(scores, key=scores.get, reverse=True)[:5]
+            cluster_keywords[c] = "Questo cluster riguarda " + ", ".join(top_words)
+        else:
+            cluster_keywords[c] = f"Cluster {c}"
+
+    cluster_df = pd.DataFrame({
+        "image_path": [r["image_path"] for r in filtered_responses],
+        "prediction": [r.get("prediction") for r in filtered_responses],
+        "ground_truth": [r.get("ground_truth") for r in filtered_responses],
+        "cluster": labels,
+        "cluster_keyword": [cluster_keywords[l] for l in labels]
+    })
+    cluster_df.to_csv(os.path.join(save_dir, f"{model_name}_clusters.csv"), index=False)
+
+    plt.figure(figsize=(10, 7))
+    cmap = plt.get_cmap("tab10")
+    for c in range(n_clusters):
+        subset_idx = cluster_df[cluster_df["cluster"] == c].index
+        if len(subset_idx):
+            plt.scatter(X_tsne[subset_idx, 0], X_tsne[subset_idx, 1],
+                        c=[cmap(c)] * len(subset_idx), label=cluster_keywords[c], alpha=0.7)
+    plt.scatter(kmeans.cluster_centers_[:, 0], kmeans.cluster_centers_[:, 1],
+                c='black', marker='x', s=100, label='Centroids')
+    if plt.gca().has_data():
+        plt.title(f"KMeans clusters ({model_name})")
+        plt.xlabel("t-SNE dim 1")
+        plt.ylabel("t-SNE dim 2")
+        plt.legend()
+        plt.savefig(os.path.join(save_dir, f"{model_name}_clusters.png"), dpi=300, bbox_inches="tight")
+        if show: plt.show()
+        plt.close()
+
+    # -------------------------
+    # 4️⃣ Cosine similarity
+    sim_matrix = cosine_similarity(X)
+
+    return {
+        "tsne_df": tsne_df,
+        "X_tsne": X_tsne,
+        "pca_df": pca_df,
+        "X_pca": X_pca,
+        "cluster_df": cluster_df,
+        "kmeans_centroids": kmeans.cluster_centers_,
+        "cosine_sim_matrix": sim_matrix
+    }
+
+
 if __name__ == "__main__":
-    os.environ["OMP_NUM_THREADS"] = "1"
-    visualize_cluster_uncertain("JsonMeanStats/Uncertain/qwen3b/prompt-1-Eng/real-vs-fake_qwen2.5VL_3B_PromptType"
-                                "-1_ENG_20250810-135041_result.json", "qwen3b", "prompt-1-eng")
-    visualize_cluster_uncertain("JsonMeanStats/Uncertain/llava/prompt-0-Eng/real-vs-fake_llava_7b_PromptType"
-                                "-0_ENG_20250812-120301_result.json", "llava", "prompt-0-eng")
-    visualize_cluster_uncertain("JsonMeanStats/Uncertain/llava/prompt-0-Ita/real-vs-fake_llava_7b_PromptType"
-                                "-0_ITA_20250812-134801_result.json", "llava", "prompt-0-ita")
-    # analyzeSummarizeAndVisualize("resultsJSON/newFormats/qwenVL3b/Uncertain", "uncertain", "qwenVL-3b")"prompt-1-eng"
-    # promptList = ["Prompt-0-Eng", "Prompt-0-Ita", "Prompt-1-Eng", "Prompt-1-Ita", "Prompt-2-Eng", "Prompt-2-Ita",
-    #               "Prompt-3-Eng", "Prompt-3-Ita", "Prompt-4-Eng", "Prompt-4-Ita", "Prompt-5-Eng", "Prompt-5-Ita",
-    #               "Prompt-6-Eng", "Prompt-6-Ita"]
-    # for prompt in promptList:
-    # plotStatsPromptDividedByModel(prompt, True, single=True)
-    # savePromptStatsTable("JsonMeanStats/Sure/gemma3", "gemma3")
-    # savePromptStatsTable("JsonMeanStats/Sure/llava", "llava")
-    # savePromptStatsTable("JsonMeanStats/Sure/qwen3b", "qwen3b")
-    # savePromptStatsTable("JsonMeanStats/Sure/qwen7b", "qwen7b")
-    # for prompt in promptList:
-    #     plotStatsPromptDividedByModel(prompt, False, uncertain=True, single=True)
-    # graphLangAvg("gemma3")
-    # graphLangAvg("gemma3", Uncertain=True)
-    # graphLangAvg("gemma3", ["one_class_accuracy_real", "one_class_accuracy_fake"], "OCA")
-    # graphLangAvg("gemma3", ["rejection_real_rate", "rejection_fake_rate"], tag="NEG", Uncertain=True)
-    # graphLangAvg("gemma3", ["one_class_accuracy_real", "one_class_accuracy_fake"], "OCA", Uncertain=True)
-    # graphLangAvg("llava")
-    # graphLangAvg("llava", Uncertain=True)
-    # graphLangAvg("llava", ["one_class_accuracy_real", "one_class_accuracy_fake"], "OCA")
-    # graphLangAvg("llava", ["rejection_real_rate", "rejection_fake_rate"], tag="NEG", Uncertain=True)
-    # graphLangAvg("llava", ["one_class_accuracy_real", "one_class_accuracy_fake"], "OCA", True)
-    # graphLangAvg("qwen3b")
-    # graphLangAvg("qwen3b", Uncertain=True)
-    # graphLangAvg("qwen3b", ["one_class_accuracy_real", "one_class_accuracy_fake"], "OCA")
-    # graphLangAvg("qwen3b", ["rejection_real_rate", "rejection_fake_rate"], tag="NEG", Uncertain=True)
-    # graphLangAvg("qwen3b", ["one_class_accuracy_real", "one_class_accuracy_fake"], "OCA", True)
-    # graphLangAvg("qwen7b")
-    # graphLangAvg("qwen7b", ["one_class_accuracy_real", "one_class_accuracy_fake"], "OCA")
-    # graphLangAvg("qwen7b", ["rejection_real_rate", "rejection_fake_rate"], tag="NEG", Uncertain=True)
-    # graphLangAvg("qwen7b", ["one_class_accuracy_real", "one_class_accuracy_fake"], "OCA", True)
-    plotStatsPrompt("JsonMeanStats/Sure/gemma3")
-    plotStatsPrompt("JsonMeanStats/Sure/llava")
-    plotStatsPrompt("JsonMeanStats/Sure/qwen3b")
-    plotStatsPrompt("JsonMeanStats/Sure/qwen7b")
+    plot_tsne_prediction_with_errors("resultsJSON/tsne info/real-vs-fake_gemma3_4b_PromptType-6_ENG_20250906-001904_result.json", "gemma3", show_errors=True)
+    plot_tsne_prediction_with_errors("resultsJSON/tsne info/real-vs-fake_llava_7b_PromptType-3_ENG_20250907-094857_result.json", "llava", show_errors=True)
+    plot_tsne_prediction_with_errors("resultsJSON/tsne info/real-vs-fake_qwen2.5VL_3B_PromptType-3_ENG_20250906-104757_result.json", "qwen3b")
+    plot_tsne_prediction_with_errors("resultsJSON/tsne info/real-vs-fake_qwen2.5VL_7B_PromptType-6_ENG_20250906-104817_result.json", "qwen7b")
+    # import pandas as pd
+    # import matplotlib.pyplot as plt
+    #
+    # # =====================
+    # # Dizionario con i tuoi dati
+    # # =====================
+    # data = {
+    #     "Veri": {
+    #         "4 ENG": {
+    #             "LLaVA:7b": [32, 111, 39, 118],
+    #             "Gemma3:4b": [31, 114, 36, 119],
+    #             "Qwen2.5VL:3b": [86, 62, 88, 64],
+    #             "Qwen2.5VL:7b": [0, 150, 0, 150],
+    #         },
+    #         "4 ITA": {
+    #             "LLaVA:7b": [117, 39, 106, 29],
+    #             "Gemma3:4b": [44, 112, 38, 106],
+    #             "Qwen2.5VL:3b": [5, 143, 7, 145],
+    #             "Qwen2.5VL:7b": [0, 150, 0, 150],
+    #         },
+    #         "5 ENG": {
+    #             "LLaVA:7b": [58, 106, 43, 89],
+    #             "Gemma3:4b": [0, 150, 0, 150],
+    #             "Qwen2.5VL:3b": [0, 147, 3, 150],
+    #             "Qwen2.5VL:7b": [0, 150, 0, 150],
+    #         },
+    #         "5 ITA": {
+    #             "LLaVA:7b": [57, 83, 66, 92],
+    #             "Gemma3:4b": [0, 150, 0, 150],
+    #             "Qwen2.5VL:3b": [0, 149, 1, 150],
+    #             "Qwen2.5VL:7b": [0, 150, 0, 150],
+    #         },
+    #     },
+    #     "Falsi": {
+    #         "2 ENG": {
+    #             "LLaVA:7b": [37, 113, 36, 113],
+    #             "Gemma3:4b": [48, 101, 48, 102],
+    #             "Qwen2.5VL:3b": [145, 2, 148, 5],
+    #             "Qwen2.5VL:7b": [4, 145, 5, 146],
+    #         },
+    #         "2 ITA": {
+    #             "LLaVA:7b": [106, 37, 110, 40],
+    #             "Gemma3:4b": [27, 121, 29, 123],
+    #             "Qwen2.5VL:3b": [102, 31, 117, 48],
+    #             "Qwen2.5VL:7b": [0, 148, 2, 150],
+    #         },
+    #         "6 ENG": {
+    #             "LLaVA:7b": [131, 20, 125, 16],
+    #             "Gemma3:4b": [68, 71, 78, 82],
+    #             "Qwen2.5VL:3b": [99, 34, 116, 51],
+    #             "Qwen2.5VL:7b": [22, 129, 21, 128],
+    #         },
+    #         "6 ITA": {
+    #             "LLaVA:7b": [107, 43, 105, 38],
+    #             "Gemma3:4b": [54, 94, 56, 96],
+    #             "Qwen2.5VL:3b": [19, 126, 24, 131],
+    #             "Qwen2.5VL:7b": [4, 143, 7, 146],
+    #         },
+    #     },
+    #     "Neutri": {
+    #         "0 ENG": {
+    #             "LLaVA:7b": [108, 29, 119, 39],
+    #             "Gemma3:4b": [0, 144, 6, 150],
+    #             "Qwen2.5VL:3b": [35, 108, 42, 115],
+    #             "Qwen2.5VL:7b": [1, 149, 1, 149],
+    #         },
+    #         "0 ITA": {
+    #             "LLaVA:7b": [79, 55, 93, 67],
+    #             "Gemma3:4b": [1, 148, 2, 149],
+    #             "Qwen2.5VL:3b": [0, 147, 3, 150],
+    #             "Qwen2.5VL:7b": [0, 149, 1, 150],
+    #         },
+    #         "1 ENG": {
+    #             "LLaVA:7b": [109, 42, 108, 41],
+    #             "Gemma3:4b": [19, 134, 16, 131],
+    #             "Qwen2.5VL:3b": [23, 109, 41, 127],
+    #             "Qwen2.5VL:7b": [1, 148, 2, 149],
+    #         },
+    #         "1 ITA": {
+    #             "LLaVA:7b": [86, 54, 96, 64],
+    #             "Gemma3:4b": [0, 150, 0, 150],
+    #             "Qwen2.5VL:3b": [5, 144, 6, 145],
+    #             "Qwen2.5VL:7b": [0, 149, 1, 150],
+    #         },
+    #         "3 ENG": {
+    #             "LLaVA:7b": [136, 13, 135, 14],
+    #             "Gemma3:4b": [7, 144, 6, 143],
+    #             "Qwen2.5VL:3b": [57, 93, 57, 93],
+    #             "Qwen2.5VL:7b": [0, 147, 3, 150],
+    #         },
+    #         "3 ITA": {
+    #             "LLaVA:7b": [98, 47, 102, 50],
+    #             "Gemma3:4b": [44, 112, 38, 106],
+    #             "Qwen2.5VL:3b": [31, 29, 11, 9],
+    #             "Qwen2.5VL:7b": [0, 150, 0, 150],
+    #         },
+    #     },
+    # }
+    #
+    # # =====================
+    # # Creazione DataFrame unificato
+    # # =====================
+    # rows = []
+    # for categoria, prompts in data.items():
+    #     for prompt, modelli in prompts.items():
+    #         for modello, valori in modelli.items():
+    #             TP, TN, FP, FN = valori
+    #             rows.append([categoria, prompt, modello, TP, TN, FP, FN])
+    #
+    # columns = ["Categoria", "Prompt", "Modello", "TP", "TN", "FP", "FN"]
+    # df = pd.DataFrame(rows, columns=columns)
+    #
+    # # Ordinamento per Categoria e Prompt
+    # df = df.sort_values(by=["Categoria", "Prompt", "Modello"])
+    #
+    # # =====================
+    # # Creazione della tabella come immagine
+    # # =====================
+    # fig, ax = plt.subplots(figsize=(16, 10))
+    # ax.axis("off")
+    #
+    # # Tabella pandas → matplotlib
+    # table = ax.table(
+    #     cellText=df.values,
+    #     colLabels=df.columns,
+    #     loc="center",
+    #     cellLoc="center"
+    # )
+    #
+    # # Stile tabella
+    # table.auto_set_font_size(False)
+    # table.set_fontsize(8)
+    # table.scale(1.2, 1.2)
+    #
+    # # Salvataggio in PNG
+    # plt.savefig("tabella_unificata_test.png", bbox_inches="tight", dpi=300)
+    # plt.close()
+    #
+    # print("Tabella unificata salvata in 'tabella_unificata_test.png'")
+
+    graphLangAvg("llava",
+                 metrics=["accuracy", "precision", "recall", "one_class_accuracy_real", "one_class_accuracy_fake"],
+                 tag="all")
+    graphLangAvg("gemma3",
+                 metrics=["accuracy", "precision", "recall", "one_class_accuracy_real", "one_class_accuracy_fake"],
+                 tag="all")
+    graphLangAvg("qwen3b",
+                 metrics=["accuracy", "precision", "recall", "one_class_accuracy_real", "one_class_accuracy_fake"],
+                 tag="all")
+    graphLangAvg("qwen7b",
+                 metrics=["accuracy", "precision", "recall", "one_class_accuracy_real", "one_class_accuracy_fake"],
+                 tag="all")
